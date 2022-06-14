@@ -56,9 +56,9 @@ public class ItemStaff extends ItemACBasic implements IStaffOfRending{
 	}
 
 	@Override
-	public String getItemStackDisplayName(ItemStack par1ItemStack) {
+	public String getItemStackDisplayName(ItemStack itemStack) {
 
-		return TextFormatting.BLUE + super.getItemStackDisplayName(par1ItemStack);
+		return TextFormatting.BLUE + super.getItemStackDisplayName(itemStack);
 	}
 
 	@Override

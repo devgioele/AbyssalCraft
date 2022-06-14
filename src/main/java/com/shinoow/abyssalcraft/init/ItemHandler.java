@@ -38,13 +38,11 @@ import net.minecraftforge.fml.common.event.*;
 
 public class ItemHandler implements ILifeCycleHandler {
 
-	public static Item devsword, shadowPlate, shoggoth_projectile;
-
 	@Override
 	public void preInit(FMLPreInitializationEvent event) {
-		//"secret" dev stuff
-		devsword = new AbyssalCraftTool();
-		shoggoth_projectile = new Item().setTranslationKey("shoggoth_projectile");
+		// Secret developer items
+		ACItems.devsword = new SpecialTool("devsword");
+		ACItems.shoggoth_projectile = new ItemACBasic("shoggoth_projectile");
 
 		//Misc items
 		ACItems.oblivion_catalyst = new ItemOC();
@@ -145,7 +143,7 @@ public class ItemHandler implements ILifeCycleHandler {
 		ACItems.shadow_shard = new ItemACBasic("shadowshard").setUnlockCondition(new MultiEntityCondition("abyssalcraft:shadowcreature", "abyssalcraft:shadowmonster","abyssalcraft:shadowbeast"));
 		ACItems.shadow_gem = new ItemACBasic("shadowgem").setUnlockCondition(new MultiEntityCondition("abyssalcraft:shadowcreature", "abyssalcraft:shadowmonster","abyssalcraft:shadowbeast"));
 		ACItems.shard_of_oblivion = new ItemACBasic("oblivionshard").setUnlockCondition(new MultiEntityCondition("abyssalcraft:shadowcreature", "abyssalcraft:shadowmonster","abyssalcraft:shadowbeast"));
-		shadowPlate = new ItemACBasic("shadowplate");
+		ACItems.shadowPlate = new ItemACBasic("shadowplate");
 
 		//Dread items
 		ACItems.dreaded_shard_of_abyssalnite = new ItemACBasic("dreadshard").setUnlockCondition(new MultiEntityCondition("abyssalcraft:dreadguard", "abyssalcraft:greaterdreadspawn", "abyssalcraft:lesserdreadbeast"));
@@ -251,8 +249,8 @@ public class ItemHandler implements ILifeCycleHandler {
 		ACItems.generic_meat = new ItemFood(4, 0.4f, true).setTranslationKey("generic_meat").setCreativeTab(ACTabs.tabFood);
 		ACItems.cooked_generic_meat = new ItemFood(9, 0.9f, true).setTranslationKey("cooked_generic_meat").setCreativeTab(ACTabs.tabFood);
 
-		registerItem(devsword, "devsword");
-		registerItem(shoggoth_projectile, "shoggoth_projectile");
+		registerItem(ACItems.devsword, "devsword");
+		registerItem(ACItems.shoggoth_projectile, "shoggoth_projectile");
 
 		registerItem(ACItems.oblivion_catalyst, "oc");
 		registerItem(ACItems.gateway_key, "gatewaykey");
@@ -432,7 +430,7 @@ public class ItemHandler implements ILifeCycleHandler {
 		registerItem(ACItems.book_of_many_faces, "face_book");
 		registerItem(ACItems.generic_meat, "generic_meat");
 		registerItem(ACItems.cooked_generic_meat, "cooked_generic_meat");
-		//		registerItem(shadowPlate, "shadowplate");
+		//		registerItem(ACItems.shadowPlate, "shadowplate");
 	}
 
 	@Override

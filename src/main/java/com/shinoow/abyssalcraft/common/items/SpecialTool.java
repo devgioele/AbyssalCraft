@@ -34,15 +34,15 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.GameType;
 import net.minecraft.world.World;
 
-public class AbyssalCraftTool extends Item {
+public class SpecialTool extends Item {
 
 	private float weaponDamage;
-	public AbyssalCraftTool() {
+
+	public SpecialTool(String name) {
 		super();
 		maxStackSize = 1;
 		weaponDamage = 500000;
-		setTranslationKey("devsword");
-		setCreativeTab(null);
+		setTranslationKey(name);
 	}
 
 	@Override

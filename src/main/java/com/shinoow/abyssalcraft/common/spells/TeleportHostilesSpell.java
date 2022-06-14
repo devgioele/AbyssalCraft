@@ -13,7 +13,7 @@ package com.shinoow.abyssalcraft.common.spells;
 
 import com.shinoow.abyssalcraft.api.item.ACItems;
 import com.shinoow.abyssalcraft.api.spell.Spell;
-import com.shinoow.abyssalcraft.client.handlers.AbyssalCraftClientEventHooks;
+import com.shinoow.abyssalcraft.client.handlers.MouseHooks;
 import com.shinoow.abyssalcraft.common.network.PacketDispatcher;
 import com.shinoow.abyssalcraft.common.network.server.MobSpellMessage;
 
@@ -38,7 +38,7 @@ public class TeleportHostilesSpell extends Spell {
 	@Override
 	public boolean canCastSpell(World world, BlockPos pos, EntityPlayer player) {
 		if(world.isRemote){
-			RayTraceResult r = AbyssalCraftClientEventHooks.getMouseOverExtended(15);
+			RayTraceResult r = MouseHooks.getMouseOverExtended(15);
 			if(r != null && r.entityHit instanceof EntityLivingBase && r.entityHit.isCreatureType(EnumCreatureType.CREATURE, false) && ((EntityLivingBase) r.entityHit).isChild())
 				return true;
 		}
@@ -47,7 +47,7 @@ public class TeleportHostilesSpell extends Spell {
 
 	@Override
 	protected void castSpellClient(World world, BlockPos pos, EntityPlayer player) {
-		RayTraceResult r = AbyssalCraftClientEventHooks.getMouseOverExtended(15);
+		RayTraceResult r = MouseHooks.getMouseOverExtended(15);
 		if(r != null && r.entityHit instanceof EntityLivingBase && r.entityHit.isCreatureType(EnumCreatureType.CREATURE, false) && ((EntityLivingBase) r.entityHit).isChild())
 			PacketDispatcher.sendToServer(new MobSpellMessage(r.entityHit.getEntityId(), 7));
 	}

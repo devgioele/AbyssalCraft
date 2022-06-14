@@ -5,15 +5,11 @@
  * are made available under the terms of the GNU Lesser Public License v3
  * which accompanies this distribution, and is available at
  * http://www.gnu.org/licenses/lgpl-3.0.txt
- * 
+ *
  * Contributors:
  *     Shinoow -  implementation
  ******************************************************************************/
 package com.shinoow.abyssalcraft.client.handlers;
-
-import java.util.List;
-
-import org.lwjgl.input.Mouse;
 
 import com.shinoow.abyssalcraft.AbyssalCraft;
 import com.shinoow.abyssalcraft.api.APIUtils;
@@ -27,18 +23,12 @@ import com.shinoow.abyssalcraft.api.necronomicon.condition.caps.NecroDataCapabil
 import com.shinoow.abyssalcraft.api.spell.IScroll;
 import com.shinoow.abyssalcraft.api.spell.Spell;
 import com.shinoow.abyssalcraft.api.spell.SpellUtils;
-import com.shinoow.abyssalcraft.client.ClientProxy;
 import com.shinoow.abyssalcraft.common.blocks.BlockACSlab;
-import com.shinoow.abyssalcraft.common.items.ItemConfigurator;
-import com.shinoow.abyssalcraft.common.network.PacketDispatcher;
-import com.shinoow.abyssalcraft.common.network.server.*;
 import com.shinoow.abyssalcraft.init.BlockHandler;
 import com.shinoow.abyssalcraft.init.ItemHandler;
 import com.shinoow.abyssalcraft.lib.ACLib;
 import com.shinoow.abyssalcraft.lib.NecronomiconText;
-
 import net.minecraft.block.*;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
@@ -47,36 +37,27 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraft.client.resources.I18n;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.*;
-import net.minecraft.util.math.*;
-import net.minecraft.util.math.BlockPos.MutableBlockPos;
-import net.minecraft.util.math.RayTraceResult.Type;
-import net.minecraft.util.text.TextComponentString;
-import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraft.world.World;
-import net.minecraftforge.client.event.*;
+import net.minecraftforge.client.event.FOVUpdateEvent;
+import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.client.event.RenderTooltipEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
-import net.minecraftforge.fml.client.FMLClientHandler;
-import net.minecraftforge.fml.common.eventhandler.Event;
-import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.ClientTickEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import net.minecraftforge.fml.common.gameevent.TickEvent.RenderTickEvent;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class AbyssalCraftClientEventHooks {
+import java.util.Arrays;
+
+import static com.shinoow.abyssalcraft.lib.util.ParticleUtil.makeVoidFog;
+
+public class GeneralHooks {
 
 	public static float partialTicks = 0;
 
@@ -98,220 +79,6 @@ public class AbyssalCraftClientEventHooks {
 		}
 
 		event.setNewfov(fov);
-	}
-
-	@SubscribeEvent
-	public void onMouseEvent(MouseEvent event) {
-		int button = event.getButton() - 100;
-		Minecraft mc = Minecraft.getMinecraft();
-		EntityPlayer player = mc.player;
-		World world = mc.world;
-		int key = mc.gameSettings.keyBindAttack.getKeyCode();
-
-		if (button == key && Mouse.isButtonDown(button + 100))
-			if(mc.objectMouseOver != null && mc.objectMouseOver.typeOfHit == Type.BLOCK){
-				BlockPos pos = mc.objectMouseOver.getBlockPos();
-				EnumFacing face = mc.objectMouseOver.sideHit;
-				if(pos != null && face != null)
-					if (world.getBlockState(pos).getBlock() != null)
-						extinguishFire(player, pos, face, world, event);
-			}
-	}
-
-	private void extinguishFire(EntityPlayer player, BlockPos posIn, EnumFacing face, World world, Event event) {
-		BlockPos pos = posIn.offset(face);
-
-		if (world.getBlockState(pos).getBlock() == ACBlocks.mimic_fire)
-			if (event instanceof MouseEvent) {
-				PacketDispatcher.sendToServer(new FireMessage(pos));
-				player.swingArm(EnumHand.MAIN_HAND);
-				event.setCanceled(true);
-			}
-	}
-
-	@SideOnly(Side.CLIENT)
-	public static RayTraceResult getMouseOverExtended(float dist)
-	{
-		Minecraft mc = FMLClientHandler.instance().getClient();
-		Entity theRenderViewEntity = mc.getRenderViewEntity();
-		AxisAlignedBB theViewBoundingBox = new AxisAlignedBB(
-				theRenderViewEntity.posX-0.5D,
-				theRenderViewEntity.posY-0.0D,
-				theRenderViewEntity.posZ-0.5D,
-				theRenderViewEntity.posX+0.5D,
-				theRenderViewEntity.posY+1.5D,
-				theRenderViewEntity.posZ+0.5D
-				);
-		RayTraceResult returnMOP = null;
-		if (mc.world != null)
-		{
-			double var2 = dist;
-			returnMOP = theRenderViewEntity.rayTrace(var2, 0);
-			double calcdist = var2;
-			Vec3d pos = theRenderViewEntity.getPositionEyes(0);
-			var2 = calcdist;
-			if (returnMOP != null)
-				calcdist = returnMOP.hitVec.distanceTo(pos);
-
-			Vec3d lookvec = theRenderViewEntity.getLook(0);
-			Vec3d var8 = pos.add(lookvec.x * var2,
-					lookvec.y * var2,
-					lookvec.z * var2);
-			Entity pointedEntity = null;
-			float var9 = 1.0F;
-			List<Entity> list = mc.world.getEntitiesWithinAABBExcludingEntity(
-					theRenderViewEntity,
-					theViewBoundingBox.expand(
-							lookvec.x * var2,
-							lookvec.y * var2,
-							lookvec.z * var2).grow(var9, var9, var9));
-			double d = calcdist;
-
-			for (Entity entity : list)
-				if (entity.canBeCollidedWith())
-				{
-					float bordersize = entity.getCollisionBorderSize();
-					AxisAlignedBB aabb = new AxisAlignedBB(
-							entity.posX-entity.width/2,
-							entity.posY,
-							entity.posZ-entity.width/2,
-							entity.posX+entity.width/2,
-							entity.posY+entity.height,
-							entity.posZ+entity.width/2);
-					aabb.expand(bordersize, bordersize, bordersize);
-					RayTraceResult mop0 = aabb.calculateIntercept(pos, var8);
-
-					if (aabb.contains(pos))
-					{
-						if (0.0D < d || d == 0.0D)
-						{
-							pointedEntity = entity;
-							d = 0.0D;
-						}
-					} else if (mop0 != null)
-					{
-						double d1 = pos.distanceTo(mop0.hitVec);
-
-						if (d1 < d || d == 0.0D)
-						{
-							pointedEntity = entity;
-							d = d1;
-						}
-					}
-				}
-
-			if (pointedEntity != null && (d < calcdist || returnMOP == null))
-				returnMOP = new RayTraceResult(pointedEntity);
-		}
-		return returnMOP;
-	}
-
-	@SubscribeEvent(priority=EventPriority.NORMAL, receiveCanceled=true)
-	public void onKeyPressed(KeyInputEvent event){
-
-		if(ClientProxy.staff_mode.isPressed()){
-			ItemStack mainStack = Minecraft.getMinecraft().player.getHeldItem(EnumHand.MAIN_HAND);
-			ItemStack offStack = Minecraft.getMinecraft().player.getHeldItem(EnumHand.OFF_HAND);
-			int mode1 = -1, mode2 = -1;
-
-			if(!mainStack.isEmpty() && mainStack.getItem() == ACItems.staff_of_the_gatekeeper){
-				if(!mainStack.hasTagCompound())
-					mainStack.setTagCompound(new NBTTagCompound());
-				mode1 = mainStack.getTagCompound().getInteger("Mode");
-				if(mode1 > -1){
-					if(mode1 == 0)
-						mode1 = 1;
-					else mode1 = 0;
-					Minecraft.getMinecraft().player.sendMessage(new TextComponentString(I18n.format("tooltip.staff.mode.1")+": "+TextFormatting.GOLD + I18n.format(mode1 == 1 ? "item.drainstaff.normal.name" : "item.gatewaykey.name")));
-				}
-			}
-			if(!offStack.isEmpty() && offStack.getItem() == ACItems.staff_of_the_gatekeeper){
-				if(!offStack.hasTagCompound())
-					offStack.setTagCompound(new NBTTagCompound());
-				mode2 = offStack.getTagCompound().getInteger("Mode");
-				if(mode2 > -1){
-					if(mode2 == 0)
-						mode2 = 1;
-					else mode2 = 0;
-					Minecraft.getMinecraft().player.sendMessage(new TextComponentString(I18n.format("tooltip.staff.mode.1")+": "+TextFormatting.GOLD + I18n.format(mode2 == 1 ? "item.drainstaff.normal.name" : "item.gatewaykey.name")));
-				}
-			}
-
-			if(mode1 > -1 || mode2 > -1)
-				PacketDispatcher.sendToServer(new StaffModeMessage());
-		}
-		if(ClientProxy.use_cage.isPressed()) {
-			ItemStack mainStack = Minecraft.getMinecraft().player.getHeldItem(EnumHand.MAIN_HAND);
-			ItemStack offStack = Minecraft.getMinecraft().player.getHeldItem(EnumHand.OFF_HAND);
-
-			if(!mainStack.isEmpty() && mainStack.getItem() == ACItems.interdimensional_cage) {
-				if(!mainStack.hasTagCompound())
-					mainStack.setTagCompound(new NBTTagCompound());
-				if(!mainStack.getTagCompound().hasKey("Entity")) {
-					RayTraceResult mov = getMouseOverExtended(3);
-
-					if (mov != null)
-						if (mov.entityHit != null && !mov.entityHit.isDead)
-							if (mov.entityHit != Minecraft.getMinecraft().player )
-								PacketDispatcher.sendToServer(new InterdimensionalCageMessage(mov.entityHit.getEntityId(), EnumHand.MAIN_HAND));
-				}
-			}
-			if (!offStack.isEmpty() && offStack.getItem() == ACItems.interdimensional_cage) {
-				if(!offStack.hasTagCompound())
-					offStack.setTagCompound(new NBTTagCompound());
-				if(!offStack.getTagCompound().hasKey("Entity")) {
-					RayTraceResult mov = getMouseOverExtended(3);
-
-					if (mov != null)
-						if (mov.entityHit != null && !mov.entityHit.isDead)
-							if (mov.entityHit != Minecraft.getMinecraft().player )
-								PacketDispatcher.sendToServer(new InterdimensionalCageMessage(mov.entityHit.getEntityId(), EnumHand.OFF_HAND));
-				}
-			}
-		}
-		if(ClientProxy.configurator_mode.isPressed()) {
-			ItemStack mainStack = Minecraft.getMinecraft().player.getHeldItem(EnumHand.MAIN_HAND);
-			ItemStack offStack = Minecraft.getMinecraft().player.getHeldItem(EnumHand.OFF_HAND);
-			int mode1 = -1, mode2 = -1;
-
-			if(!mainStack.isEmpty() && mainStack.getItem() == ACItems.configurator){
-				if(!mainStack.hasTagCompound())
-					mainStack.setTagCompound(new NBTTagCompound());
-				mode1 = mainStack.getTagCompound().getInteger("Mode");
-				if(mode1 > -1){
-					mode1 = mode1 == 0 ? 1 : mode1 == 1 ? 2 : 0;
-					Minecraft.getMinecraft().player.sendMessage(new TextComponentString(I18n.format("tooltip.staff.mode.1")+": "+TextFormatting.GOLD + ItemConfigurator.getMode(mode1)));
-				}
-			}
-			if(!offStack.isEmpty() && offStack.getItem() == ACItems.configurator){
-				if(!offStack.hasTagCompound())
-					offStack.setTagCompound(new NBTTagCompound());
-				mode2 = offStack.getTagCompound().getInteger("Mode");
-				if(mode2 > -1){
-					mode2 = mode2 == 0 ? 1 : mode2 == 1 ? 2 : 0;
-					Minecraft.getMinecraft().player.sendMessage(new TextComponentString(I18n.format("tooltip.staff.mode.1")+": "+TextFormatting.GOLD + ItemConfigurator.getMode(mode2)));
-				}
-			}
-
-			if(mode1 > -1 || mode2 > -1)
-				PacketDispatcher.sendToServer(new ConfiguratorMessage(mode1, mode2));
-		}
-		if(ClientProxy.configurator_filter.isPressed()) {
-			ItemStack mainStack = Minecraft.getMinecraft().player.getHeldItem(EnumHand.MAIN_HAND);
-			ItemStack offStack = Minecraft.getMinecraft().player.getHeldItem(EnumHand.OFF_HAND);
-			if(!mainStack.isEmpty() && mainStack.getItem() == ACItems.configurator ||
-					!offStack.isEmpty() && offStack.getItem() == ACItems.configurator)
-				PacketDispatcher.sendToServer(new ConfiguratorMessage(true));
-		}
-		if(ClientProxy.configurator_path.isPressed()) {
-			ItemStack mainStack = Minecraft.getMinecraft().player.getHeldItem(EnumHand.MAIN_HAND);
-			ItemStack offStack = Minecraft.getMinecraft().player.getHeldItem(EnumHand.OFF_HAND);
-			if(!mainStack.isEmpty() && mainStack.getItem() == ACItems.configurator ||
-					!offStack.isEmpty() && offStack.getItem() == ACItems.configurator) {
-				PacketDispatcher.sendToServer(new ConfiguratorMessage(true, 0));
-				Minecraft.getMinecraft().player.sendMessage(new TextComponentTranslation("message.configurator.5"));
-			}
-		}
 	}
 
 	@SubscribeEvent
@@ -362,54 +129,7 @@ public class AbyssalCraftClientEventHooks {
 	@SubscribeEvent
 	public void voidFog(LivingUpdateEvent event) {
 		if(event.getEntityLiving() == Minecraft.getMinecraft().player)
-			doVoidFogParticles(event.getEntityLiving().world, event.getEntityLiving());
-	}
-
-	public void doVoidFogParticles(World world, Entity entity)
-	{
-		if(Minecraft.getMinecraft().isGamePaused() || !world.isRemote) return;
-		if(world.provider.getDimension() != ACLib.dark_realm_id && world.provider.getDimension() != ACLib.omothol_id
-				&& world.provider.getDimension() != ACLib.abyssal_wasteland_id && world.provider.getDimension() != ACLib.dreadlands_id) return;
-		byte b0 = 16;
-		byte b1 = 14;
-		int x = MathHelper.floor(entity.posX);
-		int y = MathHelper.floor(entity.posY);
-		int z = MathHelper.floor(entity.posZ);
-		MutableBlockPos pos = new MutableBlockPos();
-		boolean darkRealm = world.provider.getDimension() == ACLib.dark_realm_id;
-		for (int l = 0; l < 100; ++l)
-		{
-			int i1 = x + world.rand.nextInt(b0) - world.rand.nextInt(b0);
-			int j1 = y + world.rand.nextInt(b0) - world.rand.nextInt(b0);
-			int k1 = z + world.rand.nextInt(b0) - world.rand.nextInt(b0);
-			if(darkRealm) {
-				if(j1 > y+b1 || j1+b1 < y) return;
-				if(i1 > x+b1 || i1+b1 < x) return;
-				if(k1 > z+b1 || k1+b1 < z) return;
-			}
-			pos.setPos(i1, j1, k1);
-			IBlockState state = world.getBlockState(pos);
-
-			if (state.getMaterial() == Material.AIR)
-				if (world.getLightFromNeighbors(pos) == 0)
-				{
-					boolean canSpawn = false;
-					if(darkRealm)
-						canSpawn = world.canBlockSeeSky(pos);
-					else if(world.provider.getDimension() == ACLib.omothol_id){
-						if(world.getBlockState(pos.down()).getMaterial() != Material.AIR ||
-								world.getBlockState(pos.down(2)).getMaterial() != Material.AIR ||
-								world.getBlockState(pos.down(3)).getMaterial() != Material.AIR)
-							canSpawn = true;
-					} else if(j1 <= 6)
-						if(world.getBlockState(pos.up()).getMaterial() != Material.AIR ||
-						world.getBlockState(pos.up(2)).getMaterial() != Material.AIR)
-							canSpawn = true;
-
-					if(canSpawn)
-						world.spawnParticle(EnumParticleTypes.SUSPENDED_DEPTH, i1 + world.rand.nextFloat(), j1 + world.rand.nextFloat(), k1 + world.rand.nextFloat(), 0.0D, 0.0D, 0.0D);
-				}
-		}
+			makeVoidFog(event.getEntityLiving().world, event.getEntityLiving());
 	}
 
 	@SubscribeEvent
@@ -420,19 +140,11 @@ public class AbyssalCraftClientEventHooks {
 
 	@SubscribeEvent
 	public void registerModels(ModelRegistryEvent event){
+		ACItems.registerItemsVariants();
+		// TODO: Make this edge case conform to how items are usually registered
+		ModelLoader.setCustomMeshDefinition(ACItems.staff_of_the_gatekeeper, stack -> stack.hasTagCompound() && stack.getTagCompound().getInteger("Mode") == 1 ? new ModelResourceLocation("abyssalcraft:staff2", "inventory") : new ModelResourceLocation("abyssalcraft:staff", "inventory"));
 
-		ModelBakery.registerItemVariants(ACItems.shoggoth_flesh, makerl("shoggothflesh_overworld", "shoggothflesh_abyssalwasteland",
-				"shoggothflesh_dreadlands", "shoggothflesh_omothol", "shoggothflesh_darkrealm"));
-		ModelBakery.registerItemVariants(ACItems.essence, makerl("essence_abyssalwasteland", "essence_dreadlands", "essence_omothol"));
-		ModelBakery.registerItemVariants(ACItems.skin, makerl("skin_abyssalwasteland", "skin_dreadlands", "skin_omothol"));
-		ModelBakery.registerItemVariants(ACItems.ritual_charm, makerl("ritualcharm_empty", "ritualcharm_range", "ritualcharm_duration", "ritualcharm_power"));
-		ModelBakery.registerItemVariants(ACItems.ingot_nugget, makerl("nugget_abyssalnite", "nugget_coralium", "nugget_dreadium", "nugget_ethaxium"));
-		ModelBakery.registerItemVariants(ACItems.staff_of_rending, makerl("drainstaff", "drainstaff_aw", "drainstaff_dl", "drainstaff_omt"));
-		ModelBakery.registerItemVariants(ACItems.staff_of_the_gatekeeper, makerl("staff", "staff2"));
-		ModelBakery.registerItemVariants(ACItems.scroll, makerl("scroll_basic", "scroll_lesser", "scroll_moderate", "scroll_greater"));
-		ModelBakery.registerItemVariants(ACItems.unique_scroll, makerl("scroll_unique_anti", "scroll_unique_oblivion"));
-		ModelBakery.registerItemVariants(ACItems.antidote, makerl("coralium_antidote", "dread_antidote"));
-		ModelBakery.registerItemVariants(ACItems.configurator_shard, makerl("configurator_shard_0", "configurator_shard_1", "configurator_shard_2", "configurator_shard_3"));
+		ACItems.registerItemsRenders();
 
 		registerFluidModel(ACBlocks.liquid_coralium, "cor");
 		registerFluidModel(ACBlocks.liquid_antimatter, "anti");
@@ -487,214 +199,6 @@ public class AbyssalCraftClientEventHooks {
 		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(ACBlocks.oblivion_deathbomb), 0, new ModelResourceLocation("abyssalcraft:odb", "inventory"));
 		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(ACBlocks.chagaroth_altar_top), 0, new ModelResourceLocation("abyssalcraft:dreadaltartop", "inventory"));
 		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(ACBlocks.chagaroth_altar_bottom), 0, new ModelResourceLocation("abyssalcraft:dreadaltarbottom", "inventory"));
-
-		ModelLoader.setCustomModelResourceLocation(ACItems.cudgel, 0, new ModelResourceLocation("abyssalcraft:cudgel", "inventory"));
-		ModelLoader.setCustomModelResourceLocation(ACItems.dreadium_katana, 0, new ModelResourceLocation("abyssalcraft:dreadkatana", "inventory"));
-
-		ModelLoader.setCustomMeshDefinition(ACItems.staff_of_the_gatekeeper, stack -> stack.hasTagCompound() && stack.getTagCompound().getInteger("Mode") == 1 ? new ModelResourceLocation("abyssalcraft:staff2", "inventory") : new ModelResourceLocation("abyssalcraft:staff", "inventory"));
-
-		registerItemRender(ItemHandler.devsword, 0);
-		registerItemRender(ItemHandler.shoggoth_projectile, 0);
-		registerItemRender(ACItems.oblivion_catalyst, 0);
-		registerItemRender(ACItems.gateway_key, 0);
-		registerItemRender(ACItems.powerstone_tracker, 0);
-		registerItemRender(ACItems.eye_of_the_abyss, 0);
-		registerItemRender(ACItems.dreaded_gateway_key, 0);
-		registerItemRender(ACItems.dreaded_shard_of_abyssalnite, 0);
-		registerItemRender(ACItems.dreaded_chunk_of_abyssalnite, 0);
-		registerItemRender(ACItems.chunk_of_abyssalnite, 0);
-		registerItemRender(ACItems.abyssalnite_ingot, 0);
-		registerItemRender(ACItems.coralium_gem, 0);
-		registerItemRender(ACItems.coralium_gem_cluster_2, 0);
-		registerItemRender(ACItems.coralium_gem_cluster_3, 0);
-		registerItemRender(ACItems.coralium_gem_cluster_4, 0);
-		registerItemRender(ACItems.coralium_gem_cluster_5, 0);
-		registerItemRender(ACItems.coralium_gem_cluster_6, 0);
-		registerItemRender(ACItems.coralium_gem_cluster_7, 0);
-		registerItemRender(ACItems.coralium_gem_cluster_8, 0);
-		registerItemRender(ACItems.coralium_gem_cluster_9, 0);
-		registerItemRender(ACItems.coralium_pearl, 0);
-		registerItemRender(ACItems.chunk_of_coralium, 0);
-		registerItemRender(ACItems.refined_coralium_ingot, 0);
-		registerItemRender(ACItems.coralium_plate, 0);
-		registerItemRender(ACItems.transmutation_gem, 0);
-		registerItemRender(ACItems.coralium_plagued_flesh, 0);
-		registerItemRender(ACItems.coralium_plagued_flesh_on_a_bone, 0);
-		registerItemRender(ACItems.darkstone_pickaxe, 0);
-		registerItemRender(ACItems.darkstone_axe, 0);
-		registerItemRender(ACItems.darkstone_shovel, 0);
-		registerItemRender(ACItems.darkstone_sword, 0);
-		registerItemRender(ACItems.darkstone_hoe, 0);
-		registerItemRender(ACItems.abyssalnite_pickaxe, 0);
-		registerItemRender(ACItems.abyssalnite_axe, 0);
-		registerItemRender(ACItems.abyssalnite_shovel, 0);
-		registerItemRender(ACItems.abyssalnite_sword, 0);
-		registerItemRender(ACItems.abyssalnite_hoe, 0);
-		registerItemRender(ACItems.refined_coralium_pickaxe, 0);
-		registerItemRender(ACItems.refined_coralium_axe, 0);
-		registerItemRender(ACItems.refined_coralium_shovel, 0);
-		registerItemRender(ACItems.refined_coralium_sword, 0);
-		registerItemRender(ACItems.refined_coralium_hoe, 0);
-		registerItemRender(ACItems.abyssalnite_boots, 0);
-		registerItemRender(ACItems.abyssalnite_helmet, 0);
-		registerItemRender(ACItems.abyssalnite_chestplate, 0);
-		registerItemRender(ACItems.abyssalnite_leggings, 0);
-		registerItemRender(ACItems.dreaded_abyssalnite_boots, 0);
-		registerItemRender(ACItems.dreaded_abyssalnite_helmet, 0);
-		registerItemRender(ACItems.dreaded_abyssalnite_chestplate, 0);
-		registerItemRender(ACItems.dreaded_abyssalnite_leggings, 0);
-		registerItemRender(ACItems.refined_coralium_boots, 0);
-		registerItemRender(ACItems.refined_coralium_helmet, 0);
-		registerItemRender(ACItems.refined_coralium_chestplate, 0);
-		registerItemRender(ACItems.refined_coralium_leggings, 0);
-		registerItemRender(ACItems.plated_coralium_boots, 0);
-		registerItemRender(ACItems.plated_coralium_helmet, 0);
-		registerItemRender(ACItems.plated_coralium_chestplate, 0);
-		registerItemRender(ACItems.plated_coralium_leggings, 0);
-		registerItemRender(ACItems.depths_boots, 0);
-		registerItemRender(ACItems.depths_helmet, 0);
-		registerItemRender(ACItems.depths_chestplate, 0);
-		registerItemRender(ACItems.depths_leggings, 0);
-		registerItemRender(ACItems.shadow_fragment, 0);
-		registerItemRender(ACItems.shadow_shard, 0);
-		registerItemRender(ACItems.shadow_gem, 0);
-		registerItemRender(ACItems.shard_of_oblivion, 0);
-		registerItemRender(ACItems.coralium_longbow, 0);
-		registerItemRender(ACItems.coralium_brick, 0);
-		registerItemRender(ACItems.dreadium_ingot, 0);
-		registerItemRender(ACItems.dread_fragment, 0);
-		registerItemRender(ACItems.dreadium_boots, 0);
-		registerItemRender(ACItems.dreadium_helmet, 0);
-		registerItemRender(ACItems.dreadium_chestplate, 0);
-		registerItemRender(ACItems.dreadium_leggings, 0);
-		registerItemRender(ACItems.dreadium_pickaxe, 0);
-		registerItemRender(ACItems.dreadium_axe, 0);
-		registerItemRender(ACItems.dreadium_shovel, 0);
-		registerItemRender(ACItems.dreadium_sword, 0);
-		registerItemRender(ACItems.dreadium_hoe, 0);
-		registerItemRender(ACItems.carbon_cluster, 0);
-		registerItemRender(ACItems.dense_carbon_cluster, 0);
-		registerItemRender(ACItems.methane, 0);
-		registerItemRender(ACItems.nitre, 0);
-		registerItemRender(ACItems.sulfur, 0);
-		registerItemRenders(ACItems.crystal, ACLib.crystalNames.length);
-		registerItemRenders(ACItems.crystal_shard, ACLib.crystalNames.length);
-		registerItemRender(ACItems.dread_cloth, 0);
-		registerItemRender(ACItems.dreadium_plate, 0);
-		registerItemRender(ACItems.dreadium_katana_blade, 0);
-		registerItemRender(ACItems.dreadium_katana_hilt, 0);
-		registerItemRender(ACItems.dread_plagued_gateway_key, 0);
-		registerItemRender(ACItems.rlyehian_gateway_key, 0);
-		registerItemRender(ACItems.dreadium_samurai_boots, 0);
-		registerItemRender(ACItems.dreadium_samurai_helmet, 0);
-		registerItemRender(ACItems.dreadium_samurai_chestplate, 0);
-		registerItemRender(ACItems.dreadium_samurai_leggings, 0);
-		registerItemRender(ACItems.tin_ingot, 0);
-		registerItemRender(ACItems.copper_ingot, 0);
-		registerItemRender(ACItems.anti_beef, 0);
-		registerItemRender(ACItems.anti_chicken, 0);
-		registerItemRender(ACItems.anti_pork, 0);
-		registerItemRender(ACItems.rotten_anti_flesh, 0);
-		registerItemRender(ACItems.anti_bone, 0);
-		registerItemRender(ACItems.anti_spider_eye, 0);
-		registerItemRender(ACItems.sacthoths_soul_harvesting_blade, 0);
-		registerItemRender(ACItems.ethaxium_brick, 0);
-		registerItemRender(ACItems.ethaxium_ingot, 0);
-		registerItemRender(ACItems.life_crystal, 0);
-		registerItemRender(ACItems.ethaxium_boots, 0);
-		registerItemRender(ACItems.ethaxium_helmet, 0);
-		registerItemRender(ACItems.ethaxium_chestplate, 0);
-		registerItemRender(ACItems.ethaxium_leggings, 0);
-		registerItemRender(ACItems.ethaxium_pickaxe, 0);
-		registerItemRender(ACItems.ethaxium_axe, 0);
-		registerItemRender(ACItems.ethaxium_shovel, 0);
-		registerItemRender(ACItems.ethaxium_sword, 0);
-		registerItemRender(ACItems.ethaxium_hoe, 0);
-		registerItemRender(ACItems.coin, 0);
-		registerItemRender(ACItems.cthulhu_engraved_coin, 0);
-		registerItemRender(ACItems.elder_engraved_coin, 0);
-		registerItemRender(ACItems.jzahar_engraved_coin, 0);
-		registerItemRender(ACItems.blank_engraving, 0);
-		registerItemRender(ACItems.cthulhu_engraving, 0);
-		registerItemRender(ACItems.elder_engraving, 0);
-		registerItemRender(ACItems.jzahar_engraving, 0);
-		registerItemRender(ACItems.eldritch_scale, 0);
-		registerItemRender(ACItems.omothol_flesh, 0);
-		registerItemRender(ACItems.anti_plagued_flesh, 0);
-		registerItemRender(ACItems.anti_plagued_flesh_on_a_bone, 0);
-		registerItemRender(ACItems.necronomicon, 0);
-		registerItemRender(ACItems.abyssal_wasteland_necronomicon, 0);
-		registerItemRender(ACItems.dreadlands_necronomicon, 0);
-		registerItemRender(ACItems.omothol_necronomicon, 0);
-		registerItemRender(ACItems.abyssalnomicon, 0);
-		registerItemRender(ACItems.small_crystal_bag, 0);
-		registerItemRender(ACItems.medium_crystal_bag, 0);
-		registerItemRender(ACItems.large_crystal_bag, 0);
-		registerItemRender(ACItems.huge_crystal_bag, 0);
-		registerItemRender(ACItems.shoggoth_flesh, 0, "shoggothflesh_overworld");
-		registerItemRender(ACItems.shoggoth_flesh, 1, "shoggothflesh_abyssalwasteland");
-		registerItemRender(ACItems.shoggoth_flesh, 2, "shoggothflesh_dreadlands");
-		registerItemRender(ACItems.shoggoth_flesh, 3, "shoggothflesh_omothol");
-		registerItemRender(ACItems.shoggoth_flesh, 4, "shoggothflesh_darkrealm");
-		registerItemRender(ACItems.ingot_nugget, 0, "nugget_abyssalnite");
-		registerItemRender(ACItems.ingot_nugget, 1, "nugget_coralium");
-		registerItemRender(ACItems.ingot_nugget, 2, "nugget_dreadium");
-		registerItemRender(ACItems.ingot_nugget, 3, "nugget_ethaxium");
-		registerItemRender(ACItems.staff_of_rending, 0, "drainstaff");
-		registerItemRender(ACItems.staff_of_rending, 1, "drainstaff_aw");
-		registerItemRender(ACItems.staff_of_rending, 2, "drainstaff_dl");
-		registerItemRender(ACItems.staff_of_rending, 3, "drainstaff_omt");
-		registerItemRender(ACItems.essence, 0, "essence_abyssalwasteland");
-		registerItemRender(ACItems.essence, 1, "essence_dreadlands");
-		registerItemRender(ACItems.essence, 2, "essence_omothol");
-		registerItemRender(ACItems.skin, 0, "skin_abyssalwasteland");
-		registerItemRender(ACItems.skin, 1, "skin_dreadlands");
-		registerItemRender(ACItems.skin, 2, "skin_omothol");
-		registerItemRender(ACItems.ritual_charm, 0, "ritualcharm_empty");
-		registerItemRender(ACItems.ritual_charm, 1, "ritualcharm_range");
-		registerItemRender(ACItems.ritual_charm, 2, "ritualcharm_duration");
-		registerItemRender(ACItems.ritual_charm, 3, "ritualcharm_power");
-		registerItemRenders(ACItems.cthulhu_charm, 4);
-		registerItemRenders(ACItems.hastur_charm, 4);
-		registerItemRenders(ACItems.jzahar_charm, 4);
-		registerItemRenders(ACItems.azathoth_charm, 4);
-		registerItemRenders(ACItems.nyarlathotep_charm, 4);
-		registerItemRenders(ACItems.yog_sothoth_charm, 4);
-		registerItemRenders(ACItems.shub_niggurath_charm, 4);
-		registerItemRender(ACItems.hastur_engraved_coin, 0);
-		registerItemRender(ACItems.azathoth_engraved_coin, 0);
-		registerItemRender(ACItems.nyarlathotep_engraved_coin, 0);
-		registerItemRender(ACItems.yog_sothoth_engraved_coin, 0);
-		registerItemRender(ACItems.shub_niggurath_engraved_coin, 0);
-		registerItemRender(ACItems.hastur_engraving, 0);
-		registerItemRender(ACItems.azathoth_engraving, 0);
-		registerItemRender(ACItems.nyarlathotep_engraving, 0);
-		registerItemRender(ACItems.yog_sothoth_engraving, 0);
-		registerItemRender(ACItems.shub_niggurath_engraving, 0);
-		registerItemRender(ACItems.essence_of_the_gatekeeper, 0);
-		registerItemRender(ACItems.interdimensional_cage, 0);
-		registerItemRenders(ACItems.crystal_fragment, ACLib.crystalNames.length);
-		registerItemRender(ACItems.stone_tablet, 0);
-		registerItemRender(ACItems.scroll, 0, "scroll_basic");
-		registerItemRender(ACItems.scroll, 1, "scroll_lesser");
-		registerItemRender(ACItems.scroll, 2, "scroll_moderate");
-		registerItemRender(ACItems.scroll, 3, "scroll_greater");
-		registerItemRender(ACItems.unique_scroll, 0, "scroll_unique_anti");
-		registerItemRender(ACItems.unique_scroll, 1, "scroll_unique_oblivion");
-		registerItemRender(ACItems.antidote, 0, "coralium_antidote");
-		registerItemRender(ACItems.antidote, 1, "dread_antidote");
-		registerItemRender(ACItems.darklands_oak_door, 0);
-		registerItemRender(ACItems.dreadlands_door, 0);
-		registerItemRender(ACItems.charcoal, 0);
-		registerItemRender(ACItems.configurator, 0);
-		registerItemRender(ACItems.configurator_shard, 0, "configurator_shard_0");
-		registerItemRender(ACItems.configurator_shard, 1, "configurator_shard_1");
-		registerItemRender(ACItems.configurator_shard, 2, "configurator_shard_2");
-		registerItemRender(ACItems.configurator_shard, 3, "configurator_shard_3");
-		registerItemRender(ACItems.silver_key, 0);
-		registerItemRender(ACItems.book_of_many_faces, 0);
-		registerItemRender(ACItems.generic_meat, 0);
-		registerItemRender(ACItems.cooked_generic_meat, 0);
 
 		registerItemRender(ACBlocks.darkstone, 0, "darkstone");
 		registerItemRender(ACBlocks.abyssal_stone, 0, "abystone");
@@ -976,10 +480,5 @@ public class AbyssalCraftClientEventHooks {
 			registerItemRender(block, i);
 	}
 
-	private ResourceLocation[] makerl(String...strings){
-		ResourceLocation[] res = new ResourceLocation[strings.length];
-		for(int i = 0; i < strings.length; i++)
-			res[i] = new ResourceLocation("abyssalcraft", strings[i]);
-		return res;
-	}
+
 }

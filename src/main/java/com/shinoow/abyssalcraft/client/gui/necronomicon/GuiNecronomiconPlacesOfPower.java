@@ -27,7 +27,7 @@ import com.shinoow.abyssalcraft.api.energy.structure.IPlaceOfPower;
 import com.shinoow.abyssalcraft.api.energy.structure.StructureHandler;
 import com.shinoow.abyssalcraft.client.gui.necronomicon.buttons.ButtonHome;
 import com.shinoow.abyssalcraft.client.gui.necronomicon.buttons.ButtonNextPage;
-import com.shinoow.abyssalcraft.client.handlers.AbyssalCraftClientEventHooks;
+import com.shinoow.abyssalcraft.client.handlers.GeneralHooks;
 import com.shinoow.abyssalcraft.client.lib.GuiRenderHelper;
 import com.shinoow.abyssalcraft.client.lib.MultiblockRenderData;
 import com.shinoow.abyssalcraft.lib.NecronomiconResources;
@@ -85,7 +85,7 @@ public class GuiNecronomiconPlacesOfPower extends GuiNecronomicon {
 		buttonList.clear();
 		Keyboard.enableRepeatEvents(true);
 
-		buttonList.add(buttonDone = new GuiButton(0, width / 2 - 100, 4 + guiHeight, 200, 20, I18n.format("gui.done", new Object[0])));
+		buttonList.add(buttonDone = new GuiButton(0, width / 2 - 100, 4 + guiHeight, 200, 20, I18n.format("gui.done")));
 
 		int i = (width - guiWidth) / 2;
 		byte b0 = 2;
@@ -207,7 +207,7 @@ public class GuiNecronomiconPlacesOfPower extends GuiNecronomicon {
 
 		float time = ticksInBook * 0.5F;
 		if(!GuiScreen.isShiftKeyDown())
-			time += AbyssalCraftClientEventHooks.partialTicks;
+			time += GeneralHooks.partialTicks;
 		GlStateManager.translate(-offX, 0, -offZ);
 		GlStateManager.rotate(time, 0F, 1F, 0F);
 		rotMat.rotY((float) Math.toRadians(-time));
@@ -318,7 +318,7 @@ public class GuiNecronomiconPlacesOfPower extends GuiNecronomicon {
 				te.setPos(relPos.add(pos));
 
 				try {
-					TileEntityRendererDispatcher.instance.render(te, pos.getX(), pos.getY(), pos.getZ(), AbyssalCraftClientEventHooks.partialTicks);
+					TileEntityRendererDispatcher.instance.render(te, pos.getX(), pos.getY(), pos.getZ(), GeneralHooks.partialTicks);
 				} catch (Exception e) {
 					erroredTiles.add(te);
 					e.printStackTrace();

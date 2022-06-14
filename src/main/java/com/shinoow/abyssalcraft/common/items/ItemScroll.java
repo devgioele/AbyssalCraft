@@ -78,16 +78,16 @@ public class ItemScroll extends ItemMetadata implements IScroll {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubItems(CreativeTabs par2CreativeTab, NonNullList<ItemStack> par3List){
-		super.getSubItems(par2CreativeTab, par3List);
-		if(this == ACItems.scroll && par2CreativeTab == ACTabs.tabSpells) {
+	public void getSubItems(CreativeTabs creativeTabs, NonNullList<ItemStack> itemStacks){
+		super.getSubItems(creativeTabs, itemStacks);
+		if(this == ACItems.scroll && creativeTabs == ACTabs.tabSpells) {
 			ItemStack greater_scroll = new ItemStack(ACItems.scroll, 1, 3);
 			ItemStack antimatter_scroll = new ItemStack(ACItems.unique_scroll, 1, 0);
 			ItemStack oblivion_scroll = new ItemStack(ACItems.unique_scroll, 1, 1);
 			SpellRegistry.instance().getSpells().stream().forEach(s -> {
-				par3List.add(SpellRegistry.instance().inscribeSpell(s, greater_scroll.copy()));
-				par3List.add(SpellRegistry.instance().inscribeSpell(s, antimatter_scroll.copy()));
-				par3List.add(SpellRegistry.instance().inscribeSpell(s, oblivion_scroll.copy()));
+				itemStacks.add(SpellRegistry.instance().inscribeSpell(s, greater_scroll.copy()));
+				itemStacks.add(SpellRegistry.instance().inscribeSpell(s, antimatter_scroll.copy()));
+				itemStacks.add(SpellRegistry.instance().inscribeSpell(s, oblivion_scroll.copy()));
 			});
 		}
 	}

@@ -81,9 +81,9 @@ public class ItemStoneTablet extends ItemACBasic {
 	}
 
 	@Override
-	public String getItemStackDisplayName(ItemStack par1ItemStack) {
+	public String getItemStackDisplayName(ItemStack itemStack) {
 
-		return super.getItemStackDisplayName(par1ItemStack);
+		return super.getItemStackDisplayName(itemStack);
 	}
 
 	@Override

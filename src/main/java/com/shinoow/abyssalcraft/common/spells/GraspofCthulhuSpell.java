@@ -14,7 +14,8 @@ package com.shinoow.abyssalcraft.common.spells;
 import com.shinoow.abyssalcraft.api.item.ACItems;
 import com.shinoow.abyssalcraft.api.spell.Spell;
 import com.shinoow.abyssalcraft.api.spell.SpellUtils;
-import com.shinoow.abyssalcraft.client.handlers.AbyssalCraftClientEventHooks;
+import com.shinoow.abyssalcraft.client.handlers.GeneralHooks;
+import com.shinoow.abyssalcraft.client.handlers.MouseHooks;
 import com.shinoow.abyssalcraft.common.network.PacketDispatcher;
 import com.shinoow.abyssalcraft.common.network.server.MobSpellMessage;
 
@@ -38,7 +39,7 @@ public class GraspofCthulhuSpell extends Spell {
 	public boolean canCastSpell(World world, BlockPos pos, EntityPlayer player) {
 
 		if(world.isRemote){
-			RayTraceResult r = AbyssalCraftClientEventHooks.getMouseOverExtended(15);
+			RayTraceResult r = MouseHooks.getMouseOverExtended(15);
 			if(r != null && r.entityHit instanceof EntityLivingBase)
 				return SpellUtils.canPlayerHurt(player, r.entityHit);
 		}
@@ -47,7 +48,7 @@ public class GraspofCthulhuSpell extends Spell {
 
 	@Override
 	protected void castSpellClient(World world, BlockPos pos, EntityPlayer player) {
-		RayTraceResult r = AbyssalCraftClientEventHooks.getMouseOverExtended(15);
+		RayTraceResult r = MouseHooks.getMouseOverExtended(15);
 		if(r != null && r.entityHit instanceof EntityLivingBase && !r.entityHit.isDead)
 			PacketDispatcher.sendToServer(new MobSpellMessage(r.entityHit.getEntityId(), 1));
 	}

@@ -56,15 +56,15 @@ public class ItemGatewayKey extends ItemACBasic {
 	}
 
 	@Override
-	public String getItemStackDisplayName(ItemStack par1ItemStack) {
+	public String getItemStackDisplayName(ItemStack itemStack) {
 
 		switch(key){
 		case 1:
-			return TextFormatting.DARK_RED + super.getItemStackDisplayName(par1ItemStack);
+			return TextFormatting.DARK_RED + super.getItemStackDisplayName(itemStack);
 		case 2:
-			return TextFormatting.BLUE + super.getItemStackDisplayName(par1ItemStack);
+			return TextFormatting.BLUE + super.getItemStackDisplayName(itemStack);
 		default:
-			return super.getItemStackDisplayName(par1ItemStack);
+			return super.getItemStackDisplayName(itemStack);
 		}
 	}
 

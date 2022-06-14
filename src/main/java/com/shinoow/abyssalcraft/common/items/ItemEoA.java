@@ -27,9 +27,9 @@ public class ItemEoA extends ItemACBasic {
 	}
 
 	@Override
-	public String getItemStackDisplayName(ItemStack par1ItemStack) {
+	public String getItemStackDisplayName(ItemStack itemStack) {
 
-		return TextFormatting.AQUA + super.getItemStackDisplayName(par1ItemStack);
+		return TextFormatting.AQUA + super.getItemStackDisplayName(itemStack);
 	}
 
 	@Override

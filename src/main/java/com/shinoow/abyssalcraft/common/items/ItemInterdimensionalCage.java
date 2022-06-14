@@ -16,7 +16,8 @@ import java.util.List;
 import com.shinoow.abyssalcraft.api.energy.IEnergyContainerItem;
 import com.shinoow.abyssalcraft.api.energy.PEUtils;
 import com.shinoow.abyssalcraft.client.ClientProxy;
-import com.shinoow.abyssalcraft.client.handlers.AbyssalCraftClientEventHooks;
+import com.shinoow.abyssalcraft.client.handlers.GeneralHooks;
+import com.shinoow.abyssalcraft.client.handlers.MouseHooks;
 import com.shinoow.abyssalcraft.common.network.PacketDispatcher;
 import com.shinoow.abyssalcraft.common.network.server.InterdimensionalCageMessage;
 import com.shinoow.abyssalcraft.lib.ACTabs;
@@ -95,7 +96,7 @@ public class ItemInterdimensionalCage extends ItemACBasic implements IEnergyCont
 		} else {
 			if(!world.isRemote) return new ActionResult(EnumActionResult.PASS, stack);
 
-			RayTraceResult mov = AbyssalCraftClientEventHooks.getMouseOverExtended(3);
+			RayTraceResult mov = MouseHooks.getMouseOverExtended(3);
 
 			if (mov != null)
 				if (mov.entityHit != null && !mov.entityHit.isDead)

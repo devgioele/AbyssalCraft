@@ -60,9 +60,9 @@ public class ItemOC extends ItemACBasic {
 	}
 
 	@Override
-	public String getItemStackDisplayName(ItemStack par1ItemStack) {
+	public String getItemStackDisplayName(ItemStack itemStack) {
 
-		return TextFormatting.DARK_RED + super.getItemStackDisplayName(par1ItemStack);
+		return TextFormatting.DARK_RED + super.getItemStackDisplayName(itemStack);
 	}
 
 	@Override

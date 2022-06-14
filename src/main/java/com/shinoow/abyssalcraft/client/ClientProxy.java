@@ -21,7 +21,7 @@ import com.shinoow.abyssalcraft.api.item.ACItems;
 import com.shinoow.abyssalcraft.api.item.ICrystal;
 import com.shinoow.abyssalcraft.api.ritual.RitualRegistry;
 import com.shinoow.abyssalcraft.api.spell.SpellRegistry;
-import com.shinoow.abyssalcraft.client.handlers.AbyssalCraftClientEventHooks;
+import com.shinoow.abyssalcraft.client.handlers.GeneralHooks;
 import com.shinoow.abyssalcraft.client.handlers.ClientVarsReloadListener;
 import com.shinoow.abyssalcraft.client.lib.LovecraftFont;
 import com.shinoow.abyssalcraft.client.model.block.ModelDGhead;
@@ -125,7 +125,9 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityCoraliumSquid.class, RenderCoraliumSquid::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityInkProjectile.class, manager -> new RenderSnowball(manager, Items.DYE, Minecraft.getMinecraft().getRenderItem()));
 		RenderingRegistry.registerEntityRenderingHandler(EntityDreadedCharge.class, RenderDreadedCharge::new);
-		RenderingRegistry.registerEntityRenderingHandler(EntityAcidProjectile.class, manager -> new RenderSnowball(manager, ItemHandler.shoggoth_projectile, Minecraft.getMinecraft().getRenderItem()));
+		RenderingRegistry.registerEntityRenderingHandler(EntityAcidProjectile.class,
+				manager -> new RenderSnowball(manager, ACItems.shoggoth_projectile,
+						Minecraft.getMinecraft().getRenderItem()));
 		RenderingRegistry.registerEntityRenderingHandler(EntityBlackHole.class, RenderBlackHole::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityImplosion.class, RenderImplosion::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityShubOffspring.class, RenderShubOffspring::new);
@@ -146,7 +148,7 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityAntiSpider.class, RenderAntiSpider::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityAntiZombie.class, RenderAntiZombie::new);
 
-		MinecraftForge.EVENT_BUS.register(new AbyssalCraftClientEventHooks());
+		MinecraftForge.EVENT_BUS.register(new GeneralHooks());
 
 		staff_mode = new KeyBinding("key.staff_mode.desc", Keyboard.KEY_M, "key.abyssalcraft.category");
 		use_cage = new KeyBinding("key.use_cage.desc", Keyboard.KEY_N, "key.abyssalcraft.category");

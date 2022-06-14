@@ -16,7 +16,8 @@ import java.util.stream.Collectors;
 
 import com.shinoow.abyssalcraft.api.AbyssalCraftAPI;
 import com.shinoow.abyssalcraft.api.rending.RendingRegistry;
-import com.shinoow.abyssalcraft.client.handlers.AbyssalCraftClientEventHooks;
+import com.shinoow.abyssalcraft.client.handlers.GeneralHooks;
+import com.shinoow.abyssalcraft.client.handlers.MouseHooks;
 import com.shinoow.abyssalcraft.common.network.PacketDispatcher;
 import com.shinoow.abyssalcraft.common.network.server.StaffOfRendingMessage;
 import com.shinoow.abyssalcraft.lib.ACTabs;
@@ -73,7 +74,7 @@ public class ItemStaffOfRending extends ItemMetadata implements IStaffOfRending 
 		ItemStack stack = player.getHeldItem(hand);
 		if(world.isRemote){
 
-			RayTraceResult mov = AbyssalCraftClientEventHooks.getMouseOverExtended(50);
+			RayTraceResult mov = MouseHooks.getMouseOverExtended(50);
 
 			if (mov != null)
 				if (mov.entityHit != null && !mov.entityHit.isDead)

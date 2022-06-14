@@ -12,10 +12,9 @@
 package com.shinoow.abyssalcraft.common.entity;
 
 import com.shinoow.abyssalcraft.api.AbyssalCraftAPI;
-import com.shinoow.abyssalcraft.init.ItemHandler;
+import com.shinoow.abyssalcraft.api.item.ACItems;
 import com.shinoow.abyssalcraft.lib.ACConfig;
 import com.shinoow.abyssalcraft.lib.ACSounds;
-
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
@@ -80,7 +79,7 @@ public class EntityShadowTitan extends EntityMob {
 	@Override
 	protected Item getDropItem()
 	{
-		return ItemHandler.shadowPlate;
+		return ACItems.shadowPlate;
 	}
 
 	@Override

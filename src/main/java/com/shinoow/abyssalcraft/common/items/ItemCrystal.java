@@ -65,10 +65,10 @@ public class ItemCrystal extends ItemACBasic implements ICrystal {
 	}
 
 	@Override
-	public String getItemStackDisplayName(ItemStack par1ItemStack) {
+	public String getItemStackDisplayName(ItemStack itemStack) {
 		if(postfix)
-			return I18n.translateToLocalFormatted(getTranslationKey().substring(5)+ ".postfix", I18n.translateToLocal("item.crystal." + ACLib.crystalNames[par1ItemStack.getItemDamage()] + ".name"));
-		else return I18n.translateToLocal(getTranslationKey() + "." + ACLib.crystalNames[par1ItemStack.getItemDamage()] + ".name");
+			return I18n.translateToLocalFormatted(getTranslationKey().substring(5)+ ".postfix", I18n.translateToLocal("item.crystal." + ACLib.crystalNames[itemStack.getItemDamage()] + ".name"));
+		else return I18n.translateToLocal(getTranslationKey() + "." + ACLib.crystalNames[itemStack.getItemDamage()] + ".name");
 	}
 
 	@Override

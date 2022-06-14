@@ -30,9 +30,9 @@ public class ItemACBasic extends Item implements IUnlockableItem {
 
 	private IUnlockCondition condition = new DefaultCondition();
 
-	public ItemACBasic(String par1) {
+	public ItemACBasic(String name) {
 		super();
-		setTranslationKey(par1);
+		setTranslationKey(name);
 		setCreativeTab(ACTabs.tabItems);
 	}
 
@@ -56,17 +56,17 @@ public class ItemACBasic extends Item implements IUnlockableItem {
 	}
 
 	@Override
-	public String getItemStackDisplayName(ItemStack par1ItemStack) {
+	public String getItemStackDisplayName(ItemStack itemStack) {
 		if(this.getTranslationKey().contains("dreadshard") || this.getTranslationKey().contains("dreadchunk") ||
 				this.getTranslationKey().contains("dreadiumingot") || this.getTranslationKey().contains("dreadfragment"))
-			return TextFormatting.DARK_RED + super.getItemStackDisplayName(par1ItemStack);
+			return TextFormatting.DARK_RED + super.getItemStackDisplayName(itemStack);
 		else if(this.getTranslationKey().contains("abyingot"))
-			return TextFormatting.DARK_AQUA + super.getItemStackDisplayName(par1ItemStack);
+			return TextFormatting.DARK_AQUA + super.getItemStackDisplayName(itemStack);
 		else if(this.getTranslationKey().contains("cpearl") || this.getTranslationKey().contains("cingot")
 				|| this.getTranslationKey().contains("ethaxiumingot"))
-			return TextFormatting.AQUA + super.getItemStackDisplayName(par1ItemStack);
+			return TextFormatting.AQUA + super.getItemStackDisplayName(itemStack);
 
-		return super.getItemStackDisplayName(par1ItemStack);
+		return super.getItemStackDisplayName(itemStack);
 	}
 
 	@Override
