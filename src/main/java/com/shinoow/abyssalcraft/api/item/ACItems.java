@@ -11,6 +11,8 @@
  ******************************************************************************/
 package com.shinoow.abyssalcraft.api.item;
 
+import com.shinoow.abyssalcraft.AbyssalCraft;
+import com.shinoow.abyssalcraft.init.InitHandler;
 import com.shinoow.abyssalcraft.lib.item.ItemMetadata;
 import com.shinoow.abyssalcraft.lib.util.Reflections;
 import net.minecraft.client.renderer.block.model.ModelBakery;
@@ -312,19 +314,32 @@ public class ACItems {
         }
     }
 
+    public static void registerItems() {
+        Item[] items = getItems();
+        for (Item item : items) {
+            registerItem(item, item.getTranslationKey());
+        }
+    }
+
+    private static void registerItem(Item item, String name) {
+        InitHandler.INSTANCE.ITEMS.add(
+                item.setRegistryName(new ResourceLocation(AbyssalCraft.modid, name)));
+    }
+
     private static void registerItemVariants(ItemMetadata item, String[] variationNames) {
         ModelBakery.registerItemVariants(item, resourceLocationsOf(variationNames));
     }
 
     private static void registerItemRender(Item item, int meta, String res) {
         ModelLoader.setCustomModelResourceLocation(item, meta,
-                new ModelResourceLocation("abyssalcraft:" + res, "inventory"));
+                new ModelResourceLocation(AbyssalCraft.modid + ":" + res, "inventory"));
     }
 
     private static ResourceLocation[] resourceLocationsOf(String... resourceNames) {
         return Arrays.stream(resourceNames)
-                .map(resourceName -> new ResourceLocation("abyssalcraft", resourceName))
+                .map(resourceName -> new ResourceLocation(AbyssalCraft.modid, resourceName))
                 .toArray(ResourceLocation[]::new);
     }
+
 
 }
