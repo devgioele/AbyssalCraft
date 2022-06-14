@@ -14,6 +14,7 @@ package com.shinoow.abyssalcraft.client.config;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.shinoow.abyssalcraft.AbyssalCraft;
 import com.shinoow.abyssalcraft.init.InitHandler;
 import com.shinoow.abyssalcraft.lib.ACConfig;
 
@@ -30,7 +31,7 @@ import net.minecraftforge.fml.client.config.IConfigElement;
 public class ACConfigGUI extends GuiConfig {
 
 	public ACConfigGUI(GuiScreen parent) {
-		super(parent, getConfigElements(), "abyssalcraft", true, false, "AbyssalCraft");
+		super(parent, getConfigElements(), AbyssalCraft.modid, true, false, "AbyssalCraft");
 	}
 
 	private static List<IConfigElement> getConfigElements(){
@@ -59,7 +60,7 @@ public class ACConfigGUI extends GuiConfig {
 
 		@Override
 		protected GuiScreen buildChildScreen(){
-			return new GuiConfig(owningScreen, new ConfigElement(InitHandler.cfg.getCategory(ACConfig.CATEGORY_DIMENSIONS)).getChildElements(), "abyssalcraft", ACConfig.CATEGORY_DIMENSIONS, true, true, I18n.format("ac_dimensions"));
+			return new GuiConfig(owningScreen, new ConfigElement(InitHandler.cfg.getCategory(ACConfig.CATEGORY_DIMENSIONS)).getChildElements(), AbyssalCraft.modid, ACConfig.CATEGORY_DIMENSIONS, true, true, I18n.format("ac_dimensions"));
 
 		}
 	}
@@ -71,7 +72,7 @@ public class ACConfigGUI extends GuiConfig {
 
 		@Override
 		protected GuiScreen buildChildScreen(){
-			return new GuiConfig(owningScreen, new ConfigElement(InitHandler.cfg.getCategory(ACConfig.CATEGORY_BIOMES)).getChildElements(), "abyssalcraft", ACConfig.CATEGORY_BIOMES, true, true, I18n.format("ac_biomes"));
+			return new GuiConfig(owningScreen, new ConfigElement(InitHandler.cfg.getCategory(ACConfig.CATEGORY_BIOMES)).getChildElements(), AbyssalCraft.modid, ACConfig.CATEGORY_BIOMES, true, true, I18n.format("ac_biomes"));
 		}
 	}
 	public static class GeneralEntry extends CategoryEntry{
@@ -82,7 +83,7 @@ public class ACConfigGUI extends GuiConfig {
 
 		@Override
 		protected GuiScreen buildChildScreen(){
-			return new GuiConfig(owningScreen, new ConfigElement(InitHandler.cfg.getCategory(Configuration.CATEGORY_GENERAL)).getChildElements(), "abyssalcraft", Configuration.CATEGORY_GENERAL, false, false, I18n.format("ac_general"));
+			return new GuiConfig(owningScreen, new ConfigElement(InitHandler.cfg.getCategory(Configuration.CATEGORY_GENERAL)).getChildElements(), AbyssalCraft.modid, Configuration.CATEGORY_GENERAL, false, false, I18n.format("ac_general"));
 
 		}
 	}
@@ -94,7 +95,7 @@ public class ACConfigGUI extends GuiConfig {
 
 		@Override
 		protected GuiScreen buildChildScreen(){
-			return new GuiConfig(owningScreen, new ConfigElement(InitHandler.cfg.getCategory(ACConfig.CATEGORY_SHOGGOTH)).getChildElements(), "abyssalcraft", ACConfig.CATEGORY_SHOGGOTH, false, false, I18n.format("ac_shoggoth"));
+			return new GuiConfig(owningScreen, new ConfigElement(InitHandler.cfg.getCategory(ACConfig.CATEGORY_SHOGGOTH)).getChildElements(), AbyssalCraft.modid, ACConfig.CATEGORY_SHOGGOTH, false, false, I18n.format("ac_shoggoth"));
 
 		}
 	}
@@ -106,7 +107,7 @@ public class ACConfigGUI extends GuiConfig {
 
 		@Override
 		protected GuiScreen buildChildScreen(){
-			return new GuiConfig(owningScreen, new ConfigElement(InitHandler.cfg.getCategory(ACConfig.CATEGORY_WORLDGEN)).getChildElements(), "abyssalcraft", ACConfig.CATEGORY_WORLDGEN, false, false, I18n.format("ac_worldgen"));
+			return new GuiConfig(owningScreen, new ConfigElement(InitHandler.cfg.getCategory(ACConfig.CATEGORY_WORLDGEN)).getChildElements(), AbyssalCraft.modid, ACConfig.CATEGORY_WORLDGEN, false, false, I18n.format("ac_worldgen"));
 
 		}
 	}
@@ -118,7 +119,7 @@ public class ACConfigGUI extends GuiConfig {
 
 		@Override
 		protected GuiScreen buildChildScreen(){
-			return new GuiConfig(owningScreen, new ConfigElement(InitHandler.cfg.getCategory(ACConfig.CATEGORY_SILLY_SETTINGS)).getChildElements(), "abyssalcraft", ACConfig.CATEGORY_SILLY_SETTINGS, false, false, I18n.format("ac_silly_settings"));
+			return new GuiConfig(owningScreen, new ConfigElement(InitHandler.cfg.getCategory(ACConfig.CATEGORY_SILLY_SETTINGS)).getChildElements(), AbyssalCraft.modid, ACConfig.CATEGORY_SILLY_SETTINGS, false, false, I18n.format("ac_silly_settings"));
 
 		}
 	}
@@ -130,7 +131,7 @@ public class ACConfigGUI extends GuiConfig {
 
 		@Override
 		protected GuiScreen buildChildScreen(){
-			return new GuiConfig(owningScreen, new ConfigElement(InitHandler.cfg.getCategory(ACConfig.CATEGORY_MOD_COMPAT)).getChildElements(), "abyssalcraft", ACConfig.CATEGORY_MOD_COMPAT, false, false, I18n.format("ac_mod_compat"));
+			return new GuiConfig(owningScreen, new ConfigElement(InitHandler.cfg.getCategory(ACConfig.CATEGORY_MOD_COMPAT)).getChildElements(), AbyssalCraft.modid, ACConfig.CATEGORY_MOD_COMPAT, false, false, I18n.format("ac_mod_compat"));
 
 		}
 	}
@@ -142,7 +143,7 @@ public class ACConfigGUI extends GuiConfig {
 
 		@Override
 		protected GuiScreen buildChildScreen(){
-			return new GuiConfig(owningScreen, new ConfigElement(InitHandler.cfg.getCategory(ACConfig.CATEGORY_WET_NOODLE)).getChildElements(), "abyssalcraft", ACConfig.CATEGORY_WET_NOODLE, false, false, I18n.format("ac_wet_noodle"));
+			return new GuiConfig(owningScreen, new ConfigElement(InitHandler.cfg.getCategory(ACConfig.CATEGORY_WET_NOODLE)).getChildElements(), AbyssalCraft.modid, ACConfig.CATEGORY_WET_NOODLE, false, false, I18n.format("ac_wet_noodle"));
 
 		}
 	}
@@ -154,7 +155,7 @@ public class ACConfigGUI extends GuiConfig {
 
 		@Override
 		protected GuiScreen buildChildScreen(){
-			return new GuiConfig(owningScreen, new ConfigElement(InitHandler.cfg.getCategory(ACConfig.CATEGORY_MODULES)).getChildElements(), "abyssalcraft", ACConfig.CATEGORY_MODULES, true, true, I18n.format("ac_modules"));
+			return new GuiConfig(owningScreen, new ConfigElement(InitHandler.cfg.getCategory(ACConfig.CATEGORY_MODULES)).getChildElements(), AbyssalCraft.modid, ACConfig.CATEGORY_MODULES, true, true, I18n.format("ac_modules"));
 
 		}
 	}
@@ -166,7 +167,7 @@ public class ACConfigGUI extends GuiConfig {
 
 		@Override
 		protected GuiScreen buildChildScreen(){
-			return new GuiConfig(owningScreen, new ConfigElement(InitHandler.cfg.getCategory(ACConfig.CATEGORY_SPELLS)).getChildElements(), "abyssalcraft", ACConfig.CATEGORY_SPELLS, true, true, I18n.format("ac_spells"));
+			return new GuiConfig(owningScreen, new ConfigElement(InitHandler.cfg.getCategory(ACConfig.CATEGORY_SPELLS)).getChildElements(), AbyssalCraft.modid, ACConfig.CATEGORY_SPELLS, true, true, I18n.format("ac_spells"));
 
 		}
 	}
@@ -178,7 +179,7 @@ public class ACConfigGUI extends GuiConfig {
 
 		@Override
 		protected GuiScreen buildChildScreen(){
-			return new GuiConfig(owningScreen, new ConfigElement(InitHandler.cfg.getCategory(Configuration.CATEGORY_CLIENT)).getChildElements(), "abyssalcraft", Configuration.CATEGORY_CLIENT, false, false, I18n.format("ac_client"));
+			return new GuiConfig(owningScreen, new ConfigElement(InitHandler.cfg.getCategory(Configuration.CATEGORY_CLIENT)).getChildElements(), AbyssalCraft.modid, Configuration.CATEGORY_CLIENT, false, false, I18n.format("ac_client"));
 
 		}
 	}
@@ -190,7 +191,7 @@ public class ACConfigGUI extends GuiConfig {
 
 		@Override
 		protected GuiScreen buildChildScreen(){
-			return new GuiConfig(owningScreen, new ConfigElement(InitHandler.cfg.getCategory(ACConfig.CATEGORY_RITUALS)).getChildElements(), "abyssalcraft", ACConfig.CATEGORY_RITUALS, false, false, I18n.format("ac_rituals"));
+			return new GuiConfig(owningScreen, new ConfigElement(InitHandler.cfg.getCategory(ACConfig.CATEGORY_RITUALS)).getChildElements(), AbyssalCraft.modid, ACConfig.CATEGORY_RITUALS, false, false, I18n.format("ac_rituals"));
 
 		}
 	}
@@ -202,7 +203,7 @@ public class ACConfigGUI extends GuiConfig {
 
 		@Override
 		protected GuiScreen buildChildScreen(){
-			return new GuiConfig(owningScreen, new ConfigElement(InitHandler.cfg.getCategory(ACConfig.CATEGORY_MOBS)).getChildElements(), "abyssalcraft", ACConfig.CATEGORY_MOBS, true, true, I18n.format("ac_mobs"));
+			return new GuiConfig(owningScreen, new ConfigElement(InitHandler.cfg.getCategory(ACConfig.CATEGORY_MOBS)).getChildElements(), AbyssalCraft.modid, ACConfig.CATEGORY_MOBS, true, true, I18n.format("ac_mobs"));
 
 		}
 	}

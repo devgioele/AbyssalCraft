@@ -13,6 +13,7 @@ package com.shinoow.abyssalcraft.api;
 
 import java.util.*;
 
+import com.shinoow.abyssalcraft.AbyssalCraft;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -126,7 +127,7 @@ public class AbyssalCraftAPI {
 	public static void setInternalNDHandler(IInternalNecroDataHandler handler){
 		if(internalNDHandler.getClass().getName().equals(DummyNecroDataHandler.class.getName())
 				&& Loader.instance().getLoaderState() == LoaderState.PREINITIALIZATION
-				&& Loader.instance().activeModContainer().getModId().equals("abyssalcraft"))
+				&& Loader.instance().activeModContainer().getModId().equals(AbyssalCraft.modid))
 			internalNDHandler = handler;
 	}
 
@@ -138,7 +139,7 @@ public class AbyssalCraftAPI {
 	public static void setInternalMethodHandler(IInternalMethodHandler handler){
 		if(internalMethodHandler.getClass().getName().equals(DummyMethodHandler.class.getName())
 				&& Loader.instance().getLoaderState() == LoaderState.PREINITIALIZATION
-				&& Loader.instance().activeModContainer().getModId().equals("abyssalcraft"))
+				&& Loader.instance().activeModContainer().getModId().equals(AbyssalCraft.modid))
 			internalMethodHandler = handler;
 	}
 
@@ -775,7 +776,7 @@ public class AbyssalCraftAPI {
 	@SideOnly(Side.CLIENT)
 	public static void setAkloFont(FontRenderer font){
 		if(aklo_font == null && Loader.instance().getLoaderState() == LoaderState.INITIALIZATION
-				&& Loader.instance().activeModContainer().getModId().equals("abyssalcraft"))
+				&& Loader.instance().activeModContainer().getModId().equals(AbyssalCraft.modid))
 			aklo_font = font;
 	}
 

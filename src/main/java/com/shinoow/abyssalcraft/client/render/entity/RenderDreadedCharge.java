@@ -11,6 +11,7 @@
  ******************************************************************************/
 package com.shinoow.abyssalcraft.client.render.entity;
 
+import com.shinoow.abyssalcraft.AbyssalCraft;
 import com.shinoow.abyssalcraft.common.entity.EntityDreadedCharge;
 
 import net.minecraft.client.renderer.BufferBuilder;
@@ -26,7 +27,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderDreadedCharge extends Render<EntityDreadedCharge>
 {
-	private static final ResourceLocation DRAGON_FIREBALL_TEXTURE = new ResourceLocation("abyssalcraft", "textures/model/dreaded_fireball.png");
+	private static final ResourceLocation DRAGON_FIREBALL_TEXTURE = new ResourceLocation(
+			AbyssalCraft.modid, "textures/model/dreaded_fireball.png");
 
 	public RenderDreadedCharge(RenderManager renderManagerIn)
 	{

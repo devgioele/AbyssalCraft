@@ -11,6 +11,7 @@
  ******************************************************************************/
 package com.shinoow.abyssalcraft.lib;
 
+import com.shinoow.abyssalcraft.AbyssalCraft;
 import net.minecraft.util.ResourceLocation;
 
 /**
@@ -129,6 +130,6 @@ public class NecronomiconResources {
 	public static final ResourceLocation BLANK = res("blank");
 
 	private static ResourceLocation res(String name){
-		return new ResourceLocation("abyssalcraft", "textures/gui/necronomicon/" + name + ".png");
+		return new ResourceLocation(AbyssalCraft.modid, "textures/gui/necronomicon/" + name + ".png");
 	}
 }

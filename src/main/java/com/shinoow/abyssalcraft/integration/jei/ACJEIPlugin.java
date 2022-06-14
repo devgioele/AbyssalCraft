@@ -11,6 +11,7 @@
  ******************************************************************************/
 package com.shinoow.abyssalcraft.integration.jei;
 
+import com.shinoow.abyssalcraft.AbyssalCraft;
 import com.shinoow.abyssalcraft.api.block.ACBlocks;
 import com.shinoow.abyssalcraft.api.item.ACItems;
 import com.shinoow.abyssalcraft.api.recipe.Materialization;
@@ -43,7 +44,7 @@ public class ACJEIPlugin implements IModPlugin {
 
 	@Override
 	public void register(IModRegistry registry) {
-		if(!Loader.isModLoaded("abyssalcraft")) return;
+		if(!Loader.isModLoaded(AbyssalCraft.modid)) return;
 
 		IJeiHelpers jeiHelpers = registry.getJeiHelpers();
 

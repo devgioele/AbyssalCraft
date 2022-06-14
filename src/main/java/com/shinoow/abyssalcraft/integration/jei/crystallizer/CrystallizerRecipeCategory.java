@@ -13,6 +13,7 @@ package com.shinoow.abyssalcraft.integration.jei.crystallizer;
 
 import javax.annotation.Nonnull;
 
+import com.shinoow.abyssalcraft.AbyssalCraft;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawableAnimated;
 import mezz.jei.api.gui.IDrawableStatic;
@@ -32,7 +33,7 @@ public abstract class CrystallizerRecipeCategory implements IRecipeCategory {
 	protected final IDrawableAnimated arrow;
 
 	public CrystallizerRecipeCategory(IGuiHelper guiHelper) {
-		backgroundLocation = new ResourceLocation("abyssalcraft", "textures/gui/container/crystallizer_NEI.png");
+		backgroundLocation = new ResourceLocation(AbyssalCraft.modid, "textures/gui/container/crystallizer_NEI.png");
 
 		IDrawableStatic flameDrawable = guiHelper.createDrawable(backgroundLocation, 176, 0, 14, 14);
 		flame = guiHelper.createAnimatedDrawable(flameDrawable, 300, IDrawableAnimated.StartDirection.TOP, true);

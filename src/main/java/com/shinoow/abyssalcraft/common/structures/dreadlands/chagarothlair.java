@@ -15,6 +15,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Random;
 
+import com.shinoow.abyssalcraft.AbyssalCraft;
 import com.shinoow.abyssalcraft.api.block.ACBlocks;
 import com.shinoow.abyssalcraft.api.item.ACItems;
 
@@ -50,11 +51,11 @@ public class chagarothlair extends WorldGenerator {
 				return blockInfoIn;
 		};
 
-		Template template = templateManager.getTemplate(server, new ResourceLocation("abyssalcraft", "chagarothlair/chagarothlair_front"));
+		Template template = templateManager.getTemplate(server, new ResourceLocation(AbyssalCraft.modid, "chagarothlair/chagarothlair_front"));
 
 		template.addBlocksToWorld(world, pos.add(-8, -2, -22), processor, placeSettings, 2);
 
-		template = templateManager.getTemplate(server, new ResourceLocation("abyssalcraft", "chagarothlair/chagarothlair_middle"));
+		template = templateManager.getTemplate(server, new ResourceLocation(AbyssalCraft.modid, "chagarothlair/chagarothlair_middle"));
 
 		template.addBlocksToWorld(world, pos.add(-8, -17, -54), processor, placeSettings, 2);
 
@@ -94,15 +95,15 @@ public class chagarothlair extends WorldGenerator {
 				}
 			}
 
-		template = templateManager.getTemplate(server, new ResourceLocation("abyssalcraft", "chagarothlair/chagarothlair_middle_left"));
+		template = templateManager.getTemplate(server, new ResourceLocation(AbyssalCraft.modid, "chagarothlair/chagarothlair_middle_left"));
 
 		template.addBlocksToWorld(world, pos.add(-24, 1, -41), processor, placeSettings, 2);
 
-		template = templateManager.getTemplate(server, new ResourceLocation("abyssalcraft", "chagarothlair/chagarothlair_middle_right"));
+		template = templateManager.getTemplate(server, new ResourceLocation(AbyssalCraft.modid, "chagarothlair/chagarothlair_middle_right"));
 
 		template.addBlocksToWorld(world, pos.add(9, 1, -41), processor, placeSettings, 2);
 
-		template = templateManager.getTemplate(server, new ResourceLocation("abyssalcraft", "chagarothlair/chagarothlair_back"));
+		template = templateManager.getTemplate(server, new ResourceLocation(AbyssalCraft.modid, "chagarothlair/chagarothlair_back"));
 
 		template.addBlocksToWorld(world, pos.add(-9, -18, -84), processor, placeSettings, 2);
 

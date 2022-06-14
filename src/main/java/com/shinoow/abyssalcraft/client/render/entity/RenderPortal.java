@@ -11,6 +11,7 @@
  ******************************************************************************/
 package com.shinoow.abyssalcraft.client.render.entity;
 
+import com.shinoow.abyssalcraft.AbyssalCraft;
 import org.lwjgl.opengl.GL11;
 
 import com.shinoow.abyssalcraft.api.dimension.DimensionData;
@@ -29,7 +30,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderPortal extends Render<EntityPortal> {
 
-	private static final ResourceLocation texture = new ResourceLocation("abyssalcraft", "textures/model/black_hole.png");
+	private static final ResourceLocation texture = new ResourceLocation(AbyssalCraft.modid, "textures/model/black_hole.png");
 
 	public RenderPortal(RenderManager manager){
 		super(manager);

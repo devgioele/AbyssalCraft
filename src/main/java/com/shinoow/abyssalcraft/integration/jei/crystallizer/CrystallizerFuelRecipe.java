@@ -19,6 +19,7 @@ import javax.annotation.Nonnull;
 
 import com.google.common.base.Preconditions;
 
+import com.shinoow.abyssalcraft.AbyssalCraft;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawableAnimated;
 import mezz.jei.api.ingredients.IIngredients;
@@ -49,7 +50,7 @@ public class CrystallizerFuelRecipe implements IRecipeWrapper {
 			String smeltCount = numberInstance.format(burnTime / 200f);
 			smeltCountString = I18n.format("gui.jei.category.fuel.smeltCount", smeltCount);
 		}
-		ResourceLocation furnaceBackgroundLocation = new ResourceLocation("abyssalcraft", "textures/gui/container/crystallizer_NEI.png");
+		ResourceLocation furnaceBackgroundLocation = new ResourceLocation(AbyssalCraft.modid, "textures/gui/container/crystallizer_NEI.png");
 		flame = guiHelper.drawableBuilder(furnaceBackgroundLocation, 176, 0, 14, 14)
 				.buildAnimated(burnTime, IDrawableAnimated.StartDirection.TOP, true);
 	}

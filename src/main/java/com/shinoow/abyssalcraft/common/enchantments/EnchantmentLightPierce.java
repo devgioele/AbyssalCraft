@@ -24,7 +24,7 @@ public class EnchantmentLightPierce extends EnchantmentDamage {
 
 	public EnchantmentLightPierce()
 	{
-		//		super(par1, new ResourceLocation("abyssalcraft", "light_pierce"), 5, 3);
+		//		super(par1, new ResourceLocation(AbyssalCraft.modid, "light_pierce"), 5, 3);
 		super(Rarity.COMMON, 5, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
 	}
 

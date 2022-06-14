@@ -13,6 +13,7 @@ package com.shinoow.abyssalcraft.common.structures.abyss.stronghold;
 
 import java.util.*;
 
+import com.shinoow.abyssalcraft.AbyssalCraft;
 import com.shinoow.abyssalcraft.api.block.ACBlocks;
 import com.shinoow.abyssalcraft.init.BlockHandler;
 import com.shinoow.abyssalcraft.lib.ACLoot;
@@ -549,7 +550,8 @@ public class StructureAbyStrongholdPieces
 					TileEntity tileentity = par1World.getTileEntity(blockpos);
 
 					if (tileentity instanceof TileEntityMobSpawner)
-						((TileEntityMobSpawner) tileentity).getSpawnerBaseLogic().setEntityId(new ResourceLocation("abyssalcraft","abyssalzombie"));
+						((TileEntityMobSpawner) tileentity).getSpawnerBaseLogic().setEntityId(new ResourceLocation(
+								AbyssalCraft.modid,"abyssalzombie"));
 				}
 			}
 

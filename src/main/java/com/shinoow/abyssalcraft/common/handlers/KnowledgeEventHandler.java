@@ -11,6 +11,7 @@
  ******************************************************************************/
 package com.shinoow.abyssalcraft.common.handlers;
 
+import com.shinoow.abyssalcraft.AbyssalCraft;
 import com.shinoow.abyssalcraft.api.necronomicon.condition.caps.INecroDataCapability;
 import com.shinoow.abyssalcraft.api.necronomicon.condition.caps.NecroDataCapability;
 import com.shinoow.abyssalcraft.api.necronomicon.condition.caps.NecroDataCapabilityProvider;
@@ -40,7 +41,7 @@ public class KnowledgeEventHandler {
 	@SubscribeEvent
 	public void attachCapability(AttachCapabilitiesEvent<Entity> event){
 		if(event.getObject() instanceof EntityPlayer)
-			event.addCapability(new ResourceLocation("abyssalcraft", "necrodata"), new NecroDataCapabilityProvider());
+			event.addCapability(new ResourceLocation(AbyssalCraft.modid, "necrodata"), new NecroDataCapabilityProvider());
 	}
 
 	@SubscribeEvent

@@ -47,7 +47,7 @@ public class MaterializationRecipeCategory implements IRecipeCategory {
 	private final String localizedName;
 
 	public MaterializationRecipeCategory(IGuiHelper guiHelper){
-		ResourceLocation location = new ResourceLocation("abyssalcraft", "textures/gui/container/materializer_NEI.png");
+		ResourceLocation location = new ResourceLocation(AbyssalCraft.modid, "textures/gui/container/materializer_NEI.png");
 		background = guiHelper.createDrawable(location, 32, 47, 116, 72);
 		localizedName = I18n.format("container.abyssalcraft.materializer.nei");
 

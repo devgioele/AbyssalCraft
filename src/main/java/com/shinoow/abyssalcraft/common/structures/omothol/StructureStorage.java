@@ -14,6 +14,7 @@ package com.shinoow.abyssalcraft.common.structures.omothol;
 import java.util.*;
 import java.util.Map.Entry;
 
+import com.shinoow.abyssalcraft.AbyssalCraft;
 import com.shinoow.abyssalcraft.api.block.ACBlocks;
 import com.shinoow.abyssalcraft.common.blocks.tile.TileEntityCrate;
 import com.shinoow.abyssalcraft.lib.ACLoot;
@@ -99,7 +100,7 @@ public class StructureStorage extends WorldGenerator {
 		MinecraftServer server = worldIn.getMinecraftServer();
 		TemplateManager templateManager = worldIn.getSaveHandler().getStructureTemplateManager();
 
-		Template template = templateManager.getTemplate(server, new ResourceLocation("abyssalcraft", "omothol/storage"));
+		Template template = templateManager.getTemplate(server, new ResourceLocation(AbyssalCraft.modid, "omothol/storage"));
 
 		template.addBlocksToWorld(worldIn, pos, placeSettings);
 
@@ -109,7 +110,7 @@ public class StructureStorage extends WorldGenerator {
 
 		boolean treasure = false;
 
-		template = templateManager.getTemplate(server, new ResourceLocation("abyssalcraft", "omothol/crates_"+num));
+		template = templateManager.getTemplate(server, new ResourceLocation(AbyssalCraft.modid, "omothol/crates_"+num));
 
 		template.addBlocksToWorld(worldIn, crates, placeSettings);
 

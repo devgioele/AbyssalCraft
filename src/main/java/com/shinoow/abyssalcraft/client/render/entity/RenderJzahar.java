@@ -11,6 +11,7 @@
  ******************************************************************************/
 package com.shinoow.abyssalcraft.client.render.entity;
 
+import com.shinoow.abyssalcraft.AbyssalCraft;
 import com.shinoow.abyssalcraft.client.model.entity.ModelJzahar;
 import com.shinoow.abyssalcraft.client.render.entity.layers.LayerEyes;
 import com.shinoow.abyssalcraft.client.render.entity.layers.LayerJzaharDeath;
@@ -32,7 +33,7 @@ public class RenderJzahar extends RenderLiving<EntityJzahar> {
 	{
 		super(manager, new ModelJzahar(true), 1.0F);
 		addLayer(new LayerJzaharDeath());
-		addLayer(new LayerEyes(this, new ResourceLocation("abyssalcraft", "textures/model/boss/j'zahar_eyes.png")));
+		addLayer(new LayerEyes(this, new ResourceLocation(AbyssalCraft.modid, "textures/model/boss/j'zahar_eyes.png")));
 	}
 
 	@Override

@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.util.*;
 import java.util.Map.Entry;
 
+import com.shinoow.abyssalcraft.AbyssalCraft;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.Level;
 
@@ -412,7 +413,7 @@ public class NecroData implements INecroData {
 			try {
 				TextureUtil.readBufferedImage(Minecraft.getMinecraft().getResourceManager().getResource(res).getInputStream());
 			} catch (IOException e) {
-				return new ResourceLocation("abyssalcraft", "textures/gui/necronomicon/missing.png");
+				return new ResourceLocation(AbyssalCraft.modid, "textures/gui/necronomicon/missing.png");
 			}
 			return res;
 		}

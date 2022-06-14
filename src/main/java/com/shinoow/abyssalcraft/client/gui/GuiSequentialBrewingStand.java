@@ -11,6 +11,7 @@
  ******************************************************************************/
 package com.shinoow.abyssalcraft.client.gui;
 
+import com.shinoow.abyssalcraft.AbyssalCraft;
 import com.shinoow.abyssalcraft.common.inventory.ContainerSequentialBrewingStand;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -25,7 +26,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class GuiSequentialBrewingStand extends GuiContainer
 {
-	private static final ResourceLocation BREWING_STAND_GUI_TEXTURES = new ResourceLocation("abyssalcraft", "textures/gui/container/sequential_brewing_stand.png");
+	private static final ResourceLocation BREWING_STAND_GUI_TEXTURES = new ResourceLocation(
+			AbyssalCraft.modid, "textures/gui/container/sequential_brewing_stand.png");
 	private static final int[] BUBBLELENGTHS = new int[] {29, 24, 20, 16, 11, 6, 0};
 	/** The player inventory bound to this GUI. */
 	private final InventoryPlayer playerInventory;

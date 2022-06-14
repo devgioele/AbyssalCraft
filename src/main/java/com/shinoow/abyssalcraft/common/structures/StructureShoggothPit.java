@@ -14,6 +14,7 @@ package com.shinoow.abyssalcraft.common.structures;
 import java.util.*;
 import java.util.Map.Entry;
 
+import com.shinoow.abyssalcraft.AbyssalCraft;
 import com.shinoow.abyssalcraft.api.block.ACBlocks;
 import com.shinoow.abyssalcraft.common.blocks.BlockDecorativeStatue;
 import com.shinoow.abyssalcraft.common.blocks.BlockStatue;
@@ -82,7 +83,8 @@ public class StructureShoggothPit extends WorldGenerator {
 			MinecraftServer server = world.getMinecraftServer();
 			TemplateManager templateManager = world.getSaveHandler().getStructureTemplateManager();
 
-			Template template = templateManager.getTemplate(server, new ResourceLocation("abyssalcraft", "shoggothlair/shoggothlair_"+num));
+			Template template = templateManager.getTemplate(server, new ResourceLocation(
+					AbyssalCraft.modid, "shoggothlair/shoggothlair_"+num));
 
 			template.addBlocksToWorld(world, pos, placeSettings);
 

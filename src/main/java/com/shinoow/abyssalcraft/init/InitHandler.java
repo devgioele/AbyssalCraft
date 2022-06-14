@@ -85,10 +85,10 @@ public class InitHandler implements ILifeCycleHandler {
 	public static boolean darkspawn1, darkspawn2, darkspawn3, darkspawn4, darkspawn5, coraliumspawn1;
 	public static int darkWeight1, darkWeight2, darkWeight3, darkWeight4, darkWeight5, coraliumWeight;
 
-	public static final Fluid LIQUID_CORALIUM = new Fluid("liquidcoralium", new ResourceLocation("abyssalcraft", "blocks/cwater_still"),
-			new ResourceLocation("abyssalcraft", "blocks/cwater_flow")).setDensity(3000).setTemperature(350);
-	public static final Fluid LIQUID_ANTIMATTER = new Fluid("liquidantimatter", new ResourceLocation("abyssalcraft", "blocks/anti_still"),
-			new ResourceLocation("abyssalcraft", "blocks/anti_flow")).setDensity(4000).setViscosity(1500).setTemperature(100);
+	public static final Fluid LIQUID_CORALIUM = new Fluid("liquidcoralium", new ResourceLocation(AbyssalCraft.modid, "blocks/cwater_still"),
+			new ResourceLocation(AbyssalCraft.modid, "blocks/cwater_flow")).setDensity(3000).setTemperature(350);
+	public static final Fluid LIQUID_ANTIMATTER = new Fluid("liquidantimatter", new ResourceLocation(AbyssalCraft.modid, "blocks/anti_still"),
+			new ResourceLocation(AbyssalCraft.modid, "blocks/anti_flow")).setDensity(4000).setViscosity(1500).setTemperature(100);
 
 	private static final List<ItemStack> abyssal_zombie_blacklist = new ArrayList<>();
 	private static final List<ItemStack> depths_ghoul_blacklist = new ArrayList<>();
@@ -199,7 +199,7 @@ public class InitHandler implements ILifeCycleHandler {
 
 	@SubscribeEvent
 	public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent eventArgs) {
-		if(eventArgs.getModID().equals("abyssalcraft"))
+		if(eventArgs.getModID().equals(AbyssalCraft.modid))
 			syncConfig();
 	}
 
@@ -491,7 +491,7 @@ public class InitHandler implements ILifeCycleHandler {
 		invisibility_spell = cfg.get(CATEGORY_SPELLS, "Hide from the Eye", true, "Set to false to disable the Hide from the Eye spell.").getBoolean();
 		detachment_spell = cfg.get(CATEGORY_SPELLS, "Detachment", true, "Set to false to disable the Detachment spell.").getBoolean();
 		steal_vigor_spell = cfg.get(CATEGORY_SPELLS, "Steal Vigor", true, "Set to false to disable the Steal Vigor spell.").getBoolean();
-		sirens_song_spell = cfg.get(CATEGORY_SPELLS, "Siren's Song§", true, "Set to false to disable the Siren's Song spell.").getBoolean();
+		sirens_song_spell = cfg.get(CATEGORY_SPELLS, "Siren's Songï¿½", true, "Set to false to disable the Siren's Song spell.").getBoolean();
 		undeath_to_dust_spell = cfg.get(CATEGORY_SPELLS, "Undeath to Dust", true, "Set to false to disable the Undeath to Dust spell.").getBoolean();
 		ooze_removal_spell = cfg.get(CATEGORY_SPELLS, "Ooze Removal", true, "Set to false to disable the Ooze Removal spell.").getBoolean();
 		teleport_hostile_spell = cfg.get(CATEGORY_SPELLS, "Sacrificial Interdiction", true, "Set to false to disable the Sacrificial Interdiction spell.").getBoolean();

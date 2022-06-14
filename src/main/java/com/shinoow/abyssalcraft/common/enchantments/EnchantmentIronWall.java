@@ -20,7 +20,7 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 public class EnchantmentIronWall extends Enchantment {
 
 	public EnchantmentIronWall() {
-		//		super(par1, new ResourceLocation("abyssalcraft", "iron_wall"), par2, EnumEnchantmentType.ARMOR_TORSO);
+		//		super(par1, new ResourceLocation(AbyssalCraft.modid, "iron_wall"), par2, EnumEnchantmentType.ARMOR_TORSO);
 		super(Rarity.UNCOMMON, EnumEnchantmentType.ARMOR_CHEST, new EntityEquipmentSlot[]{EntityEquipmentSlot.CHEST});
 		setName("abyssalcraft.iron_wall");
 	}

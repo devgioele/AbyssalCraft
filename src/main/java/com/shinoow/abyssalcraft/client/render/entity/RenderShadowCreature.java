@@ -11,6 +11,7 @@
  ******************************************************************************/
 package com.shinoow.abyssalcraft.client.render.entity;
 
+import com.shinoow.abyssalcraft.AbyssalCraft;
 import com.shinoow.abyssalcraft.client.model.entity.ModelShadowCreature;
 import com.shinoow.abyssalcraft.client.render.entity.layers.LayerEyes;
 import com.shinoow.abyssalcraft.common.entity.EntityShadowCreature;
@@ -39,7 +40,7 @@ public class RenderShadowCreature extends RenderLiving<EntityShadowCreature> {
 	{
 		super(manager, model, 0.0F);
 		addLayer(new LayerCustomHead(model.Head1));
-		addLayer(new LayerEyes<>(this, new ResourceLocation("abyssalcraft", "textures/model/shadowcreature_eyes.png")).addAlpha(EntityShadowCreature::getBrightness));
+		addLayer(new LayerEyes<>(this, new ResourceLocation(AbyssalCraft.modid, "textures/model/shadowcreature_eyes.png")).addAlpha(EntityShadowCreature::getBrightness));
 	}
 
 	@Override

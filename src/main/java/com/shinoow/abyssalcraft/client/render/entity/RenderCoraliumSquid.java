@@ -11,6 +11,7 @@
  ******************************************************************************/
 package com.shinoow.abyssalcraft.client.render.entity;
 
+import com.shinoow.abyssalcraft.AbyssalCraft;
 import com.shinoow.abyssalcraft.client.render.entity.layers.LayerEyes;
 import com.shinoow.abyssalcraft.common.entity.EntityCoraliumSquid;
 
@@ -25,12 +26,12 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderCoraliumSquid extends RenderLiving<EntityCoraliumSquid>
 {
-	private static final ResourceLocation SQUID_TEXTURES = new ResourceLocation("abyssalcraft", "textures/model/coraliumsquid.png");
+	private static final ResourceLocation SQUID_TEXTURES = new ResourceLocation(AbyssalCraft.modid, "textures/model/coraliumsquid.png");
 
 	public RenderCoraliumSquid(RenderManager renderManagerIn)
 	{
 		super(renderManagerIn, new ModelSquid(), 0.7F);
-		addLayer(new LayerEyes(this, new ResourceLocation("abyssalcraft", "textures/model/coraliumsquid_eyes.png")));
+		addLayer(new LayerEyes(this, new ResourceLocation(AbyssalCraft.modid, "textures/model/coraliumsquid_eyes.png")));
 	}
 
 	/**

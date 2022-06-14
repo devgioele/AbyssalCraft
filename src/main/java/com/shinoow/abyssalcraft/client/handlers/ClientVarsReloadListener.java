@@ -14,6 +14,7 @@ package com.shinoow.abyssalcraft.client.handlers;
 import java.io.InputStreamReader;
 import java.util.function.Predicate;
 
+import com.shinoow.abyssalcraft.AbyssalCraft;
 import org.apache.commons.io.IOUtils;
 
 import com.google.gson.Gson;
@@ -41,7 +42,7 @@ public class ClientVarsReloadListener implements ISelectiveResourceReloadListene
 		IResource iresource = null;
 
 		try {
-			iresource = resourceManager.getResource(new ResourceLocation("abyssalcraft", "clientvars.json"));
+			iresource = resourceManager.getResource(new ResourceLocation(AbyssalCraft.modid, "clientvars.json"));
 			InputStreamReader reader = new InputStreamReader(iresource.getInputStream());
 			ClientVars data = new Gson().fromJson(reader, ClientVars.class);
 			reader.close();

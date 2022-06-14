@@ -14,6 +14,7 @@ package com.shinoow.abyssalcraft.client.gui.necronomicon;
 import java.io.IOException;
 import java.util.*;
 
+import com.shinoow.abyssalcraft.AbyssalCraft;
 import org.lwjgl.input.Keyboard;
 
 import com.shinoow.abyssalcraft.api.APIUtils;
@@ -62,9 +63,9 @@ import net.minecraftforge.oredict.OreDictionary;
 public class GuiNecronomicon extends GuiScreen {
 
 	private static ResourceLocation bookGuiTextures = new ResourceLocation("abyssalcraft:textures/gui/necronomicon.png");
-	protected static final ResourceLocation MISSING_PICTURE = new ResourceLocation("abyssalcraft", "textures/gui/necronomicon/missing.png");
-	protected static final ResourceLocation MISSING_ITEM = new ResourceLocation("abyssalcraft", "textures/gui/necronomicon/missing_item.png");
-	protected static final ResourceLocation MISSING_RECIPE = new ResourceLocation("abyssalcraft", "textures/gui/necronomicon/missing_recipe.png");
+	protected static final ResourceLocation MISSING_PICTURE = new ResourceLocation(AbyssalCraft.modid, "textures/gui/necronomicon/missing.png");
+	protected static final ResourceLocation MISSING_ITEM = new ResourceLocation(AbyssalCraft.modid, "textures/gui/necronomicon/missing_item.png");
+	protected static final ResourceLocation MISSING_RECIPE = new ResourceLocation(AbyssalCraft.modid, "textures/gui/necronomicon/missing_recipe.png");
 	public static GuiNecronomicon currentNecro = new GuiNecronomicon();
 	public final int guiWidth = 255;
 	public final int guiHeight = 192;
@@ -143,7 +144,7 @@ public class GuiNecronomicon extends GuiScreen {
 		buttonList.clear();
 		Keyboard.enableRepeatEvents(true);
 
-		buttonList.add(buttonDone = new GuiButton(0, width / 2 - 100, 4 + guiHeight, 200, 20, I18n.format("gui.done", new Object[0])));
+		buttonList.add(buttonDone = new GuiButton(0, width / 2 - 100, 4 + guiHeight, 200, 20, I18n.format("gui.done")));
 
 		int i = (width - guiWidth) / 2;
 		byte b0 = 2;
@@ -301,7 +302,7 @@ public class GuiNecronomicon extends GuiScreen {
 
 	private void drawButtons(){
 		buttonList.clear();
-		buttonList.add(buttonDone = new GuiButton(0, width / 2 - 100, 4 + guiHeight, 200, 20, I18n.format("gui.done", new Object[0])));
+		buttonList.add(buttonDone = new GuiButton(0, width / 2 - 100, 4 + guiHeight, 200, 20, I18n.format("gui.done")));
 
 		int i = (width - guiWidth) / 2;
 		byte b0 = 2;
@@ -346,7 +347,7 @@ public class GuiNecronomicon extends GuiScreen {
 	}
 
 	/**
-	 * Index version of {@link #drawInformationText()}, called when {@link #isInfo} is false
+	 * Index version of {@link #drawInformationText(int, int)}, called when {@link #isInfo} is false
 	 */
 	protected void drawIndexText(){
 		int k = (width - guiWidth) / 2;

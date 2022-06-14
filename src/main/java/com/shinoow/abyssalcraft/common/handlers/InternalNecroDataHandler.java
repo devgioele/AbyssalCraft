@@ -21,6 +21,7 @@ import javax.imageio.ImageIO;
 import com.google.common.io.ByteStreams;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.shinoow.abyssalcraft.AbyssalCraft;
 import com.shinoow.abyssalcraft.api.AbyssalCraftAPI;
 import com.shinoow.abyssalcraft.api.block.ACBlocks;
 import com.shinoow.abyssalcraft.api.entity.IAntiEntity;
@@ -522,7 +523,8 @@ public class InternalNecroDataHandler extends DummyNecroDataHandler {
 				} catch (Exception e) {
 					ACLogger.warning("Failed to fetch the Patreon Data, using local version instead!");
 					chapter = new Chapter("patrons", NecronomiconText.LABEL_PATRONS, 0);
-					chapter.addPage(new Page(1, NecronomiconText.LABEL_PATRONS, 0, new ResourceLocation("abyssalcraft", "textures/gui/necronomicon/patreon/jenni_mort.png"), "Jenni Mort"));
+					chapter.addPage(new Page(1, NecronomiconText.LABEL_PATRONS, 0, new ResourceLocation(
+							AbyssalCraft.modid, "textures/gui/necronomicon/patreon/jenni_mort.png"), "Jenni Mort"));
 				}
 
 				if(chapter != null)

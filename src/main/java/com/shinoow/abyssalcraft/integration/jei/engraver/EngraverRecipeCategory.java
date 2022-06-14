@@ -42,13 +42,13 @@ public class EngraverRecipeCategory implements IRecipeCategory {
 	private final String localizedName;
 
 	public EngraverRecipeCategory(IGuiHelper guiHelper) {
-		backgroundLocation = new ResourceLocation("abyssalcraft", "textures/gui/container/engraver_NEI.png");
+		backgroundLocation = new ResourceLocation(AbyssalCraft.modid, "textures/gui/container/engraver_NEI.png");
 
 		IDrawableStatic arrowDrawable = guiHelper.createDrawable(backgroundLocation, 176, 14, 24, 17);
 		arrow = guiHelper.createAnimatedDrawable(arrowDrawable, 200, IDrawableAnimated.StartDirection.LEFT, false);
 
 
-		ResourceLocation location = new ResourceLocation("abyssalcraft", "textures/gui/container/engraver_NEI.png");
+		ResourceLocation location = new ResourceLocation(AbyssalCraft.modid, "textures/gui/container/engraver_NEI.png");
 		background = guiHelper.createDrawable(location,  55, 16, 82, 54);
 
 		localizedName = I18n.format("container.abyssalcraft.engraver.nei");

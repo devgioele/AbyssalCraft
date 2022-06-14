@@ -52,7 +52,7 @@ public class RitualRecipeCategory implements IRecipeCategory {
 	private final String localizedName;
 
 	public RitualRecipeCategory(IGuiHelper guiHelper){
-		ResourceLocation location = new ResourceLocation("abyssalcraft", "textures/gui/container/ritual_NEI.png");
+		ResourceLocation location = new ResourceLocation(AbyssalCraft.modid, "textures/gui/container/ritual_NEI.png");
 		background = guiHelper.createDrawable(location, 5, 11, 166, 140);
 		localizedName = I18n.format("container.abyssalcraft.rituals.nei");
 

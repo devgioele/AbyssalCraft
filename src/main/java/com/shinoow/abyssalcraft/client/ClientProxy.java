@@ -165,7 +165,7 @@ public class ClientProxy extends CommonProxy {
 
 	@Override
 	public void init(){
-		AbyssalCraftAPI.setAkloFont(new LovecraftFont(Minecraft.getMinecraft().gameSettings, new ResourceLocation("abyssalcraft", "textures/font/aklo.png"), Minecraft.getMinecraft().renderEngine, true));
+		AbyssalCraftAPI.setAkloFont(new LovecraftFont(Minecraft.getMinecraft().gameSettings, new ResourceLocation(AbyssalCraft.modid, "textures/font/aklo.png"), Minecraft.getMinecraft().renderEngine, true));
 		if(Minecraft.getMinecraft().getResourceManager() instanceof IReloadableResourceManager) {
 			((IReloadableResourceManager)Minecraft.getMinecraft().getResourceManager()).registerReloadListener(AbyssalCraftAPI.getAkloFont());
 			((IReloadableResourceManager)Minecraft.getMinecraft().getResourceManager()).registerReloadListener(new ClientVarsReloadListener());

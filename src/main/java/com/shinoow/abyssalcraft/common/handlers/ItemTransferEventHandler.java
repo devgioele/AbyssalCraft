@@ -14,6 +14,7 @@ package com.shinoow.abyssalcraft.common.handlers;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.shinoow.abyssalcraft.AbyssalCraft;
 import com.shinoow.abyssalcraft.api.APIUtils;
 import com.shinoow.abyssalcraft.api.transfer.ItemTransferConfiguration;
 import com.shinoow.abyssalcraft.api.transfer.caps.IItemTransferCapability;
@@ -49,7 +50,7 @@ public class ItemTransferEventHandler {
 	public void attachCapability(AttachCapabilitiesEvent<TileEntity> event) {
 		ResourceLocation rl = TileEntity.getKey(event.getObject().getClass());
 		if(rl != null && !InitHandler.INSTANCE.isTileBlackListed(rl.toString()))
-			event.addCapability(new ResourceLocation("abyssalcraft", "itemtransfer"), new ItemTransferCapabilityProvider());
+			event.addCapability(new ResourceLocation(AbyssalCraft.modid, "itemtransfer"), new ItemTransferCapabilityProvider());
 	}
 
 	@SubscribeEvent

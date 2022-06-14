@@ -37,7 +37,7 @@ public class TransmutationCategory extends TransmutatorRecipeCategory {
 
 	public TransmutationCategory(IGuiHelper guiHelper) {
 		super(guiHelper);
-		ResourceLocation location = new ResourceLocation("abyssalcraft", "textures/gui/container/transmutator_NEI.png");
+		ResourceLocation location = new ResourceLocation(AbyssalCraft.modid, "textures/gui/container/transmutator_NEI.png");
 		background = guiHelper.createDrawable(location, 55, 16, 82, 54);
 		localizedName = I18n.format("container.abyssalcraft.transmutator.nei");
 	}

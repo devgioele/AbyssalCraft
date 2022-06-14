@@ -13,6 +13,7 @@ package com.shinoow.abyssalcraft.common.structures.omothol;
 
 import java.util.Random;
 
+import com.shinoow.abyssalcraft.AbyssalCraft;
 import net.minecraft.init.Blocks;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ResourceLocation;
@@ -41,35 +42,35 @@ public class StructureJzaharTemple extends WorldGenerator {
 		MinecraftServer server = world.getMinecraftServer();
 		TemplateManager templateManager = world.getSaveHandler().getStructureTemplateManager();
 
-		Template template = templateManager.getTemplate(server, new ResourceLocation("abyssalcraft", "temple/jzahartemple_front_right"));
+		Template template = templateManager.getTemplate(server, new ResourceLocation(AbyssalCraft.modid, "temple/jzahartemple_front_right"));
 
 		template.addBlocksToWorld(world, pos.west(32), placeSettings);
 
-		template = templateManager.getTemplate(server, new ResourceLocation("abyssalcraft", "temple/jzahartemple_front_middle"));
+		template = templateManager.getTemplate(server, new ResourceLocation(AbyssalCraft.modid, "temple/jzahartemple_front_middle"));
 
 		template.addBlocksToWorld(world, pos, placeSettings);
 
-		template = templateManager.getTemplate(server, new ResourceLocation("abyssalcraft", "temple/jzahartemple_front_left"));
+		template = templateManager.getTemplate(server, new ResourceLocation(AbyssalCraft.modid, "temple/jzahartemple_front_left"));
 
 		template.addBlocksToWorld(world, pos.east(32), placeSettings);
 
 		pos = pos.south(32);
 
-		template = templateManager.getTemplate(server, new ResourceLocation("abyssalcraft", "temple/jzahartemple_middle_right"));
+		template = templateManager.getTemplate(server, new ResourceLocation(AbyssalCraft.modid, "temple/jzahartemple_middle_right"));
 
 		template.addBlocksToWorld(world, pos.west(32), placeSettings);
 
-		template = templateManager.getTemplate(server, new ResourceLocation("abyssalcraft", "temple/jzahartemple_middle_middle"));
+		template = templateManager.getTemplate(server, new ResourceLocation(AbyssalCraft.modid, "temple/jzahartemple_middle_middle"));
 
 		template.addBlocksToWorld(world, pos, placeSettings);
 
-		template = templateManager.getTemplate(server, new ResourceLocation("abyssalcraft", "temple/jzahartemple_middle_left"));
+		template = templateManager.getTemplate(server, new ResourceLocation(AbyssalCraft.modid, "temple/jzahartemple_middle_left"));
 
 		template.addBlocksToWorld(world, pos.east(32), placeSettings);
 
 		pos = pos.south(32).west(9);
 
-		template = templateManager.getTemplate(server, new ResourceLocation("abyssalcraft", "temple/jzahartemple_back"));
+		template = templateManager.getTemplate(server, new ResourceLocation(AbyssalCraft.modid, "temple/jzahartemple_back"));
 
 		template.addBlocksToWorld(world, pos, placeSettings);
 

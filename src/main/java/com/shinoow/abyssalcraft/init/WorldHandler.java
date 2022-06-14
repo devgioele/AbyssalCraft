@@ -13,6 +13,7 @@ package com.shinoow.abyssalcraft.init;
 
 import static com.shinoow.abyssalcraft.AbyssalCraft.modid;
 
+import com.shinoow.abyssalcraft.AbyssalCraft;
 import com.shinoow.abyssalcraft.api.biome.ACBiomes;
 import com.shinoow.abyssalcraft.api.dimension.DimensionData;
 import com.shinoow.abyssalcraft.api.dimension.DimensionDataRegistry;
@@ -102,7 +103,7 @@ public class WorldHandler implements ILifeCycleHandler {
 				.setColor(0, 255, 255)
 				.setGatewayKey(2)
 				.setMob(EntityGatekeeperMinion.class)
-				.setOverlay(new ResourceLocation("abyssalcraft", "textures/model/omothol_portal.png"))
+				.setOverlay(new ResourceLocation(AbyssalCraft.modid, "textures/model/omothol_portal.png"))
 				.build());
 		DimensionDataRegistry.instance().registerDimensionData(new DimensionData.Builder(0)
 				.setColor(0, 0, 255)

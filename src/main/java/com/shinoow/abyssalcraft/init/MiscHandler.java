@@ -22,6 +22,7 @@ import javax.annotation.Nonnull;
 
 import com.google.common.base.Predicate;
 import com.google.gson.JsonObject;
+import com.shinoow.abyssalcraft.AbyssalCraft;
 import com.shinoow.abyssalcraft.api.AbyssalCraftAPI;
 import com.shinoow.abyssalcraft.api.block.ACBlocks;
 import com.shinoow.abyssalcraft.api.energy.structure.StructureHandler;
@@ -133,11 +134,11 @@ public class MiscHandler implements ILifeCycleHandler {
 				.setPotionName("potion.dread_antidote")
 				.build();
 
-		registerPotion(new ResourceLocation("abyssalcraft", "cplague"), AbyssalCraftAPI.coralium_plague);
-		registerPotion(new ResourceLocation("abyssalcraft", "dplague"), AbyssalCraftAPI.dread_plague);
-		registerPotion(new ResourceLocation("abyssalcraft", "antimatter"), AbyssalCraftAPI.antimatter_potion);
-		registerPotion(new ResourceLocation("abyssalcraft", "coralium_antidote"), AbyssalCraftAPI.coralium_antidote);
-		registerPotion(new ResourceLocation("abyssalcraft", "dread_antidote"), AbyssalCraftAPI.dread_antidote);
+		registerPotion(new ResourceLocation(AbyssalCraft.modid, "cplague"), AbyssalCraftAPI.coralium_plague);
+		registerPotion(new ResourceLocation(AbyssalCraft.modid, "dplague"), AbyssalCraftAPI.dread_plague);
+		registerPotion(new ResourceLocation(AbyssalCraft.modid, "antimatter"), AbyssalCraftAPI.antimatter_potion);
+		registerPotion(new ResourceLocation(AbyssalCraft.modid, "coralium_antidote"), AbyssalCraftAPI.coralium_antidote);
+		registerPotion(new ResourceLocation(AbyssalCraft.modid, "dread_antidote"), AbyssalCraftAPI.dread_antidote);
 
 		Cplague_normal = new PotionType("Cplague", new PotionEffect(AbyssalCraftAPI.coralium_plague, 3600));
 		Cplague_long = new PotionType("Cplague", new PotionEffect(AbyssalCraftAPI.coralium_plague, 9600));
@@ -147,13 +148,13 @@ public class MiscHandler implements ILifeCycleHandler {
 		antiMatter_normal = new PotionType("Antimatter", new PotionEffect(AbyssalCraftAPI.antimatter_potion, 3600));
 		antiMatter_long = new PotionType("Antimatter", new PotionEffect(AbyssalCraftAPI.antimatter_potion, 9600));
 
-		registerPotionType(new ResourceLocation("abyssalcraft", "cplague"), Cplague_normal);
-		registerPotionType(new ResourceLocation("abyssalcraft", "cplague_long"), Cplague_long);
-		registerPotionType(new ResourceLocation("abyssalcraft", "dplague"), Dplague_normal);
-		registerPotionType(new ResourceLocation("abyssalcraft", "dplague_long"), Dplague_long);
-		registerPotionType(new ResourceLocation("abyssalcraft", "dplague_strong"), Dplague_strong);
-		registerPotionType(new ResourceLocation("abyssalcraft", "antimatter"), antiMatter_normal);
-		registerPotionType(new ResourceLocation("abyssalcraft", "antimatter_long"), antiMatter_long);
+		registerPotionType(new ResourceLocation(AbyssalCraft.modid, "cplague"), Cplague_normal);
+		registerPotionType(new ResourceLocation(AbyssalCraft.modid, "cplague_long"), Cplague_long);
+		registerPotionType(new ResourceLocation(AbyssalCraft.modid, "dplague"), Dplague_normal);
+		registerPotionType(new ResourceLocation(AbyssalCraft.modid, "dplague_long"), Dplague_long);
+		registerPotionType(new ResourceLocation(AbyssalCraft.modid, "dplague_strong"), Dplague_strong);
+		registerPotionType(new ResourceLocation(AbyssalCraft.modid, "antimatter"), antiMatter_normal);
+		registerPotionType(new ResourceLocation(AbyssalCraft.modid, "antimatter_long"), antiMatter_long);
 
 		addBrewing(PotionTypes.AWKWARD, ACItems.coralium_plagued_flesh, Cplague_normal);
 		addBrewing(PotionTypes.AWKWARD, ACItems.coralium_plagued_flesh_on_a_bone, Cplague_normal);
@@ -169,10 +170,10 @@ public class MiscHandler implements ILifeCycleHandler {
 		AbyssalCraftAPI.sapping = new EnchantmentSapping();
 		AbyssalCraftAPI.multi_rend = new EnchantmentMultiRend();
 
-		registerEnchantment(new ResourceLocation("abyssalcraft", "light_pierce"), AbyssalCraftAPI.light_pierce);
-		registerEnchantment(new ResourceLocation("abyssalcraft", "iron_wall"), AbyssalCraftAPI.iron_wall);
-		registerEnchantment(new ResourceLocation("abyssalcraft", "sapping"), AbyssalCraftAPI.sapping);
-		registerEnchantment(new ResourceLocation("abyssalcraft", "multi_rend"), AbyssalCraftAPI.multi_rend);
+		registerEnchantment(new ResourceLocation(AbyssalCraft.modid, "light_pierce"), AbyssalCraftAPI.light_pierce);
+		registerEnchantment(new ResourceLocation(AbyssalCraft.modid, "iron_wall"), AbyssalCraftAPI.iron_wall);
+		registerEnchantment(new ResourceLocation(AbyssalCraft.modid, "sapping"), AbyssalCraftAPI.sapping);
+		registerEnchantment(new ResourceLocation(AbyssalCraft.modid, "multi_rend"), AbyssalCraftAPI.multi_rend);
 
 		InitHandler.LIQUID_CORALIUM.setBlock(ACBlocks.liquid_coralium);
 		InitHandler.LIQUID_ANTIMATTER.setBlock(ACBlocks.liquid_antimatter);
@@ -531,14 +532,14 @@ public class MiscHandler implements ILifeCycleHandler {
 
 		IForgeRegistry<IRecipe> reg = event.getRegistry();
 
-		addShapedNBTRecipe(reg, rl("oblivion_deathbomb_0"), null, new ItemStack(ACBlocks.oblivion_deathbomb), "#%%", "&$%", "£%%", '#', ACItems.liquid_antimatter_bucket_stack, '£', ACItems.liquid_coralium_bucket_stack, '%', Blocks.OBSIDIAN, '&', ACItems.oblivion_catalyst, '$', ACBlocks.odb_core);
-		addShapedNBTRecipe(reg, rl("oblivion_deathbomb_1"), null, new ItemStack(ACBlocks.oblivion_deathbomb), "#%%", "&$%", "£%%", '#', ACItems.liquid_coralium_bucket_stack, '£', ACItems.liquid_antimatter_bucket_stack, '%', Blocks.OBSIDIAN, '&', ACItems.oblivion_catalyst, '$', ACBlocks.odb_core);
+		addShapedNBTRecipe(reg, rl("oblivion_deathbomb_0"), null, new ItemStack(ACBlocks.oblivion_deathbomb), "#%%", "&$%", "ï¿½%%", '#', ACItems.liquid_antimatter_bucket_stack, 'ï¿½', ACItems.liquid_coralium_bucket_stack, '%', Blocks.OBSIDIAN, '&', ACItems.oblivion_catalyst, '$', ACBlocks.odb_core);
+		addShapedNBTRecipe(reg, rl("oblivion_deathbomb_1"), null, new ItemStack(ACBlocks.oblivion_deathbomb), "#%%", "&$%", "ï¿½%%", '#', ACItems.liquid_coralium_bucket_stack, 'ï¿½', ACItems.liquid_antimatter_bucket_stack, '%', Blocks.OBSIDIAN, '&', ACItems.oblivion_catalyst, '$', ACBlocks.odb_core);
 		addShapedNBTRecipe(reg, rl("transmutator"), null, new ItemStack(ACBlocks.transmutator_idle, 1), "###", "#%#", "&$&", '#', ACItems.coralium_brick, '%', new ItemStack(ACItems.transmutation_gem, 1, OreDictionary.WILDCARD_VALUE), '&', new ItemStack(ACBlocks.block_of_refined_coralium), '$', ACItems.liquid_coralium_bucket_stack);
 		addShapedNBTRecipe(reg, rl("materializer"), null, new ItemStack(ACBlocks.materializer), "###", "#%#", "&$&", '#', ACItems.ethaxium_brick, '%', Blocks.OBSIDIAN, '&', new ItemStack(ACBlocks.block_of_ethaxium), '$', ACItems.liquid_antimatter_bucket_stack);
 	}
 
 	private ResourceLocation rl(String name){
-		return new ResourceLocation("abyssalcraft", name);
+		return new ResourceLocation(AbyssalCraft.modid, name);
 	}
 
 	private void addShapedNBTRecipe(IForgeRegistry<IRecipe> reg, ResourceLocation name, ResourceLocation group, @Nonnull ItemStack output, Object... params)
@@ -548,16 +549,16 @@ public class MiscHandler implements ILifeCycleHandler {
 	}
 
 	private void addDungeonHooks(){
-		DungeonHooks.addDungeonMob(new ResourceLocation("abyssalcraft","abyssalzombie"), 150);
-		DungeonHooks.addDungeonMob(new ResourceLocation("abyssalcraft","depthsghoul"), 100);
-		DungeonHooks.addDungeonMob(new ResourceLocation("abyssalcraft","shadowcreature"), 120);
-		DungeonHooks.addDungeonMob(new ResourceLocation("abyssalcraft","shadowmonster"), 100);
-		DungeonHooks.addDungeonMob(new ResourceLocation("abyssalcraft","shadowbeast"), 30);
-		DungeonHooks.addDungeonMob(new ResourceLocation("abyssalcraft","antiabyssalzombie"), 50);
-		DungeonHooks.addDungeonMob(new ResourceLocation("abyssalcraft","antighoul"), 50);
-		DungeonHooks.addDungeonMob(new ResourceLocation("abyssalcraft","antiskeleton"), 50);
-		DungeonHooks.addDungeonMob(new ResourceLocation("abyssalcraft","antispider"), 50);
-		DungeonHooks.addDungeonMob(new ResourceLocation("abyssalcraft","antizombie"), 50);
+		DungeonHooks.addDungeonMob(new ResourceLocation(AbyssalCraft.modid,"abyssalzombie"), 150);
+		DungeonHooks.addDungeonMob(new ResourceLocation(AbyssalCraft.modid,"depthsghoul"), 100);
+		DungeonHooks.addDungeonMob(new ResourceLocation(AbyssalCraft.modid,"shadowcreature"), 120);
+		DungeonHooks.addDungeonMob(new ResourceLocation(AbyssalCraft.modid,"shadowmonster"), 100);
+		DungeonHooks.addDungeonMob(new ResourceLocation(AbyssalCraft.modid,"shadowbeast"), 30);
+		DungeonHooks.addDungeonMob(new ResourceLocation(AbyssalCraft.modid,"antiabyssalzombie"), 50);
+		DungeonHooks.addDungeonMob(new ResourceLocation(AbyssalCraft.modid,"antighoul"), 50);
+		DungeonHooks.addDungeonMob(new ResourceLocation(AbyssalCraft.modid,"antiskeleton"), 50);
+		DungeonHooks.addDungeonMob(new ResourceLocation(AbyssalCraft.modid,"antispider"), 50);
+		DungeonHooks.addDungeonMob(new ResourceLocation(AbyssalCraft.modid,"antizombie"), 50);
 	}
 
 	private void sendIMC(){

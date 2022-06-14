@@ -15,6 +15,7 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
+import com.shinoow.abyssalcraft.AbyssalCraft;
 import com.shinoow.abyssalcraft.api.block.ACBlocks;
 
 import net.minecraft.init.Blocks;
@@ -56,11 +57,11 @@ public class StructureTower extends WorldGenerator {
 		MinecraftServer server = worldIn.getMinecraftServer();
 		TemplateManager templateManager = worldIn.getSaveHandler().getStructureTemplateManager();
 
-		Template template = templateManager.getTemplate(server, new ResourceLocation("abyssalcraft", "omothol/tower_1"));
+		Template template = templateManager.getTemplate(server, new ResourceLocation(AbyssalCraft.modid, "omothol/tower_1"));
 
 		template.addBlocksToWorld(worldIn, pos, placeSettings);
 
-		template = templateManager.getTemplate(server, new ResourceLocation("abyssalcraft", "omothol/tower_2"));
+		template = templateManager.getTemplate(server, new ResourceLocation(AbyssalCraft.modid, "omothol/tower_2"));
 
 		template.addBlocksToWorld(worldIn, pos.offset(EnumFacing.UP, 32), placeSettings);
 

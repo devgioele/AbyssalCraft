@@ -13,6 +13,7 @@ package com.shinoow.abyssalcraft.integration.jei.transmutator;
 
 import javax.annotation.Nonnull;
 
+import com.shinoow.abyssalcraft.AbyssalCraft;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawableAnimated;
 import mezz.jei.api.gui.IDrawableStatic;
@@ -31,7 +32,7 @@ public abstract class TransmutatorRecipeCategory implements IRecipeCategory {
 	protected final IDrawableAnimated arrow;
 
 	public TransmutatorRecipeCategory(IGuiHelper guiHelper) {
-		backgroundLocation = new ResourceLocation("abyssalcraft", "textures/gui/container/transmutator_NEI.png");
+		backgroundLocation = new ResourceLocation(AbyssalCraft.modid, "textures/gui/container/transmutator_NEI.png");
 
 		IDrawableStatic flameDrawable = guiHelper.createDrawable(backgroundLocation, 176, 0, 13, 13);
 		flame = guiHelper.createAnimatedDrawable(flameDrawable, 300, IDrawableAnimated.StartDirection.TOP, true);

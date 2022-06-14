@@ -11,6 +11,7 @@
  ******************************************************************************/
 package com.shinoow.abyssalcraft.client.render.entity;
 
+import com.shinoow.abyssalcraft.AbyssalCraft;
 import com.shinoow.abyssalcraft.client.model.entity.ModelSacthoth;
 import com.shinoow.abyssalcraft.client.render.entity.layers.LayerEyes;
 import com.shinoow.abyssalcraft.client.render.entity.layers.LayerSacthothHeldItem;
@@ -34,7 +35,7 @@ public class RenderSacthoth extends RenderLiving<EntitySacthoth> {
 	{
 		super(manager, new ModelSacthoth(), 0.0F);
 		addLayer(new LayerSacthothHeldItem(this));
-		addLayer(new LayerEyes<>(this, new ResourceLocation("abyssalcraft", "textures/model/boss/sacthoth_eyes.png")).addAlpha(EntitySacthoth::getBrightness));
+		addLayer(new LayerEyes<>(this, new ResourceLocation(AbyssalCraft.modid, "textures/model/boss/sacthoth_eyes.png")).addAlpha(EntitySacthoth::getBrightness));
 	}
 
 	@Override

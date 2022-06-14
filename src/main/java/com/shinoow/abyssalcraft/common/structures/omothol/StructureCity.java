@@ -14,6 +14,7 @@ package com.shinoow.abyssalcraft.common.structures.omothol;
 import java.util.*;
 import java.util.Map.Entry;
 
+import com.shinoow.abyssalcraft.AbyssalCraft;
 import com.shinoow.abyssalcraft.api.block.ACBlocks;
 import com.shinoow.abyssalcraft.common.blocks.tile.TileEntityCrate;
 import com.shinoow.abyssalcraft.common.entity.EntityRemnant;
@@ -164,7 +165,7 @@ public class StructureCity extends WorldGenerator {
 		MinecraftServer server = worldIn.getMinecraftServer();
 		TemplateManager templateManager = worldIn.getSaveHandler().getStructureTemplateManager();
 
-		Template template = templateManager.getTemplate(server, new ResourceLocation("abyssalcraft", getRandomStructure(num)));
+		Template template = templateManager.getTemplate(server, new ResourceLocation(AbyssalCraft.modid, getRandomStructure(num)));
 
 		template.addBlocksToWorld(worldIn, pos, placeSettings);
 

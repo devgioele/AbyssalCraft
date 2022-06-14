@@ -27,7 +27,7 @@ public class IMCHelper {
 	 * The format for the message should be the string path to the entity class
 	 *
 	 * Example of how it would look like if I added the Depths Ghoul to the food list:
-	 * FMLInterModComms.sendMessage("abyssalcraft", "shoggothFood", "com.shinoow.abyssalcraft.common.entity.EntityDepthsGhoul");
+	 * FMLInterModComms.sendMessage(AbyssalCraft.modid, "shoggothFood", "com.shinoow.abyssalcraft.common.entity.EntityDepthsGhoul");
 	 */
 
 	//CRYSTALS /////////////////////////////////////////////////////////////////////////////////
@@ -37,7 +37,7 @@ public class IMCHelper {
 	 * You can use the IMC message "addCrystal"
 	 *
 	 * Example of how it would look like if I added my Abyssalnite Ingot as a crystal:
-	 * FMLInterModComms.sendMessage("abyssalcraft", "addCrystal", new ItemStack(ACItems.abyssalnite_ingot));
+	 * FMLInterModComms.sendMessage(AbyssalCraft.modid, "addCrystal", new ItemStack(ACItems.abyssalnite_ingot));
 	 */
 
 	//CRYSTALLIZATION //////////////////////////////////////////////////////////////////////////
@@ -64,7 +64,7 @@ public class IMCHelper {
 	 * "xp" - experience points gained from the crystallization, used in all cases
 	 *
 	 * The message is sent this way:
-	 * FMLInterModComms.sendMessage("abyssalcraft", <whichever message you picked>, <a NBTTagCompound with the aforementioned tags>);
+	 * FMLInterModComms.sendMessage(AbyssalCraft.modid, <whichever message you picked>, <a NBTTagCompound with the aforementioned tags>);
 	 */
 
 	//TRANSMUTATION ////////////////////////////////////////////////////////////////////////////
@@ -83,7 +83,7 @@ public class IMCHelper {
 	 * "xp" - experience points gained from the transmutation, used in both cases
 	 *
 	 * The message is sent this way:
-	 * FMLInterModComms.sendMessage("abyssalcraft", <whichever message you picked>, <a NBTTagCompound with the aforementioned tags>);
+	 * FMLInterModComms.sendMessage(AbyssalCraft.modid, <whichever message you picked>, <a NBTTagCompound with the aforementioned tags>);
 	 */
 
 	//MATERIALIZATION //////////////////////////////////////////////////////////////////////////
@@ -104,7 +104,7 @@ public class IMCHelper {
 	 * Dreadlands Necronomicon = 2, Omothol Necronomicon = 3, Abyssalnomicon = 4)
 	 *
 	 * The message is sent this way:
-	 * FMLInterModComms.sendMessage("abyssalcraft", "addMaterialization", <a NBTTagCompound with the aforementioned tags>);
+	 * FMLInterModComms.sendMessage(AbyssalCraft.modid, "addMaterialization", <a NBTTagCompound with the aforementioned tags>);
 	 */
 
 	//GHOUL ARMOR REGISTRATION /////////////////////////////////////////////////////////////////
@@ -123,7 +123,7 @@ public class IMCHelper {
 	 * "res2"- a ResourceLocation pointing to the texture used for the Leggings
 	 *
 	 * The message is sent this way:
-	 * FMLInterModComms.sendMessage("abyssalcraft", "addGhoulArmor", <a NBTTagCompound with the aforementioned tags>);
+	 * FMLInterModComms.sendMessage(AbyssalCraft.modid, "addGhoulArmor", <a NBTTagCompound with the aforementioned tags>);
 	 *
 	 * If your armor set doesn't used the standard texture coordination (one texture for helmet, chestplate, boots,
 	 * then another for the leggings), you can registed each piece separately with the following tags instead of the above:
@@ -131,7 +131,7 @@ public class IMCHelper {
 	 * "res" - a ResourceLocation pointing to the texture used for the piece
 	 *
 	 * The message is sent this way (where <name of armor piece> is replaced with the name of the armor piece you want to register):
-	 * FMLInterModComms.sendMessage("abyssalcraft", "addGhoul<name of armor piece>", <a NBTTagCompound with the aforementioned tags>);
+	 * FMLInterModComms.sendMessage(AbyssalCraft.modid, "addGhoul<name of armor piece>", <a NBTTagCompound with the aforementioned tags>);
 	 */
 
 	//PLAGUE IMMUNITY/CARRIER REGISTRATION /////////////////////////////////////////////////////
@@ -144,6 +144,6 @@ public class IMCHelper {
 	 * The format for the message should be the string path value of the Entity ID
 	 *
 	 * Example of how it would look like if I added the Zombie to the Dread Plague Carrier list:
-	 * FMLInterModComms.sendMessage("abyssalcraft", "addDreadPlagueCarrier", "minecraft:zombie");
+	 * FMLInterModComms.sendMessage(AbyssalCraft.modid, "addDreadPlagueCarrier", "minecraft:zombie");
 	 */
 }
