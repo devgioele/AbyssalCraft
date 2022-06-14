@@ -274,7 +274,6 @@ public class ACItems {
     //	public static Item shadow_titan_armor_plate = getItem("shadowplate");
 
     public static Item[] getItems() {
-        // Register item variants for all items that have variants
         // Get all static fields that are an Item or an Item subtype
         return Arrays.stream(Reflections.getStaticFields(ACItems.class))
                 .filter(field -> Item.class.isAssignableFrom(field.getType())).map(field -> {
@@ -288,6 +287,7 @@ public class ACItems {
 
     public static void registerItemsVariants() {
         Item[] items = getItems();
+        // Register item variants for all items that have variants
         for (Item item : items) {
             if (item instanceof ItemMetadata) {
                 ItemMetadata itemMetadata = (ItemMetadata) item;
@@ -321,7 +321,7 @@ public class ACItems {
         }
     }
 
-    private static void registerItem(Item item, String name) {
+    public static void registerItem(Item item, String name) {
         InitHandler.INSTANCE.ITEMS.add(
                 item.setRegistryName(new ResourceLocation(AbyssalCraft.modid, name)));
     }

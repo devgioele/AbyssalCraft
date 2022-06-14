@@ -5,261 +5,138 @@
  * are made available under the terms of the GNU Lesser Public License v3
  * which accompanies this distribution, and is available at
  * http://www.gnu.org/licenses/lgpl-3.0.txt
- * 
+ *
  * Contributors:
  *     Shinoow -  implementation
  ******************************************************************************/
 package com.shinoow.abyssalcraft.api.block;
 
+import com.shinoow.abyssalcraft.AbyssalCraft;
+import com.shinoow.abyssalcraft.api.item.ACItems;
+import com.shinoow.abyssalcraft.common.blocks.itemblock.ItemBlockAC;
+import com.shinoow.abyssalcraft.init.InitHandler;
+import com.shinoow.abyssalcraft.lib.util.Reflections;
 import net.minecraft.block.Block;
+import net.minecraft.item.ItemBlock;
+import net.minecraft.util.ResourceLocation;
+
+import java.util.Arrays;
+
+import static com.shinoow.abyssalcraft.api.item.ACItems.registerItem;
 
 /**
  * Contains all blocks added in AbyssalCraft
  *
  * @author shinoow
- *
  */
 public class ACBlocks {
 
-	public static Block darkstone;
-	public static Block abyssal_stone;
-	public static Block dreadstone;
-	public static Block abyssalnite_stone;
-	public static Block coralium_stone;
-	public static Block ethaxium;
-	public static Block omothol_stone;
-	public static Block monolith_stone;
-	public static Block darkstone_cobblestone;
-	public static Block abyssal_cobblestone;
-	public static Block dreadstone_cobblestone;
-	public static Block abyssalnite_cobblestone;
-	public static Block coralium_cobblestone;
-	public static Block darkstone_brick;
-	public static Block chiseled_darkstone_brick;
-	public static Block cracked_darkstone_brick;
-	public static Block glowing_darkstone_bricks;
-	public static Block darkstone_brick_slab;
-	public static Block darkstone_cobblestone_slab;
-	public static Block darkstone_brick_stairs;
-	public static Block darkstone_cobblestone_stairs;
-	public static Block darklands_oak_leaves;
-	public static Block darklands_oak_wood;
-	public static Block darklands_oak_wood_2;
-	public static Block darklands_oak_sapling;
-	public static Block abyssal_stone_brick;
-	public static Block chiseled_abyssal_stone_brick;
-	public static Block cracked_abyssal_stone_brick;
-	public static Block abyssal_stone_brick_slab;
-	public static Block abyssal_stone_brick_stairs;
-	public static Block coralium_ore;
-	public static Block abyssalnite_ore;
-	public static Block abyssal_stone_brick_fence;
-	public static Block darkstone_cobblestone_wall;
-	public static Block oblivion_deathbomb;
-	public static Block block_of_abyssalnite;
-	public static Block block_of_refined_coralium;
-	public static Block block_of_dreadium;
-	public static Block block_of_ethaxium;
-	public static Block coralium_infused_stone;
-	public static Block odb_core;
-	public static Block wooden_crate;
-	public static Block darkstone_slab;
-	public static Block darkstone_doubleslab;
-	public static Block darkstone_button;
-	public static Block darkstone_pressure_plate;
-	public static Block darklands_oak_planks;
-	public static Block darklands_oak_button;
-	public static Block darklands_oak_pressure_plate;
-	public static Block darklands_oak_stairs;
-	public static Block darklands_oak_slab;
-	public static Block liquid_coralium;
-	public static Block dreadlands_infused_powerstone;
-	public static Block abyssal_coralium_ore;
-	public static Block abyssal_stone_button;
-	public static Block abyssal_stone_pressure_plate;
-	public static Block darkstone_brick_fence;
-	public static Block darklands_oak_fence;
-	public static Block dreadlands_abyssalnite_ore;
-	public static Block dreaded_abyssalnite_ore;
-	public static Block dreadstone_brick;
-	public static Block chiseled_dreadstone_brick;
-	public static Block cracked_dreadstone_brick;
-	public static Block abyssalnite_stone_brick;
-	public static Block chiseled_abyssalnite_stone_brick;
-	public static Block cracked_abyssalnite_stone_brick;
-	public static Block dreadlands_grass;
-	public static Block dreadlands_log;
-	public static Block dreadlands_leaves;
-	public static Block dreadlands_sapling;
-	public static Block dreadlands_planks;
-	public static Block depths_ghoul_head;
-	public static Block pete_head;
-	public static Block mr_wilson_head;
-	public static Block dr_orange_head;
-	public static Block dreadstone_brick_stairs;
-	public static Block dreadstone_brick_fence;
-	public static Block dreadstone_brick_slab;
-	public static Block abyssalnite_stone_brick_stairs;
-	public static Block abyssalnite_stone_brick_fence;
-	public static Block abyssalnite_stone_brick_slab;
-	public static Block liquid_antimatter;
-	public static Block coralium_stone_brick;
-	public static Block chiseled_coralium_stone_brick;
-	public static Block cracked_coralium_stone_brick;
-	public static Block coralium_stone_brick_fence;
-	public static Block coralium_stone_brick_slab;
-	public static Block coralium_stone_brick_stairs;
-	public static Block coralium_stone_button;
-	public static Block coralium_stone_pressure_plate;
-	public static Block chagaroth_altar_top;
-	public static Block chagaroth_altar_bottom;
-	public static Block crystallizer_idle;
-	public static Block crystallizer_active;
-	public static Block transmutator_idle;
-	public static Block transmutator_active;
-	public static Block dreadguard_spawner;
-	public static Block chagaroth_spawner;
-	public static Block dreadlands_wood_fence;
-	public static Block nitre_ore;
-	public static Block abyssal_iron_ore;
-	public static Block abyssal_gold_ore;
-	public static Block abyssal_diamond_ore;
-	public static Block abyssal_nitre_ore;
-	public static Block abyssal_tin_ore;
-	public static Block abyssal_copper_ore;
-	public static Block pearlescent_coralium_ore;
-	public static Block liquified_coralium_ore;
-	public static Block solid_lava;
-	public static Block ethaxium_brick;
-	public static Block chiseled_ethaxium_brick;
-	public static Block cracked_ethaxium_brick;
-	public static Block ethaxium_pillar;
-	public static Block ethaxium_brick_stairs;
-	public static Block ethaxium_brick_slab;
-	public static Block ethaxium_brick_fence;
-	public static Block engraver;
-	public static Block materializer;
-	public static Block dark_ethaxium_brick;
-	public static Block chiseled_dark_ethaxium_brick;
-	public static Block cracked_dark_ethaxium_brick;
-	public static Block dark_ethaxium_pillar;
-	public static Block dark_ethaxium_brick_stairs;
-	public static Block dark_ethaxium_brick_slab;
-	public static Block dark_ethaxium_brick_fence;
-	public static Block ritual_altar_stone;
-	public static Block ritual_altar_darkstone;
-	public static Block ritual_altar_abyssal_stone;
-	public static Block ritual_altar_coralium_stone;
-	public static Block ritual_altar_dreadstone;
-	public static Block ritual_altar_abyssalnite_stone;
-	public static Block ritual_altar_ethaxium;
-	public static Block ritual_altar_dark_ethaxium;
-	public static Block ritual_pedestal_stone;
-	public static Block ritual_pedestal_darkstone;
-	public static Block ritual_pedestal_abyssal_stone;
-	public static Block ritual_pedestal_coralium_stone;
-	public static Block ritual_pedestal_dreadstone;
-	public static Block ritual_pedestal_abyssalnite_stone;
-	public static Block ritual_pedestal_ethaxium;
-	public static Block ritual_pedestal_dark_ethaxium;
-	public static Block shoggoth_ooze;
-	public static Block cthulhu_statue;
-	public static Block hastur_statue;
-	public static Block jzahar_statue;
-	public static Block azathoth_statue;
-	public static Block nyarlathotep_statue;
-	public static Block yog_sothoth_statue;
-	public static Block shub_niggurath_statue;
-	public static Block shoggoth_biomass;
-	public static Block energy_pedestal;
-	public static Block monolith_pillar;
-	public static Block sacrificial_altar;
-	public static Block overworld_energy_pedestal;
-	public static Block abyssal_wasteland_energy_pedestal;
-	public static Block dreadlands_energy_pedestal;
-	public static Block omothol_energy_pedestal;
-	public static Block overworld_sacrificial_altar;
-	public static Block abyssal_wasteland_sacrificial_altar;
-	public static Block dreadlands_sacrificial_altar;
-	public static Block omothol_sacrificial_altar;
-	public static Block jzahar_spawner;
-	public static Block minion_of_the_gatekeeper_spawner;
-	public static Block mimic_fire;
-	public static Block decorative_cthulhu_statue;
-	public static Block decorative_hastur_statue;
-	public static Block decorative_jzahar_statue;
-	public static Block decorative_azathoth_statue;
-	public static Block decorative_nyarlathotep_statue;
-	public static Block decorative_yog_sothoth_statue;
-	public static Block decorative_shub_niggurath_statue;
-	public static Block iron_crystal_cluster;
-	public static Block gold_crystal_cluster;
-	public static Block sulfur_crystal_cluster;
-	public static Block carbon_crystal_cluster;
-	public static Block oxygen_crystal_cluster;
-	public static Block hydrogen_crystal_cluster;
-	public static Block nitrogen_crystal_cluster;
-	public static Block phosphorus_crystal_cluster;
-	public static Block potassium_crystal_cluster;
-	public static Block nitrate_crystal_cluster;
-	public static Block methane_crystal_cluster;
-	public static Block redstone_crystal_cluster;
-	public static Block abyssalnite_crystal_cluster;
-	public static Block coralium_crystal_cluster;
-	public static Block dreadium_crystal_cluster;
-	public static Block blaze_crystal_cluster;
-	public static Block tin_crystal_cluster;
-	public static Block copper_crystal_cluster;
-	public static Block silicon_crystal_cluster;
-	public static Block magnesium_crystal_cluster;
-	public static Block aluminium_crystal_cluster;
-	public static Block silica_crystal_cluster;
-	public static Block alumina_crystal_cluster;
-	public static Block magnesia_crystal_cluster;
-	public static Block zinc_crystal_cluster;
-	public static Block calcium_crystal_cluster;
-	public static Block beryllium_crystal_cluster;
-	public static Block beryl_crystal_cluster;
-	public static Block energy_collector;
-	public static Block energy_relay;
-	public static Block energy_container;
-	public static Block overworld_energy_collector;
-	public static Block abyssal_wasteland_energy_collector;
-	public static Block dreadlands_energy_collector;
-	public static Block omothol_energy_collector;
-	public static Block overworld_energy_relay;
-	public static Block abyssal_wasteland_energy_relay;
-	public static Block dreadlands_energy_relay;
-	public static Block omothol_energy_relay;
-	public static Block overworld_energy_container;
-	public static Block abyssal_wasteland_energy_container;
-	public static Block dreadlands_energy_container;
-	public static Block omothol_energy_container;
-	public static Block abyssal_sand;
-	public static Block fused_abyssal_sand;
-	public static Block abyssal_sand_glass;
-	public static Block dreadlands_dirt;
-	public static Block abyssal_cobblestone_slab;
-	public static Block abyssal_cobblestone_stairs;
-	public static Block abyssal_cobblestone_wall;
-	public static Block dreadstone_cobblestone_slab;
-	public static Block dreadstone_cobblestone_stairs;
-	public static Block dreadstone_cobblestone_wall;
-	public static Block abyssalnite_cobblestone_slab;
-	public static Block abyssalnite_cobblestone_stairs;
-	public static Block abyssalnite_cobblestone_wall;
-	public static Block coralium_cobblestone_slab;
-	public static Block coralium_cobblestone_stairs;
-	public static Block coralium_cobblestone_wall;
-	public static Block luminous_thistle;
-	public static Block wastelands_thorn;
-	public static Block rending_pedestal;
-	public static Block state_transformer;
-	public static Block energy_depositioner;
-	public static Block calcified_stone;
-	public static Block darklands_oak_door;
-	public static Block dreadlands_door;
-	public static Block multi_block;
-	public static Block sequential_brewing_stand;
-	public static Block portal_anchor;
+	public static ACBlock Darkbrickslab2, Darkcobbleslab2, abyslab2, Darkstoneslab2, DLTslab2,
+			Altar, dreadbrickslab2, abydreadbrickslab2, cstonebrickslab2, ethaxiumslab2, house,
+			darkethaxiumslab2, abycobbleslab2, dreadcobbleslab2, abydreadcobbleslab2,
+			cstonecobbleslab2, darkstone, abyssal_stone, dreadstone, abyssalnite_stone,
+			coralium_stone, ethaxium, omothol_stone, monolith_stone, darkstone_cobblestone,
+			abyssal_cobblestone, dreadstone_cobblestone, abyssalnite_cobblestone,
+			coralium_cobblestone, darkstone_brick, chiseled_darkstone_brick,
+			cracked_darkstone_brick, glowing_darkstone_bricks, darkstone_brick_slab,
+			darkstone_cobblestone_slab, darkstone_brick_stairs, darkstone_cobblestone_stairs,
+			darklands_oak_leaves, darklands_oak_wood, darklands_oak_wood_2, darklands_oak_sapling,
+			abyssal_stone_brick, chiseled_abyssal_stone_brick, cracked_abyssal_stone_brick,
+			abyssal_stone_brick_slab, abyssal_stone_brick_stairs, coralium_ore, abyssalnite_ore,
+			abyssal_stone_brick_fence, darkstone_cobblestone_wall, oblivion_deathbomb,
+			block_of_abyssalnite, block_of_refined_coralium, block_of_dreadium, block_of_ethaxium,
+			coralium_infused_stone, odb_core, wooden_crate, darkstone_slab, darkstone_doubleslab,
+			darkstone_button, darkstone_pressure_plate, darklands_oak_planks, darklands_oak_button,
+			darklands_oak_pressure_plate, darklands_oak_stairs, darklands_oak_slab,
+			liquid_coralium,
+			dreadlands_infused_powerstone, abyssal_coralium_ore, abyssal_stone_button,
+			abyssal_stone_pressure_plate, darkstone_brick_fence, darklands_oak_fence,
+			dreadlands_abyssalnite_ore, dreaded_abyssalnite_ore, dreadstone_brick,
+			chiseled_dreadstone_brick, cracked_dreadstone_brick, abyssalnite_stone_brick,
+			chiseled_abyssalnite_stone_brick, cracked_abyssalnite_stone_brick, dreadlands_grass,
+			dreadlands_log, dreadlands_leaves, dreadlands_sapling, dreadlands_planks,
+			depths_ghoul_head, pete_head, mr_wilson_head, dr_orange_head, dreadstone_brick_stairs,
+			dreadstone_brick_fence, dreadstone_brick_slab, abyssalnite_stone_brick_stairs,
+			abyssalnite_stone_brick_fence, abyssalnite_stone_brick_slab, liquid_antimatter,
+			coralium_stone_brick, chiseled_coralium_stone_brick, cracked_coralium_stone_brick,
+			coralium_stone_brick_fence, coralium_stone_brick_slab, coralium_stone_brick_stairs,
+			coralium_stone_button, coralium_stone_pressure_plate, chagaroth_altar_top,
+			chagaroth_altar_bottom, crystallizer_idle, crystallizer_active, transmutator_idle,
+			transmutator_active, dreadguard_spawner, chagaroth_spawner, dreadlands_wood_fence,
+			nitre_ore, abyssal_iron_ore, abyssal_gold_ore, abyssal_diamond_ore, abyssal_nitre_ore,
+			abyssal_tin_ore, abyssal_copper_ore, pearlescent_coralium_ore, liquified_coralium_ore,
+			solid_lava, ethaxium_brick, chiseled_ethaxium_brick, cracked_ethaxium_brick,
+			ethaxium_pillar, ethaxium_brick_stairs, ethaxium_brick_slab, ethaxium_brick_fence,
+			engraver, materializer, dark_ethaxium_brick, chiseled_dark_ethaxium_brick,
+			cracked_dark_ethaxium_brick, dark_ethaxium_pillar, dark_ethaxium_brick_stairs,
+			dark_ethaxium_brick_slab, dark_ethaxium_brick_fence, ritual_altar_stone,
+			ritual_altar_darkstone, ritual_altar_abyssal_stone, ritual_altar_coralium_stone,
+			ritual_altar_dreadstone, ritual_altar_abyssalnite_stone, ritual_altar_ethaxium,
+			ritual_altar_dark_ethaxium, ritual_pedestal_stone, ritual_pedestal_darkstone,
+			ritual_pedestal_abyssal_stone, ritual_pedestal_coralium_stone,
+			ritual_pedestal_dreadstone, ritual_pedestal_abyssalnite_stone,
+			ritual_pedestal_ethaxium,
+			ritual_pedestal_dark_ethaxium, shoggoth_ooze, cthulhu_statue, hastur_statue,
+			jzahar_statue, azathoth_statue, nyarlathotep_statue, yog_sothoth_statue,
+			shub_niggurath_statue, shoggoth_biomass, energy_pedestal, monolith_pillar,
+			sacrificial_altar, overworld_energy_pedestal, abyssal_wasteland_energy_pedestal,
+			dreadlands_energy_pedestal, omothol_energy_pedestal, overworld_sacrificial_altar,
+			abyssal_wasteland_sacrificial_altar, dreadlands_sacrificial_altar,
+			omothol_sacrificial_altar, jzahar_spawner, minion_of_the_gatekeeper_spawner,
+			mimic_fire,
+			decorative_cthulhu_statue, decorative_hastur_statue, decorative_jzahar_statue,
+			decorative_azathoth_statue, decorative_nyarlathotep_statue,
+			decorative_yog_sothoth_statue, decorative_shub_niggurath_statue, iron_crystal_cluster,
+			gold_crystal_cluster, sulfur_crystal_cluster, carbon_crystal_cluster,
+			oxygen_crystal_cluster, hydrogen_crystal_cluster, nitrogen_crystal_cluster,
+			phosphorus_crystal_cluster, potassium_crystal_cluster, nitrate_crystal_cluster,
+			methane_crystal_cluster, redstone_crystal_cluster, abyssalnite_crystal_cluster,
+			coralium_crystal_cluster, dreadium_crystal_cluster, blaze_crystal_cluster,
+			tin_crystal_cluster, copper_crystal_cluster, silicon_crystal_cluster,
+			magnesium_crystal_cluster, aluminium_crystal_cluster, silica_crystal_cluster,
+			alumina_crystal_cluster, magnesia_crystal_cluster, zinc_crystal_cluster,
+			calcium_crystal_cluster, beryllium_crystal_cluster, beryl_crystal_cluster,
+			energy_collector, energy_relay, energy_container, overworld_energy_collector,
+			abyssal_wasteland_energy_collector, dreadlands_energy_collector,
+			omothol_energy_collector, overworld_energy_relay, abyssal_wasteland_energy_relay,
+			dreadlands_energy_relay, omothol_energy_relay, overworld_energy_container,
+			abyssal_wasteland_energy_container, dreadlands_energy_container,
+			omothol_energy_container, abyssal_sand, fused_abyssal_sand, abyssal_sand_glass,
+			dreadlands_dirt, abyssal_cobblestone_slab, abyssal_cobblestone_stairs,
+			abyssal_cobblestone_wall, dreadstone_cobblestone_slab, dreadstone_cobblestone_stairs,
+			dreadstone_cobblestone_wall, abyssalnite_cobblestone_slab,
+			abyssalnite_cobblestone_stairs, abyssalnite_cobblestone_wall,
+			coralium_cobblestone_slab,
+			coralium_cobblestone_stairs, coralium_cobblestone_wall, luminous_thistle,
+			wastelands_thorn, rending_pedestal, state_transformer, energy_depositioner,
+			calcified_stone, darklands_oak_door, dreadlands_door, multi_block,
+			sequential_brewing_stand, portal_anchor;
+
+	public static void registerBlocks() {
+		ACBlock[] acBlocks = getBlocks();
+		for (ACBlock acBlock : acBlocks) {
+			Block block = acBlock.getBlock();
+			registerBlock(block, acBlock.getItemBlock(), block.getTranslationKey());
+		}
+	}
+
+	private static ACBlock[] getBlocks() {
+		return Arrays.stream(Reflections.getStaticFields(ACItems.class))
+				.filter(field -> ACBlock.class.isAssignableFrom(field.getType())).map(field -> {
+					try {
+						return (ACBlock) field.get(null);
+					} catch (IllegalAccessException e) {
+						return null;
+					}
+				}).toArray(ACBlock[]::new);
+	}
+
+	public static void registerBlock(Block block, ItemBlock item, String name) {
+		InitHandler.INSTANCE.BLOCKS.add(
+				block.setRegistryName(new ResourceLocation(AbyssalCraft.modid, name)));
+		if (item != null) {
+			registerItem(item, name);
+		}
+	}
+
 }

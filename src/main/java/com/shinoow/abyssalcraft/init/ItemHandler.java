@@ -11,7 +11,6 @@
  ******************************************************************************/
 package com.shinoow.abyssalcraft.init;
 
-import com.shinoow.abyssalcraft.AbyssalCraft;
 import com.shinoow.abyssalcraft.api.AbyssalCraftAPI;
 import com.shinoow.abyssalcraft.api.biome.ACBiomes;
 import com.shinoow.abyssalcraft.api.biome.IDarklandsBiome;
@@ -27,14 +26,14 @@ import com.shinoow.abyssalcraft.lib.ACLib;
 import com.shinoow.abyssalcraft.lib.ACTabs;
 import com.shinoow.abyssalcraft.lib.item.ItemCharm;
 import com.shinoow.abyssalcraft.lib.item.ItemMetadata;
-
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemDoor;
 import net.minecraft.item.ItemFood;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraftforge.fml.common.event.*;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 public class ItemHandler implements ILifeCycleHandler {
 
@@ -83,8 +82,8 @@ public class ItemHandler implements ILifeCycleHandler {
 		ACItems.scroll = new ItemScroll("scroll", "basic", "lesser", "moderate", "greater");
 		ACItems.unique_scroll = new ItemScroll("unique_scroll", "antimatter", "oblivion");
 		ACItems.antidote = new ItemAntidote();
-		ACItems.darklands_oak_door = new ItemDoor(ACBlocks.darklands_oak_door).setTranslationKey("door_dlt");
-		ACItems.dreadlands_door = new ItemDoor(ACBlocks.dreadlands_door).setTranslationKey("door_drt");
+		ACItems.darklands_oak_door = new ItemDoor(ACBlocks.darklands_oak_door.getBlock()).setTranslationKey("door_dlt");
+		ACItems.dreadlands_door = new ItemDoor(ACBlocks.dreadlands_door.getBlock()).setTranslationKey("door_drt");
 		ACItems.configurator_shard = new ItemMetadataMisc("configurator_shard", "0", "1", "2", "3").setUnlockCondition(new DimensionCondition(ACLib.omothol_id));
 		ACItems.silver_key = new ItemGatewayKey(3, "silver_key");
 		ACItems.book_of_many_faces = new ItemFaceBook("face_book");
