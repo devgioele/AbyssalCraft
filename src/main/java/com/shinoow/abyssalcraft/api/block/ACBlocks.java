@@ -105,10 +105,25 @@ public class ACBlocks {
 			calcified_stone, darklands_oak_door, dreadlands_door, multi_block,
 			sequential_brewing_stand, portal_anchor;
 
+
 	public static void registerBlocks() {
 		ACBlock[] acBlocks = getACBlocks();
 		for (ACBlock acBlock : acBlocks) {
 			acBlock.register();
+		}
+	}
+
+	public static void registerItemsRenders() {
+		ACBlock[] acBlocks = getACBlocks();
+		for (ACBlock acBlock : acBlocks) {
+			acBlock.registerItemRender();
+		}
+	}
+
+	public static void registerModels() {
+		ACBlock[] acBlocks = getACBlocks();
+		for (ACBlock acBlock : acBlocks) {
+			acBlock.registerModel();
 		}
 	}
 

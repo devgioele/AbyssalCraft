@@ -1,11 +1,14 @@
 package com.shinoow.abyssalcraft.api.block;
 
 import com.shinoow.abyssalcraft.AbyssalCraft;
+import com.shinoow.abyssalcraft.api.item.ACItems;
 import com.shinoow.abyssalcraft.api.item.IUnlockableItem;
 import com.shinoow.abyssalcraft.api.necronomicon.condition.IUnlockCondition;
 import com.shinoow.abyssalcraft.common.blocks.itemblock.ItemBlockAC;
 import net.minecraft.block.Block;
+import net.minecraft.block.properties.IProperty;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.util.ResourceLocation;
@@ -14,7 +17,6 @@ import net.minecraftforge.client.model.ModelLoader;
 import java.util.Arrays;
 
 import static com.shinoow.abyssalcraft.api.item.ACItems.registerItem;
-import static com.shinoow.abyssalcraft.api.item.ACItems.registerItemRender;
 
 public class ACBlock {
 
@@ -22,6 +24,8 @@ public class ACBlock {
 	private final ItemBlock itemBlock;
 	private final String tileName;
 	private final boolean hasModel;
+
+	private StateMap stateMap;
 
 	public ACBlock(String tileName, Block block, ItemBlock itemBlock,
 				   IUnlockCondition unlockCondition, boolean hasModel) {
@@ -92,6 +96,11 @@ public class ACBlock {
 		this(block, new ItemBlockAC(block));
 	}
 
+	public ACBlock setStateMap(IProperty<?>... ignores) {
+		stateMap = new StateMap.Builder().ignore(ignores).build();
+		return this;
+	}
+
 	public Block getBlock() {
 		return block;
 	}
@@ -112,14 +121,20 @@ public class ACBlock {
 		if (itemBlock != null) {
 			registerItem(itemBlock, name);
 		}
-		// Register item render
-		registerItemRender(Item.getItemFromBlock(block), 0, tileName);
-		// Register model if there is any
-		if (hasModel) {
-			ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0,
-					new ModelResourceLocation(AbyssalCraft.modid + ":" + block.getTranslationKey(),
-							"inventory"));
+	}
+
+	public void registerItemRender() {
+		ACItems.registerItemRender(Item.getItemFromBlock(block), 0, tileName);
+	}
+
+	public void registerModel() {
+		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0,
+				new ModelResourceLocation(AbyssalCraft.modid + ":" + block.getTranslationKey(),
+						"inventory"));
+		if (stateMap != null) {
+			ModelLoader.setCustomStateMapper(block, stateMap);
 		}
+
 	}
 
 
