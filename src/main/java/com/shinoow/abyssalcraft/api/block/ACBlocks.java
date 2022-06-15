@@ -11,17 +11,11 @@
  ******************************************************************************/
 package com.shinoow.abyssalcraft.api.block;
 
-import com.shinoow.abyssalcraft.AbyssalCraft;
 import com.shinoow.abyssalcraft.api.item.ACItems;
-import com.shinoow.abyssalcraft.init.InitHandler;
 import com.shinoow.abyssalcraft.lib.util.Reflections;
-import net.minecraft.block.Block;
-import net.minecraft.item.ItemBlock;
-import net.minecraft.util.ResourceLocation;
 
 import java.util.Arrays;
 
-import static com.shinoow.abyssalcraft.api.item.ACItems.registerItem;
 
 /**
  * Contains all blocks added in AbyssalCraft
@@ -114,8 +108,7 @@ public class ACBlocks {
 	public static void registerBlocks() {
 		ACBlock[] acBlocks = getACBlocks();
 		for (ACBlock acBlock : acBlocks) {
-			Block block = acBlock.getBlock();
-			registerBlock(block, acBlock.getItemBlock(), block.getTranslationKey());
+			acBlock.register();
 		}
 	}
 
@@ -128,13 +121,6 @@ public class ACBlocks {
 						return null;
 					}
 				}).toArray(ACBlock[]::new);
-	}
-
-	public static void registerBlock(Block block, ItemBlock item, String name) {
-		block.setRegistryName(new ResourceLocation(AbyssalCraft.modid, name));
-		if (item != null) {
-			registerItem(item, name);
-		}
 	}
 
 }
