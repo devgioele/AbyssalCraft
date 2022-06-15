@@ -81,7 +81,7 @@ public class GuiNecronomiconEntry extends GuiNecronomicon {
 			buttonList.clear();
 			Keyboard.enableRepeatEvents(true);
 
-			buttonList.add(buttonDone = new GuiButton(0, width / 2 - 100, 4 + guiHeight, 200, 20, I18n.format("gui.done", new Object[0])));
+			buttonList.add(buttonDone = new GuiButton(0, width / 2 - 100, 4 + guiHeight, 200, 20, I18n.format("gui.done")));
 
 			int i = (width - guiWidth) / 2;
 			byte b0 = 2;
@@ -168,7 +168,7 @@ public class GuiNecronomiconEntry extends GuiNecronomicon {
 
 	private void drawButtons(){
 		buttonList.clear();
-		buttonList.add(buttonDone = new GuiButton(0, width / 2 - 100, 4 + guiHeight, 200, 20, I18n.format("gui.done", new Object[0])));
+		buttonList.add(buttonDone = new GuiButton(0, width / 2 - 100, 4 + guiHeight, 200, 20, I18n.format("gui.done")));
 
 		int i = (width - guiWidth) / 2;
 		byte b0 = 2;

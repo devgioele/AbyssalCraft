@@ -43,7 +43,7 @@ public class GuiEnergyDepositioner extends GuiContainer {
 	{
 		String s = tilePEGenerator.hasCustomName() ? tilePEGenerator.getName() : I18n.format(tilePEGenerator.getName(), new Object[0]);
 		fontRenderer.drawString(s, xSize / 2 - fontRenderer.getStringWidth(s) / 2, 6, 4210752);
-		fontRenderer.drawString(I18n.format("container.inventory", new Object[0]), 8, ySize - 96 + 2, 4210752);
+		fontRenderer.drawString(I18n.format("container.inventory"), 8, ySize - 96 + 2, 4210752);
 		String s2 = String.format("%d/%d PE", tilePEGenerator.getField(1), 10000);
 		fontRenderer.drawString(s2, xSize / 2 - fontRenderer.getStringWidth(s2) / 2, 20, 4210752);
 	}

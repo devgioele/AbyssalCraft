@@ -44,7 +44,7 @@ public class GuiCrystallizer extends GuiContainer {
 	{
 		String s = tileCrystallizer.hasCustomName() ? tileCrystallizer.getName() : I18n.format(tileCrystallizer.getName(), new Object[0]);
 		fontRenderer.drawString(s, xSize / 2 - fontRenderer.getStringWidth(s) / 2, 6, 0xFFFFFF);
-		fontRenderer.drawString(I18n.format("container.inventory", new Object[0]), 8, ySize - 96 + 2, 0xFFFFFF);
+		fontRenderer.drawString(I18n.format("container.inventory"), 8, ySize - 96 + 2, 0xFFFFFF);
 	}
 
 	@Override
