@@ -322,8 +322,7 @@ public class ACItems {
     }
 
     public static void registerItem(Item item, String name) {
-        InitHandler.INSTANCE.ITEMS.add(
-                item.setRegistryName(new ResourceLocation(AbyssalCraft.modid, name)));
+        item.setRegistryName(new ResourceLocation(AbyssalCraft.modid, name));
     }
 
     private static void registerItemVariants(ItemMetadata item, String[] variationNames) {

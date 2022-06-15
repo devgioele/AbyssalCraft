@@ -5,7 +5,7 @@
  * are made available under the terms of the GNU Lesser Public License v3
  * which accompanies this distribution, and is available at
  * http://www.gnu.org/licenses/lgpl-3.0.txt
- * 
+ *
  * Contributors:
  *     Shinoow -  implementation
  ******************************************************************************/
@@ -25,6 +25,8 @@ import com.shinoow.abyssalcraft.AbyssalCraft;
 import com.shinoow.abyssalcraft.api.APIUtils;
 import com.shinoow.abyssalcraft.api.AbyssalCraftAPI;
 import com.shinoow.abyssalcraft.api.biome.ACBiomes;
+import com.shinoow.abyssalcraft.api.block.ACBlock;
+import com.shinoow.abyssalcraft.api.block.ACBlocks;
 import com.shinoow.abyssalcraft.api.item.ACItems;
 import com.shinoow.abyssalcraft.client.handlers.ClientVarsReloadListener;
 import com.shinoow.abyssalcraft.common.entity.EntityAbyssalZombie;
@@ -103,8 +105,6 @@ public class InitHandler implements ILifeCycleHandler {
 
 	public static final Map<ResourceLocation, Tuple<Integer, Float>> demon_transformations = new HashMap<>();
 
-	public final List<Block> BLOCKS = new ArrayList<>();
-	public final List<Item> ITEMS = new ArrayList<>();
 	final List<Biome> BIOMES = new ArrayList<>();
 	final List<Enchantment> ENCHANTMENTS = new ArrayList<>();
 	final List<Potion> POTIONS = new ArrayList<>();
@@ -205,12 +205,14 @@ public class InitHandler implements ILifeCycleHandler {
 
 	@SubscribeEvent
 	public void registerBlocks(RegistryEvent.Register<Block> event){
-		event.getRegistry().registerAll(BLOCKS.toArray(new Block[0]));
+		Block[] blocks = Arrays.stream(ACBlocks.getACBlocks()).map(ACBlock::getBlock).toArray(Block[]::new);
+		event.getRegistry().registerAll(blocks);
 	}
 
 	@SubscribeEvent
 	public void registerItems(RegistryEvent.Register<Item> event){
-		event.getRegistry().registerAll(ITEMS.toArray(new Item[0]));
+		Item[] items = ACItems.getItems();
+		event.getRegistry().registerAll(items);
 		ACItems.liquid_coralium_bucket_stack = FluidUtil.getFilledBucket(new FluidStack(AbyssalCraftAPI.liquid_coralium_fluid, Fluid.BUCKET_VOLUME));
 		ACItems.liquid_antimatter_bucket_stack = FluidUtil.getFilledBucket(new FluidStack(AbyssalCraftAPI.liquid_antimatter_fluid, Fluid.BUCKET_VOLUME));
 

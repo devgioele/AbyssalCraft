@@ -13,7 +13,6 @@ package com.shinoow.abyssalcraft.api.block;
 
 import com.shinoow.abyssalcraft.AbyssalCraft;
 import com.shinoow.abyssalcraft.api.item.ACItems;
-import com.shinoow.abyssalcraft.common.blocks.itemblock.ItemBlockAC;
 import com.shinoow.abyssalcraft.init.InitHandler;
 import com.shinoow.abyssalcraft.lib.util.Reflections;
 import net.minecraft.block.Block;
@@ -113,14 +112,14 @@ public class ACBlocks {
 			sequential_brewing_stand, portal_anchor;
 
 	public static void registerBlocks() {
-		ACBlock[] acBlocks = getBlocks();
+		ACBlock[] acBlocks = getACBlocks();
 		for (ACBlock acBlock : acBlocks) {
 			Block block = acBlock.getBlock();
 			registerBlock(block, acBlock.getItemBlock(), block.getTranslationKey());
 		}
 	}
 
-	private static ACBlock[] getBlocks() {
+	public static ACBlock[] getACBlocks() {
 		return Arrays.stream(Reflections.getStaticFields(ACItems.class))
 				.filter(field -> ACBlock.class.isAssignableFrom(field.getType())).map(field -> {
 					try {
@@ -132,8 +131,7 @@ public class ACBlocks {
 	}
 
 	public static void registerBlock(Block block, ItemBlock item, String name) {
-		InitHandler.INSTANCE.BLOCKS.add(
-				block.setRegistryName(new ResourceLocation(AbyssalCraft.modid, name)));
+		block.setRegistryName(new ResourceLocation(AbyssalCraft.modid, name));
 		if (item != null) {
 			registerItem(item, name);
 		}
