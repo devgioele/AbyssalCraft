@@ -18,6 +18,11 @@ buildscript {
     }
 }
 
+// For verification purposes
+plugins {
+    id "org.sonarqube" version "3.4.0.2513"
+}
+
 repositories {
     maven {
         name 'progwml6'
