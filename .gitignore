@@ -9,6 +9,7 @@ bin
 Thumbs.db
 
 generateRAR.bat
+null
 
 
 # Created by https://www.toptal.com/developers/gitignore/api/intellij+all,gradle

@@ -99,6 +99,27 @@ public class ItemCoraliumBow extends ItemBow implements IUnlockableItem {
 		list.add(I18n.format("tooltip.corbow.2"));
 	}
 
+	private ItemStack findAmmo(EntityPlayer player)
+	{
+		if (isArrow(player.getHeldItem(EnumHand.OFF_HAND)))
+			return player.getHeldItem(EnumHand.OFF_HAND);
+		else if (isArrow(player.getHeldItem(EnumHand.MAIN_HAND)))
+			return player.getHeldItem(EnumHand.MAIN_HAND);
+		else
+		{
+			for (int i = 0; i < player.inventory.getSizeInventory(); ++i)
+			{
+				ItemStack itemstack = player.inventory.getStackInSlot(i);
+
+				if (isArrow(itemstack))
+					return itemstack;
+			}
+
+			return null;
+		}
+	}
+
+
 	/**
 	 * called when the player releases the use item button. Args: itemstack, world, entityplayer, itemInUseCount
 	 */

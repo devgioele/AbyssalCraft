@@ -5,7 +5,7 @@
  * are made available under the terms of the GNU Lesser Public License v3
  * which accompanies this distribution, and is available at
  * http://www.gnu.org/licenses/lgpl-3.0.txt
- * 
+ *
  * Contributors:
  *     Shinoow -  implementation
  ******************************************************************************/
@@ -20,7 +20,6 @@ import com.shinoow.abyssalcraft.common.entity.EntityGreaterDreadSpawn;
 import com.shinoow.abyssalcraft.common.entity.EntityLesserDreadbeast;
 import com.shinoow.abyssalcraft.common.world.data.NecromancyWorldSavedData;
 import com.shinoow.abyssalcraft.lib.util.blocks.IRitualAltar;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
@@ -37,32 +36,46 @@ import net.minecraftforge.oredict.OreDictionary;
 public class NecronomiconResurrectionRitual extends NecronomiconRitual {
 
 	public NecronomiconResurrectionRitual() {
-		super("resurrection", 2, OreDictionary.WILDCARD_VALUE, 1000F, true,
-				new ItemStack[]{new ItemStack(ACItems.getInstance().crystal_shard, 1, 3), new ItemStack(ACItems.getInstance().crystal, 1, 3),
-						new ItemStack(ACBlocks.getInstance().carbon_crystal_cluster.getBlock())},
-				new ItemStack[]{new ItemStack(ACItems.getInstance().crystal_shard, 1, 5), new ItemStack(ACItems.getInstance().crystal, 1, 5),
-						new ItemStack(ACBlocks.getInstance().hydrogen_crystal_cluster.getBlock())},
-				new ItemStack[]{new ItemStack(ACItems.getInstance().crystal_shard, 1, 6), new ItemStack(ACItems.getInstance().crystal, 1, 6),
-						new ItemStack(ACBlocks.getInstance().nitrogen_crystal_cluster.getBlock())},
-				new ItemStack[]{new ItemStack(ACItems.getInstance().crystal_shard, 1, 4), new ItemStack(ACItems.getInstance().crystal, 1, 4),
-						new ItemStack(ACBlocks.getInstance().oxygen_crystal_cluster.getBlock())},
-				new ItemStack[]{new ItemStack(ACItems.getInstance().crystal_shard, 1, 7), new ItemStack(ACItems.getInstance().crystal, 1, 7),
-						new ItemStack(ACBlocks.getInstance().phosphorus_crystal_cluster.getBlock())},
-				new ItemStack[]{new ItemStack(ACItems.getInstance().crystal_shard, 1, 2), new ItemStack(ACItems.getInstance().crystal, 1, 2),
-						new ItemStack(ACBlocks.getInstance().sulfur_crystal_cluster.getBlock())});
+		super("resurrection", 2, OreDictionary.WILDCARD_VALUE, 1000F, true, new Object[]{
+				new ItemStack[]{
+						new ItemStack(ACItems.getInstance().crystal_shard, 1, 3),
+						new ItemStack(ACItems.getInstance().crystal, 1, 3),
+						new ItemStack(ACBlocks.getInstance().carbon_crystal_cluster.getBlock())
+				}, new ItemStack[]{
+				new ItemStack(ACItems.getInstance().crystal_shard, 1, 5),
+				new ItemStack(ACItems.getInstance().crystal, 1, 5),
+				new ItemStack(ACBlocks.getInstance().hydrogen_crystal_cluster.getBlock())
+		}, new ItemStack[]{
+				new ItemStack(ACItems.getInstance().crystal_shard, 1, 6),
+				new ItemStack(ACItems.getInstance().crystal, 1, 6),
+				new ItemStack(ACBlocks.getInstance().nitrogen_crystal_cluster.getBlock())
+		}, new ItemStack[]{
+				new ItemStack(ACItems.getInstance().crystal_shard, 1, 4),
+				new ItemStack(ACItems.getInstance().crystal, 1, 4),
+				new ItemStack(ACBlocks.getInstance().oxygen_crystal_cluster.getBlock())
+		}, new ItemStack[]{
+				new ItemStack(ACItems.getInstance().crystal_shard, 1, 7),
+				new ItemStack(ACItems.getInstance().crystal, 1, 7),
+				new ItemStack(ACBlocks.getInstance().phosphorus_crystal_cluster.getBlock())
+		}, new ItemStack[]{
+				new ItemStack(ACItems.getInstance().crystal_shard, 1, 2),
+				new ItemStack(ACItems.getInstance().crystal, 1, 2),
+				new ItemStack(ACBlocks.getInstance().sulfur_crystal_cluster.getBlock())
+		}
+		});
 		sacrifice = Items.NAME_TAG;
 		setRitualParticle(EnumRitualParticle.SMOKE_PILLARS);
 	}
 
 	@Override
-	public boolean requiresItemSacrifice(){
+	public boolean requiresItemSacrifice() {
 		return true;
 	}
 
-	private boolean mismatch(ItemStack stack, Object obj, int size){
+	private boolean mismatch(ItemStack stack, Object obj, int size) {
 
-		if(!stack.isEmpty() && obj instanceof ItemStack[])
-			return stack.getItem() != ((ItemStack[])obj)[size].getItem();
+		if (!stack.isEmpty() && obj instanceof ItemStack[])
+			return stack.getItem() != ((ItemStack[]) obj)[size].getItem();
 
 		return false;
 	}
@@ -74,13 +87,14 @@ public class NecronomiconResurrectionRitual extends NecronomiconRitual {
 
 		ItemStack stack = ItemStack.EMPTY;
 
-		if(altar instanceof IRitualAltar)
-			stack = ((IRitualAltar) altar).getItem();
+		if (altar instanceof IRitualAltar) stack = ((IRitualAltar) altar).getItem();
 
-		if(!stack.isEmpty() && stack.getItem() == Items.NAME_TAG){
+		if (!stack.isEmpty() && stack.getItem() == Items.NAME_TAG) {
 			NecromancyWorldSavedData cap = NecromancyWorldSavedData.get(world);
 			NBTTagCompound data = cap.getDataForName(stack.getDisplayName());
-			return data != null && ((IRitualAltar) altar).getPedestals().stream().noneMatch(p -> mismatch(p.getItem(), getOfferings()[0], data.getInteger("ResurrectionRitualCrystalSize")));
+			return data != null && ((IRitualAltar) altar).getPedestals().stream().noneMatch(
+					p -> mismatch(p.getItem(), getOfferings()[0],
+							data.getInteger("ResurrectionRitualCrystalSize")));
 		}
 
 		return false;
@@ -97,17 +111,20 @@ public class NecronomiconResurrectionRitual extends NecronomiconRitual {
 
 		ItemStack stack = ItemStack.EMPTY;
 
-		if(altar instanceof IRitualAltar)
-			stack = ((IRitualAltar) altar).getItem();
+		if (altar instanceof IRitualAltar) stack = ((IRitualAltar) altar).getItem();
 
-		if(!stack.isEmpty() && stack.getItem() == Items.NAME_TAG){
+		if (!stack.isEmpty() && stack.getItem() == Items.NAME_TAG) {
 			NecromancyWorldSavedData cap = NecromancyWorldSavedData.get(world);
 			NBTTagCompound data = cap.getDataForName(stack.getDisplayName());
 			Entity e = EntityList.createEntityFromNBT(data, world);
-			if(e instanceof EntityLiving){
-				EntityLiving entity = getEntity(e, data.getInteger("ResurrectionRitualCrystalSize"));
-				world.addWeatherEffect(new EntityLightningBolt(world, pos.getX(), pos.getY() + 2, pos.getZ(), true));
-				entity.setLocationAndAngles(pos.getX(), pos.getY() + 1, pos.getZ(), entity.rotationYaw, entity.rotationPitch);
+			if (e instanceof EntityLiving) {
+				EntityLiving entity =
+						getEntity(e, data.getInteger("ResurrectionRitualCrystalSize"));
+				world.addWeatherEffect(
+						new EntityLightningBolt(world, pos.getX(), pos.getY() + 2, pos.getZ(),
+								true));
+				entity.setLocationAndAngles(pos.getX(), pos.getY() + 1, pos.getZ(),
+						entity.rotationYaw, entity.rotationPitch);
 				entity.setHealth(entity.getMaxHealth());
 				world.spawnEntity(entity);
 				cap.clearEntry(stack.getDisplayName());
@@ -116,51 +133,51 @@ public class NecronomiconResurrectionRitual extends NecronomiconRitual {
 		}
 	}
 
-	private EntityLiving getEntity(Entity e, int size){
+	private EntityLiving getEntity(Entity e, int size) {
 
 		int i = e.getEntityData().getInteger("Reanimations");
 
-		if(i > 3){
+		if (i > 3) {
 			boolean b = false;
 
-			switch(i){
-			case 4:
-				b = e.world.rand.nextFloat() < 0.9;
-				break;
-			case 5:
-				b = e.world.rand.nextFloat() < 0.75;
-				break;
-			case 6:
-				b = e.world.rand.nextFloat() < 0.6;
-				break;
-			case 7:
-				b = e.world.rand.nextFloat() < 0.45;
-				break;
-			case 8:
-				b = e.world.rand.nextFloat() < 0.3;
-				break;
-			case 9:
-				b = e.world.rand.nextFloat() < 0.15;
-				break;
-			case 10:
-				b = true;
-				break;
+			switch (i) {
+				case 4:
+					b = e.world.rand.nextFloat() < 0.9;
+					break;
+				case 5:
+					b = e.world.rand.nextFloat() < 0.75;
+					break;
+				case 6:
+					b = e.world.rand.nextFloat() < 0.6;
+					break;
+				case 7:
+					b = e.world.rand.nextFloat() < 0.45;
+					break;
+				case 8:
+					b = e.world.rand.nextFloat() < 0.3;
+					break;
+				case 9:
+					b = e.world.rand.nextFloat() < 0.15;
+					break;
+				case 10:
+					b = true;
+					break;
 			}
 
-			if(b){
+			if (b) {
 
 				EntityLiving e1 = new EntityDreadSpawn(e.world);
 
-				switch(size){
-				case 0:
-					e1 = new EntityDreadSpawn(e.world);
-					break;
-				case 1:
-					e1 = new EntityGreaterDreadSpawn(e.world);
-					break;
-				case 2:
-					e1 = new EntityLesserDreadbeast(e.world);
-					break;
+				switch (size) {
+					case 0:
+						e1 = new EntityDreadSpawn(e.world);
+						break;
+					case 1:
+						e1 = new EntityGreaterDreadSpawn(e.world);
+						break;
+					case 2:
+						e1 = new EntityLesserDreadbeast(e.world);
+						break;
 				}
 
 				e1.setCustomNameTag(e.getCustomNameTag());
@@ -172,4 +189,5 @@ public class NecronomiconResurrectionRitual extends NecronomiconRitual {
 
 		return (EntityLiving) e;
 	}
+
 }
