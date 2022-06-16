@@ -125,7 +125,7 @@ makes it easier to work with the block throughout the codebase, allowing to shar
 multiple inheritance.
 
 State of the class diagram after
-commit [6465685a](https://github.com/devgioele/AbyssalCraft/tree/6465685ac08a9a42b71b9035ef7faefc09888a6b).
+commit [95ee0f37](https://github.com/devgioele/AbyssalCraft/tree/95ee0f3706e39f16ee65a50e045cf0ae1f0b8f45).
 
 ![Latest state of the class diagram](items-blocks-refactored.png)
 
