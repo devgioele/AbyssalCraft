@@ -14,7 +14,6 @@ package com.shinoow.abyssalcraft.common.blocks;
 import java.util.Random;
 
 import com.shinoow.abyssalcraft.api.block.ACBlocks;
-import com.shinoow.abyssalcraft.init.BlockHandler;
 import com.shinoow.abyssalcraft.lib.ACTabs;
 
 import net.minecraft.block.Block;
@@ -97,8 +96,8 @@ public abstract class BlockACSlab extends BlockSlab {
 	public boolean canEntityDestroy(IBlockState state, IBlockAccess world, BlockPos pos, Entity entity)
 	{
 		if(entity instanceof EntityDragon || entity instanceof EntityWither || entity instanceof EntityWitherSkull)
-			return state.getBlock() != ACBlocks.ethaxium_brick_slab && state.getBlock() != ACBlocks.dark_ethaxium_brick_slab &&
-			state.getBlock() != BlockHandler.ethaxiumslab2 && state.getBlock() != BlockHandler.darkethaxiumslab2;
+			return state.getBlock() != ACBlocks.getInstance().ethaxium_brick_slab.getBlock() && state.getBlock() != ACBlocks.getInstance().dark_ethaxium_brick_slab.getBlock() &&
+			state.getBlock() != ACBlocks.getInstance().ethaxiumslab2.getBlock() && state.getBlock() != ACBlocks.getInstance().darkethaxiumslab2.getBlock();
 		return super.canEntityDestroy(state, world, pos, entity);
 	}
 

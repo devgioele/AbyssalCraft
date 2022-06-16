@@ -421,10 +421,10 @@ public class EntitySacthoth extends EntityMob implements IOmotholEntity, com.git
 					i -= j;
 					world.spawnEntity(new EntityXPOrb(world, posX, posY, posZ, j));
 					if(deathTicks == 100 || deathTicks == 120 || deathTicks == 140 || deathTicks == 160 || deathTicks == 180){
-						world.spawnEntity(new EntityItem(world, posX + posneg(3), posY + rand.nextInt(3), posZ + posneg(3), new ItemStack(ACItems.shadow_fragment, 4)));
-						world.spawnEntity(new EntityItem(world, posX + posneg(3), posY + rand.nextInt(3), posZ + posneg(3), new ItemStack(ACItems.shadow_shard, 2)));
-						world.spawnEntity(new EntityItem(world, posX + posneg(3), posY + rand.nextInt(3), posZ + posneg(3), new ItemStack(ACItems.shadow_gem)));
-						world.spawnEntity(new EntityItem(world, posX + posneg(3), posY + rand.nextInt(3), posZ + posneg(3), new ItemStack(ACItems.shard_of_oblivion)));
+						world.spawnEntity(new EntityItem(world, posX + posneg(3), posY + rand.nextInt(3), posZ + posneg(3), new ItemStack(ACItems.getInstance().shadow_fragment, 4)));
+						world.spawnEntity(new EntityItem(world, posX + posneg(3), posY + rand.nextInt(3), posZ + posneg(3), new ItemStack(ACItems.getInstance().shadow_shard, 2)));
+						world.spawnEntity(new EntityItem(world, posX + posneg(3), posY + rand.nextInt(3), posZ + posneg(3), new ItemStack(ACItems.getInstance().shadow_gem)));
+						world.spawnEntity(new EntityItem(world, posX + posneg(3), posY + rand.nextInt(3), posZ + posneg(3), new ItemStack(ACItems.getInstance().shard_of_oblivion)));
 					}
 				}
 			}
@@ -447,7 +447,7 @@ public class EntitySacthoth extends EntityMob implements IOmotholEntity, com.git
 			}
 			if(deathTicks == 200 && !world.isRemote){
 				setDead();
-				world.spawnEntity(new EntityItem(world, posX, posY, posZ, new ItemStack(ACItems.sacthoths_soul_harvesting_blade)));
+				world.spawnEntity(new EntityItem(world, posX, posY, posZ, new ItemStack(ACItems.getInstance().sacthoths_soul_harvesting_blade)));
 			}
 		}
 	}

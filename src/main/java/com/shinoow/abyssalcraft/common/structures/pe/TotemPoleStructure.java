@@ -32,10 +32,10 @@ public class TotemPoleStructure implements IPlaceOfPower {
 	public TotemPoleStructure() {
 
 		data = new IBlockState[][][] {
-			new IBlockState[][] {new IBlockState[] {ACBlocks.monolith_stone.getDefaultState()}},
-			new IBlockState[][] {new IBlockState[] {ACBlocks.yog_sothoth_statue.getDefaultState()}},
-			new IBlockState[][] {new IBlockState[] {ACBlocks.azathoth_statue.getDefaultState()}},
-			new IBlockState[][] {new IBlockState[] {ACBlocks.nyarlathotep_statue.getDefaultState()}}};
+			new IBlockState[][] {new IBlockState[] {ACBlocks.getInstance().monolith_stone.getBlock().getDefaultState()}},
+			new IBlockState[][] {new IBlockState[] {ACBlocks.getInstance().yog_sothoth_statue.getBlock().getDefaultState()}},
+			new IBlockState[][] {new IBlockState[] {ACBlocks.getInstance().azathoth_statue.getBlock().getDefaultState()}},
+			new IBlockState[][] {new IBlockState[] {ACBlocks.getInstance().nyarlathotep_statue.getBlock().getDefaultState()}}};
 	}
 
 	@Override
@@ -66,7 +66,7 @@ public class TotemPoleStructure implements IPlaceOfPower {
 
 	@Override
 	public void construct(World world, BlockPos pos) {
-		world.setBlockState(pos, ACBlocks.multi_block.getDefaultState());
+		world.setBlockState(pos, ACBlocks.getInstance().multi_block.getBlock().getDefaultState());
 		((IStructureBase) world.getTileEntity(pos)).setMultiblock(this);
 		for(int i = 1; i < 4; i++)
 			if(world.getTileEntity(pos.up(i)) instanceof IStructureComponent) {
@@ -79,7 +79,7 @@ public class TotemPoleStructure implements IPlaceOfPower {
 	public void validate(World world, BlockPos pos) {
 
 		boolean valid = false;
-		if(world.getBlockState(pos).getBlock() == ACBlocks.multi_block)
+		if(world.getBlockState(pos).getBlock() == ACBlocks.getInstance().multi_block.getBlock())
 			if(world.getBlockState(pos.up()).getBlock() instanceof BlockStatue
 					&& world.getBlockState(pos.up(2)).getBlock() instanceof BlockStatue
 					&& world.getBlockState(pos.up(3)).getBlock() instanceof BlockStatue)
@@ -95,7 +95,7 @@ public class TotemPoleStructure implements IPlaceOfPower {
 	public boolean canConstruct(World world, BlockPos pos, EntityPlayer player) {
 
 		IBlockState state = world.getBlockState(pos);
-		if(state.getBlock() == ACBlocks.monolith_stone)
+		if(state.getBlock() == ACBlocks.getInstance().monolith_stone.getBlock())
 			return world.getBlockState(pos.up()).getBlock() instanceof BlockStatue
 					&& world.getBlockState(pos.up(2)).getBlock() instanceof BlockStatue
 					&& world.getBlockState(pos.up(3)).getBlock() instanceof BlockStatue;

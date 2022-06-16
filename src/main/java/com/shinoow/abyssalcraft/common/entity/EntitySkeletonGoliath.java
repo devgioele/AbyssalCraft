@@ -123,7 +123,7 @@ public class EntitySkeletonGoliath extends EntityMob {
 	@Override
 	public ItemStack getHeldItem(EnumHand hand){
 		if(hand == EnumHand.MAIN_HAND)
-			return new ItemStack(ACItems.cudgel);
+			return new ItemStack(ACItems.getInstance().cudgel);
 		return super.getHeldItem(hand);
 
 	}

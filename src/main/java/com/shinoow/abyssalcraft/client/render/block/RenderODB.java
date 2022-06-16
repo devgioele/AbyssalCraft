@@ -52,7 +52,7 @@ public class RenderODB extends Render<EntityODBPrimed> {
 		float f2 = (1.0F - (entity.fuse - partialTicks + 1.0F) / 100.0F) * 0.8F;
 		bindEntityTexture(entity);
 		GlStateManager.translate(-0.5F, -0.5F, 0.5F);
-		blockrendererdispatcher.renderBlockBrightness(ACBlocks.oblivion_deathbomb.getDefaultState(), entity.getBrightness());
+		blockrendererdispatcher.renderBlockBrightness(ACBlocks.getInstance().oblivion_deathbomb.getBlock().getDefaultState(), entity.getBrightness());
 		GlStateManager.translate(0.0F, 0.0F, 1.0F);
 
 		if (entity.fuse / 5 % 2 == 0)
@@ -66,7 +66,7 @@ public class RenderODB extends Render<EntityODBPrimed> {
 			GlStateManager.enablePolygonOffset();
 			GlStateManager.rotate(-90, 0, 1, 0);
 			GlStateManager.translate(-1.0f, 0, 0);
-			blockrendererdispatcher.renderBlockBrightness(ACBlocks.oblivion_deathbomb.getDefaultState(), 1.0F);
+			blockrendererdispatcher.renderBlockBrightness(ACBlocks.getInstance().oblivion_deathbomb.getBlock().getDefaultState(), 1.0F);
 			GlStateManager.doPolygonOffset(0.0F, 0.0F);
 			GlStateManager.disablePolygonOffset();
 			GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);

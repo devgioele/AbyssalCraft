@@ -81,7 +81,7 @@ public class BlockDreadAltarTop extends Block {
 		if(placer != null && world.isRemote)
 			if(world.provider.getDimension() == ACLib.dreadlands_id){
 				if(world.getBiome(pos) == ACBiomes.dreadlands_mountains){
-					if(world.getBlockState(pos.down()).getBlock() == ACBlocks.chagaroth_altar_bottom)
+					if(world.getBlockState(pos.down()).getBlock() == ACBlocks.getInstance().chagaroth_altar_bottom.getBlock())
 						if(pos.getY() == 41)
 							placer.sendMessage(new TextComponentTranslation("message.dreadaltartop.enter"));
 						else if(pos.getY() < 41)
@@ -98,7 +98,7 @@ public class BlockDreadAltarTop extends Block {
 	public boolean onBlockActivated(World par1World, BlockPos pos, IBlockState state, EntityPlayer par5EntityPlayer, EnumHand hand, EnumFacing side, float par7, float par8, float par9) {
 		if(par1World.provider.getDimension() == ACLib.dreadlands_id){
 			if(par1World.getBiome(pos) == ACBiomes.dreadlands_mountains){
-				if(par1World.getBlockState(pos.down()).getBlock() == ACBlocks.chagaroth_altar_bottom)
+				if(par1World.getBlockState(pos.down()).getBlock() == ACBlocks.getInstance().chagaroth_altar_bottom.getBlock())
 					if(pos.getY() == 41) {
 						if(!par1World.isRemote){
 							SpecialTextUtil.ChagarothGroup(par1World, I18n.translateToLocal("message.dreadaltartop.spawn"));

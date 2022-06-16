@@ -11,10 +11,10 @@
  ******************************************************************************/
 package com.shinoow.abyssalcraft.common.ritual;
 
+import com.shinoow.abyssalcraft.api.block.ACBlocks;
 import com.shinoow.abyssalcraft.api.entity.EntityUtil;
 import com.shinoow.abyssalcraft.api.ritual.EnumRitualParticle;
 import com.shinoow.abyssalcraft.api.ritual.NecronomiconInfusionRitual;
-import com.shinoow.abyssalcraft.init.BlockHandler;
 import com.shinoow.abyssalcraft.lib.util.IHiddenRitual;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -27,7 +27,7 @@ import net.minecraftforge.oredict.OreDictionary;
 public class NecronomiconHouseRitual extends NecronomiconInfusionRitual implements IHiddenRitual {
 
 	public NecronomiconHouseRitual() {
-		super("house", 0, OreDictionary.WILDCARD_VALUE, 0, new ItemStack(BlockHandler.house), new ItemStack[]{new ItemStack(Items.OAK_DOOR),
+		super("house", 0, OreDictionary.WILDCARD_VALUE, 0, new ItemStack(ACBlocks.getInstance().house.getBlock()), new ItemStack[]{new ItemStack(Items.OAK_DOOR),
 				new ItemStack(Items.SPRUCE_DOOR), new ItemStack(Items.BIRCH_DOOR), new ItemStack(Items.JUNGLE_DOOR),
 				new ItemStack(Items.ACACIA_DOOR), new ItemStack(Items.DARK_OAK_DOOR)}, "plankWood", "stairWood",
 				"plankWood", "plankWood", "plankWood", "plankWood", "plankWood", "stairWood");

@@ -49,7 +49,7 @@ public class BlockDreadGrass extends BlockGrass {
 		if (!worldIn.isRemote) {
 			if (!worldIn.isAreaLoaded(pos, 3)) return;
 			if (worldIn.getLightFromNeighbors(pos.up()) < 4 && worldIn.getBlockState(pos.up()).getBlock().getLightOpacity(worldIn.getBlockState(pos.up()), worldIn, pos.up()) > 2)
-				worldIn.setBlockState(pos, ACBlocks.dreadlands_dirt.getDefaultState());
+				worldIn.setBlockState(pos, ACBlocks.getInstance().dreadlands_dirt.getBlock().getDefaultState());
 			else
 				for (int i = 0; i < 4; ++i)
 				{
@@ -57,8 +57,8 @@ public class BlockDreadGrass extends BlockGrass {
 					Block block = worldIn.getBlockState(blockpos.up()).getBlock();
 					IBlockState iblockstate = worldIn.getBlockState(blockpos);
 
-					if (iblockstate.getBlock() == ACBlocks.dreadlands_dirt && block.getLightOpacity(worldIn.getBlockState(blockpos.up()), worldIn, blockpos.up()) <= 2)
-						worldIn.setBlockState(blockpos, ACBlocks.dreadlands_grass.getDefaultState());
+					if (iblockstate.getBlock() == ACBlocks.getInstance().dreadlands_dirt.getBlock() && block.getLightOpacity(worldIn.getBlockState(blockpos.up()), worldIn, blockpos.up()) <= 2)
+						worldIn.setBlockState(blockpos, ACBlocks.getInstance().dreadlands_grass.getBlock().getDefaultState());
 				}
 		}
 	}
@@ -77,7 +77,7 @@ public class BlockDreadGrass extends BlockGrass {
 	@Override
 	public Item getItemDropped(IBlockState state, Random par2Random, int par3)
 	{
-		return ACBlocks.dreadlands_dirt.getItemDropped(state, par2Random, par3);
+		return ACBlocks.getInstance().dreadlands_dirt.getBlock().getItemDropped(state, par2Random, par3);
 	}
 
 	@Override
@@ -110,7 +110,7 @@ public class BlockDreadGrass extends BlockGrass {
 
 				blockpos1 = blockpos1.add(rand.nextInt(3) - 1, (rand.nextInt(3) - 1) * rand.nextInt(3) / 2, rand.nextInt(3) - 1);
 
-				if (worldIn.getBlockState(blockpos1.down()).getBlock() != ACBlocks.dreadlands_grass || worldIn.getBlockState(blockpos1).isNormalCube())
+				if (worldIn.getBlockState(blockpos1.down()).getBlock() != ACBlocks.getInstance().dreadlands_grass.getBlock() || worldIn.getBlockState(blockpos1).isNormalCube())
 					break;
 
 				++j;

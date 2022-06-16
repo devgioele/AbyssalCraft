@@ -16,7 +16,7 @@ public class WorldUtil {
     public static void extinguishFire(EntityPlayer player, BlockPos posIn, EnumFacing face, World world, Event event) {
         BlockPos pos = posIn.offset(face);
 
-        if (world.getBlockState(pos).getBlock() == ACBlocks.mimic_fire)
+        if (world.getBlockState(pos).getBlock() == ACBlocks.getInstance().mimic_fire.getBlock())
             if (event instanceof MouseEvent) {
                 PacketDispatcher.sendToServer(new FireMessage(pos));
                 player.swingArm(EnumHand.MAIN_HAND);

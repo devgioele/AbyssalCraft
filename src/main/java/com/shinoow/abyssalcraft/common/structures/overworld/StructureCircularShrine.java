@@ -26,12 +26,12 @@ public class StructureCircularShrine extends StructureDarklandsBase {
 	@Override
 	public boolean generate(World worldIn, Random rand, BlockPos pos) {
 
-		IBlockState brick = ACBlocks.darkstone_brick.getDefaultState();
-		IBlockState chiseled_brick = ACBlocks.chiseled_darkstone_brick.getDefaultState();
-		IBlockState brick_slab = ACBlocks.darkstone_brick_slab.getDefaultState();
-		IBlockState cobble = ACBlocks.darkstone_cobblestone.getDefaultState();
-		IBlockState cobble_slab = ACBlocks.darkstone_cobblestone_slab.getDefaultState();
-		IBlockState ooze = ACBlocks.shoggoth_ooze.getDefaultState().withProperty(BlockShoggothOoze.LAYERS, 8);
+		IBlockState brick = ACBlocks.getInstance().darkstone_brick.getBlock().getDefaultState();
+		IBlockState chiseled_brick = ACBlocks.getInstance().chiseled_darkstone_brick.getBlock().getDefaultState();
+		IBlockState brick_slab = ACBlocks.getInstance().darkstone_brick_slab.getBlock().getDefaultState();
+		IBlockState cobble = ACBlocks.getInstance().darkstone_cobblestone.getBlock().getDefaultState();
+		IBlockState cobble_slab = ACBlocks.getInstance().darkstone_cobblestone_slab.getBlock().getDefaultState();
+		IBlockState ooze = ACBlocks.getInstance().shoggoth_ooze.getBlock().getDefaultState().withProperty(BlockShoggothOoze.LAYERS, 8);
 		IBlockState air = Blocks.AIR.getDefaultState();
 
 		for(int i = -4; i < 5; i++)

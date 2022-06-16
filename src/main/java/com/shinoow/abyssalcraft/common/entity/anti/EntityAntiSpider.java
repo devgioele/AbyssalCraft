@@ -147,7 +147,7 @@ public class EntityAntiSpider extends EntityMob implements IAntiEntity {
 		super.dropFewItems(par1, par2);
 
 		if (par1 && (rand.nextInt(3) == 0 || rand.nextInt(1 + par2) > 0))
-			dropItem(ACItems.anti_spider_eye, 1);
+			dropItem(ACItems.getInstance().anti_spider_eye, 1);
 	}
 
 	@Override

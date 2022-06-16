@@ -35,7 +35,7 @@ public class ItemTrackerPSDL extends ItemACBasic {
 		ItemStack par1ItemStack = par3EntityPlayer.getHeldItem(hand);
 		RayTraceResult movingobjectposition = rayTrace(par2World, par3EntityPlayer, false);
 
-		if (movingobjectposition != null && movingobjectposition.typeOfHit == RayTraceResult.Type.BLOCK && par2World.getBlockState(movingobjectposition.getBlockPos()) == ACBlocks.dreadlands_infused_powerstone)
+		if (movingobjectposition != null && movingobjectposition.typeOfHit == RayTraceResult.Type.BLOCK && par2World.getBlockState(movingobjectposition.getBlockPos()) == ACBlocks.getInstance().dreadlands_infused_powerstone.getBlock())
 			return new ActionResult(EnumActionResult.PASS, par1ItemStack);
 
 		if (!par2World.isRemote)

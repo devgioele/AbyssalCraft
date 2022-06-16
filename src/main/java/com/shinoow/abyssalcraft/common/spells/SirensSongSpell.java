@@ -31,7 +31,7 @@ public class SirensSongSpell extends Spell {
 
 	public SirensSongSpell() {
 		super("sirenssong", 1000F, Items.WHEAT);
-		setParchment(new ItemStack(ACItems.scroll, 1, 1));
+		setParchment(new ItemStack(ACItems.getInstance().scroll, 1, 1));
 		setRequiresCharging();
 		setColor(0x1c8edb);
 	}

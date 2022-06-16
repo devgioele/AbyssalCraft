@@ -135,13 +135,14 @@ public class MouseHooks {
 
     @SubscribeEvent(priority= EventPriority.NORMAL, receiveCanceled=true)
     public void onKeyPressed(InputEvent.KeyInputEvent event){
+        ACItems items = ACItems.getInstance();
 
         if(ClientProxy.staff_mode.isPressed()){
             ItemStack mainStack = Minecraft.getMinecraft().player.getHeldItem(EnumHand.MAIN_HAND);
             ItemStack offStack = Minecraft.getMinecraft().player.getHeldItem(EnumHand.OFF_HAND);
             int mode1 = -1, mode2 = -1;
 
-            if(!mainStack.isEmpty() && mainStack.getItem() == ACItems.staff_of_the_gatekeeper){
+            if(!mainStack.isEmpty() && mainStack.getItem() == items.staff_of_the_gatekeeper){
                 if(!mainStack.hasTagCompound())
                     mainStack.setTagCompound(new NBTTagCompound());
                 mode1 = mainStack.getTagCompound().getInteger("Mode");
@@ -154,7 +155,7 @@ public class MouseHooks {
                                     TextFormatting.GOLD + I18n.format(mode1 == 1 ? "item.drainstaff.normal.name" : "item.gatewaykey.name")));
                 }
             }
-            if(!offStack.isEmpty() && offStack.getItem() == ACItems.staff_of_the_gatekeeper){
+            if(!offStack.isEmpty() && offStack.getItem() == items.staff_of_the_gatekeeper){
                 if(!offStack.hasTagCompound())
                     offStack.setTagCompound(new NBTTagCompound());
                 mode2 = offStack.getTagCompound().getInteger("Mode");
@@ -173,7 +174,7 @@ public class MouseHooks {
             ItemStack mainStack = Minecraft.getMinecraft().player.getHeldItem(EnumHand.MAIN_HAND);
             ItemStack offStack = Minecraft.getMinecraft().player.getHeldItem(EnumHand.OFF_HAND);
 
-            if(!mainStack.isEmpty() && mainStack.getItem() == ACItems.interdimensional_cage) {
+            if(!mainStack.isEmpty() && mainStack.getItem() == items.interdimensional_cage) {
                 if(!mainStack.hasTagCompound())
                     mainStack.setTagCompound(new NBTTagCompound());
                 if(!mainStack.getTagCompound().hasKey("Entity")) {
@@ -185,7 +186,7 @@ public class MouseHooks {
                                 PacketDispatcher.sendToServer(new InterdimensionalCageMessage(mov.entityHit.getEntityId(), EnumHand.MAIN_HAND));
                 }
             }
-            if (!offStack.isEmpty() && offStack.getItem() == ACItems.interdimensional_cage) {
+            if (!offStack.isEmpty() && offStack.getItem() == items.interdimensional_cage) {
                 if(!offStack.hasTagCompound())
                     offStack.setTagCompound(new NBTTagCompound());
                 if(!offStack.getTagCompound().hasKey("Entity")) {
@@ -203,7 +204,7 @@ public class MouseHooks {
             ItemStack offStack = Minecraft.getMinecraft().player.getHeldItem(EnumHand.OFF_HAND);
             int mode1 = -1, mode2 = -1;
 
-            if(!mainStack.isEmpty() && mainStack.getItem() == ACItems.configurator){
+            if(!mainStack.isEmpty() && mainStack.getItem() == items.configurator){
                 if(!mainStack.hasTagCompound())
                     mainStack.setTagCompound(new NBTTagCompound());
                 mode1 = mainStack.getTagCompound().getInteger("Mode");
@@ -212,7 +213,7 @@ public class MouseHooks {
                     Minecraft.getMinecraft().player.sendMessage(new TextComponentString(I18n.format("tooltip.staff.mode.1")+": "+TextFormatting.GOLD + ItemConfigurator.getMode(mode1)));
                 }
             }
-            if(!offStack.isEmpty() && offStack.getItem() == ACItems.configurator){
+            if(!offStack.isEmpty() && offStack.getItem() == items.configurator){
                 if(!offStack.hasTagCompound())
                     offStack.setTagCompound(new NBTTagCompound());
                 mode2 = offStack.getTagCompound().getInteger("Mode");
@@ -228,15 +229,15 @@ public class MouseHooks {
         if(ClientProxy.configurator_filter.isPressed()) {
             ItemStack mainStack = Minecraft.getMinecraft().player.getHeldItem(EnumHand.MAIN_HAND);
             ItemStack offStack = Minecraft.getMinecraft().player.getHeldItem(EnumHand.OFF_HAND);
-            if(!mainStack.isEmpty() && mainStack.getItem() == ACItems.configurator ||
-                    !offStack.isEmpty() && offStack.getItem() == ACItems.configurator)
+            if(!mainStack.isEmpty() && mainStack.getItem() == items.configurator ||
+                    !offStack.isEmpty() && offStack.getItem() == items.configurator)
                 PacketDispatcher.sendToServer(new ConfiguratorMessage(true));
         }
         if(ClientProxy.configurator_path.isPressed()) {
             ItemStack mainStack = Minecraft.getMinecraft().player.getHeldItem(EnumHand.MAIN_HAND);
             ItemStack offStack = Minecraft.getMinecraft().player.getHeldItem(EnumHand.OFF_HAND);
-            if(!mainStack.isEmpty() && mainStack.getItem() == ACItems.configurator ||
-                    !offStack.isEmpty() && offStack.getItem() == ACItems.configurator) {
+            if(!mainStack.isEmpty() && mainStack.getItem() == items.configurator ||
+                    !offStack.isEmpty() && offStack.getItem() == items.configurator) {
                 PacketDispatcher.sendToServer(new ConfiguratorMessage(true, 0));
                 Minecraft.getMinecraft().player.sendMessage(new TextComponentTranslation("message.configurator.5"));
             }

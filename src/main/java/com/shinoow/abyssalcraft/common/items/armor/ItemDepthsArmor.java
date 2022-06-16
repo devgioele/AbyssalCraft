@@ -51,17 +51,17 @@ public class ItemDepthsArmor extends ItemACArmor implements IVisDiscountGear {
 
 	@Override
 	public String getItemStackDisplayName(ItemStack par1ItemStack) {
-
 		return TextFormatting.DARK_RED + super.getItemStackDisplayName(par1ItemStack);
 	}
 
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String layer)
 	{
-		if(stack.getItem() == ACItems.depths_helmet || stack.getItem() == ACItems.depths_chestplate || stack.getItem() == ACItems.depths_boots)
+		ACItems items = ACItems.getInstance();
+		if(stack.getItem() == items.depths_helmet || stack.getItem() == items.depths_chestplate || stack.getItem() == items.depths_boots)
 			return "abyssalcraft:textures/armor/depths_1.png";
 
-		if(stack.getItem() == ACItems.depths_leggings)
+		if(stack.getItem() == items.depths_leggings)
 			return "abyssalcraft:textures/armor/depths_2.png";
 		else return null;
 	}
@@ -69,7 +69,8 @@ public class ItemDepthsArmor extends ItemACArmor implements IVisDiscountGear {
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemstack) {
 		if(world.isRemote || !ACConfig.armorPotionEffects) return;
-		if (itemstack.getItem() == ACItems.depths_helmet)
+		ACItems items = ACItems.getInstance();
+		if (itemstack.getItem() == items.depths_helmet)
 		{
 			player.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 20, 0, false, false));
 			if(world.provider.isSurfaceWorld())
@@ -77,11 +78,11 @@ public class ItemDepthsArmor extends ItemACArmor implements IVisDiscountGear {
 			if(player.getActivePotionEffect(AbyssalCraftAPI.coralium_plague) !=null)
 				player.removePotionEffect(AbyssalCraftAPI.coralium_plague);
 		}
-		if (itemstack.getItem() == ACItems.depths_chestplate)
+		if (itemstack.getItem() == items.depths_chestplate)
 			player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 20, 0, false, false));
-		if (itemstack.getItem() == ACItems.depths_leggings)
+		if (itemstack.getItem() == items.depths_leggings)
 			player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 20, 1, false, false));
-		if (itemstack.getItem() == ACItems.depths_boots)
+		if (itemstack.getItem() == items.depths_boots)
 			player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 20, 1, false, false));
 	}
 
@@ -91,7 +92,7 @@ public class ItemDepthsArmor extends ItemACArmor implements IVisDiscountGear {
 		final ResourceLocation coraliumBlur = new ResourceLocation("abyssalcraft:textures/misc/coraliumblur.png");
 
 
-		if(Minecraft.getMinecraft().gameSettings.thirdPersonView == 0 && stack != null && stack.getItem() == ACItems.depths_helmet) {
+		if(Minecraft.getMinecraft().gameSettings.thirdPersonView == 0 && stack != null && stack.getItem() == ACItems.getInstance().depths_helmet) {
 
 			GlStateManager.disableDepth();
 			GlStateManager.depthMask(false);
@@ -120,20 +121,22 @@ public class ItemDepthsArmor extends ItemACArmor implements IVisDiscountGear {
 	@Override
 	@Method(modid = "thaumcraft")
 	public int getVisDiscount(ItemStack stack, EntityPlayer player) {
-		return stack.getItem() == ACItems.depths_helmet ? 5 : stack.getItem() == ACItems.depths_chestplate ? 2 :
-			stack.getItem() == ACItems.depths_leggings ? 2 : stack.getItem() == ACItems.depths_boots ? 1 : 0;
+		ACItems items = ACItems.getInstance();
+		return stack.getItem() == items.depths_helmet ? 5 : stack.getItem() == items.depths_chestplate ? 2 :
+			stack.getItem() == items.depths_leggings ? 2 : stack.getItem() == items.depths_boots ? 1 : 0;
 	}
 
 	@Override
 	public void addInformation(ItemStack is, World player, List<String> l, ITooltipFlag B){
 		if(Loader.isModLoaded("thaumcraft")){
-			if(is.getItem() == ACItems.depths_helmet)
+			ACItems items = ACItems.getInstance();
+			if(is.getItem() == items.depths_helmet)
 				l.add("\u00A75"+I18n.format("tc.visdiscount")+": 5%");
-			if(is.getItem() == ACItems.depths_chestplate)
+			if(is.getItem() == items.depths_chestplate)
 				l.add("\u00A75"+I18n.format("tc.visdiscount")+": 2%");
-			if(is.getItem() == ACItems.depths_leggings)
+			if(is.getItem() == items.depths_leggings)
 				l.add("\u00A75"+I18n.format("tc.visdiscount")+": 2%");
-			if(is.getItem() == ACItems.depths_boots)
+			if(is.getItem() == items.depths_boots)
 				l.add("\u00A75"+I18n.format("tc.visdiscount")+": 1%");
 		}
 	}

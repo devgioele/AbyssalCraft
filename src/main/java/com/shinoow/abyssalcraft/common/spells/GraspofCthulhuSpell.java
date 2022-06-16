@@ -31,7 +31,7 @@ public class GraspofCthulhuSpell extends Spell {
 
 	public GraspofCthulhuSpell() {
 		super("graspofcthulhu", 20, Items.FISH);
-		setParchment(new ItemStack(ACItems.scroll, 1, 1));
+		setParchment(new ItemStack(ACItems.getInstance().scroll, 1, 1));
 		setColor(0x2ba2ad);
 	}
 

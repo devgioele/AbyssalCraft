@@ -348,36 +348,35 @@ public class TileEntityTransmutator extends TileEntity implements ISidedInventor
 	 */
 	public static int getItemBurnTime(ItemStack par1ItemStack)
 	{
-		if (par1ItemStack.isEmpty())
-			return 0;
-		else
-		{
+		ACItems items = ACItems.getInstance();
+
+		if (!par1ItemStack.isEmpty()) {
 			int fuelValue = AbyssalCraftAPI.getFuelValue(par1ItemStack, FuelType.TRANSMUTATOR);
 			if(fuelValue >= 0) return fuelValue;
 			Item item = par1ItemStack.getItem();
 
-			if (item == ACItems.coralium_plagued_flesh) return 100;
-			if (item == ACItems.coralium_plagued_flesh_on_a_bone) return 100;
-			if (item == ACItems.coralium_brick) return 200;
-			if (item == ACItems.coralium_gem) return 200;
-			if (item == ACItems.coralium_gem_cluster_2) return 400;
-			if (item == ACItems.coralium_gem_cluster_3) return 600;
-			if (item == ACItems.coralium_gem_cluster_4) return 800;
-			if (item == ACItems.coralium_gem_cluster_5) return 1000;
-			if (item == ACItems.coralium_gem_cluster_6) return 1200;
-			if (item == ACItems.coralium_gem_cluster_7) return 1400;
-			if (item == ACItems.coralium_gem_cluster_8) return 1600;
-			if (item == ACItems.coralium_gem_cluster_9) return 1800;
-			if (item == ACItems.coralium_pearl) return 2000;
-			if (item == ACItems.transmutation_gem) return 10000;
-			if (item == ACItems.chunk_of_coralium) return 16200;
-			if (ItemStack.areItemStacksEqual(par1ItemStack, ACItems.liquid_coralium_bucket_stack)
-					&& APIUtils.areItemStackTagsEqual(par1ItemStack, ACItems.liquid_coralium_bucket_stack, 0)) return 20000;
+			if (item == items.coralium_plagued_flesh) return 100;
+			if (item == items.coralium_plagued_flesh_on_a_bone) return 100;
+			if (item == items.coralium_brick) return 200;
+			if (item == items.coralium_gem) return 200;
+			if (item == items.coralium_gem_cluster_2) return 400;
+			if (item == items.coralium_gem_cluster_3) return 600;
+			if (item == items.coralium_gem_cluster_4) return 800;
+			if (item == items.coralium_gem_cluster_5) return 1000;
+			if (item == items.coralium_gem_cluster_6) return 1200;
+			if (item == items.coralium_gem_cluster_7) return 1400;
+			if (item == items.coralium_gem_cluster_8) return 1600;
+			if (item == items.coralium_gem_cluster_9) return 1800;
+			if (item == items.coralium_pearl) return 2000;
+			if (item == items.transmutation_gem) return 10000;
+			if (item == items.chunk_of_coralium) return 16200;
+			if (ItemStack.areItemStacksEqual(par1ItemStack, items.liquid_coralium_bucket_stack)
+					&& APIUtils.areItemStackTagsEqual(par1ItemStack, items.liquid_coralium_bucket_stack, 0)) return 20000;
 			if (item == Items.BLAZE_POWDER) return 1200;
 			if (item == Items.BLAZE_ROD) return 2400;
-			if (item == ACItems.methane) return 10000;
-			return 0;
+			if (item == items.methane) return 10000;
 		}
+		return 0;
 	}
 
 	public static boolean isItemFuel(ItemStack par1ItemStack)

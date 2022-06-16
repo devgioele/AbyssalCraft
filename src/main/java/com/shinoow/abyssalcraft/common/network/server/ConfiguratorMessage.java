@@ -80,12 +80,12 @@ public class ConfiguratorMessage extends AbstractServerMessage<ConfiguratorMessa
 		if(clearPath) {
 			ItemStack mainStack = player.getHeldItem(EnumHand.MAIN_HAND);
 			ItemStack offStack = player.getHeldItem(EnumHand.OFF_HAND);
-			if(!mainStack.isEmpty() && mainStack.getItem() == ACItems.configurator) {
+			if(!mainStack.isEmpty() && mainStack.getItem() == ACItems.getInstance().configurator) {
 				if(!mainStack.hasTagCompound())
 					mainStack.setTagCompound(new NBTTagCompound());
 				mainStack.getTagCompound().removeTag("Path");
 			}
-			if(!offStack.isEmpty() && offStack.getItem() == ACItems.configurator) {
+			if(!offStack.isEmpty() && offStack.getItem() == ACItems.getInstance().configurator) {
 				if(!offStack.hasTagCompound())
 					offStack.setTagCompound(new NBTTagCompound());
 				offStack.getTagCompound().removeTag("Path");
@@ -96,12 +96,12 @@ public class ConfiguratorMessage extends AbstractServerMessage<ConfiguratorMessa
 		else {
 			ItemStack mainStack = player.getHeldItem(EnumHand.MAIN_HAND);
 			ItemStack offStack = player.getHeldItem(EnumHand.OFF_HAND);
-			if(!mainStack.isEmpty() && mainStack.getItem() == ACItems.configurator && mode1 > -1) {
+			if(!mainStack.isEmpty() && mainStack.getItem() == ACItems.getInstance().configurator && mode1 > -1) {
 				if(!mainStack.hasTagCompound())
 					mainStack.setTagCompound(new NBTTagCompound());
 				mainStack.getTagCompound().setInteger("Mode", mode1);
 			}
-			if(!offStack.isEmpty() && offStack.getItem() == ACItems.configurator && mode2 > -1) {
+			if(!offStack.isEmpty() && offStack.getItem() == ACItems.getInstance().configurator && mode2 > -1) {
 				if(!offStack.hasTagCompound())
 					offStack.setTagCompound(new NBTTagCompound());
 				offStack.getTagCompound().setInteger("Mode", mode2);

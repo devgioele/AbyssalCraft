@@ -27,7 +27,7 @@ import net.minecraftforge.common.util.EnumHelper;
 
 public class ItemSoulReaper extends ItemACSword {
 
-	static ToolMaterial sword = EnumHelper.addToolMaterial("soulreaper", 0, 2000, 1, 26, 0).setRepairItem(new ItemStack(ACItems.shadow_gem));
+	static ToolMaterial sword = EnumHelper.addToolMaterial("soulreaper", 0, 2000, 1, 26, 0).setRepairItem(new ItemStack(ACItems.getInstance().shadow_gem));
 
 	public ItemSoulReaper(String par1Str){
 		super(sword, par1Str);

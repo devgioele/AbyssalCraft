@@ -40,9 +40,9 @@ public class ButtonCategory extends GuiButton {
 	public void drawButton(Minecraft mc, int mx, int my, float f) {
 		boolean inside = mx >= x && my >= y && mx < x + width && my < y + height;
 
-		ResourceLocation res = locked ? getTexture(ACItems.oblivion_catalyst) : getTexture(icon);
+		ResourceLocation res = locked ? getTexture(ACItems.getInstance().oblivion_catalyst) : getTexture(icon);
 		if(res == null)
-			res = getTexture(ACItems.necronomicon);
+			res = getTexture(ACItems.getInstance().necronomicon);
 
 		mc.renderEngine.bindTexture(res);
 
@@ -61,15 +61,15 @@ public class ButtonCategory extends GuiButton {
 	}
 
 	ResourceLocation getTexture(Item par1){
-		if(par1 == ACItems.abyssalnomicon)
+		if(par1 == ACItems.getInstance().abyssalnomicon)
 			return new ResourceLocation("abyssalcraft:textures/items/abyssalnomicon.png");
-		else if(par1 == ACItems.abyssal_wasteland_necronomicon)
+		else if(par1 == ACItems.getInstance().abyssal_wasteland_necronomicon)
 			return new ResourceLocation("abyssalcraft:textures/items/necronomicon_cor.png");
-		else if(par1 == ACItems.dreadlands_necronomicon)
+		else if(par1 == ACItems.getInstance().dreadlands_necronomicon)
 			return new ResourceLocation("abyssalcraft:textures/items/necronomicon_dre.png");
-		else if(par1 == ACItems.omothol_necronomicon)
+		else if(par1 == ACItems.getInstance().omothol_necronomicon)
 			return new ResourceLocation("abyssalcraft:textures/items/necronomicon_omt.png");
-		else if(par1 == ACItems.oblivion_catalyst)
+		else if(par1 == ACItems.getInstance().oblivion_catalyst)
 			return new ResourceLocation("abyssalcraft:textures/items/necronahicon.png");
 		else return new ResourceLocation("abyssalcraft:textures/items/necronomicon.png");
 	}

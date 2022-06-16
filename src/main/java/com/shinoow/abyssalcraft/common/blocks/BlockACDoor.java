@@ -30,7 +30,9 @@ import net.minecraft.world.World;
 
 public class BlockACDoor extends BlockDoor {
 
-	private MapColor mapColor;
+	private final MapColor mapColor;
+
+	private Item item;
 
 	public BlockACDoor(Material material, float hardness, float resistance, SoundType stepsound, MapColor mapColor) {
 		super(material);
@@ -38,6 +40,7 @@ public class BlockACDoor extends BlockDoor {
 		setResistance(resistance);
 		setSoundType(stepsound);
 		setHarvestLevel("axe", 0);
+		this.mapColor = mapColor;
 	}
 
 	@Override
@@ -58,11 +61,12 @@ public class BlockACDoor extends BlockDoor {
 		return new ItemStack(getItem());
 	}
 
+	public BlockACDoor setItem(Item item) {
+		this.item = item;
+		return this;
+	}
+
 	private Item getItem() {
-		if(this == ACBlocks.darklands_oak_door)
-			return ACItems.darklands_oak_door;
-		if(this == ACBlocks.dreadlands_door)
-			return ACItems.dreadlands_door;
-		return null;
+		return item;
 	}
 }

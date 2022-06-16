@@ -85,11 +85,11 @@ public class StructureStorage extends WorldGenerator {
 			break;
 		}
 
-		if(worldIn.getBlockState(center).getBlock() != ACBlocks.omothol_stone ||
-				worldIn.getBlockState(center.north(distZ)).getBlock() != ACBlocks.omothol_stone ||
-				worldIn.getBlockState(center.south(distZ)).getBlock() != ACBlocks.omothol_stone ||
-				worldIn.getBlockState(center.west(distX)).getBlock() != ACBlocks.omothol_stone ||
-				worldIn.getBlockState(center.east(distX)).getBlock() != ACBlocks.omothol_stone) return false;
+		if(worldIn.getBlockState(center).getBlock() != ACBlocks.getInstance().omothol_stone.getBlock() ||
+				worldIn.getBlockState(center.north(distZ)).getBlock() != ACBlocks.getInstance().omothol_stone.getBlock() ||
+				worldIn.getBlockState(center.south(distZ)).getBlock() != ACBlocks.getInstance().omothol_stone.getBlock() ||
+				worldIn.getBlockState(center.west(distX)).getBlock() != ACBlocks.getInstance().omothol_stone.getBlock() ||
+				worldIn.getBlockState(center.east(distX)).getBlock() != ACBlocks.getInstance().omothol_stone.getBlock()) return false;
 
 		center = worldIn.getHeight(center);
 		if(center.getY() > pos.getY()) {
@@ -118,7 +118,7 @@ public class StructureStorage extends WorldGenerator {
 
 		for (Entry<BlockPos, String> entry : map.entrySet())
 			if(entry.getValue().startsWith("crate")) {
-				worldIn.setBlockState(entry.getKey(), ACBlocks.wooden_crate.getDefaultState());
+				worldIn.setBlockState(entry.getKey(), ACBlocks.getInstance().wooden_crate.getBlock().getDefaultState());
 				TileEntityCrate crate = (TileEntityCrate)worldIn.getTileEntity(entry.getKey());
 				if(crate != null) {
 					boolean chance = treasure ? false : worldIn.rand.nextInt(5) == 0;

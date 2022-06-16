@@ -29,12 +29,12 @@ public class EntityGatekeeperEssence extends EntityItem {
 	}
 
 	public EntityGatekeeperEssence(World worldIn, double x, double y, double z) {
-		super(worldIn, x, y, z, new ItemStack(ACItems.essence_of_the_gatekeeper));
+		super(worldIn, x, y, z, new ItemStack(ACItems.getInstance().essence_of_the_gatekeeper));
 		motionX = motionY = motionZ = 0;
 	}
 
 	public EntityGatekeeperEssence(World worldIn, double x, double y, double z, ItemStack stack) {
-		super(worldIn, x, y, z, new ItemStack(ACItems.essence_of_the_gatekeeper));
+		super(worldIn, x, y, z, new ItemStack(ACItems.getInstance().essence_of_the_gatekeeper));
 		motionX = motionY = motionZ = 0;
 	}
 

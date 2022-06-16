@@ -43,8 +43,8 @@ public class BlockAntiliquid extends BlockFluidClassic {
 
 	@Override
 	public boolean canDisplace(IBlockAccess world, BlockPos pos) {
-		if(world.getBlockState(pos).getBlock() == ACBlocks.liquid_coralium || world.getBlockState(pos).getMaterial() == Material.WATER &&
-				world.getBlockState(pos).getBlock() != ACBlocks.liquid_coralium && world.getBlockState(pos).getBlock() != this || world.getBlockState(pos).getMaterial() == Material.LAVA)
+		if(world.getBlockState(pos).getBlock() == ACBlocks.getInstance().liquid_coralium.getBlock() || world.getBlockState(pos).getMaterial() == Material.WATER &&
+				world.getBlockState(pos).getBlock() != ACBlocks.getInstance().liquid_coralium.getBlock() && world.getBlockState(pos).getBlock() != this || world.getBlockState(pos).getMaterial() == Material.LAVA)
 			return true;
 		return super.canDisplace(world, pos);
 	}
@@ -52,10 +52,10 @@ public class BlockAntiliquid extends BlockFluidClassic {
 	@Override
 	public boolean displaceIfPossible(World world, BlockPos pos) {
 
-		if(!world.isRemote && world.getBlockState(pos).getBlock() == ACBlocks.liquid_coralium)
-			world.setBlockState(pos, ACBlocks.coralium_stone.getDefaultState());
+		if(!world.isRemote && world.getBlockState(pos).getBlock() == ACBlocks.getInstance().liquid_coralium.getBlock())
+			world.setBlockState(pos, ACBlocks.getInstance().coralium_stone.getBlock().getDefaultState());
 
-		if(!world.isRemote && world.getBlockState(pos).getMaterial() == Material.WATER && world.getBlockState(pos).getBlock() != ACBlocks.liquid_coralium && world.getBlockState(pos).getBlock() != this)
+		if(!world.isRemote && world.getBlockState(pos).getMaterial() == Material.WATER && world.getBlockState(pos).getBlock() != ACBlocks.getInstance().liquid_coralium.getBlock() && world.getBlockState(pos).getBlock() != this)
 			world.setBlockState(pos, Blocks.PACKED_ICE.getDefaultState());
 
 		if(!world.isRemote && world.getBlockState(pos).getMaterial() == Material.LAVA)

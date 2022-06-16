@@ -14,8 +14,8 @@ package com.shinoow.abyssalcraft.common.structures.abyss.stronghold;
 import java.util.*;
 
 import com.shinoow.abyssalcraft.AbyssalCraft;
+import com.shinoow.abyssalcraft.api.block.ACBlock;
 import com.shinoow.abyssalcraft.api.block.ACBlocks;
-import com.shinoow.abyssalcraft.init.BlockHandler;
 import com.shinoow.abyssalcraft.lib.ACLoot;
 
 import net.minecraft.block.*;
@@ -292,6 +292,8 @@ public class StructureAbyStrongholdPieces
 		@Override
 		public boolean addComponentParts(World par1World, Random par2Random, StructureBoundingBox par3StructureBoundingBox)
 		{
+			ACBlocks blocks = ACBlocks.getInstance();
+			
 			if (isLiquidInStructureBoundingBox(par1World, par3StructureBoundingBox))
 				return false;
 			else
@@ -299,23 +301,23 @@ public class StructureAbyStrongholdPieces
 				fillWithRandomizedBlocks(par1World, par3StructureBoundingBox, 0, 0, 0, 4, 10, 4, true, par2Random, StructureAbyStrongholdPieces.strongholdStones);
 				placeDoor(par1World, par2Random, par3StructureBoundingBox, field_143013_d, 1, 7, 0);
 				placeDoor(par1World, par2Random, par3StructureBoundingBox, StructureAbyStrongholdPieces.Stronghold.Door.OPENING, 1, 1, 4);
-				setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 2, 6, 1, par3StructureBoundingBox);
-				setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 1, 5, 1, par3StructureBoundingBox);
-				setBlockState(par1World, ACBlocks.abyssal_stone_brick_slab.getDefaultState(), 1, 6, 1, par3StructureBoundingBox);
-				setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 1, 5, 2, par3StructureBoundingBox);
-				setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 1, 4, 3, par3StructureBoundingBox);
-				setBlockState(par1World, ACBlocks.abyssal_stone_brick_slab.getDefaultState(), 1, 5, 3, par3StructureBoundingBox);
-				setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 2, 4, 3, par3StructureBoundingBox);
-				setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 3, 3, 3, par3StructureBoundingBox);
-				setBlockState(par1World, ACBlocks.abyssal_stone_brick_slab.getDefaultState(), 3, 4, 3, par3StructureBoundingBox);
-				setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 3, 3, 2, par3StructureBoundingBox);
-				setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 3, 2, 1, par3StructureBoundingBox);
-				setBlockState(par1World, ACBlocks.abyssal_stone_brick_slab.getDefaultState(), 3, 3, 1, par3StructureBoundingBox);
-				setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 2, 2, 1, par3StructureBoundingBox);
-				setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 1, 1, 1, par3StructureBoundingBox);
-				setBlockState(par1World, ACBlocks.abyssal_stone_brick_slab.getDefaultState(), 1, 2, 1, par3StructureBoundingBox);
-				setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 1, 1, 2, par3StructureBoundingBox);
-				setBlockState(par1World, ACBlocks.abyssal_stone_brick_slab.getDefaultState(), 1, 1, 3, par3StructureBoundingBox);
+				setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 2, 6, 1, par3StructureBoundingBox);
+				setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 1, 5, 1, par3StructureBoundingBox);
+				setBlockState(par1World, blocks.abyssal_stone_brick_slab.getBlock().getDefaultState(), 1, 6, 1, par3StructureBoundingBox);
+				setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 1, 5, 2, par3StructureBoundingBox);
+				setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 1, 4, 3, par3StructureBoundingBox);
+				setBlockState(par1World, blocks.abyssal_stone_brick_slab.getBlock().getDefaultState(), 1, 5, 3, par3StructureBoundingBox);
+				setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 2, 4, 3, par3StructureBoundingBox);
+				setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 3, 3, 3, par3StructureBoundingBox);
+				setBlockState(par1World, blocks.abyssal_stone_brick_slab.getBlock().getDefaultState(), 3, 4, 3, par3StructureBoundingBox);
+				setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 3, 3, 2, par3StructureBoundingBox);
+				setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 3, 2, 1, par3StructureBoundingBox);
+				setBlockState(par1World, blocks.abyssal_stone_brick_slab.getBlock().getDefaultState(), 3, 3, 1, par3StructureBoundingBox);
+				setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 2, 2, 1, par3StructureBoundingBox);
+				setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 1, 1, 1, par3StructureBoundingBox);
+				setBlockState(par1World, blocks.abyssal_stone_brick_slab.getBlock().getDefaultState(), 1, 2, 1, par3StructureBoundingBox);
+				setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 1, 1, 2, par3StructureBoundingBox);
+				setBlockState(par1World, blocks.abyssal_stone_brick_slab.getBlock().getDefaultState(), 1, 1, 3, par3StructureBoundingBox);
 				return true;
 			}
 		}
@@ -455,6 +457,8 @@ public class StructureAbyStrongholdPieces
 		@Override
 		public boolean addComponentParts(World par1World, Random par2Random, StructureBoundingBox par3StructureBoundingBox)
 		{
+			ACBlocks blocks = ACBlocks.getInstance();
+			
 			fillWithRandomizedBlocks(par1World, par3StructureBoundingBox, 0, 0, 0, 10, 7, 15, false, par2Random, StructureAbyStrongholdPieces.strongholdStones);
 			placeDoor(par1World, par2Random, par3StructureBoundingBox, StructureAbyStrongholdPieces.Stronghold.Door.GRATES, 4, 1, 0);
 			byte b0 = 6;
@@ -464,26 +468,26 @@ public class StructureAbyStrongholdPieces
 			fillWithRandomizedBlocks(par1World, par3StructureBoundingBox, 2, b0, 14, 8, b0, 14, false, par2Random, StructureAbyStrongholdPieces.strongholdStones);
 			fillWithRandomizedBlocks(par1World, par3StructureBoundingBox, 1, 1, 1, 2, 1, 4, false, par2Random, StructureAbyStrongholdPieces.strongholdStones);
 			fillWithRandomizedBlocks(par1World, par3StructureBoundingBox, 8, 1, 1, 9, 1, 4, false, par2Random, StructureAbyStrongholdPieces.strongholdStones);
-			fillWithBlocks(par1World, par3StructureBoundingBox, 1, 1, 1, 1, 1, 3, ACBlocks.liquid_coralium.getDefaultState(), ACBlocks.liquid_coralium.getDefaultState(), false);
-			fillWithBlocks(par1World, par3StructureBoundingBox, 9, 1, 1, 9, 1, 3, ACBlocks.liquid_coralium.getDefaultState(), ACBlocks.liquid_coralium.getDefaultState(), false);
+			fillWithBlocks(par1World, par3StructureBoundingBox, 1, 1, 1, 1, 1, 3, blocks.liquid_coralium.getBlock().getDefaultState(), blocks.liquid_coralium.getBlock().getDefaultState(), false);
+			fillWithBlocks(par1World, par3StructureBoundingBox, 9, 1, 1, 9, 1, 3, blocks.liquid_coralium.getBlock().getDefaultState(), blocks.liquid_coralium.getBlock().getDefaultState(), false);
 			fillWithRandomizedBlocks(par1World, par3StructureBoundingBox, 3, 1, 8, 7, 1, 12, false, par2Random, StructureAbyStrongholdPieces.strongholdStones);
-			fillWithBlocks(par1World, par3StructureBoundingBox, 4, 1, 9, 6, 1, 11, ACBlocks.liquid_coralium.getDefaultState(), ACBlocks.liquid_coralium.getDefaultState(), false);
+			fillWithBlocks(par1World, par3StructureBoundingBox, 4, 1, 9, 6, 1, 11, blocks.liquid_coralium.getBlock().getDefaultState(), blocks.liquid_coralium.getBlock().getDefaultState(), false);
 			int i;
 
 			for (i = 3; i < 14; i += 2)
 			{
-				fillWithBlocks(par1World, par3StructureBoundingBox, 0, 3, i, 0, 4, i, ACBlocks.abyssal_stone_brick_fence.getDefaultState(), ACBlocks.abyssal_stone_brick_fence.getDefaultState(), false);
-				fillWithBlocks(par1World, par3StructureBoundingBox, 10, 3, i, 10, 4, i, ACBlocks.abyssal_stone_brick_fence.getDefaultState(), ACBlocks.abyssal_stone_brick_fence.getDefaultState(), false);
+				fillWithBlocks(par1World, par3StructureBoundingBox, 0, 3, i, 0, 4, i, blocks.abyssal_stone_brick_fence.getBlock().getDefaultState(), blocks.abyssal_stone_brick_fence.getBlock().getDefaultState(), false);
+				fillWithBlocks(par1World, par3StructureBoundingBox, 10, 3, i, 10, 4, i, blocks.abyssal_stone_brick_fence.getBlock().getDefaultState(), blocks.abyssal_stone_brick_fence.getBlock().getDefaultState(), false);
 			}
 
 			for (i = 2; i < 9; i += 2)
-				fillWithBlocks(par1World, par3StructureBoundingBox, i, 3, 15, i, 4, 15, ACBlocks.abyssal_stone_brick_fence.getDefaultState(), ACBlocks.abyssal_stone_brick_fence.getDefaultState(), false);
+				fillWithBlocks(par1World, par3StructureBoundingBox, i, 3, 15, i, 4, 15, blocks.abyssal_stone_brick_fence.getBlock().getDefaultState(), blocks.abyssal_stone_brick_fence.getBlock().getDefaultState(), false);
 
 			fillWithRandomizedBlocks(par1World, par3StructureBoundingBox, 4, 1, 5, 6, 1, 7, false, par2Random, StructureAbyStrongholdPieces.strongholdStones);
 			fillWithRandomizedBlocks(par1World, par3StructureBoundingBox, 4, 2, 6, 6, 2, 7, false, par2Random, StructureAbyStrongholdPieces.strongholdStones);
 			fillWithRandomizedBlocks(par1World, par3StructureBoundingBox, 4, 3, 7, 6, 3, 7, false, par2Random, StructureAbyStrongholdPieces.strongholdStones);
 
-			IBlockState iblockstate3 = ACBlocks.abyssal_stone_brick_stairs.getDefaultState().withProperty(BlockStairs.FACING, EnumFacing.NORTH);
+			IBlockState iblockstate3 = blocks.abyssal_stone_brick_stairs.getBlock().getDefaultState().withProperty(BlockStairs.FACING, EnumFacing.NORTH);
 			for (int j = 4; j <= 6; ++j)
 			{
 				setBlockState(par1World, iblockstate3, j, 1, 4, par3StructureBoundingBox);
@@ -491,52 +495,52 @@ public class StructureAbyStrongholdPieces
 				setBlockState(par1World, iblockstate3, j, 3, 6, par3StructureBoundingBox);
 			}
 
-			setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 4, 3, 8, par3StructureBoundingBox);
-			setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 5, 3, 8, par3StructureBoundingBox);
-			setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 6, 3, 8, par3StructureBoundingBox);
+			setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 4, 3, 8, par3StructureBoundingBox);
+			setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 5, 3, 8, par3StructureBoundingBox);
+			setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 6, 3, 8, par3StructureBoundingBox);
 
-			setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 4, 3, 12, par3StructureBoundingBox);
-			setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 5, 3, 12, par3StructureBoundingBox);
-			setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 6, 3, 12, par3StructureBoundingBox);
-			setBlockState(par1World, ACBlocks.abyssal_stone_brick_fence.getDefaultState(), 4, 4, 12, par3StructureBoundingBox);
-			setBlockState(par1World, ACBlocks.abyssal_stone_brick_fence.getDefaultState(), 5, 4, 12, par3StructureBoundingBox);
-			setBlockState(par1World, ACBlocks.abyssal_stone_brick_fence.getDefaultState(), 6, 4, 12, par3StructureBoundingBox);
+			setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 4, 3, 12, par3StructureBoundingBox);
+			setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 5, 3, 12, par3StructureBoundingBox);
+			setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 6, 3, 12, par3StructureBoundingBox);
+			setBlockState(par1World, blocks.abyssal_stone_brick_fence.getBlock().getDefaultState(), 4, 4, 12, par3StructureBoundingBox);
+			setBlockState(par1World, blocks.abyssal_stone_brick_fence.getBlock().getDefaultState(), 5, 4, 12, par3StructureBoundingBox);
+			setBlockState(par1World, blocks.abyssal_stone_brick_fence.getBlock().getDefaultState(), 6, 4, 12, par3StructureBoundingBox);
 
 
-			setBlockState(par1World, ACBlocks.dreadlands_infused_powerstone.getDefaultState(), 5, 4, 10, par3StructureBoundingBox);
+			setBlockState(par1World, blocks.dreadlands_infused_powerstone.getBlock().getDefaultState(), 5, 4, 10, par3StructureBoundingBox);
 
-			setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 5, 3, 10, par3StructureBoundingBox);
-			setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 4, 3, 10, par3StructureBoundingBox);
-			setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 6, 3, 10, par3StructureBoundingBox);
-			setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 5, 3, 9, par3StructureBoundingBox);
-			setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 4, 3, 9, par3StructureBoundingBox);
-			setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 6, 3, 9, par3StructureBoundingBox);
-			setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 5, 3, 11, par3StructureBoundingBox);
-			setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 4, 3, 11, par3StructureBoundingBox);
-			setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 6, 3, 11, par3StructureBoundingBox);
+			setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 5, 3, 10, par3StructureBoundingBox);
+			setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 4, 3, 10, par3StructureBoundingBox);
+			setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 6, 3, 10, par3StructureBoundingBox);
+			setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 5, 3, 9, par3StructureBoundingBox);
+			setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 4, 3, 9, par3StructureBoundingBox);
+			setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 6, 3, 9, par3StructureBoundingBox);
+			setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 5, 3, 11, par3StructureBoundingBox);
+			setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 4, 3, 11, par3StructureBoundingBox);
+			setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 6, 3, 11, par3StructureBoundingBox);
 
-			setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 3, 3, 9, par3StructureBoundingBox);
-			setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 3, 3, 10, par3StructureBoundingBox);
-			setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 3, 3, 11, par3StructureBoundingBox);
-			setBlockState(par1World, ACBlocks.abyssal_stone_brick_fence.getDefaultState(), 3, 4, 9, par3StructureBoundingBox);
-			setBlockState(par1World, ACBlocks.abyssal_stone_brick_fence.getDefaultState(), 3, 4, 10, par3StructureBoundingBox);
-			setBlockState(par1World, ACBlocks.abyssal_stone_brick_fence.getDefaultState(), 3, 4, 11, par3StructureBoundingBox);
+			setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 3, 3, 9, par3StructureBoundingBox);
+			setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 3, 3, 10, par3StructureBoundingBox);
+			setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 3, 3, 11, par3StructureBoundingBox);
+			setBlockState(par1World, blocks.abyssal_stone_brick_fence.getBlock().getDefaultState(), 3, 4, 9, par3StructureBoundingBox);
+			setBlockState(par1World, blocks.abyssal_stone_brick_fence.getBlock().getDefaultState(), 3, 4, 10, par3StructureBoundingBox);
+			setBlockState(par1World, blocks.abyssal_stone_brick_fence.getBlock().getDefaultState(), 3, 4, 11, par3StructureBoundingBox);
 
-			setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 7, 3, 9, par3StructureBoundingBox);
-			setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 7, 3, 10, par3StructureBoundingBox);
-			setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 7, 3, 11, par3StructureBoundingBox);
-			setBlockState(par1World, ACBlocks.abyssal_stone_brick_fence.getDefaultState(), 7, 4, 9, par3StructureBoundingBox);
-			setBlockState(par1World, ACBlocks.abyssal_stone_brick_fence.getDefaultState(), 7, 4, 10, par3StructureBoundingBox);
-			setBlockState(par1World, ACBlocks.abyssal_stone_brick_fence.getDefaultState(), 7, 4, 11, par3StructureBoundingBox);
+			setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 7, 3, 9, par3StructureBoundingBox);
+			setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 7, 3, 10, par3StructureBoundingBox);
+			setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 7, 3, 11, par3StructureBoundingBox);
+			setBlockState(par1World, blocks.abyssal_stone_brick_fence.getBlock().getDefaultState(), 7, 4, 9, par3StructureBoundingBox);
+			setBlockState(par1World, blocks.abyssal_stone_brick_fence.getBlock().getDefaultState(), 7, 4, 10, par3StructureBoundingBox);
+			setBlockState(par1World, blocks.abyssal_stone_brick_fence.getBlock().getDefaultState(), 7, 4, 11, par3StructureBoundingBox);
 
-			setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 7, 3, 12, par3StructureBoundingBox);
-			setBlockState(par1World, ACBlocks.abyssal_stone_brick_fence.getDefaultState(), 7, 4, 12, par3StructureBoundingBox);
-			setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 3, 3, 12, par3StructureBoundingBox);
-			setBlockState(par1World, ACBlocks.abyssal_stone_brick_fence.getDefaultState(), 3, 4, 12, par3StructureBoundingBox);
-			setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 7, 3, 8, par3StructureBoundingBox);
-			setBlockState(par1World, ACBlocks.abyssal_stone_brick_fence.getDefaultState(), 7, 4, 8, par3StructureBoundingBox);
-			setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 3, 3, 8, par3StructureBoundingBox);
-			setBlockState(par1World, ACBlocks.abyssal_stone_brick_fence.getDefaultState(), 3, 4, 8, par3StructureBoundingBox);
+			setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 7, 3, 12, par3StructureBoundingBox);
+			setBlockState(par1World, blocks.abyssal_stone_brick_fence.getBlock().getDefaultState(), 7, 4, 12, par3StructureBoundingBox);
+			setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 3, 3, 12, par3StructureBoundingBox);
+			setBlockState(par1World, blocks.abyssal_stone_brick_fence.getBlock().getDefaultState(), 3, 4, 12, par3StructureBoundingBox);
+			setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 7, 3, 8, par3StructureBoundingBox);
+			setBlockState(par1World, blocks.abyssal_stone_brick_fence.getBlock().getDefaultState(), 7, 4, 8, par3StructureBoundingBox);
+			setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 3, 3, 8, par3StructureBoundingBox);
+			setBlockState(par1World, blocks.abyssal_stone_brick_fence.getBlock().getDefaultState(), 3, 4, 8, par3StructureBoundingBox);
 
 			if (!hasSpawner)
 			{
@@ -611,6 +615,8 @@ public class StructureAbyStrongholdPieces
 		@Override
 		public boolean addComponentParts(World par1World, Random par2Random, StructureBoundingBox par3StructureBoundingBox)
 		{
+			ACBlocks blocks = ACBlocks.getInstance();
+			
 			if (isLiquidInStructureBoundingBox(par1World, par3StructureBoundingBox))
 				return false;
 			else
@@ -618,16 +624,16 @@ public class StructureAbyStrongholdPieces
 				fillWithRandomizedBlocks(par1World, par3StructureBoundingBox, 0, 0, 0, 4, 4, 6, true, par2Random, StructureAbyStrongholdPieces.strongholdStones);
 				placeDoor(par1World, par2Random, par3StructureBoundingBox, field_143013_d, 1, 1, 0);
 				placeDoor(par1World, par2Random, par3StructureBoundingBox, StructureAbyStrongholdPieces.Stronghold.Door.OPENING, 1, 1, 6);
-				fillWithBlocks(par1World, par3StructureBoundingBox, 3, 1, 2, 3, 1, 4, ACBlocks.abyssal_stone_brick.getDefaultState(), ACBlocks.abyssal_stone_brick.getDefaultState(), false);
-				setBlockState(par1World, ACBlocks.abyssal_stone_brick_slab.getDefaultState(), 3, 1, 1, par3StructureBoundingBox);
-				setBlockState(par1World, ACBlocks.abyssal_stone_brick_slab.getDefaultState(), 3, 1, 5, par3StructureBoundingBox);
-				setBlockState(par1World, ACBlocks.abyssal_stone_brick_slab.getDefaultState(), 3, 2, 2, par3StructureBoundingBox);
-				setBlockState(par1World, ACBlocks.abyssal_stone_brick_slab.getDefaultState(), 3, 2, 4, par3StructureBoundingBox);
+				fillWithBlocks(par1World, par3StructureBoundingBox, 3, 1, 2, 3, 1, 4, blocks.abyssal_stone_brick.getBlock().getDefaultState(), blocks.abyssal_stone_brick.getBlock().getDefaultState(), false);
+				setBlockState(par1World, blocks.abyssal_stone_brick_slab.getBlock().getDefaultState(), 3, 1, 1, par3StructureBoundingBox);
+				setBlockState(par1World, blocks.abyssal_stone_brick_slab.getBlock().getDefaultState(), 3, 1, 5, par3StructureBoundingBox);
+				setBlockState(par1World, blocks.abyssal_stone_brick_slab.getBlock().getDefaultState(), 3, 2, 2, par3StructureBoundingBox);
+				setBlockState(par1World, blocks.abyssal_stone_brick_slab.getBlock().getDefaultState(), 3, 2, 4, par3StructureBoundingBox);
 
 				int i;
 
 				for (i = 2; i <= 4; ++i)
-					setBlockState(par1World, ACBlocks.abyssal_stone_brick_slab.getDefaultState(), 2, 1, i, par3StructureBoundingBox);
+					setBlockState(par1World, blocks.abyssal_stone_brick_slab.getBlock().getDefaultState(), 2, 1, i, par3StructureBoundingBox);
 
 				if (!hasMadeChest && par3StructureBoundingBox.isVecInside(new BlockPos(getXWithOffset(3, 3), getYWithOffset(2), getZWithOffset(3, 3)))){
 					hasMadeChest = true;
@@ -694,6 +700,8 @@ public class StructureAbyStrongholdPieces
 		@Override
 		public boolean addComponentParts(World par1World, Random par2Random, StructureBoundingBox par3StructureBoundingBox)
 		{
+			ACBlocks blocks = ACBlocks.getInstance();
+			
 			if (isLiquidInStructureBoundingBox(par1World, par3StructureBoundingBox))
 				return false;
 			else
@@ -708,82 +716,82 @@ public class StructureAbyStrongholdPieces
 				switch (roomType)
 				{
 				case 0:
-					setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 5, 1, 5, par3StructureBoundingBox);
-					setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 5, 2, 5, par3StructureBoundingBox);
-					setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 5, 3, 5, par3StructureBoundingBox);
+					setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 5, 1, 5, par3StructureBoundingBox);
+					setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 5, 2, 5, par3StructureBoundingBox);
+					setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 5, 3, 5, par3StructureBoundingBox);
 					setBlockState(par1World, Blocks.TORCH.getDefaultState().withProperty(BlockTorch.FACING, EnumFacing.WEST), 4, 3, 5, par3StructureBoundingBox);
 					setBlockState(par1World, Blocks.TORCH.getDefaultState().withProperty(BlockTorch.FACING, EnumFacing.EAST), 6, 3, 5, par3StructureBoundingBox);
 					setBlockState(par1World, Blocks.TORCH.getDefaultState().withProperty(BlockTorch.FACING, EnumFacing.SOUTH), 5, 3, 4, par3StructureBoundingBox);
 					setBlockState(par1World, Blocks.TORCH.getDefaultState().withProperty(BlockTorch.FACING, EnumFacing.NORTH), 5, 3, 6, par3StructureBoundingBox);
-					setBlockState(par1World, ACBlocks.abyssal_stone_brick_slab.getDefaultState(), 4, 1, 4, par3StructureBoundingBox);
-					setBlockState(par1World, ACBlocks.abyssal_stone_brick_slab.getDefaultState(), 4, 1, 5, par3StructureBoundingBox);
-					setBlockState(par1World, ACBlocks.abyssal_stone_brick_slab.getDefaultState(), 4, 1, 6, par3StructureBoundingBox);
-					setBlockState(par1World, ACBlocks.abyssal_stone_brick_slab.getDefaultState(), 6, 1, 4, par3StructureBoundingBox);
-					setBlockState(par1World, ACBlocks.abyssal_stone_brick_slab.getDefaultState(), 6, 1, 5, par3StructureBoundingBox);
-					setBlockState(par1World, ACBlocks.abyssal_stone_brick_slab.getDefaultState(), 6, 1, 6, par3StructureBoundingBox);
-					setBlockState(par1World, ACBlocks.abyssal_stone_brick_slab.getDefaultState(), 5, 1, 4, par3StructureBoundingBox);
-					setBlockState(par1World, ACBlocks.abyssal_stone_brick_slab.getDefaultState(), 5, 1, 6, par3StructureBoundingBox);
+					setBlockState(par1World, blocks.abyssal_stone_brick_slab.getBlock().getDefaultState(), 4, 1, 4, par3StructureBoundingBox);
+					setBlockState(par1World, blocks.abyssal_stone_brick_slab.getBlock().getDefaultState(), 4, 1, 5, par3StructureBoundingBox);
+					setBlockState(par1World, blocks.abyssal_stone_brick_slab.getBlock().getDefaultState(), 4, 1, 6, par3StructureBoundingBox);
+					setBlockState(par1World, blocks.abyssal_stone_brick_slab.getBlock().getDefaultState(), 6, 1, 4, par3StructureBoundingBox);
+					setBlockState(par1World, blocks.abyssal_stone_brick_slab.getBlock().getDefaultState(), 6, 1, 5, par3StructureBoundingBox);
+					setBlockState(par1World, blocks.abyssal_stone_brick_slab.getBlock().getDefaultState(), 6, 1, 6, par3StructureBoundingBox);
+					setBlockState(par1World, blocks.abyssal_stone_brick_slab.getBlock().getDefaultState(), 5, 1, 4, par3StructureBoundingBox);
+					setBlockState(par1World, blocks.abyssal_stone_brick_slab.getBlock().getDefaultState(), 5, 1, 6, par3StructureBoundingBox);
 					break;
 				case 1:
 					for (i = 0; i < 5; ++i)
 					{
-						setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 3, 1, 3 + i, par3StructureBoundingBox);
-						setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 7, 1, 3 + i, par3StructureBoundingBox);
-						setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 3 + i, 1, 3, par3StructureBoundingBox);
-						setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 3 + i, 1, 7, par3StructureBoundingBox);
+						setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 3, 1, 3 + i, par3StructureBoundingBox);
+						setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 7, 1, 3 + i, par3StructureBoundingBox);
+						setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 3 + i, 1, 3, par3StructureBoundingBox);
+						setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 3 + i, 1, 7, par3StructureBoundingBox);
 					}
 
-					setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 5, 1, 5, par3StructureBoundingBox);
-					setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 5, 2, 5, par3StructureBoundingBox);
-					setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 5, 3, 5, par3StructureBoundingBox);
+					setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 5, 1, 5, par3StructureBoundingBox);
+					setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 5, 2, 5, par3StructureBoundingBox);
+					setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 5, 3, 5, par3StructureBoundingBox);
 					setBlockState(par1World, Blocks.FLOWING_WATER.getDefaultState(), 5, 4, 5, par3StructureBoundingBox);
 					break;
 				case 2:
 					for (i = 1; i <= 9; ++i)
 					{
-						setBlockState(par1World, ACBlocks.abyssal_stone.getDefaultState(), 1, 3, i, par3StructureBoundingBox);
-						setBlockState(par1World, ACBlocks.abyssal_stone.getDefaultState(), 9, 3, i, par3StructureBoundingBox);
+						setBlockState(par1World, blocks.abyssal_stone.getBlock().getDefaultState(), 1, 3, i, par3StructureBoundingBox);
+						setBlockState(par1World, blocks.abyssal_stone.getBlock().getDefaultState(), 9, 3, i, par3StructureBoundingBox);
 					}
 
 					for (i = 1; i <= 9; ++i)
 					{
-						setBlockState(par1World, ACBlocks.abyssal_stone.getDefaultState(), i, 3, 1, par3StructureBoundingBox);
-						setBlockState(par1World, ACBlocks.abyssal_stone.getDefaultState(), i, 3, 9, par3StructureBoundingBox);
+						setBlockState(par1World, blocks.abyssal_stone.getBlock().getDefaultState(), i, 3, 1, par3StructureBoundingBox);
+						setBlockState(par1World, blocks.abyssal_stone.getBlock().getDefaultState(), i, 3, 9, par3StructureBoundingBox);
 					}
 
-					setBlockState(par1World, ACBlocks.abyssal_stone.getDefaultState(), 5, 1, 4, par3StructureBoundingBox);
-					setBlockState(par1World, ACBlocks.abyssal_stone.getDefaultState(), 5, 1, 6, par3StructureBoundingBox);
-					setBlockState(par1World, ACBlocks.abyssal_stone.getDefaultState(), 5, 3, 4, par3StructureBoundingBox);
-					setBlockState(par1World, ACBlocks.abyssal_stone.getDefaultState(), 5, 3, 6, par3StructureBoundingBox);
-					setBlockState(par1World, ACBlocks.abyssal_stone.getDefaultState(), 4, 1, 5, par3StructureBoundingBox);
-					setBlockState(par1World, ACBlocks.abyssal_stone.getDefaultState(), 6, 1, 5, par3StructureBoundingBox);
-					setBlockState(par1World, ACBlocks.abyssal_stone.getDefaultState(), 4, 3, 5, par3StructureBoundingBox);
-					setBlockState(par1World, ACBlocks.abyssal_stone.getDefaultState(), 6, 3, 5, par3StructureBoundingBox);
+					setBlockState(par1World, blocks.abyssal_stone.getBlock().getDefaultState(), 5, 1, 4, par3StructureBoundingBox);
+					setBlockState(par1World, blocks.abyssal_stone.getBlock().getDefaultState(), 5, 1, 6, par3StructureBoundingBox);
+					setBlockState(par1World, blocks.abyssal_stone.getBlock().getDefaultState(), 5, 3, 4, par3StructureBoundingBox);
+					setBlockState(par1World, blocks.abyssal_stone.getBlock().getDefaultState(), 5, 3, 6, par3StructureBoundingBox);
+					setBlockState(par1World, blocks.abyssal_stone.getBlock().getDefaultState(), 4, 1, 5, par3StructureBoundingBox);
+					setBlockState(par1World, blocks.abyssal_stone.getBlock().getDefaultState(), 6, 1, 5, par3StructureBoundingBox);
+					setBlockState(par1World, blocks.abyssal_stone.getBlock().getDefaultState(), 4, 3, 5, par3StructureBoundingBox);
+					setBlockState(par1World, blocks.abyssal_stone.getBlock().getDefaultState(), 6, 3, 5, par3StructureBoundingBox);
 
 					for (i = 1; i <= 3; ++i)
 					{
-						setBlockState(par1World, ACBlocks.abyssal_stone.getDefaultState(), 4, i, 4, par3StructureBoundingBox);
-						setBlockState(par1World, ACBlocks.abyssal_stone.getDefaultState(), 6, i, 4, par3StructureBoundingBox);
-						setBlockState(par1World, ACBlocks.abyssal_stone.getDefaultState(), 4, i, 6, par3StructureBoundingBox);
-						setBlockState(par1World, ACBlocks.abyssal_stone.getDefaultState(), 6, i, 6, par3StructureBoundingBox);
+						setBlockState(par1World, blocks.abyssal_stone.getBlock().getDefaultState(), 4, i, 4, par3StructureBoundingBox);
+						setBlockState(par1World, blocks.abyssal_stone.getBlock().getDefaultState(), 6, i, 4, par3StructureBoundingBox);
+						setBlockState(par1World, blocks.abyssal_stone.getBlock().getDefaultState(), 4, i, 6, par3StructureBoundingBox);
+						setBlockState(par1World, blocks.abyssal_stone.getBlock().getDefaultState(), 6, i, 6, par3StructureBoundingBox);
 					}
 
 					setBlockState(par1World, Blocks.TORCH.getDefaultState(), 5, 3, 5, par3StructureBoundingBox);
 
 					for (i = 2; i <= 8; ++i)
 					{
-						setBlockState(par1World, ACBlocks.darklands_oak_planks.getDefaultState(), 2, 3, i, par3StructureBoundingBox);
-						setBlockState(par1World, ACBlocks.darklands_oak_planks.getDefaultState(), 3, 3, i, par3StructureBoundingBox);
+						setBlockState(par1World, blocks.darklands_oak_planks.getBlock().getDefaultState(), 2, 3, i, par3StructureBoundingBox);
+						setBlockState(par1World, blocks.darklands_oak_planks.getBlock().getDefaultState(), 3, 3, i, par3StructureBoundingBox);
 
 						if (i <= 3 || i >= 7)
 						{
-							setBlockState(par1World, ACBlocks.darklands_oak_planks.getDefaultState(), 4, 3, i, par3StructureBoundingBox);
-							setBlockState(par1World, ACBlocks.darklands_oak_planks.getDefaultState(), 5, 3, i, par3StructureBoundingBox);
-							setBlockState(par1World, ACBlocks.darklands_oak_planks.getDefaultState(), 6, 3, i, par3StructureBoundingBox);
+							setBlockState(par1World, blocks.darklands_oak_planks.getBlock().getDefaultState(), 4, 3, i, par3StructureBoundingBox);
+							setBlockState(par1World, blocks.darklands_oak_planks.getBlock().getDefaultState(), 5, 3, i, par3StructureBoundingBox);
+							setBlockState(par1World, blocks.darklands_oak_planks.getBlock().getDefaultState(), 6, 3, i, par3StructureBoundingBox);
 						}
 
-						setBlockState(par1World, ACBlocks.darklands_oak_planks.getDefaultState(), 7, 3, i, par3StructureBoundingBox);
-						setBlockState(par1World, ACBlocks.darklands_oak_planks.getDefaultState(), 8, 3, i, par3StructureBoundingBox);
+						setBlockState(par1World, blocks.darklands_oak_planks.getBlock().getDefaultState(), 7, 3, i, par3StructureBoundingBox);
+						setBlockState(par1World, blocks.darklands_oak_planks.getBlock().getDefaultState(), 8, 3, i, par3StructureBoundingBox);
 					}
 
 					IBlockState iblockstate = Blocks.LADDER.getDefaultState().withProperty(BlockLadder.FACING, EnumFacing.WEST);
@@ -835,6 +843,8 @@ public class StructureAbyStrongholdPieces
 		@Override
 		public boolean addComponentParts(World par1World, Random par2Random, StructureBoundingBox par3StructureBoundingBox)
 		{
+			ACBlocks blocks = ACBlocks.getInstance();
+
 			if (isLiquidInStructureBoundingBox(par1World, par3StructureBoundingBox))
 				return false;
 			else
@@ -846,16 +856,16 @@ public class StructureAbyStrongholdPieces
 
 				for (int j = 0; j < 6; ++j)
 				{
-					IBlockState iblockstate = ACBlocks.abyssal_cobblestone_stairs.getDefaultState().withProperty(BlockStairs.FACING, EnumFacing.SOUTH);
+					IBlockState iblockstate = blocks.abyssal_cobblestone_stairs.getBlock().getDefaultState().withProperty(BlockStairs.FACING, EnumFacing.SOUTH);
 					setBlockState(par1World, iblockstate, 1, 6 - j, 1 + j, par3StructureBoundingBox);
 					setBlockState(par1World, iblockstate, 2, 6 - j, 1 + j, par3StructureBoundingBox);
 					setBlockState(par1World, iblockstate, 3, 6 - j, 1 + j, par3StructureBoundingBox);
 
 					if (j < 5)
 					{
-						setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 1, 5 - j, 1 + j, par3StructureBoundingBox);
-						setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 2, 5 - j, 1 + j, par3StructureBoundingBox);
-						setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 3, 5 - j, 1 + j, par3StructureBoundingBox);
+						setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 1, 5 - j, 1 + j, par3StructureBoundingBox);
+						setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 2, 5 - j, 1 + j, par3StructureBoundingBox);
+						setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 3, 5 - j, 1 + j, par3StructureBoundingBox);
 					}
 				}
 
@@ -920,6 +930,8 @@ public class StructureAbyStrongholdPieces
 		@Override
 		public boolean addComponentParts(World par1World, Random par2Random, StructureBoundingBox par3StructureBoundingBox)
 		{
+			ACBlocks blocks = ACBlocks.getInstance();
+
 			if (isLiquidInStructureBoundingBox(par1World, par3StructureBoundingBox))
 				return false;
 			else
@@ -931,10 +943,10 @@ public class StructureAbyStrongholdPieces
 				fillWithRandomizedBlocks(par1World, par3StructureBoundingBox, 4, 1, 3, 4, 3, 3, false, par2Random, StructureAbyStrongholdPieces.strongholdStones);
 				fillWithRandomizedBlocks(par1World, par3StructureBoundingBox, 4, 1, 7, 4, 3, 7, false, par2Random, StructureAbyStrongholdPieces.strongholdStones);
 				fillWithRandomizedBlocks(par1World, par3StructureBoundingBox, 4, 1, 9, 4, 3, 9, false, par2Random, StructureAbyStrongholdPieces.strongholdStones);
-				fillWithBlocks(par1World, par3StructureBoundingBox, 4, 1, 4, 4, 3, 6, ACBlocks.abyssal_stone_brick_fence.getDefaultState(), ACBlocks.abyssal_stone_brick_fence.getDefaultState(), false);
-				fillWithBlocks(par1World, par3StructureBoundingBox, 5, 1, 5, 7, 3, 5, ACBlocks.abyssal_stone_brick_fence.getDefaultState(), ACBlocks.abyssal_stone_brick_fence.getDefaultState(), false);
-				setBlockState(par1World, ACBlocks.abyssal_stone_brick_fence.getDefaultState(), 4, 3, 2, par3StructureBoundingBox);
-				setBlockState(par1World, ACBlocks.abyssal_stone_brick_fence.getDefaultState(), 4, 3, 8, par3StructureBoundingBox);
+				fillWithBlocks(par1World, par3StructureBoundingBox, 4, 1, 4, 4, 3, 6, blocks.abyssal_stone_brick_fence.getBlock().getDefaultState(), blocks.abyssal_stone_brick_fence.getBlock().getDefaultState(), false);
+				fillWithBlocks(par1World, par3StructureBoundingBox, 5, 1, 5, 7, 3, 5, blocks.abyssal_stone_brick_fence.getBlock().getDefaultState(), blocks.abyssal_stone_brick_fence.getBlock().getDefaultState(), false);
+				setBlockState(par1World, blocks.abyssal_stone_brick_fence.getBlock().getDefaultState(), 4, 3, 2, par3StructureBoundingBox);
+				setBlockState(par1World, blocks.abyssal_stone_brick_fence.getBlock().getDefaultState(), 4, 3, 8, par3StructureBoundingBox);
 				IBlockState iblockstate = Blocks.IRON_DOOR.getDefaultState().withProperty(BlockDoor.FACING, EnumFacing.WEST);
 				IBlockState iblockstate1 = Blocks.IRON_DOOR.getDefaultState().withProperty(BlockDoor.FACING, EnumFacing.WEST).withProperty(BlockDoor.HALF, BlockDoor.EnumDoorHalf.UPPER);
 				setBlockState(par1World, iblockstate, 4, 1, 2, par3StructureBoundingBox);
@@ -1051,13 +1063,15 @@ public class StructureAbyStrongholdPieces
 		@Override
 		public void selectBlocks(Random par1Random, int par2, int par3, int par4, boolean par5)
 		{
+			ACBlocks blocks = ACBlocks.getInstance();
+
 			if (par5){
 
 				float f = par1Random.nextFloat();
 
 				if(f < 0.2F)
-					blockstate = ACBlocks.cracked_abyssal_stone_brick.getDefaultState();
-				else blockstate = ACBlocks.abyssal_stone_brick.getDefaultState();
+					blockstate = blocks.cracked_abyssal_stone_brick.getBlock().getDefaultState();
+				else blockstate = blocks.abyssal_stone_brick.getBlock().getDefaultState();
 			} else blockstate = Blocks.AIR.getDefaultState();
 		}
 
@@ -1099,6 +1113,8 @@ public class StructureAbyStrongholdPieces
 		@SuppressWarnings("deprecation")
 		protected void placeDoor(World par1World, Random par2Random, StructureBoundingBox par3StructureBoundingBox, StructureAbyStrongholdPieces.Stronghold.Door par4EnumDoor, int par5, int par6, int par7)
 		{
+			ACBlocks blocks = ACBlocks.getInstance();
+			
 			switch (StructureAbyStrongholdPieces.SwitchDoor.doorEnum[par4EnumDoor.ordinal()])
 			{
 			case 1:
@@ -1106,39 +1122,39 @@ public class StructureAbyStrongholdPieces
 				fillWithBlocks(par1World, par3StructureBoundingBox, par5, par6, par7, par5 + 3 - 1, par6 + 3 - 1, par7, Blocks.AIR.getDefaultState(), Blocks.AIR.getDefaultState(), false);
 				break;
 			case 2:
-				setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), par5, par6, par7, par3StructureBoundingBox);
-				setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), par5, par6 + 1, par7, par3StructureBoundingBox);
-				setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), par5, par6 + 2, par7, par3StructureBoundingBox);
-				setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), par5 + 1, par6 + 2, par7, par3StructureBoundingBox);
-				setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), par5 + 2, par6 + 2, par7, par3StructureBoundingBox);
-				setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), par5 + 2, par6 + 1, par7, par3StructureBoundingBox);
-				setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), par5 + 2, par6, par7, par3StructureBoundingBox);
-				setBlockState(par1World, ACBlocks.darklands_oak_door.getDefaultState(), par5 + 1, par6, par7, par3StructureBoundingBox);
-				setBlockState(par1World, ACBlocks.darklands_oak_door.getStateFromMeta(8), par5 + 1, par6 + 1, par7, par3StructureBoundingBox);
+				setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), par5, par6, par7, par3StructureBoundingBox);
+				setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), par5, par6 + 1, par7, par3StructureBoundingBox);
+				setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), par5, par6 + 2, par7, par3StructureBoundingBox);
+				setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), par5 + 1, par6 + 2, par7, par3StructureBoundingBox);
+				setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), par5 + 2, par6 + 2, par7, par3StructureBoundingBox);
+				setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), par5 + 2, par6 + 1, par7, par3StructureBoundingBox);
+				setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), par5 + 2, par6, par7, par3StructureBoundingBox);
+				setBlockState(par1World, blocks.darklands_oak_door.getBlock().getDefaultState(), par5 + 1, par6, par7, par3StructureBoundingBox);
+				setBlockState(par1World, blocks.darklands_oak_door.getBlock().getStateFromMeta(8), par5 + 1, par6 + 1, par7, par3StructureBoundingBox);
 				break;
 			case 3:
 				setBlockState(par1World, Blocks.AIR.getDefaultState(), par5 + 1, par6, par7, par3StructureBoundingBox);
 				setBlockState(par1World, Blocks.AIR.getDefaultState(), par5 + 1, par6 + 1, par7, par3StructureBoundingBox);
-				setBlockState(par1World, ACBlocks.abyssal_stone_brick_fence.getDefaultState(), par5, par6, par7, par3StructureBoundingBox);
-				setBlockState(par1World, ACBlocks.abyssal_stone_brick_fence.getDefaultState(), par5, par6 + 1, par7, par3StructureBoundingBox);
-				setBlockState(par1World, ACBlocks.abyssal_stone_brick_fence.getDefaultState(), par5, par6 + 2, par7, par3StructureBoundingBox);
-				setBlockState(par1World, ACBlocks.abyssal_stone_brick_fence.getDefaultState(), par5 + 1, par6 + 2, par7, par3StructureBoundingBox);
-				setBlockState(par1World, ACBlocks.abyssal_stone_brick_fence.getDefaultState(), par5 + 2, par6 + 2, par7, par3StructureBoundingBox);
-				setBlockState(par1World, ACBlocks.abyssal_stone_brick_fence.getDefaultState(), par5 + 2, par6 + 1, par7, par3StructureBoundingBox);
-				setBlockState(par1World, ACBlocks.abyssal_stone_brick_fence.getDefaultState(), par5 + 2, par6, par7, par3StructureBoundingBox);
+				setBlockState(par1World, blocks.abyssal_stone_brick_fence.getBlock().getDefaultState(), par5, par6, par7, par3StructureBoundingBox);
+				setBlockState(par1World, blocks.abyssal_stone_brick_fence.getBlock().getDefaultState(), par5, par6 + 1, par7, par3StructureBoundingBox);
+				setBlockState(par1World, blocks.abyssal_stone_brick_fence.getBlock().getDefaultState(), par5, par6 + 2, par7, par3StructureBoundingBox);
+				setBlockState(par1World, blocks.abyssal_stone_brick_fence.getBlock().getDefaultState(), par5 + 1, par6 + 2, par7, par3StructureBoundingBox);
+				setBlockState(par1World, blocks.abyssal_stone_brick_fence.getBlock().getDefaultState(), par5 + 2, par6 + 2, par7, par3StructureBoundingBox);
+				setBlockState(par1World, blocks.abyssal_stone_brick_fence.getBlock().getDefaultState(), par5 + 2, par6 + 1, par7, par3StructureBoundingBox);
+				setBlockState(par1World, blocks.abyssal_stone_brick_fence.getBlock().getDefaultState(), par5 + 2, par6, par7, par3StructureBoundingBox);
 				break;
 			case 4:
-				setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), par5, par6, par7, par3StructureBoundingBox);
-				setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), par5, par6 + 1, par7, par3StructureBoundingBox);
-				setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), par5, par6 + 2, par7, par3StructureBoundingBox);
-				setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), par5 + 1, par6 + 2, par7, par3StructureBoundingBox);
-				setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), par5 + 2, par6 + 2, par7, par3StructureBoundingBox);
-				setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), par5 + 2, par6 + 1, par7, par3StructureBoundingBox);
-				setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), par5 + 2, par6, par7, par3StructureBoundingBox);
+				setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), par5, par6, par7, par3StructureBoundingBox);
+				setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), par5, par6 + 1, par7, par3StructureBoundingBox);
+				setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), par5, par6 + 2, par7, par3StructureBoundingBox);
+				setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), par5 + 1, par6 + 2, par7, par3StructureBoundingBox);
+				setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), par5 + 2, par6 + 2, par7, par3StructureBoundingBox);
+				setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), par5 + 2, par6 + 1, par7, par3StructureBoundingBox);
+				setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), par5 + 2, par6, par7, par3StructureBoundingBox);
 				setBlockState(par1World, Blocks.IRON_DOOR.getDefaultState(), par5 + 1, par6, par7, par3StructureBoundingBox);
 				setBlockState(par1World, Blocks.IRON_DOOR.getDefaultState().withProperty(BlockDoor.HALF, BlockDoor.EnumDoorHalf.UPPER), par5 + 1, par6 + 1, par7, par3StructureBoundingBox);
-				setBlockState(par1World, ACBlocks.abyssal_stone_button.getDefaultState().withProperty(BlockDirectional.FACING, EnumFacing.NORTH), par5 + 2, par6 + 1, par7 + 1, par3StructureBoundingBox);
-				setBlockState(par1World, ACBlocks.abyssal_stone_button.getDefaultState().withProperty(BlockDirectional.FACING, EnumFacing.SOUTH), par5 + 2, par6 + 1, par7 - 1, par3StructureBoundingBox);
+				setBlockState(par1World, blocks.abyssal_stone_button.getBlock().getDefaultState().withProperty(BlockDirectional.FACING, EnumFacing.NORTH), par5 + 2, par6 + 1, par7 + 1, par3StructureBoundingBox);
+				setBlockState(par1World, blocks.abyssal_stone_button.getBlock().getDefaultState().withProperty(BlockDirectional.FACING, EnumFacing.SOUTH), par5 + 2, par6 + 1, par7 - 1, par3StructureBoundingBox);
 			}
 
 		}
@@ -1325,6 +1341,8 @@ public class StructureAbyStrongholdPieces
 		@Override
 		public boolean addComponentParts(World par1World, Random par2Random, StructureBoundingBox par3StructureBoundingBox)
 		{
+			ACBlocks blocks = ACBlocks.getInstance();
+
 			if (isLiquidInStructureBoundingBox(par1World, par3StructureBoundingBox))
 				return false;
 			else
@@ -1350,14 +1368,14 @@ public class StructureAbyStrongholdPieces
 				fillWithRandomizedBlocks(par1World, par3StructureBoundingBox, 8, 1, 5, 8, 4, 9, false, par2Random, StructureAbyStrongholdPieces.strongholdStones);
 				fillWithRandomizedBlocks(par1World, par3StructureBoundingBox, 1, 4, 7, 3, 4, 9, false, par2Random, StructureAbyStrongholdPieces.strongholdStones);
 				fillWithRandomizedBlocks(par1World, par3StructureBoundingBox, 1, 3, 5, 3, 3, 6, false, par2Random, StructureAbyStrongholdPieces.strongholdStones);
-				fillWithBlocks(par1World, par3StructureBoundingBox, 1, 3, 4, 3, 3, 4, ACBlocks.abyssal_stone_brick_slab.getDefaultState(), ACBlocks.abyssal_stone_brick_slab.getDefaultState(), false);
-				fillWithBlocks(par1World, par3StructureBoundingBox, 1, 4, 6, 3, 4, 6, ACBlocks.abyssal_stone_brick_slab.getDefaultState(), ACBlocks.abyssal_stone_brick_slab.getDefaultState(), false);
+				fillWithBlocks(par1World, par3StructureBoundingBox, 1, 3, 4, 3, 3, 4, blocks.abyssal_stone_brick_slab.getBlock().getDefaultState(), blocks.abyssal_stone_brick_slab.getBlock().getDefaultState(), false);
+				fillWithBlocks(par1World, par3StructureBoundingBox, 1, 4, 6, 3, 4, 6, blocks.abyssal_stone_brick_slab.getBlock().getDefaultState(), blocks.abyssal_stone_brick_slab.getBlock().getDefaultState(), false);
 				fillWithRandomizedBlocks(par1World, par3StructureBoundingBox, 5, 1, 7, 7, 1, 8, false, par2Random, StructureAbyStrongholdPieces.strongholdStones);
-				fillWithBlocks(par1World, par3StructureBoundingBox, 5, 1, 9, 7, 1, 9, ACBlocks.abyssal_stone_brick_slab.getDefaultState(), ACBlocks.abyssal_stone_brick_slab.getDefaultState(), false);
-				fillWithBlocks(par1World, par3StructureBoundingBox, 5, 2, 7, 7, 2, 7, ACBlocks.abyssal_stone_brick_slab.getDefaultState(), ACBlocks.abyssal_stone_brick_slab.getDefaultState(), false);
-				fillWithBlocks(par1World, par3StructureBoundingBox, 4, 5, 7, 4, 5, 9, ACBlocks.abyssal_stone_brick_slab.getDefaultState(), ACBlocks.abyssal_stone_brick_slab.getDefaultState(), false);
-				fillWithBlocks(par1World, par3StructureBoundingBox, 8, 5, 7, 8, 5, 9, ACBlocks.abyssal_stone_brick_slab.getDefaultState(), ACBlocks.abyssal_stone_brick_slab.getDefaultState(), false);
-				fillWithBlocks(par1World, par3StructureBoundingBox, 5, 5, 7, 7, 5, 9, BlockHandler.abyslab2.getDefaultState(), BlockHandler.abyslab2.getDefaultState(), false);
+				fillWithBlocks(par1World, par3StructureBoundingBox, 5, 1, 9, 7, 1, 9, blocks.abyssal_stone_brick_slab.getBlock().getDefaultState(), blocks.abyssal_stone_brick_slab.getBlock().getDefaultState(), false);
+				fillWithBlocks(par1World, par3StructureBoundingBox, 5, 2, 7, 7, 2, 7, blocks.abyssal_stone_brick_slab.getBlock().getDefaultState(), blocks.abyssal_stone_brick_slab.getBlock().getDefaultState(), false);
+				fillWithBlocks(par1World, par3StructureBoundingBox, 4, 5, 7, 4, 5, 9, blocks.abyssal_stone_brick_slab.getBlock().getDefaultState(), blocks.abyssal_stone_brick_slab.getBlock().getDefaultState(), false);
+				fillWithBlocks(par1World, par3StructureBoundingBox, 8, 5, 7, 8, 5, 9, blocks.abyssal_stone_brick_slab.getBlock().getDefaultState(), blocks.abyssal_stone_brick_slab.getBlock().getDefaultState(), false);
+				fillWithBlocks(par1World, par3StructureBoundingBox, 5, 5, 7, 7, 5, 9, blocks.abyslab2.getBlock().getDefaultState(), blocks.abyslab2.getBlock().getDefaultState(), false);
 				return true;
 			}
 		}
@@ -1419,32 +1437,34 @@ public class StructureAbyStrongholdPieces
 		@Override
 		public boolean addComponentParts(World par1World, Random par2Random, StructureBoundingBox par3StructureBoundingBox)
 		{
+			ACBlocks blocks = ACBlocks.getInstance();
+
 			if (isLiquidInStructureBoundingBox(par1World, par3StructureBoundingBox))
 				return false;
 			else
 			{
 				for (int i = 0; i < field_74993_a; ++i)
 				{
-					setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 0, 0, i, par3StructureBoundingBox);
-					setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 1, 0, i, par3StructureBoundingBox);
-					setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 2, 0, i, par3StructureBoundingBox);
-					setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 3, 0, i, par3StructureBoundingBox);
-					setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 4, 0, i, par3StructureBoundingBox);
+					setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 0, 0, i, par3StructureBoundingBox);
+					setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 1, 0, i, par3StructureBoundingBox);
+					setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 2, 0, i, par3StructureBoundingBox);
+					setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 3, 0, i, par3StructureBoundingBox);
+					setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 4, 0, i, par3StructureBoundingBox);
 
 					for (int j = 1; j <= 3; ++j)
 					{
-						setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 0, j, i, par3StructureBoundingBox);
+						setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 0, j, i, par3StructureBoundingBox);
 						setBlockState(par1World, Blocks.AIR.getDefaultState(), 1, j, i, par3StructureBoundingBox);
 						setBlockState(par1World, Blocks.AIR.getDefaultState(), 2, j, i, par3StructureBoundingBox);
 						setBlockState(par1World, Blocks.AIR.getDefaultState(), 3, j, i, par3StructureBoundingBox);
-						setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 4, j, i, par3StructureBoundingBox);
+						setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 4, j, i, par3StructureBoundingBox);
 					}
 
-					setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 0, 4, i, par3StructureBoundingBox);
-					setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 1, 4, i, par3StructureBoundingBox);
-					setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 2, 4, i, par3StructureBoundingBox);
-					setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 3, 4, i, par3StructureBoundingBox);
-					setBlockState(par1World, ACBlocks.abyssal_stone_brick.getDefaultState(), 4, 4, i, par3StructureBoundingBox);
+					setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 0, 4, i, par3StructureBoundingBox);
+					setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 1, 4, i, par3StructureBoundingBox);
+					setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 2, 4, i, par3StructureBoundingBox);
+					setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 3, 4, i, par3StructureBoundingBox);
+					setBlockState(par1World, blocks.abyssal_stone_brick.getBlock().getDefaultState(), 4, 4, i, par3StructureBoundingBox);
 				}
 
 				return true;

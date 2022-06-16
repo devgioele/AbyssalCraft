@@ -29,9 +29,10 @@ public class ItemMetadataMisc extends ItemMetadata {
 
 	@Override
 	public IUnlockCondition getUnlockCondition(ItemStack stack) {
-		if(stack.getItem() == ACItems.skin || stack.getItem() == ACItems.essence)
+		ACItems items = ACItems.getInstance();
+		if(stack.getItem() == items.skin || stack.getItem() == items.essence)
 			return new DimensionCondition(getDim(stack.getMetadata()));
-		if(stack.getItem() == ACItems.ingot_nugget)
+		if(stack.getItem() == items.ingot_nugget)
 			switch(stack.getMetadata()){
 			case 0:
 				return new BiomePredicateCondition(b -> b instanceof IDarklandsBiome);

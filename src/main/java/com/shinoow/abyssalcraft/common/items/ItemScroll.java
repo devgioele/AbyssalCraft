@@ -62,7 +62,7 @@ public class ItemScroll extends ItemMetadata implements IScroll {
 	@Override
 	public ScrollType getScrollType(ItemStack stack) {
 
-		if(stack.getItem() == ACItems.scroll)
+		if(stack.getItem() == ACItems.getInstance().scroll)
 			switch(stack.getMetadata()) {
 			case 1:
 				return ScrollType.LESSER;
@@ -71,7 +71,7 @@ public class ItemScroll extends ItemMetadata implements IScroll {
 			case 3:
 				return ScrollType.GREATER;
 			}
-		if(stack.getItem() == ACItems.unique_scroll)
+		if(stack.getItem() == ACItems.getInstance().unique_scroll)
 			return ScrollType.UNIQUE;
 		return ScrollType.BASIC;
 	}
@@ -79,11 +79,12 @@ public class ItemScroll extends ItemMetadata implements IScroll {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(CreativeTabs creativeTabs, NonNullList<ItemStack> itemStacks){
+		ACItems items = ACItems.getInstance();
 		super.getSubItems(creativeTabs, itemStacks);
-		if(this == ACItems.scroll && creativeTabs == ACTabs.tabSpells) {
-			ItemStack greater_scroll = new ItemStack(ACItems.scroll, 1, 3);
-			ItemStack antimatter_scroll = new ItemStack(ACItems.unique_scroll, 1, 0);
-			ItemStack oblivion_scroll = new ItemStack(ACItems.unique_scroll, 1, 1);
+		if(this == items.scroll && creativeTabs == ACTabs.tabSpells) {
+			ItemStack greater_scroll = new ItemStack(items.scroll, 1, 3);
+			ItemStack antimatter_scroll = new ItemStack(items.unique_scroll, 1, 0);
+			ItemStack oblivion_scroll = new ItemStack(items.unique_scroll, 1, 1);
 			SpellRegistry.instance().getSpells().stream().forEach(s -> {
 				itemStacks.add(SpellRegistry.instance().inscribeSpell(s, greater_scroll.copy()));
 				itemStacks.add(SpellRegistry.instance().inscribeSpell(s, antimatter_scroll.copy()));

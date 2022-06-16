@@ -36,8 +36,8 @@ import net.minecraftforge.common.IPlantable;
 public class NecronomiconPurgingRitual extends NecronomiconRitual {
 
 	public NecronomiconPurgingRitual() {
-		super("purging", 2, 10000F, new ItemStack(ACBlocks.calcium_crystal_cluster), null, new ItemStack(ACBlocks.calcium_crystal_cluster),
-				null, new ItemStack(ACBlocks.calcium_crystal_cluster), null, new ItemStack(ACBlocks.calcium_crystal_cluster));
+		super("purging", 2, 10000F, new ItemStack(ACBlocks.getInstance().calcium_crystal_cluster.getBlock()), null, new ItemStack(ACBlocks.getInstance().calcium_crystal_cluster.getBlock()),
+				null, new ItemStack(ACBlocks.getInstance().calcium_crystal_cluster.getBlock()), null, new ItemStack(ACBlocks.getInstance().calcium_crystal_cluster.getBlock()));
 		setRitualParticle(EnumRitualParticle.PE_STREAM);
 	}
 
@@ -82,7 +82,7 @@ public class NecronomiconPurgingRitual extends NecronomiconRitual {
 							if(state.getBlock() instanceof IPlantable || state.getMaterial().isLiquid() || !state.isFullCube())
 								world.setBlockState(pos1.up(y), Blocks.AIR.getDefaultState(), 2);
 							else
-								world.setBlockState(pos1.up(y), ACBlocks.calcified_stone.getDefaultState(), 2);
+								world.setBlockState(pos1.up(y), ACBlocks.getInstance().calcified_stone.getBlock().getDefaultState(), 2);
 						}
 
 						BiomeUtil.updateBiome(world, pos1, ACBiomes.purged, true);

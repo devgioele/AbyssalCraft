@@ -46,11 +46,9 @@ public class AbyssalCraft {
 			serverSide = "com.shinoow.abyssalcraft.common.CommonProxy")
 	public static CommonProxy proxy;
 
-	private static List<ILifeCycleHandler> handlers = new ArrayList<ILifeCycleHandler>(){{
+	private static final List<ILifeCycleHandler> handlers = new ArrayList<ILifeCycleHandler>(){{
 		add(InitHandler.INSTANCE);
-		add(new BlockHandler());
 		add(new WorldHandler());
-		add(new ItemHandler());
 		add(new MiscHandler());
 		add(new EntityHandler());
 		add(new IntegrationHandler());

@@ -37,10 +37,10 @@ public class ItemDreadArmor extends ItemACArmor {
 
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String layer) {
-		if(stack.getItem() == ACItems.dreaded_abyssalnite_helmet || stack.getItem() == ACItems.dreaded_abyssalnite_chestplate || stack.getItem() == ACItems.dreaded_abyssalnite_boots)
+		if(stack.getItem() == ACItems.getInstance().dreaded_abyssalnite_helmet || stack.getItem() == ACItems.getInstance().dreaded_abyssalnite_chestplate || stack.getItem() == ACItems.getInstance().dreaded_abyssalnite_boots)
 			return "abyssalcraft:textures/armor/dread_1.png";
 
-		if(stack.getItem() == ACItems.dreaded_abyssalnite_leggings)
+		if(stack.getItem() == ACItems.getInstance().dreaded_abyssalnite_leggings)
 			return "abyssalcraft:textures/armor/dread_2.png";
 		else return null;
 	}
@@ -48,17 +48,17 @@ public class ItemDreadArmor extends ItemACArmor {
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemstack) {
 		if(world.isRemote || !ACConfig.armorPotionEffects) return;
-		if (itemstack.getItem() == ACItems.dreaded_abyssalnite_helmet){
+		if (itemstack.getItem() == ACItems.getInstance().dreaded_abyssalnite_helmet){
 			if(world.provider.isSurfaceWorld())
 				player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 260, 0, false, false));
 			if(player.getActivePotionEffect(AbyssalCraftAPI.dread_plague) !=null)
 				player.removePotionEffect(AbyssalCraftAPI.dread_plague);
 		}
-		if (itemstack.getItem() == ACItems.dreaded_abyssalnite_chestplate)
+		if (itemstack.getItem() == ACItems.getInstance().dreaded_abyssalnite_chestplate)
 			player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 20, 3, false, false));
-		if (itemstack.getItem() == ACItems.dreaded_abyssalnite_leggings)
+		if (itemstack.getItem() == ACItems.getInstance().dreaded_abyssalnite_leggings)
 			player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 20, 3, false, false));
-		if (itemstack.getItem() == ACItems.dreaded_abyssalnite_boots)
+		if (itemstack.getItem() == ACItems.getInstance().dreaded_abyssalnite_boots)
 			player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 20, 3, false, false));
 	}
 }

@@ -38,20 +38,20 @@ public class ArchwayStructure implements IPlaceOfPower {
 	public ArchwayStructure() {
 
 		data = new IBlockState[][][] {
-			new IBlockState[][] {new IBlockState[] {ACBlocks.darkstone_cobblestone_wall.getDefaultState()}, new IBlockState[] {null}, new IBlockState[] {ACBlocks.monolith_stone.getDefaultState()},
-				new IBlockState[] {null}, new IBlockState[] {ACBlocks.darkstone_cobblestone_wall.getDefaultState()}},
-			new IBlockState[][] {new IBlockState[] {ACBlocks.darkstone_cobblestone_wall.getDefaultState()}, new IBlockState[] {null}, new IBlockState[] {ACBlocks.cthulhu_statue.getDefaultState()}, new IBlockState[] {null},
-					new IBlockState[] {ACBlocks.darkstone_cobblestone_wall.getDefaultState()}},
-			new IBlockState[][] {new IBlockState[] {ACBlocks.darkstone_cobblestone_wall.getDefaultState()}, new IBlockState[] {null}, new IBlockState[] {null}, new IBlockState[] {null},
-						new IBlockState[] {ACBlocks.darkstone_cobblestone_wall.getDefaultState()}},
-			new IBlockState[][] {new IBlockState[] {ACBlocks.darkstone_cobblestone_stairs.getDefaultState().withProperty(BlockStairs.FACING, EnumFacing.EAST)},
-							new IBlockState[] {ACBlocks.darkstone_cobblestone_stairs.getDefaultState().withProperty(BlockStairs.FACING, EnumFacing.WEST).withProperty(BlockStairs.HALF, EnumHalf.TOP)},
-							new IBlockState[] {ACBlocks.darkstone_cobblestone_slab.getDefaultState().withProperty(BlockSlab.HALF, EnumBlockHalf.TOP)},
-							new IBlockState[] {ACBlocks.darkstone_cobblestone_stairs.getDefaultState().withProperty(BlockStairs.FACING, EnumFacing.EAST).withProperty(BlockStairs.HALF, EnumHalf.TOP)},
-							new IBlockState[] {ACBlocks.darkstone_cobblestone_stairs.getDefaultState().withProperty(BlockStairs.FACING, EnumFacing.WEST)}},
-			new IBlockState[][] {new IBlockState[] {ACBlocks.darkstone_cobblestone_slab.getDefaultState()}, new IBlockState[] {ACBlocks.darkstone_cobblestone_slab.getDefaultState()},
-								new IBlockState[] {ACBlocks.darkstone_cobblestone_slab.getDefaultState()}, new IBlockState[] {ACBlocks.darkstone_cobblestone_slab.getDefaultState()},
-								new IBlockState[] {ACBlocks.darkstone_cobblestone_slab.getDefaultState()}}};
+			new IBlockState[][] {new IBlockState[] {ACBlocks.getInstance().darkstone_cobblestone_wall.getBlock().getDefaultState()}, new IBlockState[] {null}, new IBlockState[] {ACBlocks.getInstance().monolith_stone.getBlock().getDefaultState()},
+				new IBlockState[] {null}, new IBlockState[] {ACBlocks.getInstance().darkstone_cobblestone_wall.getBlock().getDefaultState()}},
+			new IBlockState[][] {new IBlockState[] {ACBlocks.getInstance().darkstone_cobblestone_wall.getBlock().getDefaultState()}, new IBlockState[] {null}, new IBlockState[] {ACBlocks.getInstance().cthulhu_statue.getBlock().getDefaultState()}, new IBlockState[] {null},
+					new IBlockState[] {ACBlocks.getInstance().darkstone_cobblestone_wall.getBlock().getDefaultState()}},
+			new IBlockState[][] {new IBlockState[] {ACBlocks.getInstance().darkstone_cobblestone_wall.getBlock().getDefaultState()}, new IBlockState[] {null}, new IBlockState[] {null}, new IBlockState[] {null},
+						new IBlockState[] {ACBlocks.getInstance().darkstone_cobblestone_wall.getBlock().getDefaultState()}},
+			new IBlockState[][] {new IBlockState[] {ACBlocks.getInstance().darkstone_cobblestone_stairs.getBlock().getDefaultState().withProperty(BlockStairs.FACING, EnumFacing.EAST)},
+							new IBlockState[] {ACBlocks.getInstance().darkstone_cobblestone_stairs.getBlock().getDefaultState().withProperty(BlockStairs.FACING, EnumFacing.WEST).withProperty(BlockStairs.HALF, EnumHalf.TOP)},
+							new IBlockState[] {ACBlocks.getInstance().darkstone_cobblestone_slab.getBlock().getDefaultState().withProperty(BlockSlab.HALF, EnumBlockHalf.TOP)},
+							new IBlockState[] {ACBlocks.getInstance().darkstone_cobblestone_stairs.getBlock().getDefaultState().withProperty(BlockStairs.FACING, EnumFacing.EAST).withProperty(BlockStairs.HALF, EnumHalf.TOP)},
+							new IBlockState[] {ACBlocks.getInstance().darkstone_cobblestone_stairs.getBlock().getDefaultState().withProperty(BlockStairs.FACING, EnumFacing.WEST)}},
+			new IBlockState[][] {new IBlockState[] {ACBlocks.getInstance().darkstone_cobblestone_slab.getBlock().getDefaultState()}, new IBlockState[] {ACBlocks.getInstance().darkstone_cobblestone_slab.getBlock().getDefaultState()},
+								new IBlockState[] {ACBlocks.getInstance().darkstone_cobblestone_slab.getBlock().getDefaultState()}, new IBlockState[] {ACBlocks.getInstance().darkstone_cobblestone_slab.getBlock().getDefaultState()},
+								new IBlockState[] {ACBlocks.getInstance().darkstone_cobblestone_slab.getBlock().getDefaultState()}}};
 	}
 
 	@Override
@@ -82,7 +82,7 @@ public class ArchwayStructure implements IPlaceOfPower {
 
 	@Override
 	public void construct(World world, BlockPos pos) {
-		world.setBlockState(pos, ACBlocks.multi_block.getDefaultState());
+		world.setBlockState(pos, ACBlocks.getInstance().multi_block.getBlock().getDefaultState());
 		((IStructureBase) world.getTileEntity(pos)).setMultiblock(this);
 		if(world.getTileEntity(pos.up()) instanceof IStructureComponent) {
 			((IStructureComponent) world.getTileEntity(pos.up())).setInMultiblock(true);
@@ -93,7 +93,7 @@ public class ArchwayStructure implements IPlaceOfPower {
 	@Override
 	public void validate(World world, BlockPos pos) {
 		boolean valid = true;
-		if(world.getBlockState(pos).getBlock() == ACBlocks.multi_block && world.getBlockState(pos.up()).getBlock() instanceof BlockStatue) {
+		if(world.getBlockState(pos).getBlock() == ACBlocks.getInstance().multi_block.getBlock() && world.getBlockState(pos.up()).getBlock() instanceof BlockStatue) {
 			for(int i = 0; i < 3; i++)
 				if(!(world.getBlockState(pos.east(2).up(i)).getBlock() instanceof BlockWall)
 						&& !(world.getBlockState(pos.west(2).up(i)).getBlock() instanceof BlockWall) &&
@@ -124,7 +124,7 @@ public class ArchwayStructure implements IPlaceOfPower {
 	public boolean canConstruct(World world, BlockPos pos, EntityPlayer player) {
 
 		IBlockState state = world.getBlockState(pos);
-		if(state.getBlock() == ACBlocks.monolith_stone && world.getBlockState(pos.up()).getBlock() instanceof BlockStatue) {
+		if(state.getBlock() == ACBlocks.getInstance().monolith_stone.getBlock() && world.getBlockState(pos.up()).getBlock() instanceof BlockStatue) {
 			boolean temp = true;
 			for(int i = 0; i < 3; i++)
 				if(!(world.getBlockState(pos.east(2).up(i)).getBlock() instanceof BlockWall)

@@ -26,9 +26,9 @@ public class StructureElevatedShrineLarge extends StructureDarklandsBase {
 	@SuppressWarnings("deprecation")
 	public boolean generate(World worldIn, Random rand, BlockPos pos) {
 
-		IBlockState brick_slab = ACBlocks.darkstone_brick_slab.getDefaultState();
-		IBlockState cobble = ACBlocks.darkstone_cobblestone.getDefaultState();
-		IBlockState cobble_wall = ACBlocks.darkstone_cobblestone_wall.getDefaultState();
+		IBlockState brick_slab = ACBlocks.getInstance().darkstone_brick_slab.getBlock().getDefaultState();
+		IBlockState cobble = ACBlocks.getInstance().darkstone_cobblestone.getBlock().getDefaultState();
+		IBlockState cobble_wall = ACBlocks.getInstance().darkstone_cobblestone_wall.getBlock().getDefaultState();
 
 		for(int i = -3; i < 4; i++)
 			for(int j = -5; j < 6; j++){
@@ -54,14 +54,14 @@ public class StructureElevatedShrineLarge extends StructureDarklandsBase {
 						}
 
 				if((j == -5 || j == 5) && flag){
-					setBlockAndNotifyAdequately(worldIn, pos.add(j, 1, i), ACBlocks.darkstone_cobblestone_stairs.getStateFromMeta(j > 0 ? 1 : 0));
-					setBlockAndNotifyAdequately(worldIn, pos.add(i, 1, j), ACBlocks.darkstone_cobblestone_stairs.getStateFromMeta(j > 0 ? 3 : 2));
+					setBlockAndNotifyAdequately(worldIn, pos.add(j, 1, i), ACBlocks.getInstance().darkstone_cobblestone_stairs.getBlock().getStateFromMeta(j > 0 ? 1 : 0));
+					setBlockAndNotifyAdequately(worldIn, pos.add(i, 1, j), ACBlocks.getInstance().darkstone_cobblestone_stairs.getBlock().getStateFromMeta(j > 0 ? 3 : 2));
 				}
 				if((j == -4 || j == 4) && flag){
 					setBlockAndNotifyAdequately(worldIn, pos.add(j, 1, i), cobble);
 					setBlockAndNotifyAdequately(worldIn, pos.add(i, 1, j), cobble);
-					setBlockAndNotifyAdequately(worldIn, pos.add(j, 2, i), ACBlocks.darkstone_cobblestone_stairs.getStateFromMeta(j > 0 ? 1 : 0));
-					setBlockAndNotifyAdequately(worldIn, pos.add(i, 2, j), ACBlocks.darkstone_cobblestone_stairs.getStateFromMeta(j > 0 ? 3 : 2));
+					setBlockAndNotifyAdequately(worldIn, pos.add(j, 2, i), ACBlocks.getInstance().darkstone_cobblestone_stairs.getBlock().getStateFromMeta(j > 0 ? 1 : 0));
+					setBlockAndNotifyAdequately(worldIn, pos.add(i, 2, j), ACBlocks.getInstance().darkstone_cobblestone_stairs.getBlock().getStateFromMeta(j > 0 ? 3 : 2));
 
 					setBlockAndNotifyAdequately(worldIn, pos.add(j, 6, i), brick_slab);
 					setBlockAndNotifyAdequately(worldIn, pos.add(i, 6, j), brick_slab);
@@ -90,8 +90,8 @@ public class StructureElevatedShrineLarge extends StructureDarklandsBase {
 
 				}
 				if((j == -2 || j == 2) && flag1){
-					setBlockAndNotifyAdequately(worldIn, pos.add(i, 2, j), flag ? ACBlocks.monolith_stone.getDefaultState() : cobble);
-					setBlockAndNotifyAdequately(worldIn, pos.add(j, 2, i), flag ? ACBlocks.monolith_stone.getDefaultState() : cobble);
+					setBlockAndNotifyAdequately(worldIn, pos.add(i, 2, j), flag ? ACBlocks.getInstance().monolith_stone.getBlock().getDefaultState() : cobble);
+					setBlockAndNotifyAdequately(worldIn, pos.add(j, 2, i), flag ? ACBlocks.getInstance().monolith_stone.getBlock().getDefaultState() : cobble);
 
 					for(int k = 0; k < 4; k++)
 						if(k < 3){
@@ -106,7 +106,7 @@ public class StructureElevatedShrineLarge extends StructureDarklandsBase {
 				}
 
 				if(j > -2 && j < 2 && flag)
-					setBlockAndNotifyAdequately(worldIn, pos.add(i, 2, j), ACBlocks.shoggoth_ooze.getDefaultState().withProperty(BlockShoggothOoze.LAYERS, 8));
+					setBlockAndNotifyAdequately(worldIn, pos.add(i, 2, j), ACBlocks.getInstance().shoggoth_ooze.getBlock().getDefaultState().withProperty(BlockShoggothOoze.LAYERS, 8));
 			}
 
 		placeStatue(worldIn, rand, pos.up(3));

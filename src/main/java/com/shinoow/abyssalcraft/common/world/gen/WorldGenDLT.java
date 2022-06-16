@@ -56,7 +56,7 @@ public class WorldGenDLT extends WorldGenTrees {
 
 		for (int i = 0; i < height; i++)
 			setBlockAndNotifyAdequately(world, new BlockPos(x, y + i, z), getLogBlock(rand).getDefaultState());
-		setBlockAndNotifyAdequately(world, new BlockPos(x, y + height, z), ACBlocks.darklands_oak_leaves.getDefaultState());
+		setBlockAndNotifyAdequately(world, new BlockPos(x, y + height, z), ACBlocks.getInstance().darklands_oak_leaves.getBlock().getDefaultState());
 		createTrunk(world, rand, x, y, z);
 
 		int dir = rand.nextInt((int) (360f / branches));
@@ -73,7 +73,7 @@ public class WorldGenDLT extends WorldGenTrees {
 				hd += 0.5f;
 				setBlockAndNotifyAdequately(world, new BlockPos(x + (int) (c * xd), y + (int) hd, z + (int) (c * yd)), getLogBlock(rand).getStateFromMeta(12));
 				if(world.isAirBlock(new BlockPos(x + (int) (c * xd), y + (int) hd + 1, z + (int) (c * yd))))
-					setBlockAndNotifyAdequately(world, new BlockPos(x + (int) (c * xd), y + (int) hd + 1, z + (int) (c * yd)), ACBlocks.darklands_oak_leaves.getDefaultState());
+					setBlockAndNotifyAdequately(world, new BlockPos(x + (int) (c * xd), y + (int) hd + 1, z + (int) (c * yd)), ACBlocks.getInstance().darklands_oak_leaves.getBlock().getDefaultState());
 			}
 		}
 
@@ -94,6 +94,6 @@ public class WorldGenDLT extends WorldGenTrees {
 	}
 
 	private Block getLogBlock(Random rand) {
-		return rand.nextInt(10) == 0 ? ACBlocks.darklands_oak_wood_2 : ACBlocks.darklands_oak_wood;
+		return rand.nextInt(10) == 0 ? ACBlocks.getInstance().darklands_oak_wood_2.getBlock() : ACBlocks.getInstance().darklands_oak_wood.getBlock();
 	}
 }

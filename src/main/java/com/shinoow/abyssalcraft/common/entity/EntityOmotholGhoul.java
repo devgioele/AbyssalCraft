@@ -129,7 +129,7 @@ public class EntityOmotholGhoul extends EntityMob implements IOmotholEntity {
 	@Override
 	protected Item getDropItem()
 	{
-		return ACItems.omothol_flesh;
+		return ACItems.getInstance().omothol_flesh;
 	}
 
 	@Override

@@ -268,7 +268,7 @@ public class GuiNecronomiconPlacesOfPower extends GuiNecronomicon {
 			Block block = bs.getBlock();
 			if(pos.equals(activationPoint)) {
 				if (block.canRenderInLayer(bs, layer))
-					renderBlock(showMultiblock ? ACBlocks.multi_block.getDefaultState() : bs, pos, mb, Tessellator.getInstance().getBuffer());
+					renderBlock(showMultiblock ? ACBlocks.getInstance().multi_block.getBlock().getDefaultState() : bs, pos, mb, Tessellator.getInstance().getBuffer());
 			} else if (block.canRenderInLayer(bs, layer))
 				renderBlock(bs, pos, mb, Tessellator.getInstance().getBuffer());
 		}

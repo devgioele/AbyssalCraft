@@ -93,7 +93,7 @@ public class EntityAntiPig extends EntityAnimal implements IAntiEntity {
 	@Override
 	protected Item getDropItem()
 	{
-		return isBurning() ? ACItems.anti_pork : ACItems.anti_pork;
+		return ACItems.getInstance().anti_pork;
 	}
 
 	@Override
@@ -103,9 +103,9 @@ public class EntityAntiPig extends EntityAnimal implements IAntiEntity {
 
 		for (int k = 0; k < j; ++k)
 			if (isBurning())
-				dropItem(ACItems.anti_pork, 1);
+				dropItem(ACItems.getInstance().anti_pork, 1);
 			else
-				dropItem(ACItems.anti_pork, 1);
+				dropItem(ACItems.getInstance().anti_pork, 1);
 	}
 
 	@Override

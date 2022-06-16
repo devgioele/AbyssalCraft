@@ -37,7 +37,7 @@ public class BiomeDarklandsHills extends Biome implements IDarklandsBiome {
 	public BiomeDarklandsHills(BiomeProperties par1)
 	{
 		super(par1);
-		fillerBlock = ACBlocks.darkstone.getDefaultState();
+		fillerBlock = ACBlocks.getInstance().darkstone.getBlock().getDefaultState();
 		WorldGenDarkTrees = new WorldGenDLT(false);
 		decorator.treesPerChunk = 1;
 		spawnableMonsterList.add(new SpawnListEntry(EntityDepthsGhoul.class, 60, 1, 5));
@@ -61,7 +61,7 @@ public class BiomeDarklandsHills extends Biome implements IDarklandsBiome {
 				int y = par2Random.nextInt(28) + 4;
 				int z = par2Random.nextInt(16);
 
-				new WorldGenMinable(ACBlocks.abyssalnite_ore.getDefaultState(), veinSize).generate(par1World, par2Random, pos.add(x, y, z));
+				new WorldGenMinable(ACBlocks.getInstance().abyssalnite_ore.getBlock().getDefaultState(), veinSize).generate(par1World, par2Random, pos.add(x, y, z));
 			}
 
 		for (int rarity = 0; rarity < 7; ++rarity)
@@ -69,7 +69,7 @@ public class BiomeDarklandsHills extends Biome implements IDarklandsBiome {
 			int x = par2Random.nextInt(16);
 			int y = par2Random.nextInt(64);
 			int z = par2Random.nextInt(16);
-			new WorldGenMinable(ACBlocks.darkstone.getDefaultState(), 32).generate(par1World, par2Random, pos.add(x, y, z));
+			new WorldGenMinable(ACBlocks.getInstance().darkstone.getBlock().getDefaultState(), 32).generate(par1World, par2Random, pos.add(x, y, z));
 		}
 	}
 

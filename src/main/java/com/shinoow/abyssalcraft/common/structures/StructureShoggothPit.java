@@ -92,7 +92,7 @@ public class StructureShoggothPit extends WorldGenerator {
 
 			Map<BlockPos, String> map = template.getDataBlocks(pos, placeSettings);
 
-			IBlockState monolith_stone = ACBlocks.monolith_stone.getDefaultState();
+			IBlockState monolith_stone = ACBlocks.getInstance().monolith_stone.getBlock().getDefaultState();
 
 			switch(num) {
 			case 1:
@@ -144,37 +144,37 @@ public class StructureShoggothPit extends WorldGenerator {
 		if(rand.nextInt(5) == 0 && ACConfig.generateStatuesInLairs)
 			switch(rand.nextInt(7)){
 			case 0:
-				return ACBlocks.cthulhu_statue.getDefaultState().withProperty(BlockStatue.FACING, facing);
+				return ACBlocks.getInstance().cthulhu_statue.getBlock().getDefaultState().withProperty(BlockStatue.FACING, facing);
 			case 1:
-				return ACBlocks.hastur_statue.getDefaultState().withProperty(BlockStatue.FACING, facing);
+				return ACBlocks.getInstance().hastur_statue.getBlock().getDefaultState().withProperty(BlockStatue.FACING, facing);
 			case 2:
-				return ACBlocks.jzahar_statue.getDefaultState().withProperty(BlockStatue.FACING, facing);
+				return ACBlocks.getInstance().jzahar_statue.getBlock().getDefaultState().withProperty(BlockStatue.FACING, facing);
 			case 3:
-				return ACBlocks.azathoth_statue.getDefaultState().withProperty(BlockStatue.FACING, facing);
+				return ACBlocks.getInstance().azathoth_statue.getBlock().getDefaultState().withProperty(BlockStatue.FACING, facing);
 			case 4:
-				return ACBlocks.nyarlathotep_statue.getDefaultState().withProperty(BlockStatue.FACING, facing);
+				return ACBlocks.getInstance().nyarlathotep_statue.getBlock().getDefaultState().withProperty(BlockStatue.FACING, facing);
 			case 5:
-				return ACBlocks.yog_sothoth_statue.getDefaultState().withProperty(BlockStatue.FACING, facing);
+				return ACBlocks.getInstance().yog_sothoth_statue.getBlock().getDefaultState().withProperty(BlockStatue.FACING, facing);
 			case 6:
-				return ACBlocks.shub_niggurath_statue.getDefaultState().withProperty(BlockStatue.FACING, facing);
+				return ACBlocks.getInstance().shub_niggurath_statue.getBlock().getDefaultState().withProperty(BlockStatue.FACING, facing);
 			default:
 				return getRandomStatue(rand, facing);
 			}
 		switch(rand.nextInt(7)){
 		case 0:
-			return ACBlocks.decorative_cthulhu_statue.getDefaultState().withProperty(BlockDecorativeStatue.FACING, facing);
+			return ACBlocks.getInstance().decorative_cthulhu_statue.getBlock().getDefaultState().withProperty(BlockDecorativeStatue.FACING, facing);
 		case 1:
-			return ACBlocks.decorative_hastur_statue.getDefaultState().withProperty(BlockDecorativeStatue.FACING, facing);
+			return ACBlocks.getInstance().decorative_hastur_statue.getBlock().getDefaultState().withProperty(BlockDecorativeStatue.FACING, facing);
 		case 2:
-			return ACBlocks.decorative_jzahar_statue.getDefaultState().withProperty(BlockDecorativeStatue.FACING, facing);
+			return ACBlocks.getInstance().decorative_jzahar_statue.getBlock().getDefaultState().withProperty(BlockDecorativeStatue.FACING, facing);
 		case 3:
-			return ACBlocks.decorative_azathoth_statue.getDefaultState().withProperty(BlockDecorativeStatue.FACING, facing);
+			return ACBlocks.getInstance().decorative_azathoth_statue.getBlock().getDefaultState().withProperty(BlockDecorativeStatue.FACING, facing);
 		case 4:
-			return ACBlocks.decorative_nyarlathotep_statue.getDefaultState().withProperty(BlockDecorativeStatue.FACING, facing);
+			return ACBlocks.getInstance().decorative_nyarlathotep_statue.getBlock().getDefaultState().withProperty(BlockDecorativeStatue.FACING, facing);
 		case 5:
-			return ACBlocks.decorative_yog_sothoth_statue.getDefaultState().withProperty(BlockDecorativeStatue.FACING, facing);
+			return ACBlocks.getInstance().decorative_yog_sothoth_statue.getBlock().getDefaultState().withProperty(BlockDecorativeStatue.FACING, facing);
 		case 6:
-			return ACBlocks.decorative_shub_niggurath_statue.getDefaultState().withProperty(BlockDecorativeStatue.FACING, facing);
+			return ACBlocks.getInstance().decorative_shub_niggurath_statue.getBlock().getDefaultState().withProperty(BlockDecorativeStatue.FACING, facing);
 		default:
 			return getRandomStatue(rand, facing);
 		}

@@ -194,21 +194,21 @@ public class AbyssalCraftAPI {
 	 * Sets the repair items for each armor/tool material
 	 */
 	public static void setRepairItems() {
+		ACItems items = ACItems.getInstance();
+		abyssalniteArmor.setRepairItem(new ItemStack(items.abyssalnite_ingot));
+		dreadedAbyssalniteArmor.setRepairItem(new ItemStack(items.dreaded_shard_of_abyssalnite));
+		refinedCoraliumArmor.setRepairItem(new ItemStack(items.refined_coralium_ingot));
+		platedCoraliumArmor.setRepairItem(new ItemStack(items.coralium_plate));
+		depthsArmor.setRepairItem(new ItemStack(items.coralium_gem_cluster_9));
+		dreadiumArmor.setRepairItem(new ItemStack(items.dreadium_ingot));
+		dreadiumSamuraiArmor.setRepairItem(new ItemStack(items.dreadium_plate));
+		ethaxiumArmor.setRepairItem(new ItemStack(items.ethaxium_ingot));
 
-		abyssalniteArmor.setRepairItem(new ItemStack(ACItems.abyssalnite_ingot));
-		dreadedAbyssalniteArmor.setRepairItem(new ItemStack(ACItems.dreaded_shard_of_abyssalnite));
-		refinedCoraliumArmor.setRepairItem(new ItemStack(ACItems.refined_coralium_ingot));
-		platedCoraliumArmor.setRepairItem(new ItemStack(ACItems.coralium_plate));
-		depthsArmor.setRepairItem(new ItemStack(ACItems.coralium_gem_cluster_9));
-		dreadiumArmor.setRepairItem(new ItemStack(ACItems.dreadium_ingot));
-		dreadiumSamuraiArmor.setRepairItem(new ItemStack(ACItems.dreadium_plate));
-		ethaxiumArmor.setRepairItem(new ItemStack(ACItems.ethaxium_ingot));
-
-		darkstoneTool.setRepairItem(new ItemStack(ACBlocks.darkstone_cobblestone.getBlock()));
-		abyssalniteTool.setRepairItem(new ItemStack(ACItems.abyssalnite_ingot));
-		refinedCoraliumTool.setRepairItem(new ItemStack(ACItems.refined_coralium_ingot));
-		dreadiumTool.setRepairItem(new ItemStack(ACItems.dreadium_ingot));
-		ethaxiumTool.setRepairItem(new ItemStack(ACItems.ethaxium_ingot));
+		darkstoneTool.setRepairItem(new ItemStack(ACBlocks.getInstance().darkstone_cobblestone.getBlock()));
+		abyssalniteTool.setRepairItem(new ItemStack(items.abyssalnite_ingot));
+		refinedCoraliumTool.setRepairItem(new ItemStack(items.refined_coralium_ingot));
+		dreadiumTool.setRepairItem(new ItemStack(items.dreadium_ingot));
+		ethaxiumTool.setRepairItem(new ItemStack(items.ethaxium_ingot));
 	}
 
 	/**

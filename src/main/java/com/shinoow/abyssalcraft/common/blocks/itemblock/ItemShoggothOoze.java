@@ -92,6 +92,6 @@ public class ItemShoggothOoze extends ItemBlockAC
 	public boolean canPlaceBlockOnSide(World world, BlockPos pos, EnumFacing side, EntityPlayer player, ItemStack stack)
 	{
 		IBlockState state = world.getBlockState(pos);
-		return state.getBlock() != ACBlocks.shoggoth_ooze || state.getValue(BlockShoggothOoze.LAYERS) > 7 ? super.canPlaceBlockOnSide(world, pos, side, player, stack) : true;
+		return state.getBlock() != ACBlocks.getInstance().shoggoth_ooze.getBlock() || state.getValue(BlockShoggothOoze.LAYERS) > 7 ? super.canPlaceBlockOnSide(world, pos, side, player, stack) : true;
 	}
 }

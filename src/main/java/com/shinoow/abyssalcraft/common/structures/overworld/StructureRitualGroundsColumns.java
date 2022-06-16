@@ -24,9 +24,9 @@ public class StructureRitualGroundsColumns extends StructureDarklandsBase {
 	@Override
 	public boolean generate(World worldIn, Random rand, BlockPos pos) {
 
-		IBlockState chiseled_brick = ACBlocks.chiseled_darkstone_brick.getDefaultState();
-		IBlockState brick_slab = ACBlocks.darkstone_brick_slab.getDefaultState();
-		IBlockState cobble = ACBlocks.darkstone_cobblestone.getDefaultState();
+		IBlockState chiseled_brick = ACBlocks.getInstance().chiseled_darkstone_brick.getBlock().getDefaultState();
+		IBlockState brick_slab = ACBlocks.getInstance().darkstone_brick_slab.getBlock().getDefaultState();
+		IBlockState cobble = ACBlocks.getInstance().darkstone_cobblestone.getBlock().getDefaultState();
 
 		for(int i = -3; i < 4; i++)
 			for(int j = -5; j < 6; j++){

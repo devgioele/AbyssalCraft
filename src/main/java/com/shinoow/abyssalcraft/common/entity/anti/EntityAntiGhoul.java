@@ -121,7 +121,7 @@ public class EntityAntiGhoul extends EntityMob implements IAntiEntity {
 	@Override
 	protected Item getDropItem()
 	{
-		return ACItems.anti_plagued_flesh_on_a_bone;
+		return ACItems.getInstance().anti_plagued_flesh_on_a_bone;
 	}
 
 	@Override

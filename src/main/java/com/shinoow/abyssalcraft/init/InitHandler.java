@@ -161,6 +161,16 @@ public class InitHandler implements ILifeCycleHandler {
 
 		if(event.getSide().isClient())
 			ClientVarsReloadListener.updateVars(Minecraft.getMinecraft().getResourceManager());
+
+		ACBlocks.getInstance()
+		.registerBlockTiles()
+		.registerBlocks()
+		.registerFireInfo()
+		.registerItemsRenders()
+		.registerModels();
+
+		ACItems.getInstance()
+				.registerItems();
 	}
 
 	@Override
@@ -173,6 +183,8 @@ public class InitHandler implements ILifeCycleHandler {
 		blackHoleDimlist = new int[dims.length];
 		for(int i = 0; i < dims.length; i++)
 			blackHoleDimlist[i] = dims[i].getId();
+
+		ACBlocks.getInstance().registerLiquidBlocks();
 	}
 
 	@Override
@@ -205,16 +217,16 @@ public class InitHandler implements ILifeCycleHandler {
 
 	@SubscribeEvent
 	public void registerBlocks(RegistryEvent.Register<Block> event){
-		Block[] blocks = Arrays.stream(ACBlocks.getACBlocks()).map(ACBlock::getBlock).toArray(Block[]::new);
+		Block[] blocks = Arrays.stream(ACBlocks.getInstance().getACBlocks()).map(ACBlock::getBlock).toArray(Block[]::new);
 		event.getRegistry().registerAll(blocks);
 	}
 
 	@SubscribeEvent
 	public void registerItems(RegistryEvent.Register<Item> event){
-		Item[] items = ACItems.getItems();
-		event.getRegistry().registerAll(items);
-		ACItems.liquid_coralium_bucket_stack = FluidUtil.getFilledBucket(new FluidStack(AbyssalCraftAPI.liquid_coralium_fluid, Fluid.BUCKET_VOLUME));
-		ACItems.liquid_antimatter_bucket_stack = FluidUtil.getFilledBucket(new FluidStack(AbyssalCraftAPI.liquid_antimatter_fluid, Fluid.BUCKET_VOLUME));
+		ACItems items = ACItems.getInstance();
+		event.getRegistry().registerAll(items.getItems());
+		items.liquid_coralium_bucket_stack = FluidUtil.getFilledBucket(new FluidStack(AbyssalCraftAPI.liquid_coralium_fluid, Fluid.BUCKET_VOLUME));
+		items.liquid_antimatter_bucket_stack = FluidUtil.getFilledBucket(new FluidStack(AbyssalCraftAPI.liquid_antimatter_fluid, Fluid.BUCKET_VOLUME));
 
 		AbyssalCraftAPI.setRepairItems();
 		MiscHandler.addOreDictionaryStuff();
@@ -298,19 +310,19 @@ public class InitHandler implements ILifeCycleHandler {
 	//	public void remapBlocks(RegistryEvent.MissingMappings<Block> event) {
 	//		for(Mapping<Block> mapping : event.getMappings()) {
 	//			if(mapping.key.toString().equals("abyssalcraft:stone")) {
-	//				mapping.remap(ACBlocks.darkstone);
+	//				mapping.remap(ACBlocks.getInstance().darkstone.getBlock());
 	//			}
 	//			if(mapping.key.toString().equals("abyssalcraft:cobblestone")) {
-	//				mapping.remap(ACBlocks.darkstone_cobblestone);
+	//				mapping.remap(ACBlocks.getInstance().darkstone_cobblestone.getBlock());
 	//			}
 	//			if(mapping.key.toString().equals("abyssalcraft:decorativestatue")) {
-	//				mapping.remap(ACBlocks.decorative_cthulhu_statue);
+	//				mapping.remap(ACBlocks.getInstance().decorative_cthulhu_statue.getBlock());
 	//			}
 	//			if(mapping.key.toString().equals("abyssalcraft:statue")) {
-	//				mapping.remap(ACBlocks.cthulhu_statue);
+	//				mapping.remap(ACBlocks.getInstance().cthulhu_statue.getBlock());
 	//			}
 	//			if(mapping.key.toString().equals("abyssalcraft:ingotblock")) {
-	//				mapping.remap(ACBlocks.block_of_abyssalnite);
+	//				mapping.remap(ACBlocks.getInstance().block_of_abyssalnite.getBlock());
 	//			}
 	//		}
 	//	}

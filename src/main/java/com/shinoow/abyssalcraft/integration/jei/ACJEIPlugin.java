@@ -18,8 +18,6 @@ import com.shinoow.abyssalcraft.api.recipe.Materialization;
 import com.shinoow.abyssalcraft.api.recipe.MaterializerRecipes;
 import com.shinoow.abyssalcraft.api.ritual.NecronomiconCreationRitual;
 import com.shinoow.abyssalcraft.common.inventory.*;
-import com.shinoow.abyssalcraft.init.BlockHandler;
-import com.shinoow.abyssalcraft.init.ItemHandler;
 import com.shinoow.abyssalcraft.integration.jei.crystallizer.*;
 import com.shinoow.abyssalcraft.integration.jei.engraver.EngraverRecipeCategory;
 import com.shinoow.abyssalcraft.integration.jei.engraver.EngravingRecipeMaker;
@@ -50,30 +48,30 @@ public class ACJEIPlugin implements IModPlugin {
 
 		JEIUtils utils = new JEIUtils(registry.getIngredientRegistry());
 
-		jeiHelpers.getIngredientBlacklist().addIngredientToBlacklist(new ItemStack(ACItems.devsword));
-		jeiHelpers.getIngredientBlacklist().addIngredientToBlacklist(new ItemStack(ACItems.shoggoth_projectile));
-		jeiHelpers.getIngredientBlacklist().addIngredientToBlacklist(new ItemStack(ACBlocks.crystallizer_active));
-		jeiHelpers.getIngredientBlacklist().addIngredientToBlacklist(new ItemStack(ACBlocks.transmutator_active));
-		jeiHelpers.getIngredientBlacklist().addIngredientToBlacklist(new ItemStack(BlockHandler.house));
-		jeiHelpers.getIngredientBlacklist().addIngredientToBlacklist(new ItemStack(BlockHandler.Altar));
-		jeiHelpers.getIngredientBlacklist().addIngredientToBlacklist(new ItemStack(ACBlocks.multi_block));
+		jeiHelpers.getIngredientBlacklist().addIngredientToBlacklist(new ItemStack(ACItems.getInstance().devsword));
+		jeiHelpers.getIngredientBlacklist().addIngredientToBlacklist(new ItemStack(ACItems.getInstance().shoggoth_projectile));
+		jeiHelpers.getIngredientBlacklist().addIngredientToBlacklist(new ItemStack(ACBlocks.getInstance().crystallizer_active.getBlock()));
+		jeiHelpers.getIngredientBlacklist().addIngredientToBlacklist(new ItemStack(ACBlocks.getInstance().transmutator_active.getBlock()));
+		jeiHelpers.getIngredientBlacklist().addIngredientToBlacklist(new ItemStack(ACBlocks.getInstance().house.getBlock()));
+		jeiHelpers.getIngredientBlacklist().addIngredientToBlacklist(new ItemStack(ACBlocks.getInstance().Altar.getBlock()));
+		jeiHelpers.getIngredientBlacklist().addIngredientToBlacklist(new ItemStack(ACBlocks.getInstance().multi_block.getBlock()));
 
-		registry.addRecipeCatalyst(new ItemStack(ACBlocks.transmutator_idle), AbyssalCraftRecipeCategoryUid.TRANSMUTATION,
+		registry.addRecipeCatalyst(new ItemStack(ACBlocks.getInstance().transmutator_idle.getBlock()), AbyssalCraftRecipeCategoryUid.TRANSMUTATION,
 				AbyssalCraftRecipeCategoryUid.FUEL_TRANSMUTATION);
-		registry.addRecipeCatalyst(new ItemStack(ACBlocks.crystallizer_idle), AbyssalCraftRecipeCategoryUid.CRYSTALLIZATION,
+		registry.addRecipeCatalyst(new ItemStack(ACBlocks.getInstance().crystallizer_idle.getBlock()), AbyssalCraftRecipeCategoryUid.CRYSTALLIZATION,
 				AbyssalCraftRecipeCategoryUid.FUEL_CRYSTALLIZATION);
-		registry.addRecipeCatalyst(new ItemStack(ACBlocks.engraver), AbyssalCraftRecipeCategoryUid.ENGRAVING);
-		registry.addRecipeCatalyst(new ItemStack(ACItems.necronomicon), AbyssalCraftRecipeCategoryUid.RITUAL);
-		registry.addRecipeCatalyst(new ItemStack(ACItems.abyssal_wasteland_necronomicon), AbyssalCraftRecipeCategoryUid.RITUAL);
-		registry.addRecipeCatalyst(new ItemStack(ACItems.dreadlands_necronomicon), AbyssalCraftRecipeCategoryUid.RITUAL);
-		registry.addRecipeCatalyst(new ItemStack(ACItems.omothol_necronomicon), AbyssalCraftRecipeCategoryUid.RITUAL);
-		registry.addRecipeCatalyst(new ItemStack(ACItems.abyssalnomicon), AbyssalCraftRecipeCategoryUid.RITUAL);
-		registry.addRecipeCatalyst(new ItemStack(ACItems.staff_of_rending, 1, 0), AbyssalCraftRecipeCategoryUid.RENDING);
-		registry.addRecipeCatalyst(new ItemStack(ACItems.staff_of_rending, 1, 1), AbyssalCraftRecipeCategoryUid.RENDING);
-		registry.addRecipeCatalyst(new ItemStack(ACItems.staff_of_rending, 1, 2), AbyssalCraftRecipeCategoryUid.RENDING);
-		registry.addRecipeCatalyst(new ItemStack(ACItems.staff_of_rending, 1, 3), AbyssalCraftRecipeCategoryUid.RENDING);
-		registry.addRecipeCatalyst(new ItemStack(ACItems.staff_of_the_gatekeeper), AbyssalCraftRecipeCategoryUid.RENDING);
-		registry.addRecipeCatalyst(new ItemStack(ACBlocks.materializer), AbyssalCraftRecipeCategoryUid.MATERIALIZATION);
+		registry.addRecipeCatalyst(new ItemStack(ACBlocks.getInstance().engraver.getBlock()), AbyssalCraftRecipeCategoryUid.ENGRAVING);
+		registry.addRecipeCatalyst(new ItemStack(ACItems.getInstance().necronomicon), AbyssalCraftRecipeCategoryUid.RITUAL);
+		registry.addRecipeCatalyst(new ItemStack(ACItems.getInstance().abyssal_wasteland_necronomicon), AbyssalCraftRecipeCategoryUid.RITUAL);
+		registry.addRecipeCatalyst(new ItemStack(ACItems.getInstance().dreadlands_necronomicon), AbyssalCraftRecipeCategoryUid.RITUAL);
+		registry.addRecipeCatalyst(new ItemStack(ACItems.getInstance().omothol_necronomicon), AbyssalCraftRecipeCategoryUid.RITUAL);
+		registry.addRecipeCatalyst(new ItemStack(ACItems.getInstance().abyssalnomicon), AbyssalCraftRecipeCategoryUid.RITUAL);
+		registry.addRecipeCatalyst(new ItemStack(ACItems.getInstance().staff_of_rending, 1, 0), AbyssalCraftRecipeCategoryUid.RENDING);
+		registry.addRecipeCatalyst(new ItemStack(ACItems.getInstance().staff_of_rending, 1, 1), AbyssalCraftRecipeCategoryUid.RENDING);
+		registry.addRecipeCatalyst(new ItemStack(ACItems.getInstance().staff_of_rending, 1, 2), AbyssalCraftRecipeCategoryUid.RENDING);
+		registry.addRecipeCatalyst(new ItemStack(ACItems.getInstance().staff_of_rending, 1, 3), AbyssalCraftRecipeCategoryUid.RENDING);
+		registry.addRecipeCatalyst(new ItemStack(ACItems.getInstance().staff_of_the_gatekeeper), AbyssalCraftRecipeCategoryUid.RENDING);
+		registry.addRecipeCatalyst(new ItemStack(ACBlocks.getInstance().materializer.getBlock()), AbyssalCraftRecipeCategoryUid.MATERIALIZATION);
 
 		IRecipeTransferRegistry recipeTransferRegistry = registry.getRecipeTransferRegistry();
 

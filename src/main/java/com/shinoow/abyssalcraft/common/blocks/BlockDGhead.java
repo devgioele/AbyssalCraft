@@ -79,13 +79,13 @@ public class BlockDGhead extends BlockContainer implements IInfusionStabiliserEx
 
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		if(this == ACBlocks.depths_ghoul_head)
+		if(this == ACBlocks.getInstance().depths_ghoul_head.getBlock())
 			return new TileEntityDGhead();
-		else if (this == ACBlocks.pete_head)
+		else if (this == ACBlocks.getInstance().pete_head.getBlock())
 			return new TileEntityPhead();
-		else if(this == ACBlocks.mr_wilson_head)
+		else if(this == ACBlocks.getInstance().mr_wilson_head.getBlock())
 			return new TileEntityWhead();
-		else if(this == ACBlocks.dr_orange_head)
+		else if(this == ACBlocks.getInstance().dr_orange_head.getBlock())
 			return new TileEntityOhead();
 		return null;
 	}

@@ -25,8 +25,8 @@ public class Chains extends WorldGenerator {
 	@Override
 	public boolean generate(World worldIn, Random rand, BlockPos pos) {
 
-		IBlockState abyssal_stone = ACBlocks.abyssal_stone.getDefaultState();
-		IBlockState coralium_cobblestone = ACBlocks.coralium_cobblestone.getDefaultState();
+		IBlockState abyssal_stone = ACBlocks.getInstance().abyssal_stone.getBlock().getDefaultState();
+		IBlockState coralium_cobblestone = ACBlocks.getInstance().coralium_cobblestone.getBlock().getDefaultState();
 		int h = 5 + rand.nextInt(35);
 		int h2 = 255 - h * 6;
 		int t = 0;

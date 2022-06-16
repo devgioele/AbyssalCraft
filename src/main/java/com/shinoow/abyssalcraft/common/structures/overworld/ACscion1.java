@@ -31,9 +31,9 @@ public class ACscion1 extends StructureDarklandsBase {
 	public boolean generate(World world, Random random, BlockPos pos) {
 
 		IBlockState grass = Blocks.GRASS.getDefaultState();
-		IBlockState glowing_brick = ACBlocks.glowing_darkstone_bricks.getDefaultState();
-		IBlockState chiseled_brick = ACBlocks.chiseled_darkstone_brick.getDefaultState();
-		IBlockState brick_slab = ACBlocks.darkstone_brick_slab.getDefaultState();
+		IBlockState glowing_brick = ACBlocks.getInstance().glowing_darkstone_bricks.getBlock().getDefaultState();
+		IBlockState chiseled_brick = ACBlocks.getInstance().chiseled_darkstone_brick.getBlock().getDefaultState();
+		IBlockState brick_slab = ACBlocks.getInstance().darkstone_brick_slab.getBlock().getDefaultState();
 
 		boolean shouldGrass = world.getBlockState(pos).getMaterial() == Material.GRASS;
 
@@ -73,16 +73,16 @@ public class ACscion1 extends StructureDarklandsBase {
 					if((j == -2 || j == 2) && flag2)
 						for(int k = 0; k < 4; k++){
 							if(k == 0){
-								setBlockAndNotifyAdequately(world, pos.add(j, k+2, i), i == 0 ? ACBlocks.darkstone_brick_stairs.getStateFromMeta(j > 0 ? 1 : 0) : glowing_brick);
-								setBlockAndNotifyAdequately(world, pos.add(i, k+2, j), i == 0 ? ACBlocks.darkstone_brick_stairs.getStateFromMeta(j > 0 ? 3 : 2) : glowing_brick);
+								setBlockAndNotifyAdequately(world, pos.add(j, k+2, i), i == 0 ? ACBlocks.getInstance().darkstone_brick_stairs.getBlock().getStateFromMeta(j > 0 ? 1 : 0) : glowing_brick);
+								setBlockAndNotifyAdequately(world, pos.add(i, k+2, j), i == 0 ? ACBlocks.getInstance().darkstone_brick_stairs.getBlock().getStateFromMeta(j > 0 ? 3 : 2) : glowing_brick);
 							}
 							if(k == 1){
 								setBlockAndNotifyAdequately(world, pos.add(j, k+2, i), i == 0 ? Blocks.AIR.getDefaultState() : brick_slab);
 								setBlockAndNotifyAdequately(world, pos.add(i, k+2, j), i == 0 ? Blocks.AIR.getDefaultState() : brick_slab);
 							}
 							if(k == 2){
-								setBlockAndNotifyAdequately(world, pos.add(j, k+2, i), i == 0 ? brick_slab.withProperty(BlockSlab.HALF, EnumBlockHalf.TOP) : ACBlocks.darkstone_brick_stairs.getStateFromMeta(j > 0 ? 5 : 4));
-								setBlockAndNotifyAdequately(world, pos.add(i, k+2, j), i == 0 ? brick_slab.withProperty(BlockSlab.HALF, EnumBlockHalf.TOP) : ACBlocks.darkstone_brick_stairs.getStateFromMeta(j > 0 ? 7 : 6));
+								setBlockAndNotifyAdequately(world, pos.add(j, k+2, i), i == 0 ? brick_slab.withProperty(BlockSlab.HALF, EnumBlockHalf.TOP) : ACBlocks.getInstance().darkstone_brick_stairs.getBlock().getStateFromMeta(j > 0 ? 5 : 4));
+								setBlockAndNotifyAdequately(world, pos.add(i, k+2, j), i == 0 ? brick_slab.withProperty(BlockSlab.HALF, EnumBlockHalf.TOP) : ACBlocks.getInstance().darkstone_brick_stairs.getBlock().getStateFromMeta(j > 0 ? 7 : 6));
 							}
 							if(k == 3){
 								setBlockAndNotifyAdequately(world, pos.add(j, k+2, i), brick_slab);

@@ -46,8 +46,8 @@ public class chagarothlair extends WorldGenerator {
 
 		ITemplateProcessor processor = (worldIn, pos1, blockInfoIn) -> {
 
-			if(blockInfoIn.blockState == ACBlocks.dreadstone_brick.getDefaultState())
-				return worldIn.rand.nextInt(10) > 3 ? blockInfoIn : new BlockInfo(pos1, ACBlocks.cracked_dreadstone_brick.getDefaultState(), null);
+			if(blockInfoIn.blockState == ACBlocks.getInstance().dreadstone_brick.getBlock().getDefaultState())
+				return worldIn.rand.nextInt(10) > 3 ? blockInfoIn : new BlockInfo(pos1, ACBlocks.getInstance().cracked_dreadstone_brick.getBlock().getDefaultState(), null);
 				return blockInfoIn;
 		};
 
@@ -70,27 +70,27 @@ public class chagarothlair extends WorldGenerator {
 
 					tileentitychest.setInventorySlotContents(13, new ItemStack(Blocks.DIRT, 1).setStackDisplayName(TextFormatting.GOLD +"The Legendary Treasure of The Dreadlands"));
 					if(world.rand.nextInt(100) == 0){
-						tileentitychest.setInventorySlotContents(0, new ItemStack(ACItems.crystal, 1, 0));
-						tileentitychest.setInventorySlotContents(1, new ItemStack(ACItems.crystal, 1, 1));
-						tileentitychest.setInventorySlotContents(2, new ItemStack(ACItems.crystal, 1, 2));
-						tileentitychest.setInventorySlotContents(3, new ItemStack(ACItems.crystal, 1, 3));
-						tileentitychest.setInventorySlotContents(4, new ItemStack(ACItems.crystal, 1, 4));
-						tileentitychest.setInventorySlotContents(5, new ItemStack(ACItems.crystal, 1, 5));
-						tileentitychest.setInventorySlotContents(6, new ItemStack(ACItems.crystal, 1, 6));
-						tileentitychest.setInventorySlotContents(7, new ItemStack(ACItems.crystal, 1, 7));
-						tileentitychest.setInventorySlotContents(8, new ItemStack(ACItems.crystal, 1, 8));
-						tileentitychest.setInventorySlotContents(9, new ItemStack(ACItems.crystal, 1, 11));
-						tileentitychest.setInventorySlotContents(10, new ItemStack(ACItems.crystal, 1, 12));
-						tileentitychest.setInventorySlotContents(11, new ItemStack(ACItems.crystal, 1, 13));
-						tileentitychest.setInventorySlotContents(12, new ItemStack(ACItems.crystal, 1, 14));
-						tileentitychest.setInventorySlotContents(14, new ItemStack(ACItems.crystal, 1, 15));
-						tileentitychest.setInventorySlotContents(15, new ItemStack(ACItems.crystal, 1, 16));
-						tileentitychest.setInventorySlotContents(16, new ItemStack(ACItems.crystal, 1, 17));
-						tileentitychest.setInventorySlotContents(17, new ItemStack(ACItems.crystal, 1, 18));
-						tileentitychest.setInventorySlotContents(18, new ItemStack(ACItems.crystal, 1, 19));
-						tileentitychest.setInventorySlotContents(19, new ItemStack(ACItems.crystal, 1, 20));
-						tileentitychest.setInventorySlotContents(20, new ItemStack(ACItems.crystal, 1, 24));
-						tileentitychest.setInventorySlotContents(21, new ItemStack(ACItems.oblivion_catalyst, 1));
+						tileentitychest.setInventorySlotContents(0, new ItemStack(ACItems.getInstance().crystal, 1, 0));
+						tileentitychest.setInventorySlotContents(1, new ItemStack(ACItems.getInstance().crystal, 1, 1));
+						tileentitychest.setInventorySlotContents(2, new ItemStack(ACItems.getInstance().crystal, 1, 2));
+						tileentitychest.setInventorySlotContents(3, new ItemStack(ACItems.getInstance().crystal, 1, 3));
+						tileentitychest.setInventorySlotContents(4, new ItemStack(ACItems.getInstance().crystal, 1, 4));
+						tileentitychest.setInventorySlotContents(5, new ItemStack(ACItems.getInstance().crystal, 1, 5));
+						tileentitychest.setInventorySlotContents(6, new ItemStack(ACItems.getInstance().crystal, 1, 6));
+						tileentitychest.setInventorySlotContents(7, new ItemStack(ACItems.getInstance().crystal, 1, 7));
+						tileentitychest.setInventorySlotContents(8, new ItemStack(ACItems.getInstance().crystal, 1, 8));
+						tileentitychest.setInventorySlotContents(9, new ItemStack(ACItems.getInstance().crystal, 1, 11));
+						tileentitychest.setInventorySlotContents(10, new ItemStack(ACItems.getInstance().crystal, 1, 12));
+						tileentitychest.setInventorySlotContents(11, new ItemStack(ACItems.getInstance().crystal, 1, 13));
+						tileentitychest.setInventorySlotContents(12, new ItemStack(ACItems.getInstance().crystal, 1, 14));
+						tileentitychest.setInventorySlotContents(14, new ItemStack(ACItems.getInstance().crystal, 1, 15));
+						tileentitychest.setInventorySlotContents(15, new ItemStack(ACItems.getInstance().crystal, 1, 16));
+						tileentitychest.setInventorySlotContents(16, new ItemStack(ACItems.getInstance().crystal, 1, 17));
+						tileentitychest.setInventorySlotContents(17, new ItemStack(ACItems.getInstance().crystal, 1, 18));
+						tileentitychest.setInventorySlotContents(18, new ItemStack(ACItems.getInstance().crystal, 1, 19));
+						tileentitychest.setInventorySlotContents(19, new ItemStack(ACItems.getInstance().crystal, 1, 20));
+						tileentitychest.setInventorySlotContents(20, new ItemStack(ACItems.getInstance().crystal, 1, 24));
+						tileentitychest.setInventorySlotContents(21, new ItemStack(ACItems.getInstance().oblivion_catalyst, 1));
 					}
 				}
 			}

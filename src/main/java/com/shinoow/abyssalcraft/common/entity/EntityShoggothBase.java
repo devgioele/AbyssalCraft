@@ -262,10 +262,10 @@ public abstract class EntityShoggothBase extends EntityMob implements IOmotholEn
 	protected void spawnOoze(int x, int y, int z){
 		BlockPos pos = new BlockPos(x, y, z);
 		if(ACConfig.shoggothOoze)
-			if((world.getBlockState(pos).getMaterial() == Material.AIR || world.getBlockState(pos).getBlock().isReplaceable(world, pos)) && ACBlocks.shoggoth_ooze.canPlaceBlockAt(world, pos)
-					&& world.getBlockState(pos).getBlock() != ACBlocks.shoggoth_ooze && !world.getBlockState(pos).getMaterial().isLiquid())
-				world.setBlockState(pos, ACBlocks.shoggoth_ooze.getDefaultState());
-			else if(world.getBlockState(pos).getBlock() == ACBlocks.shoggoth_ooze && world.getBlockState(pos).getValue(BlockShoggothOoze.LAYERS) < 8
+			if((world.getBlockState(pos).getMaterial() == Material.AIR || world.getBlockState(pos).getBlock().isReplaceable(world, pos)) && ACBlocks.getInstance().shoggoth_ooze.getBlock().canPlaceBlockAt(world, pos)
+					&& world.getBlockState(pos).getBlock() != ACBlocks.getInstance().shoggoth_ooze.getBlock() && !world.getBlockState(pos).getMaterial().isLiquid())
+				world.setBlockState(pos, ACBlocks.getInstance().shoggoth_ooze.getBlock().getDefaultState());
+			else if(world.getBlockState(pos).getBlock() == ACBlocks.getInstance().shoggoth_ooze.getBlock() && world.getBlockState(pos).getValue(BlockShoggothOoze.LAYERS) < 8
 					&& ticksExisted % 10 == 0 && rand.nextInt(5) == 0){
 				IBlockState state = world.getBlockState(pos);
 				world.setBlockState(pos, state.withProperty(BlockShoggothOoze.LAYERS, state.getValue(BlockShoggothOoze.LAYERS) + 1));
@@ -335,7 +335,7 @@ public abstract class EntityShoggothBase extends EntityMob implements IOmotholEn
 			return false;
 		}
 		if(par1DamageSource == DamageSource.IN_WALL)
-			if(world.getBlockState(getPosition())  != ACBlocks.monolith_stone && world.getGameRules().getBoolean("mobGriefing"))
+			if(world.getBlockState(getPosition())  != ACBlocks.getInstance().monolith_stone.getBlock() && world.getGameRules().getBoolean("mobGriefing"))
 				sprayAcid(true);
 			else return false;
 		if(par1DamageSource == DamageSource.CACTUS) return false;
@@ -403,8 +403,8 @@ public abstract class EntityShoggothBase extends EntityMob implements IOmotholEn
 				for(int k = 0; above ? k < 2 : k > -2; k=above ? k + 1 : k - 1){
 					BlockPos pos = new BlockPos(i, above ? aabb.maxY : aabb.minY , j);
 					if(!world.isAirBlock(pos) && world.getBlockState(pos).getBlockHardness(world, pos) < ACConfig.acidResistanceHardness
-							&& world.getBlockState(pos) != ACBlocks.monolith_stone
-							&& world.getBlockState(pos).getBlock() != ACBlocks.shoggoth_biomass && !world.getBlockState(pos).getBlock().hasTileEntity(world.getBlockState(pos))
+							&& world.getBlockState(pos) != ACBlocks.getInstance().monolith_stone.getBlock()
+							&& world.getBlockState(pos).getBlock() != ACBlocks.getInstance().shoggoth_biomass.getBlock() && !world.getBlockState(pos).getBlock().hasTileEntity(world.getBlockState(pos))
 							&& world.getBlockState(pos).getBlockHardness(world, pos) != -1 && world.getBlockState(pos).getBlock().canEntityDestroy(world.getBlockState(pos), world, pos, this))
 						world.destroyBlock(pos, false);
 				}

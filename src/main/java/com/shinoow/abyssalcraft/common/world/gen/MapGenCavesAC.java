@@ -21,12 +21,12 @@ import net.minecraft.world.gen.MapGenCaves;
 public class MapGenCavesAC extends MapGenCaves {
 
 	private boolean isACStone(IBlockState state){
-		return state.getBlock() instanceof BlockACStone && state.getBlock() != ACBlocks.ethaxium;
+		return state.getBlock() instanceof BlockACStone && state.getBlock() != ACBlocks.getInstance().ethaxium.getBlock();
 	}
 
 	private boolean isACMisc(Block block){
-		return block == ACBlocks.abyssal_sand || block == ACBlocks.fused_abyssal_sand ||
-				block == ACBlocks.dreadlands_dirt || block == ACBlocks.dreadlands_grass;
+		return block == ACBlocks.getInstance().abyssal_sand.getBlock() || block == ACBlocks.getInstance().fused_abyssal_sand.getBlock() ||
+				block == ACBlocks.getInstance().dreadlands_dirt.getBlock() || block == ACBlocks.getInstance().dreadlands_grass.getBlock();
 	}
 
 	@Override

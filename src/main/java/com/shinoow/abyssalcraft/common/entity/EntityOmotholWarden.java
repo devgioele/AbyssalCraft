@@ -93,7 +93,7 @@ public class EntityOmotholWarden extends EntityMob implements IAntiEntity, ICora
 	@Override
 	protected Item getDropItem()
 	{
-		return ACItems.life_crystal;
+		return ACItems.getInstance().life_crystal;
 	}
 
 	@Override

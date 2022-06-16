@@ -62,7 +62,7 @@ public class InterdimensionalCageMessage extends AbstractServerMessage<Interdime
 		if(e == null) return;
 		if(InitHandler.INSTANCE.isEntityBlacklisted(e)) return;
 
-		if(stack.getItem() == ACItems.interdimensional_cage && stack.getItem() instanceof IEnergyContainerItem)
+		if(stack.getItem() == ACItems.getInstance().interdimensional_cage && stack.getItem() instanceof IEnergyContainerItem)
 			if(e instanceof EntityLivingBase){
 				EntityLivingBase target = (EntityLivingBase)e;
 				if(target.isNonBoss() && target.getPassengers().isEmpty() && target.getRidingEntity() == null)

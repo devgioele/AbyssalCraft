@@ -185,7 +185,7 @@ public class EntityLesserDreadbeast extends EntityMob implements IDreadEntity, I
 	@Override
 	protected Item getDropItem()
 	{
-		return ACItems.dreaded_shard_of_abyssalnite;
+		return ACItems.getInstance().dreaded_shard_of_abyssalnite;
 	}
 
 	@Override

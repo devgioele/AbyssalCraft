@@ -60,7 +60,7 @@ public class BiomeDarklands extends Biome implements IDarklandsBiome {
 				int y = par2Random.nextInt(28) + 4;
 				int z = par2Random.nextInt(16);
 
-				new WorldGenMinable(ACBlocks.abyssalnite_ore.getDefaultState(), veinSize).generate(par1World, par2Random, pos.add(x, y, z));
+				new WorldGenMinable(ACBlocks.getInstance().abyssalnite_ore.getBlock().getDefaultState(), veinSize).generate(par1World, par2Random, pos.add(x, y, z));
 			}
 
 		for (int rarity = 0; rarity < 7; ++rarity)
@@ -68,7 +68,7 @@ public class BiomeDarklands extends Biome implements IDarklandsBiome {
 			int x = par2Random.nextInt(16);
 			int y = par2Random.nextInt(64);
 			int z = par2Random.nextInt(16);
-			new WorldGenMinable(ACBlocks.darkstone.getDefaultState(), 20).generate(par1World, par2Random, pos.add(x, y, z));
+			new WorldGenMinable(ACBlocks.getInstance().darkstone.getBlock().getDefaultState(), 20).generate(par1World, par2Random, pos.add(x, y, z));
 		}
 	}
 

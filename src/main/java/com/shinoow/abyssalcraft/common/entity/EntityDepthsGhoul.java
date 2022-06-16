@@ -266,7 +266,7 @@ public class EntityDepthsGhoul extends EntityMob implements ICoraliumEntity {
 	@Override
 	protected Item getDropItem()
 	{
-		return ACItems.coralium_plagued_flesh_on_a_bone;
+		return ACItems.getInstance().coralium_plagued_flesh_on_a_bone;
 	}
 
 	@Override

@@ -46,10 +46,10 @@ public class ItemCorbone extends ItemFood implements IUnlockableItem {
 	@Override
 	public void onFoodEaten(ItemStack itemStack, World world, EntityPlayer entityPlayer)
 	{
-		if(itemStack.getItem() == ACItems.anti_plagued_flesh_on_a_bone){
+		if(itemStack.getItem() == ACItems.getInstance().anti_plagued_flesh_on_a_bone){
 			entityPlayer.addPotionEffect(new PotionEffect(MobEffects.SATURATION, 600, 1));
 			entityPlayer.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 600, 0));
-			entityPlayer.inventory.addItemStackToInventory(new ItemStack(ACItems.anti_bone));
+			entityPlayer.inventory.addItemStackToInventory(new ItemStack(ACItems.getInstance().anti_bone));
 		} else {
 			entityPlayer.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 600, 1));
 			if(!EntityUtil.isPlayerCoralium(entityPlayer))

@@ -59,7 +59,7 @@ public class BlockCrystallizer extends BlockContainer
 	@Override
 	public Item getItemDropped(IBlockState state, Random par1Random, int par3)
 	{
-		return Item.getItemFromBlock(ACBlocks.crystallizer_idle);
+		return Item.getItemFromBlock(ACBlocks.getInstance().crystallizer_idle.getBlock());
 	}
 
 	@Override
@@ -108,9 +108,9 @@ public class BlockCrystallizer extends BlockContainer
 		keepInventory = true;
 
 		if (par0)
-			par1World.setBlockState(pos, ACBlocks.crystallizer_active.getDefaultState().withProperty(FACING, state.getValue(FACING)), 3);
+			par1World.setBlockState(pos, ACBlocks.getInstance().crystallizer_active.getBlock().getDefaultState().withProperty(FACING, state.getValue(FACING)), 3);
 		else
-			par1World.setBlockState(pos, ACBlocks.crystallizer_idle.getDefaultState().withProperty(FACING, state.getValue(FACING)), 3);
+			par1World.setBlockState(pos, ACBlocks.getInstance().crystallizer_idle.getBlock().getDefaultState().withProperty(FACING, state.getValue(FACING)), 3);
 
 		keepInventory = false;
 
@@ -221,7 +221,7 @@ public class BlockCrystallizer extends BlockContainer
 	@SideOnly(Side.CLIENT)
 	public ItemStack getItem(World par1World, BlockPos pos, IBlockState state)
 	{
-		return new ItemStack(ACBlocks.crystallizer_idle);
+		return new ItemStack(ACBlocks.getInstance().crystallizer_idle.getBlock());
 	}
 
 	@Override

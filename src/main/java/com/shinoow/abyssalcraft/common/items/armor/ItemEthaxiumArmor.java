@@ -37,10 +37,10 @@ public class ItemEthaxiumArmor extends ItemACArmor {
 
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String layer) {
-		if(stack.getItem() == ACItems.ethaxium_helmet || stack.getItem() == ACItems.ethaxium_chestplate || stack.getItem() == ACItems.ethaxium_boots)
+		if(stack.getItem() == ACItems.getInstance().ethaxium_helmet || stack.getItem() == ACItems.getInstance().ethaxium_chestplate || stack.getItem() == ACItems.getInstance().ethaxium_boots)
 			return "abyssalcraft:textures/armor/ethaxium_1.png";
 
-		if(stack.getItem() == ACItems.ethaxium_leggings)
+		if(stack.getItem() == ACItems.getInstance().ethaxium_leggings)
 			return "abyssalcraft:textures/armor/ethaxium_2.png";
 		else return null;
 	}
@@ -48,7 +48,7 @@ public class ItemEthaxiumArmor extends ItemACArmor {
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemstack) {
 		if(world.isRemote || !ACConfig.armorPotionEffects) return;
-		if (itemstack.getItem() == ACItems.ethaxium_helmet) {
+		if (itemstack.getItem() == ACItems.getInstance().ethaxium_helmet) {
 			if(world.provider.isSurfaceWorld() && !world.provider.isDaytime())
 				player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 260, 0, false, false));
 			if(player.getActivePotionEffect(MobEffects.HUNGER) !=null)
@@ -56,7 +56,7 @@ public class ItemEthaxiumArmor extends ItemACArmor {
 			if(player.getActivePotionEffect(MobEffects.POISON) !=null)
 				player.removePotionEffect(MobEffects.POISON);
 		}
-		if(itemstack.getItem() == ACItems.ethaxium_chestplate){
+		if(itemstack.getItem() == ACItems.getInstance().ethaxium_chestplate){
 			if(player.isBurning() || world.provider.doesWaterVaporize())
 				player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 20, 2, false, false));
 			if(player.getActivePotionEffect(AbyssalCraftAPI.antimatter_potion) !=null)
@@ -64,10 +64,10 @@ public class ItemEthaxiumArmor extends ItemACArmor {
 			if(world.rand.nextInt(200) == 0)
 				player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 60, 0, false, false));
 		}
-		if(itemstack.getItem() == ACItems.ethaxium_leggings)
+		if(itemstack.getItem() == ACItems.getInstance().ethaxium_leggings)
 			if(world.rand.nextInt(200) == 0)
 				player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 60, 0, false, false));
-		if(itemstack.getItem() == ACItems.ethaxium_boots)
+		if(itemstack.getItem() == ACItems.getInstance().ethaxium_boots)
 			if(player.isInWater()){
 				player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 20, 2, false, false));
 				player.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 20, 1, false, false));

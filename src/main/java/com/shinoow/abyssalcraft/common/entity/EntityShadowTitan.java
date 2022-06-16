@@ -79,7 +79,7 @@ public class EntityShadowTitan extends EntityMob {
 	@Override
 	protected Item getDropItem()
 	{
-		return ACItems.shadowPlate;
+		return ACItems.getInstance().shadowPlate;
 	}
 
 	@Override

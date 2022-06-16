@@ -99,9 +99,9 @@ public class SlotTransmutator extends Slot
 
 		MinecraftForge.EVENT_BUS.post(new ACEvents.ItemTransmutedEvent(thePlayer, par1ItemStack));
 
-		//		if (par1ItemStack.getItem() == ACItems.rlyehian_gateway_key)
+		//		if (par1ItemStack.getItem() == ACItems.getInstance().rlyehian_gateway_key)
 		//			thePlayer.addStat(ACAchievements.rlyehian_gateway_key, 1);
-		//		if(par1ItemStack.getItem() == ACItems.dreadium_ingot)
+		//		if(par1ItemStack.getItem() == ACItems.getInstance().dreadium_ingot)
 		//			thePlayer.addStat(ACAchievements.dreadium, 1);
 	}
 }

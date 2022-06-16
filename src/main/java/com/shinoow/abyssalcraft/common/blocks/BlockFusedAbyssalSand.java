@@ -31,6 +31,6 @@ public class BlockFusedAbyssalSand extends BlockACBasic {
 	@Override
 	public Item getItemDropped(IBlockState state, Random random, int j)
 	{
-		return Item.getItemFromBlock(ACBlocks.abyssal_sand);
+		return Item.getItemFromBlock(ACBlocks.getInstance().abyssal_sand.getBlock());
 	}
 }

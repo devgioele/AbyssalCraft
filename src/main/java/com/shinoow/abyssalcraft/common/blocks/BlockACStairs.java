@@ -51,7 +51,7 @@ public class BlockACStairs extends BlockStairs {
 	public boolean canEntityDestroy(IBlockState state, IBlockAccess world, BlockPos pos, Entity entity)
 	{
 		if(entity instanceof EntityDragon || entity instanceof EntityWither || entity instanceof EntityWitherSkull)
-			return state.getBlock() != ACBlocks.ethaxium_brick_stairs && state.getBlock() != ACBlocks.dark_ethaxium_brick_stairs;
+			return state.getBlock() != ACBlocks.getInstance().ethaxium_brick_stairs.getBlock() && state.getBlock() != ACBlocks.getInstance().dark_ethaxium_brick_stairs.getBlock();
 		return super.canEntityDestroy(state, world, pos, entity);
 	}
 }

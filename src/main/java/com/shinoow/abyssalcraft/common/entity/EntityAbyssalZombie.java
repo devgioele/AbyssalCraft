@@ -229,7 +229,7 @@ public class EntityAbyssalZombie extends EntityMob implements ICoraliumEntity {
 	@Override
 	protected Item getDropItem()
 	{
-		return ACItems.coralium_plagued_flesh;
+		return ACItems.getInstance().coralium_plagued_flesh;
 	}
 
 	@Override

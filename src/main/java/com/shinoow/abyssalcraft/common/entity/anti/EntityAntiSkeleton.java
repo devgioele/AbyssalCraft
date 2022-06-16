@@ -147,7 +147,7 @@ public class EntityAntiSkeleton extends EntityMob implements IRangedAttackMob, I
 		j = rand.nextInt(3 + par2);
 
 		for (k = 0; k < j; ++k)
-			dropItem(ACItems.anti_bone, 1);
+			dropItem(ACItems.getInstance().anti_bone, 1);
 	}
 
 	@Override

@@ -141,7 +141,7 @@ public class ItemGatewayKey extends ItemACBasic {
 
 		if(getKeyType() == 3) {
 			IBlockState state = worldIn.getBlockState(pos);
-			if(state.getBlock() == ACBlocks.portal_anchor) {
+			if(state.getBlock() == ACBlocks.getInstance().portal_anchor.getBlock()) {
 				isUsing = true;
 				boolean active = state.getValue(BlockPortalAnchor.ACTIVE);
 

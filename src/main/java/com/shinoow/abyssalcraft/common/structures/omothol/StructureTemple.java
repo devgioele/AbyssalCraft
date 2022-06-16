@@ -75,11 +75,11 @@ public class StructureTemple extends WorldGenerator {
 			break;
 		}
 
-		if(world.getBlockState(center).getBlock() != ACBlocks.omothol_stone ||
-				world.getBlockState(center.north(14)).getBlock() != ACBlocks.omothol_stone ||
-				world.getBlockState(center.south(14)).getBlock() != ACBlocks.omothol_stone ||
-				world.getBlockState(center.west(14)).getBlock() != ACBlocks.omothol_stone ||
-				world.getBlockState(center.east(14)).getBlock() != ACBlocks.omothol_stone) return false;
+		if(world.getBlockState(center).getBlock() != ACBlocks.getInstance().omothol_stone.getBlock() ||
+				world.getBlockState(center.north(14)).getBlock() != ACBlocks.getInstance().omothol_stone.getBlock() ||
+				world.getBlockState(center.south(14)).getBlock() != ACBlocks.getInstance().omothol_stone.getBlock() ||
+				world.getBlockState(center.west(14)).getBlock() != ACBlocks.getInstance().omothol_stone.getBlock() ||
+				world.getBlockState(center.east(14)).getBlock() != ACBlocks.getInstance().omothol_stone.getBlock()) return false;
 
 		center = world.getHeight(center);
 		if(center.getY() > pos.getY())
@@ -191,19 +191,19 @@ public class StructureTemple extends WorldGenerator {
 	private IBlockState getRandomStatue(Random rand, EnumFacing facing){
 		switch(rand.nextInt(7)){
 		case 0:
-			return ACBlocks.cthulhu_statue.getDefaultState().withProperty(BlockStatue.FACING, facing);
+			return ACBlocks.getInstance().cthulhu_statue.getBlock().getDefaultState().withProperty(BlockStatue.FACING, facing);
 		case 1:
-			return ACBlocks.hastur_statue.getDefaultState().withProperty(BlockStatue.FACING, facing);
+			return ACBlocks.getInstance().hastur_statue.getBlock().getDefaultState().withProperty(BlockStatue.FACING, facing);
 		case 2:
-			return ACBlocks.jzahar_statue.getDefaultState().withProperty(BlockStatue.FACING, facing);
+			return ACBlocks.getInstance().jzahar_statue.getBlock().getDefaultState().withProperty(BlockStatue.FACING, facing);
 		case 3:
-			return ACBlocks.azathoth_statue.getDefaultState().withProperty(BlockStatue.FACING, facing);
+			return ACBlocks.getInstance().azathoth_statue.getBlock().getDefaultState().withProperty(BlockStatue.FACING, facing);
 		case 4:
-			return ACBlocks.nyarlathotep_statue.getDefaultState().withProperty(BlockStatue.FACING, facing);
+			return ACBlocks.getInstance().nyarlathotep_statue.getBlock().getDefaultState().withProperty(BlockStatue.FACING, facing);
 		case 5:
-			return ACBlocks.yog_sothoth_statue.getDefaultState().withProperty(BlockStatue.FACING, facing);
+			return ACBlocks.getInstance().yog_sothoth_statue.getBlock().getDefaultState().withProperty(BlockStatue.FACING, facing);
 		case 6:
-			return ACBlocks.shub_niggurath_statue.getDefaultState().withProperty(BlockStatue.FACING, facing);
+			return ACBlocks.getInstance().shub_niggurath_statue.getBlock().getDefaultState().withProperty(BlockStatue.FACING, facing);
 		default:
 			return getRandomStatue(rand, facing);
 		}

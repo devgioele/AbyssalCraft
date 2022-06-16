@@ -16,7 +16,6 @@ import com.shinoow.abyssalcraft.api.block.ACBlocks;
 import com.shinoow.abyssalcraft.api.ritual.EnumRitualParticle;
 import com.shinoow.abyssalcraft.api.ritual.NecronomiconRitual;
 import com.shinoow.abyssalcraft.common.util.BiomeUtil;
-import com.shinoow.abyssalcraft.init.BlockHandler;
 import com.shinoow.abyssalcraft.lib.ACConfig;
 import com.shinoow.abyssalcraft.lib.util.ScheduledProcess;
 import com.shinoow.abyssalcraft.lib.util.Scheduler;
@@ -36,15 +35,22 @@ import net.minecraft.world.biome.*;
 public class NecronomiconCorruptionRitual extends NecronomiconRitual {
 
 	public NecronomiconCorruptionRitual() {
-		super("corruption", 4, 0, 10000F, true, new Object[]{new ItemStack[]{new ItemStack(ACBlocks.jzahar_statue), new ItemStack(ACBlocks.cthulhu_statue),
-				new ItemStack(ACBlocks.hastur_statue), new ItemStack(ACBlocks.azathoth_statue), new ItemStack(ACBlocks.nyarlathotep_statue), new ItemStack(ACBlocks.yog_sothoth_statue),
-				new ItemStack(ACBlocks.shub_niggurath_statue)}, ACBlocks.darkstone, new ItemStack[]{new ItemStack(ACBlocks.jzahar_statue), new ItemStack(ACBlocks.cthulhu_statue),
-						new ItemStack(ACBlocks.hastur_statue), new ItemStack(ACBlocks.azathoth_statue), new ItemStack(ACBlocks.nyarlathotep_statue), new ItemStack(ACBlocks.yog_sothoth_statue),
-						new ItemStack(ACBlocks.shub_niggurath_statue)}, ACBlocks.darkstone, new ItemStack[]{new ItemStack(ACBlocks.jzahar_statue), new ItemStack(ACBlocks.cthulhu_statue),
-								new ItemStack(ACBlocks.hastur_statue), new ItemStack(ACBlocks.azathoth_statue), new ItemStack(ACBlocks.nyarlathotep_statue), new ItemStack(ACBlocks.yog_sothoth_statue),
-								new ItemStack(ACBlocks.shub_niggurath_statue)}, ACBlocks.darkstone, new ItemStack[]{new ItemStack(ACBlocks.jzahar_statue), new ItemStack(ACBlocks.cthulhu_statue),
-										new ItemStack(ACBlocks.hastur_statue), new ItemStack(ACBlocks.azathoth_statue), new ItemStack(ACBlocks.nyarlathotep_statue), new ItemStack(ACBlocks.yog_sothoth_statue),
-										new ItemStack(ACBlocks.shub_niggurath_statue)}, ACBlocks.darkstone});
+		super("corruption", 4, 0, 10000F, true,
+				new ItemStack[]{new ItemStack(ACBlocks.getInstance().jzahar_statue.getBlock()), new ItemStack(ACBlocks.getInstance().cthulhu_statue.getBlock()),
+						new ItemStack(ACBlocks.getInstance().hastur_statue.getBlock()), new ItemStack(ACBlocks.getInstance().azathoth_statue.getBlock()), new ItemStack(ACBlocks.getInstance().nyarlathotep_statue.getBlock()), new ItemStack(ACBlocks.getInstance().yog_sothoth_statue.getBlock()),
+						new ItemStack(ACBlocks.getInstance().shub_niggurath_statue.getBlock())}, ACBlocks.getInstance().darkstone.getBlock(),
+				new ItemStack[]{new ItemStack(ACBlocks.getInstance().jzahar_statue.getBlock()), new ItemStack(ACBlocks.getInstance().cthulhu_statue.getBlock()),
+						new ItemStack(ACBlocks.getInstance().hastur_statue.getBlock()), new ItemStack(ACBlocks.getInstance().azathoth_statue.getBlock()), new ItemStack(ACBlocks.getInstance().nyarlathotep_statue.getBlock()), new ItemStack(ACBlocks.getInstance().yog_sothoth_statue.getBlock()),
+						new ItemStack(ACBlocks.getInstance().shub_niggurath_statue.getBlock())},
+				ACBlocks.getInstance().darkstone.getBlock(),
+				new ItemStack[]{new ItemStack(ACBlocks.getInstance().jzahar_statue.getBlock()), new ItemStack(ACBlocks.getInstance().cthulhu_statue.getBlock()),
+						new ItemStack(ACBlocks.getInstance().hastur_statue.getBlock()), new ItemStack(ACBlocks.getInstance().azathoth_statue.getBlock()), new ItemStack(ACBlocks.getInstance().nyarlathotep_statue.getBlock()), new ItemStack(ACBlocks.getInstance().yog_sothoth_statue.getBlock()),
+						new ItemStack(ACBlocks.getInstance().shub_niggurath_statue.getBlock())},
+				ACBlocks.getInstance().darkstone.getBlock(),
+				new ItemStack[]{new ItemStack(ACBlocks.getInstance().jzahar_statue.getBlock()), new ItemStack(ACBlocks.getInstance().cthulhu_statue.getBlock()),
+						new ItemStack(ACBlocks.getInstance().hastur_statue.getBlock()), new ItemStack(ACBlocks.getInstance().azathoth_statue.getBlock()), new ItemStack(ACBlocks.getInstance().nyarlathotep_statue.getBlock()), new ItemStack(ACBlocks.getInstance().yog_sothoth_statue.getBlock()),
+						new ItemStack(ACBlocks.getInstance().shub_niggurath_statue.getBlock())},
+				ACBlocks.getInstance().darkstone.getBlock());
 		setRitualParticle(EnumRitualParticle.PE_STREAM);
 	}
 
@@ -86,51 +92,51 @@ public class NecronomiconCorruptionRitual extends NecronomiconRitual {
 							if(world.isAirBlock(pos1.up(y))) continue;
 							IBlockState state = world.getBlockState(pos1.up(y));
 							if(state.getBlock() == Blocks.STONE && state.getValue(BlockStone.VARIANT) != BlockStone.EnumType.STONE)
-								world.setBlockState(pos1.up(y), ACBlocks.darkstone.getDefaultState(), 2);
+								world.setBlockState(pos1.up(y), ACBlocks.getInstance().darkstone.getBlock().getDefaultState(), 2);
 							else if(state.getBlock() == Blocks.LEAVES)
-								world.setBlockState(pos1.up(y), ACBlocks.darklands_oak_leaves.getDefaultState().withProperty(BlockLeaves.CHECK_DECAY, state.getValue(BlockLeaves.CHECK_DECAY)).withProperty(BlockLeaves.DECAYABLE, state.getValue(BlockLeaves.DECAYABLE)), 2);
+								world.setBlockState(pos1.up(y), ACBlocks.getInstance().darklands_oak_leaves.getBlock().getDefaultState().withProperty(BlockLeaves.CHECK_DECAY, state.getValue(BlockLeaves.CHECK_DECAY)).withProperty(BlockLeaves.DECAYABLE, state.getValue(BlockLeaves.DECAYABLE)), 2);
 							else if(state.getBlock() == Blocks.LOG)
-								world.setBlockState(pos1.up(y), (world.rand.nextInt(10) == 0 ? ACBlocks.darklands_oak_wood_2 : ACBlocks.darklands_oak_wood).getDefaultState().withProperty(BlockLog.LOG_AXIS, state.getValue(BlockLog.LOG_AXIS)), 2);
+								world.setBlockState(pos1.up(y), (world.rand.nextInt(10) == 0 ? ACBlocks.getInstance().darklands_oak_wood_2.getBlock() : ACBlocks.getInstance().darklands_oak_wood.getBlock()).getDefaultState().withProperty(BlockLog.LOG_AXIS, state.getValue(BlockLog.LOG_AXIS)), 2);
 							else if(state.getBlock() == Blocks.COBBLESTONE)
-								world.setBlockState(pos1.up(y), ACBlocks.darkstone_cobblestone.getDefaultState(), 2);
+								world.setBlockState(pos1.up(y), ACBlocks.getInstance().darkstone_cobblestone.getBlock().getDefaultState(), 2);
 							else if(state.getBlock() == Blocks.STONEBRICK)
 								switch(state.getValue(BlockStoneBrick.VARIANT)){
 								case CHISELED:
-									world.setBlockState(pos1.up(y), ACBlocks.chiseled_darkstone_brick.getDefaultState(), 2);
+									world.setBlockState(pos1.up(y), ACBlocks.getInstance().chiseled_darkstone_brick.getBlock().getDefaultState(), 2);
 									break;
 								case CRACKED:
-									world.setBlockState(pos1.up(y), ACBlocks.cracked_darkstone_brick.getDefaultState(), 2);
+									world.setBlockState(pos1.up(y), ACBlocks.getInstance().cracked_darkstone_brick.getBlock().getDefaultState(), 2);
 									break;
 								default:
-									world.setBlockState(pos1.up(y), ACBlocks.darkstone_brick.getDefaultState(), 2);
+									world.setBlockState(pos1.up(y), ACBlocks.getInstance().darkstone_brick.getBlock().getDefaultState(), 2);
 									break;
 								}
 							else if(state.getBlock() == Blocks.COBBLESTONE_WALL)
-								world.setBlockState(pos1.up(y), ACBlocks.darkstone_cobblestone_wall.getDefaultState(), 2);
-							else if(state == ACBlocks.ritual_altar_stone.getDefaultState())
-								world.setBlockState(pos1.up(y), ACBlocks.ritual_altar_darkstone.getDefaultState(), 2);
-							else if(state == ACBlocks.ritual_pedestal_stone.getDefaultState())
-								world.setBlockState(pos1.up(y), ACBlocks.ritual_pedestal_darkstone.getDefaultState(), 2);
+								world.setBlockState(pos1.up(y), ACBlocks.getInstance().darkstone_cobblestone_wall.getBlock().getDefaultState(), 2);
+							else if(state == ACBlocks.getInstance().ritual_altar_stone.getBlock().getDefaultState())
+								world.setBlockState(pos1.up(y), ACBlocks.getInstance().ritual_altar_darkstone.getBlock().getDefaultState(), 2);
+							else if(state == ACBlocks.getInstance().ritual_pedestal_stone.getBlock().getDefaultState())
+								world.setBlockState(pos1.up(y), ACBlocks.getInstance().ritual_pedestal_darkstone.getBlock().getDefaultState(), 2);
 							else if(state.getBlock() == Blocks.STONE_SLAB && state.getValue(BlockStoneSlab.VARIANT) == BlockStoneSlab.EnumType.SMOOTHBRICK)
-								world.setBlockState(pos1.up(y), ACBlocks.darkstone_brick_slab.getDefaultState().withProperty(BlockSlab.HALF, state.getValue(BlockSlab.HALF)), 2);
+								world.setBlockState(pos1.up(y), ACBlocks.getInstance().darkstone_brick_slab.getBlock().getDefaultState().withProperty(BlockSlab.HALF, state.getValue(BlockSlab.HALF)), 2);
 							else if(state.getBlock() == Blocks.STONE_SLAB && state.getValue(BlockStoneSlab.VARIANT) == BlockStoneSlab.EnumType.COBBLESTONE)
-								world.setBlockState(pos1.up(y), ACBlocks.darkstone_cobblestone_slab.getDefaultState().withProperty(BlockSlab.HALF, state.getValue(BlockSlab.HALF)), 2);
+								world.setBlockState(pos1.up(y), ACBlocks.getInstance().darkstone_cobblestone_slab.getBlock().getDefaultState().withProperty(BlockSlab.HALF, state.getValue(BlockSlab.HALF)), 2);
 							else if(state.getBlock() == Blocks.STONE_SLAB && state.getValue(BlockStoneSlab.VARIANT) == BlockStoneSlab.EnumType.STONE)
-								world.setBlockState(pos1.up(y), ACBlocks.darkstone_slab.getDefaultState().withProperty(BlockSlab.HALF, state.getValue(BlockSlab.HALF)), 2);
+								world.setBlockState(pos1.up(y), ACBlocks.getInstance().darkstone_slab.getBlock().getDefaultState().withProperty(BlockSlab.HALF, state.getValue(BlockSlab.HALF)), 2);
 							else if(state.getBlock() == Blocks.DOUBLE_STONE_SLAB && state.getValue(BlockStoneSlab.VARIANT) == BlockStoneSlab.EnumType.STONE)
-								world.setBlockState(pos1.up(y), BlockHandler.Darkstoneslab2.getDefaultState(), 2);
+								world.setBlockState(pos1.up(y), ACBlocks.getInstance().Darkstoneslab2.getBlock().getDefaultState(), 2);
 							else if(state.getBlock() == Blocks.STONE_BRICK_STAIRS)
-								world.setBlockState(pos1.up(y), ACBlocks.darkstone_brick_stairs.getDefaultState().withProperty(BlockStairs.FACING, state.getValue(BlockStairs.FACING)).withProperty(BlockStairs.HALF, state.getValue(BlockStairs.HALF)), 2);
+								world.setBlockState(pos1.up(y), ACBlocks.getInstance().darkstone_brick_stairs.getBlock().getDefaultState().withProperty(BlockStairs.FACING, state.getValue(BlockStairs.FACING)).withProperty(BlockStairs.HALF, state.getValue(BlockStairs.HALF)), 2);
 							else if(state.getBlock() == Blocks.STONE_STAIRS)
-								world.setBlockState(pos1.up(y), ACBlocks.darkstone_cobblestone_stairs.getDefaultState().withProperty(BlockStairs.FACING, state.getValue(BlockStairs.FACING)).withProperty(BlockStairs.HALF, state.getValue(BlockStairs.HALF)), 2);
+								world.setBlockState(pos1.up(y), ACBlocks.getInstance().darkstone_cobblestone_stairs.getBlock().getDefaultState().withProperty(BlockStairs.FACING, state.getValue(BlockStairs.FACING)).withProperty(BlockStairs.HALF, state.getValue(BlockStairs.HALF)), 2);
 							else if(state.getBlock() == Blocks.PLANKS)
-								world.setBlockState(pos1.up(y), ACBlocks.darklands_oak_planks.getDefaultState(), 2);
+								world.setBlockState(pos1.up(y), ACBlocks.getInstance().darklands_oak_planks.getBlock().getDefaultState(), 2);
 							else if(state.getBlock() == Blocks.OAK_STAIRS)
-								world.setBlockState(pos1.up(y), ACBlocks.darklands_oak_stairs.getDefaultState().withProperty(BlockStairs.FACING, state.getValue(BlockStairs.FACING)).withProperty(BlockStairs.HALF, state.getValue(BlockStairs.HALF)), 2);
+								world.setBlockState(pos1.up(y), ACBlocks.getInstance().darklands_oak_stairs.getBlock().getDefaultState().withProperty(BlockStairs.FACING, state.getValue(BlockStairs.FACING)).withProperty(BlockStairs.HALF, state.getValue(BlockStairs.HALF)), 2);
 							else if(state.getBlock() == Blocks.WOODEN_SLAB)
-								world.setBlockState(pos1.up(y), ACBlocks.darklands_oak_slab.getDefaultState().withProperty(BlockSlab.HALF, state.getValue(BlockSlab.HALF)), 2);
+								world.setBlockState(pos1.up(y), ACBlocks.getInstance().darklands_oak_slab.getBlock().getDefaultState().withProperty(BlockSlab.HALF, state.getValue(BlockSlab.HALF)), 2);
 							else if(state.getBlock() == Blocks.OAK_FENCE)
-								world.setBlockState(pos1.up(y), ACBlocks.darklands_oak_fence.getDefaultState(), 2);
+								world.setBlockState(pos1.up(y), ACBlocks.getInstance().darklands_oak_fence.getBlock().getDefaultState(), 2);
 						}
 
 						BiomeUtil.updateBiome(world, pos1, b, true);

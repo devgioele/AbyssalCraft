@@ -37,10 +37,10 @@ public class ItemCoraliumPArmor extends ItemACArmor {
 
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-		if(stack.getItem() == ACItems.plated_coralium_helmet || stack.getItem() == ACItems.plated_coralium_chestplate || stack.getItem() == ACItems.plated_coralium_boots)
+		if(stack.getItem() == ACItems.getInstance().plated_coralium_helmet || stack.getItem() == ACItems.getInstance().plated_coralium_chestplate || stack.getItem() == ACItems.getInstance().plated_coralium_boots)
 			return "abyssalcraft:textures/armor/coraliump_1.png";
 
-		if(stack.getItem() == ACItems.plated_coralium_leggings)
+		if(stack.getItem() == ACItems.getInstance().plated_coralium_leggings)
 			return "abyssalcraft:textures/armor/coraliump_2.png";
 		else return null;
 	}
@@ -48,13 +48,13 @@ public class ItemCoraliumPArmor extends ItemACArmor {
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemstack) {
 		if(world.isRemote || !ACConfig.armorPotionEffects) return;
-		if (itemstack.getItem() == ACItems.plated_coralium_helmet) {
+		if (itemstack.getItem() == ACItems.getInstance().plated_coralium_helmet) {
 			if(world.provider.isSurfaceWorld() || ACConfig.nightVisionEverywhere)
 				player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 260, 0, false, false));
 			if(player.getActivePotionEffect(AbyssalCraftAPI.coralium_plague) !=null)
 				player.removePotionEffect(AbyssalCraftAPI.coralium_plague);
 		}
-		if (itemstack.getItem() == ACItems.plated_coralium_boots)
+		if (itemstack.getItem() == ACItems.getInstance().plated_coralium_boots)
 			if(player.isInWater()){
 				player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 20, 2, false, false));
 				player.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 20, 1, false, false));

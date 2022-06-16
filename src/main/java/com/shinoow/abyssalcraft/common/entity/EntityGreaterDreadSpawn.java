@@ -189,7 +189,7 @@ public class EntityGreaterDreadSpawn extends EntityMob implements IDreadEntity, 
 	@Override
 	protected Item getDropItem()
 	{
-		return ACItems.dreaded_shard_of_abyssalnite;
+		return ACItems.getInstance().dreaded_shard_of_abyssalnite;
 	}
 
 	@Override

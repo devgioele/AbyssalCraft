@@ -100,7 +100,7 @@ public class TeleporterAC extends Teleporter
 					for (BlockPos blockpos = blockpos4.add(l, worldServerInstance.getActualHeight() - 1 - blockpos4.getY(), i1); blockpos.getY() >= 6; blockpos = blockpos1) {
 						blockpos1 = blockpos.down();
 
-						if (worldServerInstance.getBlockState(blockpos) == ACBlocks.portal_anchor.getDefaultState().withProperty(BlockPortalAnchor.ACTIVE, true)) {
+						if (worldServerInstance.getBlockState(blockpos) == ACBlocks.getInstance().portal_anchor.getBlock().getDefaultState().withProperty(BlockPortalAnchor.ACTIVE, true)) {
 							TileEntity te = worldServerInstance.getTileEntity(blockpos);
 
 							if(te instanceof TileEntityPortalAnchor && ((TileEntityPortalAnchor) te).getDestination() == prevDimension) {
@@ -288,7 +288,7 @@ public class TeleporterAC extends Teleporter
 		portal.setLocationAndAngles(i6 + 0.5, k2 + 1, k6 + 0.5, 0, 0);
 		worldServerInstance.spawnEntity(portal);
 
-		world.setBlockState(new BlockPos(i6, k2, k6), ACBlocks.portal_anchor.getDefaultState().withProperty(BlockPortalAnchor.ACTIVE, true));
+		world.setBlockState(new BlockPos(i6, k2, k6), ACBlocks.getInstance().portal_anchor.getBlock().getDefaultState().withProperty(BlockPortalAnchor.ACTIVE, true));
 
 		TileEntity te = world.getTileEntity(new BlockPos(i6, k2, k6));
 

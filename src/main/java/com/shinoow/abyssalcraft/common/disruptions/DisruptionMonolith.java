@@ -42,7 +42,7 @@ public class DisruptionMonolith extends DisruptionEntry {
 			int xPos = world.rand.nextInt(32) * randomNum(world.rand);
 			int zPos = world.rand.nextInt(32) * randomNum(world.rand);
 
-			world.setBlockState(world.getHeight(pos.add(xPos, 0, zPos)), ACBlocks.shoggoth_ooze.getDefaultState());
+			world.setBlockState(world.getHeight(pos.add(xPos, 0, zPos)), ACBlocks.getInstance().shoggoth_ooze.getBlock().getDefaultState());
 
 			new WorldGenShoggothMonolith().generate(world, world.rand, world.getHeight(pos.add(xPos, 0, zPos)));
 		}

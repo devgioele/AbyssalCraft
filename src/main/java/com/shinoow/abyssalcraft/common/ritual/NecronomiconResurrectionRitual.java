@@ -37,13 +37,19 @@ import net.minecraftforge.oredict.OreDictionary;
 public class NecronomiconResurrectionRitual extends NecronomiconRitual {
 
 	public NecronomiconResurrectionRitual() {
-		super("resurrection", 2, OreDictionary.WILDCARD_VALUE, 1000F, true, new Object[]{ new ItemStack[]{new ItemStack(ACItems.crystal_shard, 1, 3), new ItemStack(ACItems.crystal, 1, 3),
-				new ItemStack(ACBlocks.carbon_crystal_cluster)}, new ItemStack[]{new ItemStack(ACItems.crystal_shard, 1, 5), new ItemStack(ACItems.crystal, 1, 5),
-						new ItemStack(ACBlocks.hydrogen_crystal_cluster)}, new ItemStack[]{new ItemStack(ACItems.crystal_shard, 1, 6), new ItemStack(ACItems.crystal, 1, 6),
-								new ItemStack(ACBlocks.nitrogen_crystal_cluster)}, new ItemStack[]{new ItemStack(ACItems.crystal_shard, 1, 4), new ItemStack(ACItems.crystal, 1, 4),
-										new ItemStack(ACBlocks.oxygen_crystal_cluster)}, new ItemStack[]{new ItemStack(ACItems.crystal_shard, 1, 7), new ItemStack(ACItems.crystal, 1, 7),
-												new ItemStack(ACBlocks.phosphorus_crystal_cluster)}, new ItemStack[]{new ItemStack(ACItems.crystal_shard, 1, 2), new ItemStack(ACItems.crystal, 1, 2),
-														new ItemStack(ACBlocks.sulfur_crystal_cluster)}});
+		super("resurrection", 2, OreDictionary.WILDCARD_VALUE, 1000F, true,
+				new ItemStack[]{new ItemStack(ACItems.getInstance().crystal_shard, 1, 3), new ItemStack(ACItems.getInstance().crystal, 1, 3),
+						new ItemStack(ACBlocks.getInstance().carbon_crystal_cluster.getBlock())},
+				new ItemStack[]{new ItemStack(ACItems.getInstance().crystal_shard, 1, 5), new ItemStack(ACItems.getInstance().crystal, 1, 5),
+						new ItemStack(ACBlocks.getInstance().hydrogen_crystal_cluster.getBlock())},
+				new ItemStack[]{new ItemStack(ACItems.getInstance().crystal_shard, 1, 6), new ItemStack(ACItems.getInstance().crystal, 1, 6),
+						new ItemStack(ACBlocks.getInstance().nitrogen_crystal_cluster.getBlock())},
+				new ItemStack[]{new ItemStack(ACItems.getInstance().crystal_shard, 1, 4), new ItemStack(ACItems.getInstance().crystal, 1, 4),
+						new ItemStack(ACBlocks.getInstance().oxygen_crystal_cluster.getBlock())},
+				new ItemStack[]{new ItemStack(ACItems.getInstance().crystal_shard, 1, 7), new ItemStack(ACItems.getInstance().crystal, 1, 7),
+						new ItemStack(ACBlocks.getInstance().phosphorus_crystal_cluster.getBlock())},
+				new ItemStack[]{new ItemStack(ACItems.getInstance().crystal_shard, 1, 2), new ItemStack(ACItems.getInstance().crystal, 1, 2),
+						new ItemStack(ACBlocks.getInstance().sulfur_crystal_cluster.getBlock())});
 		sacrifice = Items.NAME_TAG;
 		setRitualParticle(EnumRitualParticle.SMOKE_PILLARS);
 	}

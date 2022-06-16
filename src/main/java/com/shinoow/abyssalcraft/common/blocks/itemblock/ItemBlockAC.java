@@ -61,7 +61,7 @@ public class ItemBlockAC extends ItemBlock implements IUnlockableItem {
 		String key = getTranslationKey();
 		if (block instanceof IngotBlock) return ((IngotBlock) block).getType().getFormat() +
 				super.getItemStackDisplayName(itemStack);
-		else if (ACBlocks.oblivion_deathbomb.hasTranslationKey(key) ||
+		else if (ACBlocks.getInstance().oblivion_deathbomb.hasTranslationKey(key) ||
 				key.contains("darkethaxium") || key.contains("dark_ethaxium"))
 			return TextFormatting.DARK_RED + super.getItemStackDisplayName(itemStack);
 		else if (key.contains("ethaxium"))

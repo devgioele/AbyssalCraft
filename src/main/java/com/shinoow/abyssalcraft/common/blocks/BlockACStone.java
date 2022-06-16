@@ -37,7 +37,7 @@ import net.minecraft.world.World;
 
 public class BlockACStone extends Block {
 
-	private EnumStoneType TYPE;
+	private final EnumStoneType TYPE;
 	public static final Map<EnumStoneType, Block> VARIANTS = new HashMap<>();
 
 	public BlockACStone(EnumStoneType type) {
@@ -66,7 +66,7 @@ public class BlockACStone extends Block {
 	public void updateTick(World par1World, BlockPos pos, IBlockState state, Random par5Random) {
 		if (!par1World.isRemote && TYPE == EnumStoneType.CORALIUM_STONE)
 			for(EnumFacing face : EnumFacing.values())
-				if (par1World.getBlockState(pos.offset(face)).getBlock() == ACBlocks.liquid_coralium && par5Random.nextFloat() < 0.3)
+				if (par1World.getBlockState(pos.offset(face)).getBlock() == ACBlocks.getInstance().liquid_coralium.getBlock() && par5Random.nextFloat() < 0.3)
 					par1World.setBlockState(pos.offset(face), state);
 	}
 
@@ -78,14 +78,14 @@ public class BlockACStone extends Block {
 
 	public enum EnumStoneType implements IStringSerializable
 	{
-		DARKSTONE(0, "darkstone", "darkstone", 0, 1.65F, 12.0F, MapColor.BLACK, () -> ACBlocks.darkstone_cobblestone),
-		ABYSSAL_STONE(1, "abyssalstone", "abystone", 2, 1.8F, 12.0F, MapColor.GREEN, () -> ACBlocks.abyssal_cobblestone),
-		DREADSTONE(2, "dreadstone", "dreadstone", 4, 2.5F, 20.0F, MapColor.RED, () -> ACBlocks.dreadstone_cobblestone),
-		ABYSSALNITE_STONE(3, "abyssalnitestone", "abydreadstone", 4, 2.5F, 20.0F, MapColor.PURPLE, () -> ACBlocks.abyssalnite_cobblestone),
-		CORALIUM_STONE(4, "coraliumstone", "cstone", 0, 1.5F, 10.0F, MapColor.CYAN, () -> ACBlocks.coralium_cobblestone),
-		ETHAXIUM(5, "ethaxium", "ethaxium", 8, 100.0F, Float.MAX_VALUE, MapColor.CLOTH, () -> ACBlocks.ethaxium),
-		OMOTHOL_STONE(6, "omotholstone", "omotholstone", 6, 10.0F, 12.0F, MapColor.BLACK, () -> ACBlocks.omothol_stone),
-		MONOLITH_STONE(7, "monolithstone", "monolithstone", 0, 6.0F, 24.0F, MapColor.BLACK, () -> ACBlocks.monolith_stone);
+		DARKSTONE(0, "darkstone", "darkstone", 0, 1.65F, 12.0F, MapColor.BLACK, () -> ACBlocks.getInstance().darkstone_cobblestone.getBlock()),
+		ABYSSAL_STONE(1, "abyssalstone", "abystone", 2, 1.8F, 12.0F, MapColor.GREEN, () -> ACBlocks.getInstance().abyssal_cobblestone.getBlock()),
+		DREADSTONE(2, "dreadstone", "dreadstone", 4, 2.5F, 20.0F, MapColor.RED, () -> ACBlocks.getInstance().dreadstone_cobblestone.getBlock()),
+		ABYSSALNITE_STONE(3, "abyssalnitestone", "abydreadstone", 4, 2.5F, 20.0F, MapColor.PURPLE, () -> ACBlocks.getInstance().abyssalnite_cobblestone.getBlock()),
+		CORALIUM_STONE(4, "coraliumstone", "cstone", 0, 1.5F, 10.0F, MapColor.CYAN, () -> ACBlocks.getInstance().coralium_cobblestone.getBlock()),
+		ETHAXIUM(5, "ethaxium", "ethaxium", 8, 100.0F, Float.MAX_VALUE, MapColor.CLOTH, () -> ACBlocks.getInstance().ethaxium.getBlock()),
+		OMOTHOL_STONE(6, "omotholstone", "omotholstone", 6, 10.0F, 12.0F, MapColor.BLACK, () -> ACBlocks.getInstance().omothol_stone.getBlock()),
+		MONOLITH_STONE(7, "monolithstone", "monolithstone", 0, 6.0F, 24.0F, MapColor.BLACK, () -> ACBlocks.getInstance().monolith_stone.getBlock());
 
 		private static final EnumStoneType[] META_LOOKUP = new EnumStoneType[values().length];
 		private final int meta;

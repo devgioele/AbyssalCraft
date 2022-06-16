@@ -31,8 +31,8 @@ public class BiomeDarklandsMountains extends Biome implements IDarklandsBiome {
 	public BiomeDarklandsMountains(BiomeProperties par1)
 	{
 		super(par1);
-		topBlock = ACBlocks.darkstone.getDefaultState();
-		fillerBlock = ACBlocks.darkstone.getDefaultState();
+		topBlock = ACBlocks.getInstance().darkstone.getBlock().getDefaultState();
+		fillerBlock = ACBlocks.getInstance().darkstone.getBlock().getDefaultState();
 		decorator.treesPerChunk = 0;
 		spawnableMonsterList.add(new SpawnListEntry(EntityDepthsGhoul.class, 45, 1, 2));
 		spawnableMonsterList.add(new SpawnListEntry(EntityAbyssalZombie.class, 45, 1, 2));
@@ -54,7 +54,7 @@ public class BiomeDarklandsMountains extends Biome implements IDarklandsBiome {
 				int y = par2Random.nextInt(28) + 4;
 				int z = par2Random.nextInt(16);
 
-				new WorldGenMinable(ACBlocks.abyssalnite_ore.getDefaultState(), veinSize).generate(par1World, par2Random, pos.add(x, y, z));
+				new WorldGenMinable(ACBlocks.getInstance().abyssalnite_ore.getBlock().getDefaultState(), veinSize).generate(par1World, par2Random, pos.add(x, y, z));
 			}
 	}
 

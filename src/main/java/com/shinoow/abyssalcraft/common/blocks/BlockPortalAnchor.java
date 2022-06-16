@@ -92,13 +92,13 @@ public class BlockPortalAnchor extends BlockACBasic {
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune)
 	{
-		return Item.getItemFromBlock(ACBlocks.monolith_stone);
+		return Item.getItemFromBlock(ACBlocks.getInstance().monolith_stone.getBlock());
 	}
 
 	@Override
 	public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state)
 	{
-		return new ItemStack(ACBlocks.monolith_stone);
+		return new ItemStack(ACBlocks.getInstance().monolith_stone.getBlock());
 	}
 
 	@Override

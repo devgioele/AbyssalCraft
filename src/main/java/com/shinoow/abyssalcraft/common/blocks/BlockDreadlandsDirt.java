@@ -33,6 +33,6 @@ public class BlockDreadlandsDirt extends BlockACBasic {
 	@Override
 	public boolean canSustainPlant(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing direction, IPlantable plantable)
 	{
-		return ACBlocks.dreadlands_grass.canSustainPlant(state, world, pos, direction, plantable);
+		return ACBlocks.getInstance().dreadlands_grass.getBlock().canSustainPlant(state, world, pos, direction, plantable);
 	}
 }

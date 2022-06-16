@@ -39,10 +39,10 @@ public class DisruptionOoze extends DisruptionEntry {
 					for(int k = -1*num; k < num+1; k++) {
 						BlockPos pos1 = pos.add(i, j, k);
 						if(i > -2 && i < 2 && j > -2 && j < 2 && k > -2 && k < 2 && world.rand.nextBoolean() || world.rand.nextInt(3) == 0)
-							if((world.getBlockState(pos1).getMaterial() == Material.AIR || world.getBlockState(pos1).getBlock().isReplaceable(world, pos1)) && ACBlocks.shoggoth_ooze.canPlaceBlockAt(world, pos1)
+							if((world.getBlockState(pos1).getMaterial() == Material.AIR || world.getBlockState(pos1).getBlock().isReplaceable(world, pos1)) && ACBlocks.getInstance().shoggoth_ooze.getBlock().canPlaceBlockAt(world, pos1)
 									&& !world.getBlockState(pos1).getMaterial().isLiquid())
-								if(world.getBlockState(pos1).getBlock() != ACBlocks.shoggoth_ooze)
-									world.setBlockState(pos1, ACBlocks.shoggoth_ooze.getDefaultState().withProperty(BlockShoggothOoze.LAYERS, 1 + world.rand.nextInt(5)));
+								if(world.getBlockState(pos1).getBlock() != ACBlocks.getInstance().shoggoth_ooze.getBlock())
+									world.setBlockState(pos1, ACBlocks.getInstance().shoggoth_ooze.getBlock().getDefaultState().withProperty(BlockShoggothOoze.LAYERS, 1 + world.rand.nextInt(5)));
 								else {
 									IBlockState state = world.getBlockState(pos1);
 									world.setBlockState(pos1, state.withProperty(BlockShoggothOoze.LAYERS, state.getValue(BlockShoggothOoze.LAYERS) + 1));

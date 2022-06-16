@@ -35,16 +35,17 @@ public class EngravingRecipeMaker {
 
 			float experience = engraverRecipes.getExperience(output);
 
-			List<ItemStack> inputs = new ArrayList();
+			List<ItemStack> inputs;
+			ACItems items = ACItems.getInstance();
 
-			if(output.getItem() == ACItems.coin){
+			if(output.getItem() == items.coin){
 				inputs = engraverRecipes.getCoinList();
 				for(ItemStack stack : inputs)
-					if(stack.getItem() == ACItems.coin){
+					if(stack.getItem() == items.coin){
 						inputs.remove(stack);
 						break;
 					}
-			} else inputs = Collections.singletonList(new ItemStack(ACItems.coin));
+			} else inputs = Collections.singletonList(new ItemStack(items.coin));
 
 			EngravingRecipeWrapper recipe = new EngravingRecipeWrapper(inputs, engraving, output, experience);
 			if(isRecipeValid(recipe))

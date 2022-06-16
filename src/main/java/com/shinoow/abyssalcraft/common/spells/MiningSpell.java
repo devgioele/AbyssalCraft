@@ -59,16 +59,16 @@ public class MiningSpell extends Spell {
 
 	private IBlockState getRemains(IBlockState state){
 
-		if(state.getBlock() == Blocks.STONE || state.getBlock() == Blocks.DIRT || state.getBlock() == ACBlocks.darkstone
-				|| state.getBlock() == ACBlocks.abyssal_stone || state.getBlock() == ACBlocks.dreadstone
-				|| state.getBlock() == ACBlocks.abyssalnite_stone || state.getBlock() == ACBlocks.omothol_stone
-				|| state.getBlock() == ACBlocks.monolith_stone || state.getBlock() == Blocks.GRAVEL
-				|| state.getBlock() == Blocks.SANDSTONE || state.getBlock() == ACBlocks.dreadlands_dirt)
+		if(state.getBlock() == Blocks.STONE || state.getBlock() == Blocks.DIRT || state.getBlock() == ACBlocks.getInstance().darkstone.getBlock()
+				|| state.getBlock() == ACBlocks.getInstance().abyssal_stone.getBlock() || state.getBlock() == ACBlocks.getInstance().dreadstone.getBlock()
+				|| state.getBlock() == ACBlocks.getInstance().abyssalnite_stone.getBlock() || state.getBlock() == ACBlocks.getInstance().omothol_stone.getBlock()
+				|| state.getBlock() == ACBlocks.getInstance().monolith_stone.getBlock() || state.getBlock() == Blocks.GRAVEL
+				|| state.getBlock() == Blocks.SANDSTONE || state.getBlock() == ACBlocks.getInstance().dreadlands_dirt.getBlock())
 			return Blocks.FLOWING_LAVA.getDefaultState().withProperty(BlockLiquid.LEVEL, 7);
 		if(state.getBlock() == Blocks.WATER || state.getBlock() == Blocks.FLOWING_WATER)
 			return Blocks.AIR.getDefaultState();
-		if(state == ACBlocks.coralium_stone.getDefaultState())
-			return ACBlocks.liquid_coralium.getDefaultState();
+		if(state == ACBlocks.getInstance().coralium_stone.getBlock().getDefaultState())
+			return ACBlocks.getInstance().liquid_coralium.getBlock().getDefaultState();
 		return null;
 	}
 
@@ -76,22 +76,22 @@ public class MiningSpell extends Spell {
 
 		if(state.getBlock() == Blocks.COBBLESTONE)
 			return Blocks.STONE.getDefaultState();
-		if(state.getBlock() == ACBlocks.darkstone_cobblestone)
-			return ACBlocks.darkstone.getDefaultState();
-		if(state.getBlock() == ACBlocks.abyssal_cobblestone)
-			return ACBlocks.abyssal_stone.getDefaultState();
-		if(state.getBlock() == ACBlocks.coralium_cobblestone)
-			return ACBlocks.coralium_stone.getDefaultState();
-		if(state.getBlock() == ACBlocks.dreadstone_cobblestone)
-			return ACBlocks.dreadstone.getDefaultState();
-		if(state.getBlock() == ACBlocks.abyssalnite_cobblestone)
-			return ACBlocks.abyssalnite_stone.getDefaultState();
+		if(state.getBlock() == ACBlocks.getInstance().darkstone_cobblestone.getBlock())
+			return ACBlocks.getInstance().darkstone.getBlock().getDefaultState();
+		if(state.getBlock() == ACBlocks.getInstance().abyssal_cobblestone.getBlock())
+			return ACBlocks.getInstance().abyssal_stone.getBlock().getDefaultState();
+		if(state.getBlock() == ACBlocks.getInstance().coralium_cobblestone.getBlock())
+			return ACBlocks.getInstance().coralium_stone.getBlock().getDefaultState();
+		if(state.getBlock() == ACBlocks.getInstance().dreadstone_cobblestone.getBlock())
+			return ACBlocks.getInstance().dreadstone.getBlock().getDefaultState();
+		if(state.getBlock() == ACBlocks.getInstance().abyssalnite_cobblestone.getBlock())
+			return ACBlocks.getInstance().abyssalnite_stone.getBlock().getDefaultState();
 		if(state.getBlock() == Blocks.SAND && state.getValue(BlockSand.VARIANT) == EnumType.SAND)
 			return Blocks.GLASS.getDefaultState();
 		if(state.getBlock() == Blocks.SAND && state.getValue(BlockSand.VARIANT) == EnumType.RED_SAND)
 			return Blocks.STAINED_GLASS.getDefaultState().withProperty(BlockStainedGlass.COLOR, EnumDyeColor.RED);
-		if(state.getBlock() == ACBlocks.abyssal_sand)
-			return ACBlocks.abyssal_sand_glass.getDefaultState();
+		if(state.getBlock() == ACBlocks.getInstance().abyssal_sand.getBlock())
+			return ACBlocks.getInstance().abyssal_sand_glass.getBlock().getDefaultState();
 
 		return null;
 	}

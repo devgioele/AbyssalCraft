@@ -37,8 +37,8 @@ public class BiomeAbywasteland extends Biome {
 
 	public BiomeAbywasteland(BiomeProperties par1){
 		super(par1);
-		topBlock = ACBlocks.fused_abyssal_sand.getDefaultState();
-		fillerBlock = ACBlocks.abyssal_sand.getDefaultState();
+		topBlock = ACBlocks.getInstance().fused_abyssal_sand.getBlock().getDefaultState();
+		fillerBlock = ACBlocks.getInstance().abyssal_sand.getBlock().getDefaultState();
 		setMobSpawns();
 	}
 
@@ -70,7 +70,7 @@ public class BiomeAbywasteland extends Biome {
 				if (j12 > 0)
 				{
 					int k15 = par2Random.nextInt(j12);
-					new WorldGenBush((BlockBush)ACBlocks.luminous_thistle).generate(par1World, par2Random, pos.add(i4, k15, k8));
+					new WorldGenBush((BlockBush)ACBlocks.getInstance().luminous_thistle.getBlock()).generate(par1World, par2Random, pos.add(i4, k15, k8));
 				}
 			}
 
@@ -83,7 +83,7 @@ public class BiomeAbywasteland extends Biome {
 				if (k12 > 0)
 				{
 					int l15 = par2Random.nextInt(k12);
-					new WorldGenBush((BlockBush)ACBlocks.wastelands_thorn).generate(par1World, par2Random, pos.add(j4, l15, l8));
+					new WorldGenBush((BlockBush)ACBlocks.getInstance().wastelands_thorn.getBlock()).generate(par1World, par2Random, pos.add(j4, l15, l8));
 				}
 			}
 		}
@@ -96,7 +96,7 @@ public class BiomeAbywasteland extends Biome {
 			if (j12 > 0)
 			{
 				int k15 = par2Random.nextInt(j12);
-				new WorldGenBush((BlockBush)ACBlocks.luminous_thistle).generate(par1World, par2Random, pos.add(i4, k15, k8));
+				new WorldGenBush((BlockBush)ACBlocks.getInstance().luminous_thistle.getBlock()).generate(par1World, par2Random, pos.add(i4, k15, k8));
 			}
 		}
 		if (par2Random.nextInt(8) == 0)
@@ -108,7 +108,7 @@ public class BiomeAbywasteland extends Biome {
 			if (k12 > 0)
 			{
 				int l15 = par2Random.nextInt(k12);
-				new WorldGenBush((BlockBush)ACBlocks.wastelands_thorn).generate(par1World, par2Random, pos.add(j4, l15, l8));
+				new WorldGenBush((BlockBush)ACBlocks.getInstance().wastelands_thorn.getBlock()).generate(par1World, par2Random, pos.add(j4, l15, l8));
 			}
 		}
 
@@ -121,8 +121,8 @@ public class BiomeAbywasteland extends Biome {
 				int y = par2Random.nextInt(30) + 5;
 				int z = par2Random.nextInt(16);
 
-				new WorldGenMinable(ACBlocks.liquified_coralium_ore.getDefaultState(), veinSize,
-						state -> state != null && state == ACBlocks.abyssal_stone.getDefaultState()).generate(par1World, par2Random, pos.add(x, y, z));
+				new WorldGenMinable(ACBlocks.getInstance().liquified_coralium_ore.getBlock().getDefaultState(), veinSize,
+						state -> state != null && state == ACBlocks.getInstance().abyssal_stone.getBlock().getDefaultState()).generate(par1World, par2Random, pos.add(x, y, z));
 			}
 		if(ACConfig.generateAbyssalCoraliumOre)
 			for(int rarity = 0; rarity < var5 + 5 + par2Random.nextInt(3); rarity++) {
@@ -131,8 +131,8 @@ public class BiomeAbywasteland extends Biome {
 				int y = par2Random.nextInt(75) + 5;
 				int z = par2Random.nextInt(16);
 
-				new WorldGenMinable(ACBlocks.abyssal_coralium_ore.getDefaultState(), veinSize,
-						state -> state != null && state == ACBlocks.abyssal_stone.getDefaultState()).generate(par1World, par2Random, pos.add(x, y, z));
+				new WorldGenMinable(ACBlocks.getInstance().abyssal_coralium_ore.getBlock().getDefaultState(), veinSize,
+						state -> state != null && state == ACBlocks.getInstance().abyssal_stone.getBlock().getDefaultState()).generate(par1World, par2Random, pos.add(x, y, z));
 			}
 		if(ACConfig.generateAbyssalNitreOre)
 			for(int rarity = 0; rarity < 8; rarity++) {
@@ -141,8 +141,8 @@ public class BiomeAbywasteland extends Biome {
 				int y = par2Random.nextInt(60) + 5;
 				int z = par2Random.nextInt(16);
 
-				new WorldGenMinable(ACBlocks.abyssal_nitre_ore.getDefaultState(), veinSize,
-						state -> state != null && state == ACBlocks.abyssal_stone.getDefaultState()).generate(par1World, par2Random, pos.add(x, y, z));
+				new WorldGenMinable(ACBlocks.getInstance().abyssal_nitre_ore.getBlock().getDefaultState(), veinSize,
+						state -> state != null && state == ACBlocks.getInstance().abyssal_stone.getBlock().getDefaultState()).generate(par1World, par2Random, pos.add(x, y, z));
 			}
 		if(ACConfig.generateAbyssalIronOre)
 			for(int rarity = 0; rarity < 8; rarity++) {
@@ -151,8 +151,8 @@ public class BiomeAbywasteland extends Biome {
 				int y = par2Random.nextInt(60) + 5;
 				int z = par2Random.nextInt(16);
 
-				new WorldGenMinable(ACBlocks.abyssal_iron_ore.getDefaultState(), veinSize,
-						state -> state != null && state == ACBlocks.abyssal_stone.getDefaultState()).generate(par1World, par2Random, pos.add(x, y, z));
+				new WorldGenMinable(ACBlocks.getInstance().abyssal_iron_ore.getBlock().getDefaultState(), veinSize,
+						state -> state != null && state == ACBlocks.getInstance().abyssal_stone.getBlock().getDefaultState()).generate(par1World, par2Random, pos.add(x, y, z));
 			}
 		if(ACConfig.generateAbyssalCopperOre)
 			for(int rarity = 0; rarity < 8; rarity++) {
@@ -161,8 +161,8 @@ public class BiomeAbywasteland extends Biome {
 				int y = par2Random.nextInt(60) + 5;
 				int z = par2Random.nextInt(16);
 
-				new WorldGenMinable(ACBlocks.abyssal_copper_ore.getDefaultState(), veinSize,
-						state -> state != null && state == ACBlocks.abyssal_stone.getDefaultState()).generate(par1World, par2Random, pos.add(x, y, z));
+				new WorldGenMinable(ACBlocks.getInstance().abyssal_copper_ore.getBlock().getDefaultState(), veinSize,
+						state -> state != null && state == ACBlocks.getInstance().abyssal_stone.getBlock().getDefaultState()).generate(par1World, par2Random, pos.add(x, y, z));
 			}
 		if(ACConfig.generateAbyssalGoldOre)
 			for(int rarity = 0; rarity < 5; rarity++) {
@@ -171,8 +171,8 @@ public class BiomeAbywasteland extends Biome {
 				int y = par2Random.nextInt(35) + 5;
 				int z = par2Random.nextInt(16);
 
-				new WorldGenMinable(ACBlocks.abyssal_gold_ore.getDefaultState(), veinSize,
-						state -> state != null && state == ACBlocks.abyssal_stone.getDefaultState()).generate(par1World, par2Random, pos.add(x, y, z));
+				new WorldGenMinable(ACBlocks.getInstance().abyssal_gold_ore.getBlock().getDefaultState(), veinSize,
+						state -> state != null && state == ACBlocks.getInstance().abyssal_stone.getBlock().getDefaultState()).generate(par1World, par2Random, pos.add(x, y, z));
 			}
 		if(ACConfig.generateAbyssalDiamondOre)
 			for(int rarity = 0; rarity < 5; rarity++) {
@@ -181,8 +181,8 @@ public class BiomeAbywasteland extends Biome {
 				int y = par2Random.nextInt(20) + 5;
 				int z = par2Random.nextInt(16);
 
-				new WorldGenMinable(ACBlocks.abyssal_diamond_ore.getDefaultState(), veinSize,
-						state -> state != null && state == ACBlocks.abyssal_stone.getDefaultState()).generate(par1World, par2Random, pos.add(x, y, z));
+				new WorldGenMinable(ACBlocks.getInstance().abyssal_diamond_ore.getBlock().getDefaultState(), veinSize,
+						state -> state != null && state == ACBlocks.getInstance().abyssal_stone.getBlock().getDefaultState()).generate(par1World, par2Random, pos.add(x, y, z));
 			}
 		if(ACConfig.generatePearlescentCoraliumOre)
 			for(int rarity = 0; rarity < var5; rarity++) {
@@ -191,8 +191,8 @@ public class BiomeAbywasteland extends Biome {
 				int y = par2Random.nextInt(15) + 5;
 				int z = par2Random.nextInt(16);
 
-				new WorldGenMinable(ACBlocks.pearlescent_coralium_ore.getDefaultState(), veinSize,
-						state -> state != null && state == ACBlocks.abyssal_stone.getDefaultState()).generate(par1World, par2Random, pos.add(x, y, z));
+				new WorldGenMinable(ACBlocks.getInstance().pearlescent_coralium_ore.getBlock().getDefaultState(), veinSize,
+						state -> state != null && state == ACBlocks.getInstance().abyssal_stone.getBlock().getDefaultState()).generate(par1World, par2Random, pos.add(x, y, z));
 			}
 		if(ACConfig.generateAbyssalTinOre)
 			for(int rarity = 0; rarity < 8; rarity++) {
@@ -201,8 +201,8 @@ public class BiomeAbywasteland extends Biome {
 				int y = par2Random.nextInt(60) + 5;
 				int z = par2Random.nextInt(16);
 
-				new WorldGenMinable(ACBlocks.abyssal_tin_ore.getDefaultState(), veinSize,
-						state -> state != null && state == ACBlocks.abyssal_stone.getDefaultState()).generate(par1World, par2Random, pos.add(x, y, z));
+				new WorldGenMinable(ACBlocks.getInstance().abyssal_tin_ore.getBlock().getDefaultState(), veinSize,
+						state -> state != null && state == ACBlocks.getInstance().abyssal_stone.getBlock().getDefaultState()).generate(par1World, par2Random, pos.add(x, y, z));
 			}
 	}
 
@@ -249,14 +249,14 @@ public class BiomeAbywasteland extends Biome {
 				if(j1 == 0)
 					chunkPrimerIn.setBlockState(i1, j1, l, Blocks.BEDROCK.getDefaultState());
 				else if(j1 == 6)
-					chunkPrimerIn.setBlockState(i1, j1, l, ACBlocks.darkstone_cobblestone.getDefaultState());
+					chunkPrimerIn.setBlockState(i1, j1, l, ACBlocks.getInstance().darkstone_cobblestone.getBlock().getDefaultState());
 				else if(j1 == 1)
-					chunkPrimerIn.setBlockState(i1, j1, l, ACBlocks.darkstone.getDefaultState());
+					chunkPrimerIn.setBlockState(i1, j1, l, ACBlocks.getInstance().darkstone.getBlock().getDefaultState());
 				else {
 					IBlockState state = Blocks.AIR.getDefaultState();
 
 					if(i1 % 4 == 2 && l % 4 == 2)
-						state = (j1 == 4 ? ACBlocks.chiseled_darkstone_brick : ACBlocks.darkstone_brick).getDefaultState();
+						state = (j1 == 4 ? ACBlocks.getInstance().chiseled_darkstone_brick.getBlock() : ACBlocks.getInstance().darkstone_brick.getBlock()).getDefaultState();
 					chunkPrimerIn.setBlockState(i1, j1, l, state);
 
 				}
@@ -267,13 +267,13 @@ public class BiomeAbywasteland extends Biome {
 
 				if (iblockstate2.getMaterial() == Material.AIR)
 					j = -1;
-				else if (iblockstate2 == ACBlocks.abyssal_stone.getDefaultState())
+				else if (iblockstate2 == ACBlocks.getInstance().abyssal_stone.getBlock().getDefaultState())
 					if (j == -1)
 					{
 						if (k <= 0)
 						{
 							iblockstate = null;
-							iblockstate1 = ACBlocks.abyssal_stone.getDefaultState();
+							iblockstate1 = ACBlocks.getInstance().abyssal_stone.getBlock().getDefaultState();
 						}
 						else if (j1 >= i - 4 && j1 <= i + 1)
 						{
@@ -288,8 +288,8 @@ public class BiomeAbywasteland extends Biome {
 						else if (j1 < i - 7 - k)
 						{
 							iblockstate = null;
-							iblockstate1 = ACBlocks.abyssal_stone.getDefaultState();
-							chunkPrimerIn.setBlockState(i1, j1, l, ACBlocks.abyssal_stone.getDefaultState());
+							iblockstate1 = ACBlocks.getInstance().abyssal_stone.getBlock().getDefaultState();
+							chunkPrimerIn.setBlockState(i1, j1, l, ACBlocks.getInstance().abyssal_stone.getBlock().getDefaultState());
 						} else
 							chunkPrimerIn.setBlockState(i1, j1, l, iblockstate1);
 					}

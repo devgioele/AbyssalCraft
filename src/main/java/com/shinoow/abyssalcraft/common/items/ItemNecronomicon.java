@@ -147,15 +147,15 @@ public class ItemNecronomicon extends ItemACBasic implements IEnergyTransporterI
 
 	@Override
 	public int getMaxEnergy(ItemStack stack) {
-		if (this == ACItems.necronomicon)
+		if (this == ACItems.getInstance().necronomicon)
 			return 5000;
-		if (this == ACItems.abyssal_wasteland_necronomicon)
+		if (this == ACItems.getInstance().abyssal_wasteland_necronomicon)
 			return 10000;
-		if (this == ACItems.dreadlands_necronomicon)
+		if (this == ACItems.getInstance().dreadlands_necronomicon)
 			return 20000;
-		if (this == ACItems.omothol_necronomicon)
+		if (this == ACItems.getInstance().omothol_necronomicon)
 			return 40000;
-		if (this == ACItems.abyssalnomicon)
+		if (this == ACItems.getInstance().abyssalnomicon)
 			return 100000;
 		return 0;
 	}

@@ -77,7 +77,7 @@ public class BiomeCorSwamp extends Biome {
 				Block var10 = par1World.getBlockState(pos.add(var7, var8, var9)).getBlock();
 
 				if (var10 == Blocks.IRON_ORE || var10 == Blocks.COAL_ORE)
-					par1World.setBlockState(pos.add(var7, var8, var9), ACBlocks.coralium_ore.getDefaultState());
+					par1World.setBlockState(pos.add(var7, var8, var9), ACBlocks.getInstance().coralium_ore.getBlock().getDefaultState());
 			}
 			for(int rarity = 0; rarity < 9; rarity++)
 			{
@@ -86,7 +86,7 @@ public class BiomeCorSwamp extends Biome {
 				int y = par2Random.nextInt(63);
 				int z = par2Random.nextInt(16);
 
-				new WorldGenMinable(ACBlocks.coralium_ore.getDefaultState(), veinSize).generate(par1World, par2Random, pos.add(x, y, z));
+				new WorldGenMinable(ACBlocks.getInstance().coralium_ore.getBlock().getDefaultState(), veinSize).generate(par1World, par2Random, pos.add(x, y, z));
 			}
 		}
 
@@ -97,7 +97,7 @@ public class BiomeCorSwamp extends Biome {
 				int RandPosY = par2Random.nextInt(60);
 				int RandPosZ = par2Random.nextInt(16) + 8;
 				if(par2Random.nextInt(10) == 0)
-					new WorldGenAntimatterLake(ACBlocks.liquid_antimatter).generate(par1World, par2Random, pos.add(RandPosX, RandPosY, RandPosZ));
+					new WorldGenAntimatterLake(ACBlocks.getInstance().liquid_antimatter.getBlock()).generate(par1World, par2Random, pos.add(RandPosX, RandPosY, RandPosZ));
 			}
 	}
 

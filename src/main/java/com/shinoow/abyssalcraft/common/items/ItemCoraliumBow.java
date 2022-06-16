@@ -50,11 +50,6 @@ public class ItemCoraliumBow extends ItemBow implements IUnlockableItem {
 	public int anim_2;
 	private IUnlockCondition condition = new DefaultCondition();
 	/**
-	 * @param texture is String of item texture, ie itemName.png
-	 * 		also sets the TranslationKey to avoid render issues
-	 * @param texture_0 is String of item animation texture 0, ie itemName_0.png
-	 * @param texture_1 is String of item animation texture 1, ie itemName_1.png
-	 * @param texture_2 is String of item animation texture 2, ie itemName_2.png
 	 * @param chargeTime is Float of how fast the bow charges, ie 21.0F where 20.0F is
 	 * the default bow speed
 	 * @param anim_0 is used for syncing charge time with pull_0 animation,
@@ -86,7 +81,7 @@ public class ItemCoraliumBow extends ItemBow implements IUnlockableItem {
 			else
 			{
 				ItemStack itemstack = entityIn.getActiveItemStack();
-				return itemstack != null && itemstack.getItem() == ACItems.coralium_longbow ? (stack.getMaxItemUseDuration() - entityIn.getItemInUseCount()) / 20.0F : 0.0F;
+				return itemstack != null && itemstack.getItem() == ACItems.getInstance().coralium_longbow ? (stack.getMaxItemUseDuration() - entityIn.getItemInUseCount()) / 20.0F : 0.0F;
 			}
 		});
 		addPropertyOverride(new ResourceLocation("pulling"), (stack, worldIn, entityIn) -> entityIn != null && entityIn.isHandActive() && entityIn.getActiveItemStack() == stack ? 1.0F : 0.0F);
@@ -229,7 +224,7 @@ public class ItemCoraliumBow extends ItemBow implements IUnlockableItem {
 	@Override
 	public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack)
 	{
-		return ACItems.refined_coralium_ingot == par2ItemStack.getItem() ? true : super.getIsRepairable(par1ItemStack, par2ItemStack);
+		return ACItems.getInstance().refined_coralium_ingot == par2ItemStack.getItem() ? true : super.getIsRepairable(par1ItemStack, par2ItemStack);
 	}
 
 	@Override

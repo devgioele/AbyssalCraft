@@ -175,7 +175,7 @@ public class EntityDreadguard extends EntityMob implements IDreadEntity {
 	@Override
 	protected Item getDropItem()
 	{
-		return ACItems.dreaded_shard_of_abyssalnite;
+		return ACItems.getInstance().dreaded_shard_of_abyssalnite;
 	}
 
 	@Override
@@ -280,8 +280,8 @@ public class EntityDreadguard extends EntityMob implements IDreadEntity {
 				dy *= velocity;
 				dz *= velocity;
 
-				world.spawnParticle(EnumParticleTypes.ITEM_CRACK, px + getRNG().nextDouble() - 0.5D, py + getRNG().nextDouble() - 0.5D, pz + getRNG().nextDouble() - 0.5D, dx, dy, dz, Item.getIdFromItem(ACItems.dreaded_shard_of_abyssalnite));
-				world.spawnParticle(EnumParticleTypes.ITEM_CRACK, px + getRNG().nextDouble() - 0.5D, py + getRNG().nextDouble() - 0.5D, pz + getRNG().nextDouble() - 0.5D, dx, dy, dz, Item.getIdFromItem(ACItems.dread_fragment));
+				world.spawnParticle(EnumParticleTypes.ITEM_CRACK, px + getRNG().nextDouble() - 0.5D, py + getRNG().nextDouble() - 0.5D, pz + getRNG().nextDouble() - 0.5D, dx, dy, dz, Item.getIdFromItem(ACItems.getInstance().dreaded_shard_of_abyssalnite));
+				world.spawnParticle(EnumParticleTypes.ITEM_CRACK, px + getRNG().nextDouble() - 0.5D, py + getRNG().nextDouble() - 0.5D, pz + getRNG().nextDouble() - 0.5D, dx, dy, dz, Item.getIdFromItem(ACItems.getInstance().dread_fragment));
 			}
 		} else
 			world.setEntityState(this, (byte)23);
@@ -317,10 +317,10 @@ public class EntityDreadguard extends EntityMob implements IDreadEntity {
 	{
 		par1EntityLivingData = super.onInitialSpawn(difficulty, par1EntityLivingData);
 
-		setItemStackToSlot(EntityEquipmentSlot.HEAD, new ItemStack(ACItems.dreaded_abyssalnite_helmet));
-		setItemStackToSlot(EntityEquipmentSlot.CHEST, new ItemStack(ACItems.dreaded_abyssalnite_chestplate));
-		setItemStackToSlot(EntityEquipmentSlot.LEGS, new ItemStack(ACItems.dreaded_abyssalnite_leggings));
-		setItemStackToSlot(EntityEquipmentSlot.FEET, new ItemStack(ACItems.dreaded_abyssalnite_boots));
+		setItemStackToSlot(EntityEquipmentSlot.HEAD, new ItemStack(ACItems.getInstance().dreaded_abyssalnite_helmet));
+		setItemStackToSlot(EntityEquipmentSlot.CHEST, new ItemStack(ACItems.getInstance().dreaded_abyssalnite_chestplate));
+		setItemStackToSlot(EntityEquipmentSlot.LEGS, new ItemStack(ACItems.getInstance().dreaded_abyssalnite_leggings));
+		setItemStackToSlot(EntityEquipmentSlot.FEET, new ItemStack(ACItems.getInstance().dreaded_abyssalnite_boots));
 
 		IAttributeInstance attribute = getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
 		Calendar calendar = world.getCurrentDate();

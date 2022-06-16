@@ -99,7 +99,7 @@ public class SlotCrystallizer extends Slot
 
 		MinecraftForge.EVENT_BUS.post(new ACEvents.ItemCrystallizedEvent(thePlayer, par1ItemStack));
 
-		//		if(par1ItemStack.getItem() == ACItems.shadow_gem)
+		//		if(par1ItemStack.getItem() == ACItems.getInstance().shadow_gem)
 		//			thePlayer.addStat(ACAchievements.shadow_gems, 1);
 	}
 }

@@ -48,16 +48,16 @@ public class WorldGenDrT extends WorldGenTrees {
 
 		IBlockState j1 = world.getBlockState(new BlockPos(x, y -1, z));
 
-		if (j1.getBlock() != Blocks.DIRT && j1.getBlock() != ACBlocks.dreadlands_dirt && j1 != ACBlocks.dreadstone && j1.getMaterial() != Material.GRASS || y >= 256 - height - 1)
+		if (j1.getBlock() != Blocks.DIRT && j1.getBlock() != ACBlocks.getInstance().dreadlands_dirt.getBlock() && j1 != ACBlocks.getInstance().dreadstone.getBlock() && j1.getMaterial() != Material.GRASS || y >= 256 - height - 1)
 			return false;
 
-		if(j1.getBlock() != ACBlocks.dreadlands_grass && j1 != ACBlocks.dreadstone && j1.getBlock() != ACBlocks.dreadlands_dirt)
+		if(j1.getBlock() != ACBlocks.getInstance().dreadlands_grass.getBlock() && j1 != ACBlocks.getInstance().dreadstone.getBlock() && j1.getBlock() != ACBlocks.getInstance().dreadlands_dirt.getBlock())
 			setBlockAndNotifyAdequately(world, new BlockPos(x, y -1, z), Blocks.DIRT.getDefaultState());
-		else setBlockAndNotifyAdequately(world, new BlockPos(x, y -1, z), ACBlocks.dreadlands_dirt.getDefaultState());
+		else setBlockAndNotifyAdequately(world, new BlockPos(x, y -1, z), ACBlocks.getInstance().dreadlands_dirt.getBlock().getDefaultState());
 
 		for (int i = 0; i < height; i++)
-			setBlockAndNotifyAdequately(world, new BlockPos(x, y + i, z), ACBlocks.dreadlands_log.getDefaultState());
-		setBlockAndNotifyAdequately(world, new BlockPos(x, y + height, z), ACBlocks.dreadlands_leaves.getDefaultState());
+			setBlockAndNotifyAdequately(world, new BlockPos(x, y + i, z), ACBlocks.getInstance().dreadlands_log.getBlock().getDefaultState());
+		setBlockAndNotifyAdequately(world, new BlockPos(x, y + height, z), ACBlocks.getInstance().dreadlands_leaves.getBlock().getDefaultState());
 		createTrunk(world, rand, x, y, z);
 
 		int dir = rand.nextInt((int) (360f / branches));
@@ -72,9 +72,9 @@ public class WorldGenDrT extends WorldGenTrees {
 			while (c < branchLenght) {
 				c++;
 				hd += 0.5f;
-				setBlockAndNotifyAdequately(world, new BlockPos(x + (int) (c * xd), y + (int) hd, z + (int) (c * yd)), ACBlocks.dreadlands_log.getStateFromMeta(12));
+				setBlockAndNotifyAdequately(world, new BlockPos(x + (int) (c * xd), y + (int) hd, z + (int) (c * yd)), ACBlocks.getInstance().dreadlands_log.getBlock().getStateFromMeta(12));
 				if(world.isAirBlock(new BlockPos(x + (int) (c * xd), y + (int) hd + 1, z + (int) (c * yd))))
-					setBlockAndNotifyAdequately(world, new BlockPos(x + (int) (c * xd), y + (int) hd + 1, z + (int) (c * yd)), ACBlocks.dreadlands_leaves.getDefaultState());
+					setBlockAndNotifyAdequately(world, new BlockPos(x + (int) (c * xd), y + (int) hd + 1, z + (int) (c * yd)), ACBlocks.getInstance().dreadlands_leaves.getBlock().getDefaultState());
 			}
 		}
 
@@ -88,7 +88,7 @@ public class WorldGenDrT extends WorldGenTrees {
 			sh = rand.nextInt(3) + y;
 			int i = sh;
 			while (sh > y - 1) {
-				setBlockAndNotifyAdequately(world, new BlockPos(x + pos[t * 2], sh, z + pos[t * 2 + 1]), i == sh ? ACBlocks.dreadlands_log.getStateFromMeta(12) : ACBlocks.dreadlands_log.getDefaultState());
+				setBlockAndNotifyAdequately(world, new BlockPos(x + pos[t * 2], sh, z + pos[t * 2 + 1]), i == sh ? ACBlocks.getInstance().dreadlands_log.getBlock().getStateFromMeta(12) : ACBlocks.getInstance().dreadlands_log.getBlock().getDefaultState());
 				sh--;
 			}
 		}

@@ -195,7 +195,7 @@ public class EntityAntiZombie extends EntityMob implements IAntiEntity {
 	@Override
 	protected Item getDropItem()
 	{
-		return ACItems.rotten_anti_flesh;
+		return ACItems.getInstance().rotten_anti_flesh;
 	}
 
 	@Override

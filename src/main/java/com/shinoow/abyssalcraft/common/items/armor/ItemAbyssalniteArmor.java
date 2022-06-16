@@ -37,10 +37,10 @@ public class ItemAbyssalniteArmor extends ItemACArmor {
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type)
 	{
-		if(stack.getItem() == ACItems.abyssalnite_helmet || stack.getItem() == ACItems.abyssalnite_chestplate || stack.getItem() == ACItems.abyssalnite_boots)
+		if(stack.getItem() == ACItems.getInstance().abyssalnite_helmet || stack.getItem() == ACItems.getInstance().abyssalnite_chestplate || stack.getItem() == ACItems.getInstance().abyssalnite_boots)
 			return "abyssalcraft:textures/armor/abyssalnite_1.png";
 
-		if(stack.getItem() == ACItems.abyssalnite_leggings)
+		if(stack.getItem() == ACItems.getInstance().abyssalnite_leggings)
 			return "abyssalcraft:textures/armor/abyssalnite_2.png";
 		else return null;
 	}
@@ -48,9 +48,9 @@ public class ItemAbyssalniteArmor extends ItemACArmor {
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemstack) {
 		if(world.isRemote || !ACConfig.armorPotionEffects) return;
-		if (itemstack.getItem() == ACItems.abyssalnite_helmet)
+		if (itemstack.getItem() == ACItems.getInstance().abyssalnite_helmet)
 			player.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 20, 0, false, false));
-		if (itemstack.getItem() == ACItems.abyssalnite_boots)
+		if (itemstack.getItem() == ACItems.getInstance().abyssalnite_boots)
 			player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 20, 0, false, false));
 	}
 }

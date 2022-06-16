@@ -63,7 +63,7 @@ public class AbyssalCraftWorldGenerator implements IWorldGenerator {
 			x = chunkX + random.nextInt(16) + 8;
 			z = chunkZ + random.nextInt(16) + 8;
 			DarklandsStructureGenerator.generate(4, world, random, world.getHeight(new BlockPos(x, 0, z)),
-					Blocks.GRASS.getDefaultState(), ACBlocks.darkstone.getDefaultState());
+					Blocks.GRASS.getDefaultState(), ACBlocks.getInstance().darkstone.getBlock().getDefaultState());
 
 			x = chunkX + random.nextInt(16) + 8;
 			z = chunkZ + random.nextInt(16) + 8;
@@ -78,7 +78,7 @@ public class AbyssalCraftWorldGenerator implements IWorldGenerator {
 					int y = random.nextInt(InitHandler.coraliumOreGeneration[2]);
 					int z = chunkZ + random.nextInt(16);
 					if(BiomeDictionary.hasType(world.getBiome(new BlockPos(x, 0, z)), Type.SWAMP))
-						new WorldGenMinable(ACBlocks.coralium_ore.getDefaultState(), veinSize).generate(world, random, new BlockPos(x, y, z));
+						new WorldGenMinable(ACBlocks.getInstance().coralium_ore.getBlock().getDefaultState(), veinSize).generate(world, random, new BlockPos(x, y, z));
 				}
 
 				for(int rarity = 0; rarity < InitHandler.coraliumOreGeneration[0]; rarity++) {
@@ -88,9 +88,9 @@ public class AbyssalCraftWorldGenerator implements IWorldGenerator {
 					int z = chunkZ + random.nextInt(16);
 					if(BiomeDictionary.hasType(world.getBiome(new BlockPos(x, 0, z)), Type.OCEAN) &&
 							world.getBiome(new BlockPos(x, 0, z))!=Biomes.DEEP_OCEAN)
-						new WorldGenMinable(ACBlocks.coralium_ore.getDefaultState(), veinSize).generate(world, random, new BlockPos(x, y, z));
+						new WorldGenMinable(ACBlocks.getInstance().coralium_ore.getBlock().getDefaultState(), veinSize).generate(world, random, new BlockPos(x, y, z));
 					if(world.getBiome(new BlockPos(x, 0, z))==Biomes.DEEP_OCEAN)
-						new WorldGenMinable(ACBlocks.coralium_ore.getDefaultState(), veinSize).generate(world, random, new BlockPos(x, y-20, z));
+						new WorldGenMinable(ACBlocks.getInstance().coralium_ore.getBlock().getDefaultState(), veinSize).generate(world, random, new BlockPos(x, y-20, z));
 				}
 			}
 
@@ -101,7 +101,7 @@ public class AbyssalCraftWorldGenerator implements IWorldGenerator {
 					int y = random.nextInt(30);
 					int z = chunkZ + random.nextInt(16);
 
-					new WorldGenMinable(ACBlocks.nitre_ore.getDefaultState(), veinSize).generate(world, random, new BlockPos(x, y, z));
+					new WorldGenMinable(ACBlocks.getInstance().nitre_ore.getBlock().getDefaultState(), veinSize).generate(world, random, new BlockPos(x, y, z));
 				}
 		}
 

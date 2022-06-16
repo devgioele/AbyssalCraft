@@ -147,11 +147,11 @@ public class StructureCity extends WorldGenerator {
 			break;
 		}
 
-		if(worldIn.getBlockState(center).getBlock() != ACBlocks.omothol_stone ||
-				worldIn.getBlockState(center.north(distZ)).getBlock() != ACBlocks.omothol_stone ||
-				worldIn.getBlockState(center.south(distZ)).getBlock() != ACBlocks.omothol_stone ||
-				worldIn.getBlockState(center.west(distX)).getBlock() != ACBlocks.omothol_stone ||
-				worldIn.getBlockState(center.east(distX)).getBlock() != ACBlocks.omothol_stone) return false;
+		if(worldIn.getBlockState(center).getBlock() != ACBlocks.getInstance().omothol_stone.getBlock() ||
+				worldIn.getBlockState(center.north(distZ)).getBlock() != ACBlocks.getInstance().omothol_stone.getBlock() ||
+				worldIn.getBlockState(center.south(distZ)).getBlock() != ACBlocks.getInstance().omothol_stone.getBlock() ||
+				worldIn.getBlockState(center.west(distX)).getBlock() != ACBlocks.getInstance().omothol_stone.getBlock() ||
+				worldIn.getBlockState(center.east(distX)).getBlock() != ACBlocks.getInstance().omothol_stone.getBlock()) return false;
 
 		center = worldIn.getHeight(center);
 		if(center.getY() > pos.getY())
@@ -175,7 +175,7 @@ public class StructureCity extends WorldGenerator {
 
 		for (Entry<BlockPos, String> entry : map.entrySet())
 			if(entry.getValue().equals("chest")) {
-				worldIn.setBlockState(entry.getKey(), ACBlocks.wooden_crate.getDefaultState());
+				worldIn.setBlockState(entry.getKey(), ACBlocks.getInstance().wooden_crate.getBlock().getDefaultState());
 				TileEntityCrate crate = (TileEntityCrate)worldIn.getTileEntity(entry.getKey());
 				if(crate != null)
 					crate.setLootTable(getLootTable(num), worldIn.rand.nextLong());
@@ -212,7 +212,7 @@ public class StructureCity extends WorldGenerator {
 			} else if(entry.getValue().startsWith("crystal")) {
 				if(rand.nextBoolean()) {
 					if(rand.nextInt(100) == 0)
-						worldIn.setBlockState(entry.getKey(), ACBlocks.dreadlands_infused_powerstone.getDefaultState());
+						worldIn.setBlockState(entry.getKey(), ACBlocks.getInstance().dreadlands_infused_powerstone.getBlock().getDefaultState());
 					else
 						worldIn.setBlockState(entry.getKey(), getCrystalCluster(rand));
 				} else worldIn.setBlockToAir(entry.getKey());
@@ -267,13 +267,13 @@ public class StructureCity extends WorldGenerator {
 	private IBlockState getPedestal(Random rand) {
 		switch(rand.nextInt(4)) {
 		case 0:
-			return ACBlocks.overworld_energy_pedestal.getDefaultState();
+			return ACBlocks.getInstance().overworld_energy_pedestal.getBlock().getDefaultState();
 		case 1:
-			return ACBlocks.abyssal_wasteland_energy_pedestal.getDefaultState();
+			return ACBlocks.getInstance().abyssal_wasteland_energy_pedestal.getBlock().getDefaultState();
 		case 2:
-			return ACBlocks.dreadlands_energy_pedestal.getDefaultState();
+			return ACBlocks.getInstance().dreadlands_energy_pedestal.getBlock().getDefaultState();
 		case 3:
-			return ACBlocks.omothol_energy_pedestal.getDefaultState();
+			return ACBlocks.getInstance().omothol_energy_pedestal.getBlock().getDefaultState();
 		default:
 			return getPedestal(rand);
 		}
@@ -282,61 +282,61 @@ public class StructureCity extends WorldGenerator {
 	private IBlockState getCrystalCluster(Random rand) {
 		switch(rand.nextInt(ACLib.crystalNames.length)) {
 		case 0:
-			return ACBlocks.iron_crystal_cluster.getDefaultState();
+			return ACBlocks.getInstance().iron_crystal_cluster.getBlock().getDefaultState();
 		case 1:
-			return ACBlocks.gold_crystal_cluster.getDefaultState();
+			return ACBlocks.getInstance().gold_crystal_cluster.getBlock().getDefaultState();
 		case 2:
-			return ACBlocks.sulfur_crystal_cluster.getDefaultState();
+			return ACBlocks.getInstance().sulfur_crystal_cluster.getBlock().getDefaultState();
 		case 3:
-			return ACBlocks.carbon_crystal_cluster.getDefaultState();
+			return ACBlocks.getInstance().carbon_crystal_cluster.getBlock().getDefaultState();
 		case 4:
-			return ACBlocks.oxygen_crystal_cluster.getDefaultState();
+			return ACBlocks.getInstance().oxygen_crystal_cluster.getBlock().getDefaultState();
 		case 5:
-			return ACBlocks.hydrogen_crystal_cluster.getDefaultState();
+			return ACBlocks.getInstance().hydrogen_crystal_cluster.getBlock().getDefaultState();
 		case 6:
-			return ACBlocks.nitrogen_crystal_cluster.getDefaultState();
+			return ACBlocks.getInstance().nitrogen_crystal_cluster.getBlock().getDefaultState();
 		case 7:
-			return ACBlocks.phosphorus_crystal_cluster.getDefaultState();
+			return ACBlocks.getInstance().phosphorus_crystal_cluster.getBlock().getDefaultState();
 		case 8:
-			return ACBlocks.potassium_crystal_cluster.getDefaultState();
+			return ACBlocks.getInstance().potassium_crystal_cluster.getBlock().getDefaultState();
 		case 9:
-			return ACBlocks.nitrate_crystal_cluster.getDefaultState();
+			return ACBlocks.getInstance().nitrate_crystal_cluster.getBlock().getDefaultState();
 		case 10:
-			return ACBlocks.methane_crystal_cluster.getDefaultState();
+			return ACBlocks.getInstance().methane_crystal_cluster.getBlock().getDefaultState();
 		case 11:
-			return ACBlocks.redstone_crystal_cluster.getDefaultState();
+			return ACBlocks.getInstance().redstone_crystal_cluster.getBlock().getDefaultState();
 		case 12:
-			return ACBlocks.abyssalnite_crystal_cluster.getDefaultState();
+			return ACBlocks.getInstance().abyssalnite_crystal_cluster.getBlock().getDefaultState();
 		case 13:
-			return ACBlocks.coralium_crystal_cluster.getDefaultState();
+			return ACBlocks.getInstance().coralium_crystal_cluster.getBlock().getDefaultState();
 		case 14:
-			return ACBlocks.dreadium_crystal_cluster.getDefaultState();
+			return ACBlocks.getInstance().dreadium_crystal_cluster.getBlock().getDefaultState();
 		case 15:
-			return ACBlocks.blaze_crystal_cluster.getDefaultState();
+			return ACBlocks.getInstance().blaze_crystal_cluster.getBlock().getDefaultState();
 		case 16:
-			return ACBlocks.tin_crystal_cluster.getDefaultState();
+			return ACBlocks.getInstance().tin_crystal_cluster.getBlock().getDefaultState();
 		case 17:
-			return ACBlocks.copper_crystal_cluster.getDefaultState();
+			return ACBlocks.getInstance().copper_crystal_cluster.getBlock().getDefaultState();
 		case 18:
-			return ACBlocks.silicon_crystal_cluster.getDefaultState();
+			return ACBlocks.getInstance().silicon_crystal_cluster.getBlock().getDefaultState();
 		case 19:
-			return ACBlocks.magnesium_crystal_cluster.getDefaultState();
+			return ACBlocks.getInstance().magnesium_crystal_cluster.getBlock().getDefaultState();
 		case 20:
-			return ACBlocks.aluminium_crystal_cluster.getDefaultState();
+			return ACBlocks.getInstance().aluminium_crystal_cluster.getBlock().getDefaultState();
 		case 21:
-			return ACBlocks.silica_crystal_cluster.getDefaultState();
+			return ACBlocks.getInstance().silica_crystal_cluster.getBlock().getDefaultState();
 		case 22:
-			return ACBlocks.alumina_crystal_cluster.getDefaultState();
+			return ACBlocks.getInstance().alumina_crystal_cluster.getBlock().getDefaultState();
 		case 23:
-			return ACBlocks.magnesia_crystal_cluster.getDefaultState();
+			return ACBlocks.getInstance().magnesia_crystal_cluster.getBlock().getDefaultState();
 		case 24:
-			return ACBlocks.zinc_crystal_cluster.getDefaultState();
+			return ACBlocks.getInstance().zinc_crystal_cluster.getBlock().getDefaultState();
 		case 25:
-			return ACBlocks.calcium_crystal_cluster.getDefaultState();
+			return ACBlocks.getInstance().calcium_crystal_cluster.getBlock().getDefaultState();
 		case 26:
-			return ACBlocks.beryllium_crystal_cluster.getDefaultState();
+			return ACBlocks.getInstance().beryllium_crystal_cluster.getBlock().getDefaultState();
 		case 27:
-			return ACBlocks.beryl_crystal_cluster.getDefaultState();
+			return ACBlocks.getInstance().beryl_crystal_cluster.getBlock().getDefaultState();
 		default:
 			return getCrystalCluster(rand);
 		}

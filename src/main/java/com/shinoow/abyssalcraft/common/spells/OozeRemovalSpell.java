@@ -32,7 +32,7 @@ public class OozeRemovalSpell extends Spell {
 
 		for(BlockPos pos1 : BlockPos.getAllInBoxMutable(new BlockPos(player.posX - 3, player.posY - 3, player.posZ - 3),
 				new BlockPos(player.posX + 3, player.posY + 3, player.posZ + 3)))
-			if(world.getBlockState(pos1).getBlock() == ACBlocks.shoggoth_ooze)
+			if(world.getBlockState(pos1).getBlock() == ACBlocks.getInstance().shoggoth_ooze.getBlock())
 				return true;
 		return false;
 	}
@@ -44,7 +44,7 @@ public class OozeRemovalSpell extends Spell {
 	protected void castSpellServer(World world, BlockPos pos, EntityPlayer player) {
 		for(BlockPos pos1 : BlockPos.getAllInBox(new BlockPos(player.posX - 3, player.posY - 3, player.posZ - 3),
 				new BlockPos(player.posX + 3, player.posY + 3, player.posZ + 3)))
-			if(world.getBlockState(pos1).getBlock() == ACBlocks.shoggoth_ooze)
+			if(world.getBlockState(pos1).getBlock() == ACBlocks.getInstance().shoggoth_ooze.getBlock())
 				world.destroyBlock(pos1, false);
 	}
 

@@ -32,8 +32,8 @@ public class BiomeDreadlandsBase extends Biome implements IDreadlandsBiome {
 
 	public BiomeDreadlandsBase(BiomeProperties par1) {
 		super(par1);
-		topBlock = ACBlocks.dreadstone.getDefaultState();
-		fillerBlock = ACBlocks.dreadstone.getDefaultState();
+		topBlock = ACBlocks.getInstance().dreadstone.getBlock().getDefaultState();
+		fillerBlock = ACBlocks.getInstance().dreadstone.getBlock().getDefaultState();
 		decorator.treesPerChunk = -1;
 		decorator.flowersPerChunk= -1;
 		decorator.grassPerChunk = -1;
@@ -71,8 +71,8 @@ public class BiomeDreadlandsBase extends Biome implements IDreadlandsBiome {
 				int y = par2Random.nextInt(60) + 5;
 				int z = par2Random.nextInt(16);
 
-				new WorldGenMinable(ACBlocks.dreaded_abyssalnite_ore.getDefaultState(), veinSize,
-						state -> state != null && state == ACBlocks.dreadstone.getDefaultState()).generate(par1World, par2Random, pos.add(x, y, z));
+				new WorldGenMinable(ACBlocks.getInstance().dreaded_abyssalnite_ore.getBlock().getDefaultState(), veinSize,
+						state -> state != null && state == ACBlocks.getInstance().dreadstone.getBlock().getDefaultState()).generate(par1World, par2Random, pos.add(x, y, z));
 			}
 
 		for (int rarity = 0; rarity < 3; rarity++)
@@ -80,8 +80,8 @@ public class BiomeDreadlandsBase extends Biome implements IDreadlandsBiome {
 			int x = par2Random.nextInt(16);
 			int y = par2Random.nextInt(55) + 5;
 			int z = par2Random.nextInt(16);
-			new WorldGenMinable(ACBlocks.abyssalnite_stone.getDefaultState(), 16,
-					state -> state != null && state == ACBlocks.dreadstone.getDefaultState()).generate(par1World, par2Random, pos.add(x, y, z));
+			new WorldGenMinable(ACBlocks.getInstance().abyssalnite_stone.getBlock().getDefaultState(), 16,
+					state -> state != null && state == ACBlocks.getInstance().dreadstone.getBlock().getDefaultState()).generate(par1World, par2Random, pos.add(x, y, z));
 		}
 	}
 
@@ -107,14 +107,14 @@ public class BiomeDreadlandsBase extends Biome implements IDreadlandsBiome {
 				if(j1 == 0)
 					chunkPrimerIn.setBlockState(i1, j1, l, Blocks.BEDROCK.getDefaultState());
 				else if(j1 == 6)
-					chunkPrimerIn.setBlockState(i1, j1, l, ACBlocks.darkstone_cobblestone.getDefaultState());
+					chunkPrimerIn.setBlockState(i1, j1, l, ACBlocks.getInstance().darkstone_cobblestone.getBlock().getDefaultState());
 				else if(j1 == 1)
-					chunkPrimerIn.setBlockState(i1, j1, l, ACBlocks.darkstone.getDefaultState());
+					chunkPrimerIn.setBlockState(i1, j1, l, ACBlocks.getInstance().darkstone.getBlock().getDefaultState());
 				else {
 					IBlockState state = Blocks.AIR.getDefaultState();
 
 					if(i1 % 4 == 2 && l % 4 == 2)
-						state = (j1 == 4 ? ACBlocks.chiseled_darkstone_brick : ACBlocks.darkstone_brick).getDefaultState();
+						state = (j1 == 4 ? ACBlocks.getInstance().chiseled_darkstone_brick.getBlock() : ACBlocks.getInstance().darkstone_brick.getBlock()).getDefaultState();
 					chunkPrimerIn.setBlockState(i1, j1, l, state);
 
 				}
@@ -125,13 +125,13 @@ public class BiomeDreadlandsBase extends Biome implements IDreadlandsBiome {
 
 				if (iblockstate2.getMaterial() == Material.AIR)
 					j = -1;
-				else if (iblockstate2 == ACBlocks.dreadstone.getDefaultState())
+				else if (iblockstate2 == ACBlocks.getInstance().dreadstone.getBlock().getDefaultState())
 					if (j == -1)
 					{
 						if (k <= 0)
 						{
 							iblockstate = null;
-							iblockstate1 = ACBlocks.dreadstone.getDefaultState();
+							iblockstate1 = ACBlocks.getInstance().dreadstone.getBlock().getDefaultState();
 						}
 						else if (j1 >= i - 4 && j1 <= i + 1)
 						{
@@ -146,8 +146,8 @@ public class BiomeDreadlandsBase extends Biome implements IDreadlandsBiome {
 						else if (j1 < i - 7 - k)
 						{
 							iblockstate = null;
-							iblockstate1 = ACBlocks.dreadstone.getDefaultState();
-							chunkPrimerIn.setBlockState(i1, j1, l, ACBlocks.dreadstone.getDefaultState());
+							iblockstate1 = ACBlocks.getInstance().dreadstone.getBlock().getDefaultState();
+							chunkPrimerIn.setBlockState(i1, j1, l, ACBlocks.getInstance().dreadstone.getBlock().getDefaultState());
 						} else
 							chunkPrimerIn.setBlockState(i1, j1, l, iblockstate1);
 					}

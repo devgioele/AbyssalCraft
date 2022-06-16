@@ -45,7 +45,7 @@ public class ItemCorflesh extends ItemFood implements IUnlockableItem {
 	@Override
 	public void onFoodEaten(ItemStack itemStack, World world, EntityPlayer entityPlayer)
 	{
-		if(itemStack.getItem() == ACItems.anti_plagued_flesh){
+		if(itemStack.getItem() == ACItems.getInstance().anti_plagued_flesh){
 			entityPlayer.addPotionEffect(new PotionEffect(MobEffects.SATURATION, 600, 1));
 			entityPlayer.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 600, 0));
 		} else {

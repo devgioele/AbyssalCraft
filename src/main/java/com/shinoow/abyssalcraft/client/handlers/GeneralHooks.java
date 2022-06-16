@@ -57,15 +57,14 @@ public class GeneralHooks {
 	public void onUpdateFOV(FOVUpdateEvent event) {
 		float fov = event.getFov();
 
-		if( event.getEntity().isHandActive() && event.getEntity().getActiveItemStack() != null
-				&& event.getEntity().getActiveItemStack().getItem() == ACItems.coralium_longbow) {
+		if (event.getEntity().isHandActive() && event.getEntity().getActiveItemStack() != null &&
+				event.getEntity().getActiveItemStack().getItem() ==
+						ACItems.getInstance().coralium_longbow) {
 			int duration = event.getEntity().getItemInUseCount();
 			float multiplier = duration / 20.0F;
 
-			if( multiplier > 1.0F )
-				multiplier = 1.0F;
-			else
-				multiplier *= multiplier;
+			if (multiplier > 1.0F) multiplier = 1.0F;
+			else multiplier *= multiplier;
 
 			fov *= 1.0F - multiplier * 0.15F;
 		}
@@ -74,80 +73,90 @@ public class GeneralHooks {
 	}
 
 	@SubscribeEvent
-	public void tooltipStuff(ItemTooltipEvent event){
+	public void tooltipStuff(ItemTooltipEvent event) {
 		ItemStack stack = event.getItemStack();
 
-		if(stack.getItem() instanceof IEnergyContainerItem)
-			event.getToolTip().add(1, String.format("%d/%d PE", (int)((IEnergyContainerItem)stack.getItem()).getContainedEnergy(stack), ((IEnergyContainerItem)stack.getItem()).getMaxEnergy(stack)));
+		if (stack.getItem() instanceof IEnergyContainerItem) event.getToolTip().add(1,
+				String.format("%d/%d PE",
+						(int) ((IEnergyContainerItem) stack.getItem()).getContainedEnergy(stack),
+						((IEnergyContainerItem) stack.getItem()).getMaxEnergy(stack)));
 
-		if(!APIUtils.display_names)
-			if(stack.getItem() instanceof IUnlockableItem && event.getEntityPlayer() != null && !NecroDataCapability.getCap(event.getEntityPlayer()).isUnlocked(((IUnlockableItem)stack.getItem()).getUnlockCondition(stack), event.getEntityPlayer())){
+		if (!APIUtils.display_names)
+			if (stack.getItem() instanceof IUnlockableItem && event.getEntityPlayer() != null &&
+					!NecroDataCapability.getCap(event.getEntityPlayer()).isUnlocked(
+							((IUnlockableItem) stack.getItem()).getUnlockCondition(stack),
+							event.getEntityPlayer())) {
 				event.getToolTip().remove(0);
 				event.getToolTip().add(0, "Lorem ipsum");
 			}
-		if(stack.getItem() instanceof IScroll) {
+		if (stack.getItem() instanceof IScroll) {
 			Spell spell = SpellUtils.getSpell(stack);
-			if(spell != null){
-				event.getToolTip().add(1, I18n.format(NecronomiconText.LABEL_SPELL_NAME)+": "+TextFormatting.AQUA+spell.getLocalizedName());
-				event.getToolTip().add(2, I18n.format(NecronomiconText.LABEL_SPELL_PE)+": "+(int)spell.getReqEnergy());
-				event.getToolTip().add(3, I18n.format(NecronomiconText.LABEL_SPELL_TYPE)+": "+TextFormatting.GOLD+I18n.format(NecronomiconText.getSpellType(spell.requiresCharging())));
+			if (spell != null) {
+				event.getToolTip().add(1, I18n.format(NecronomiconText.LABEL_SPELL_NAME) + ": " +
+						TextFormatting.AQUA + spell.getLocalizedName());
+				event.getToolTip().add(2, I18n.format(NecronomiconText.LABEL_SPELL_PE) + ": " +
+						(int) spell.getReqEnergy());
+				event.getToolTip().add(3, I18n.format(NecronomiconText.LABEL_SPELL_TYPE) + ": " +
+						TextFormatting.GOLD +
+						I18n.format(NecronomiconText.getSpellType(spell.requiresCharging())));
 			}
 		}
-		if(stack.getItem() instanceof ICrystal)
-			event.getToolTip().add(String.format("%s: %s", I18n.format("tooltip.crystal"), ((ICrystal) stack.getItem()).getFormula(stack)));
+		if (stack.getItem() instanceof ICrystal) event.getToolTip()
+				.add(String.format("%s: %s", I18n.format("tooltip.crystal"),
+						((ICrystal) stack.getItem()).getFormula(stack)));
 	}
 
 	@SubscribeEvent
 	public void tooltipFont(RenderTooltipEvent.Pre event) {
-		if(!APIUtils.display_names && event.getLines().get(0).startsWith("\u00A7fLorem ipsum"))
+		if (!APIUtils.display_names && event.getLines().get(0).startsWith("\u00A7fLorem ipsum"))
 			event.setFontRenderer(AbyssalCraftAPI.getAkloFont());
 	}
 
 	@SubscribeEvent
 	public void renderTick(RenderTickEvent event) {
-		if(event.phase == Phase.START)
-			partialTicks = event.renderTickTime;
+		if (event.phase == Phase.START) partialTicks = event.renderTickTime;
 	}
 
 	@SubscribeEvent
 	public void clientTickEnd(ClientTickEvent event) {
-		if(event.phase == Phase.END) {
+		if (event.phase == Phase.END) {
 			GuiScreen gui = Minecraft.getMinecraft().currentScreen;
-			if(gui == null || !gui.doesGuiPauseGame())
-				partialTicks = 0;
+			if (gui == null || !gui.doesGuiPauseGame()) partialTicks = 0;
 		}
 	}
 
 	@SubscribeEvent
 	public void voidFog(LivingUpdateEvent event) {
-		if(event.getEntityLiving() == Minecraft.getMinecraft().player)
+		if (event.getEntityLiving() == Minecraft.getMinecraft().player)
 			makeVoidFog(event.getEntityLiving().world, event.getEntityLiving());
 	}
 
 	@SubscribeEvent
-	public void onEntityJoin(EntityJoinWorldEvent event){
-		if(event.getEntity() == Minecraft.getMinecraft().player)
+	public void onEntityJoin(EntityJoinWorldEvent event) {
+		if (event.getEntity() == Minecraft.getMinecraft().player)
 			AbyssalCraft.proxy.resetParticleCount();
 	}
 
 	@SubscribeEvent
-	public void registerModels(ModelRegistryEvent event){
-		ACItems.registerItemsVariants();
+	public void registerModels(ModelRegistryEvent event) {
+		ACItems.getInstance().registerItemsVariants();
 		// TODO: Make this edge case conform to how items are usually registered
-		ModelLoader.setCustomMeshDefinition(ACItems.staff_of_the_gatekeeper, stack -> stack.hasTagCompound() && stack.getTagCompound().getInteger("Mode") == 1 ? new ModelResourceLocation("abyssalcraft:staff2", "inventory") : new ModelResourceLocation("abyssalcraft:staff", "inventory"));
-		ACItems.registerItemsRenders();
+		ModelLoader.setCustomMeshDefinition(ACItems.getInstance().staff_of_the_gatekeeper,
+				stack -> stack.hasTagCompound() && stack.getTagCompound().getInteger("Mode") == 1 ?
+						new ModelResourceLocation("abyssalcraft:staff2", "inventory") :
+						new ModelResourceLocation("abyssalcraft:staff", "inventory"));
+		ACItems.getInstance().registerItemsRenders().registerItemsRenders();
+		ACBlocks.getInstance().registerModels();
 
-		ACBlocks.registerItemsRenders();
-		ACBlocks.registerModels();
-
-		registerFluidModel(ACBlocks.liquid_coralium.getBlock(), "cor");
-		registerFluidModel(ACBlocks.liquid_antimatter.getBlock(), "anti");
+		registerFluidModel(ACBlocks.getInstance().liquid_coralium.getBlock(), "cor");
+		registerFluidModel(ACBlocks.getInstance().liquid_antimatter.getBlock(), "anti");
 	}
 
 	private void registerFluidModel(Block fluidBlock, String name) {
 		Item item = Item.getItemFromBlock(fluidBlock);
 		ModelBakery.registerItemVariants(item);
-		final ModelResourceLocation modelResourceLocation = new ModelResourceLocation("abyssalcraft:fluid", name);
+		final ModelResourceLocation modelResourceLocation =
+				new ModelResourceLocation("abyssalcraft:fluid", name);
 		ModelLoader.setCustomMeshDefinition(item, stack -> modelResourceLocation);
 		ModelLoader.setCustomStateMapper(fluidBlock, new StateMapperBase() {
 			@Override

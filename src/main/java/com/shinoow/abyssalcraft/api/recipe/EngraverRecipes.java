@@ -68,11 +68,12 @@ public class EngraverRecipes {
 	 */
 	public ItemStack getEngravingResult(ItemStack par2, ItemEngraving par1)
 	{
+		ACItems items = ACItems.getInstance();
 		for(ItemStack stack : coins)
 			if(areStacksEqual(par2, stack))
 				if(engravings.get(par1) != null)
-					if(par2.getItem() != ACItems.coin && par1 == ACItems.blank_engraving ||
-					par2.getItem() == ACItems.coin && par1 != ACItems.blank_engraving)
+					if(par2.getItem() != items.coin && par1 == items.blank_engraving ||
+					par2.getItem() == items.coin && par1 != items.blank_engraving)
 						return engravings.get(par1);
 
 		return ItemStack.EMPTY;
@@ -80,7 +81,7 @@ public class EngraverRecipes {
 
 	private boolean areStacksEqual(ItemStack stack1, ItemStack stack2)
 	{
-		return (stack2.getItem() == stack1.getItem() || stack1.getItem() == ACItems.coin) && (stack2.getItemDamage() == OreDictionary.WILDCARD_VALUE || stack2.getItemDamage() == stack1.getItemDamage());
+		return (stack2.getItem() == stack1.getItem() || stack1.getItem() == ACItems.getInstance().coin) && (stack2.getItemDamage() == OreDictionary.WILDCARD_VALUE || stack2.getItemDamage() == stack1.getItemDamage());
 	}
 
 	/**

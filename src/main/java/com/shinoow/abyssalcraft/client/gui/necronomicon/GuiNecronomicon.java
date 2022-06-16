@@ -150,34 +150,34 @@ public class GuiNecronomicon extends GuiScreen {
 		byte b0 = 2;
 		buttonList.add(buttonNextPage = new ButtonNextPage(1, i + 215, b0 + 154, true, false));
 		buttonList.add(buttonPreviousPage = new ButtonNextPage(2, i + 18, b0 + 154, false, false));
-		buttonList.add(buttonCat1 = new ButtonCategory(3, i + 14, b0 + 24, this, NecronomiconText.LABEL_INFORMATION, false, ACItems.necronomicon));
-		buttonList.add(buttonCat2 = new ButtonCategory(4, i + 14, b0 + 41, this, NecronomiconText.LABEL_SPELLBOOK, false, ACItems.necronomicon));
-		buttonList.add(buttonCat3 = new ButtonCategory(5, i + 14, b0 + 58, this, NecronomiconText.LABEL_RITUALS, false, ACItems.necronomicon));
-		buttonList.add(buttonCat4 = new ButtonCategory(6, i + 14, b0 + 75, this, NecronomiconText.LABEL_POTENTIAL_ENERGY, false, ACItems.necronomicon));
+		buttonList.add(buttonCat1 = new ButtonCategory(3, i + 14, b0 + 24, this, NecronomiconText.LABEL_INFORMATION, false, ACItems.getInstance().necronomicon));
+		buttonList.add(buttonCat2 = new ButtonCategory(4, i + 14, b0 + 41, this, NecronomiconText.LABEL_SPELLBOOK, false, ACItems.getInstance().necronomicon));
+		buttonList.add(buttonCat3 = new ButtonCategory(5, i + 14, b0 + 58, this, NecronomiconText.LABEL_RITUALS, false, ACItems.getInstance().necronomicon));
+		buttonList.add(buttonCat4 = new ButtonCategory(6, i + 14, b0 + 75, this, NecronomiconText.LABEL_POTENTIAL_ENERGY, false, ACItems.getInstance().necronomicon));
 		if(bookType == 4)
-			buttonList.add(buttonCat5 = new ButtonCategory(7, i + 14, b0 + 92, this, NecronomiconText.LABEL_HUH, false, ACItems.abyssalnomicon));
-		else buttonList.add(buttonCat5 = new ButtonCategory(7, i + 14, b0 + 92, this, NecronomiconText.LABEL_HUH, false, ACItems.necronomicon));
-		buttonList.add(buttonCat6 = new ButtonCategory(8, i + 14, b0 + 109, this, NecronomiconText.LABEL_KNOWLEDGE, false, ACItems.necronomicon));
-		buttonList.add(buttonCat7 = new ButtonCategory(9, i + 14, b0 + 126, this, NecronomiconText.LABEL_MISC_INFORMATION, false, ACItems.necronomicon));
+			buttonList.add(buttonCat5 = new ButtonCategory(7, i + 14, b0 + 92, this, NecronomiconText.LABEL_HUH, false, ACItems.getInstance().abyssalnomicon));
+		else buttonList.add(buttonCat5 = new ButtonCategory(7, i + 14, b0 + 92, this, NecronomiconText.LABEL_HUH, false, ACItems.getInstance().necronomicon));
+		buttonList.add(buttonCat6 = new ButtonCategory(8, i + 14, b0 + 109, this, NecronomiconText.LABEL_KNOWLEDGE, false, ACItems.getInstance().necronomicon));
+		buttonList.add(buttonCat7 = new ButtonCategory(9, i + 14, b0 + 126, this, NecronomiconText.LABEL_MISC_INFORMATION, false, ACItems.getInstance().necronomicon));
 		if(!AbyssalCraftAPI.getNecronomiconData().isEmpty())
-			buttonList.add(buttonCat8 = new ButtonCategory(10, i + 132, b0 + 24, this, NecronomiconText.LABEL_OTHER, false, ACItems.necronomicon));
+			buttonList.add(buttonCat8 = new ButtonCategory(10, i + 132, b0 + 24, this, NecronomiconText.LABEL_OTHER, false, ACItems.getInstance().necronomicon));
 		updateButtons();
 	}
 
 	protected Item getItem(int par1){
 		switch(par1){
 		case 0:
-			return ACItems.necronomicon;
+			return ACItems.getInstance().necronomicon;
 		case 1:
-			return ACItems.abyssal_wasteland_necronomicon;
+			return ACItems.getInstance().abyssal_wasteland_necronomicon;
 		case 2:
-			return ACItems.dreadlands_necronomicon;
+			return ACItems.getInstance().dreadlands_necronomicon;
 		case 3:
-			return ACItems.omothol_necronomicon;
+			return ACItems.getInstance().omothol_necronomicon;
 		case 4:
-			return ACItems.abyssalnomicon;
+			return ACItems.getInstance().abyssalnomicon;
 		default:
-			return ACItems.oblivion_catalyst;
+			return ACItems.getInstance().oblivion_catalyst;
 		}
 	}
 
@@ -265,11 +265,11 @@ public class GuiNecronomicon extends GuiScreen {
 						new RitualGuiInstance(1, NecronomiconText.LABEL_INFORMATION_ABYSSAL_WASTELAND, "ritualsabyssalwasteland"),
 						new RitualGuiInstance(2, NecronomiconText.LABEL_INFORMATION_DREADLANDS, "ritualsdreadlands"),
 						new RitualGuiInstance(3, NecronomiconText.LABEL_INFORMATION_OMOTHOL, "ritualsomothol"),
-						new RitualGuiInstance(4, ACItems.abyssalnomicon.getTranslationKey() + ".name", "ritualsabyssalnomicon"));
+						new RitualGuiInstance(4, ACItems.getInstance().abyssalnomicon.getTranslationKey() + ".name", "ritualsabyssalnomicon"));
 
 				mc.displayGuiScreen(new GuiNecronomiconEntry(bookType, data, this));
 			} else if (button.id == 6)
-				mc.displayGuiScreen(new GuiNecronomiconEntry(bookType, AbyssalCraftAPI.getInternalNDHandler().getInternalNecroData("potentialenergy"), this, ACItems.necronomicon));
+				mc.displayGuiScreen(new GuiNecronomiconEntry(bookType, AbyssalCraftAPI.getInternalNDHandler().getInternalNecroData("potentialenergy"), this, ACItems.getInstance().necronomicon));
 			else if (button.id == 7){
 				isInfo = true;
 				isNecroInfo = true;
@@ -283,7 +283,7 @@ public class GuiNecronomicon extends GuiScreen {
 				bookTotalTurnups = 2;
 				drawButtons();
 			} else if(button.id == 9)
-				mc.displayGuiScreen(new GuiNecronomiconEntry(bookType, AbyssalCraftAPI.getInternalNDHandler().getInternalNecroData("miscinfo"), this, ACItems.necronomicon));
+				mc.displayGuiScreen(new GuiNecronomiconEntry(bookType, AbyssalCraftAPI.getInternalNDHandler().getInternalNecroData("miscinfo"), this, ACItems.getInstance().necronomicon));
 			else if (button.id == 10)
 				mc.displayGuiScreen(new GuiNecronomiconOther(bookType));
 			updateButtons();

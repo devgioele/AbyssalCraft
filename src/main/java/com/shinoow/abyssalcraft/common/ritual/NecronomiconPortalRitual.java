@@ -33,10 +33,10 @@ import net.minecraft.world.World;
 public class NecronomiconPortalRitual extends NecronomiconRitual {
 
 	public NecronomiconPortalRitual() {
-		super("portal", 0, 1000F, new Object[] {ACItems.shadow_gem, null, ACItems.shadow_gem, null,
-				ACItems.shadow_gem, null, ACItems.shadow_gem});
-		sacrifice = new ItemStack[] {new ItemStack(ACItems.gateway_key), new ItemStack(ACItems.dreaded_gateway_key),
-				new ItemStack(ACItems.rlyehian_gateway_key)};
+		super("portal", 0, 1000F, ACItems.getInstance().shadow_gem, null, ACItems.getInstance().shadow_gem,
+				null, ACItems.getInstance().shadow_gem, null, ACItems.getInstance().shadow_gem);
+		sacrifice = new ItemStack[] {new ItemStack(ACItems.getInstance().gateway_key), new ItemStack(ACItems.getInstance().dreaded_gateway_key),
+				new ItemStack(ACItems.getInstance().rlyehian_gateway_key)};
 		setRitualParticle(EnumRitualParticle.SMOKE_PILLARS);
 	}
 
@@ -106,10 +106,10 @@ public class NecronomiconPortalRitual extends NecronomiconRitual {
 			.map(p -> ((TileEntity) p).getPos())
 			.forEach(p -> {
 				world.destroyBlock(p, false);
-				world.setBlockState(p, ACBlocks.monolith_pillar.getDefaultState());
+				world.setBlockState(p, ACBlocks.getInstance().monolith_pillar.getBlock().getDefaultState());
 			});
 			world.destroyBlock(pos, false);
-			world.setBlockState(pos, ACBlocks.portal_anchor.getDefaultState().withProperty(BlockPortalAnchor.ACTIVE, true), 2);
+			world.setBlockState(pos, ACBlocks.getInstance().portal_anchor.getBlock().getDefaultState().withProperty(BlockPortalAnchor.ACTIVE, true), 2);
 
 			((TileEntityPortalAnchor) world.getTileEntity(pos)).setDestination(id);
 		}

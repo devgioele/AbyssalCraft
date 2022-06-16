@@ -107,7 +107,7 @@ public class ChunkGeneratorOmothol implements IChunkGenerator
 								IBlockState iblockstate = null;
 
 								if (d15 > 0.0D)
-									iblockstate = ACBlocks.omothol_stone.getDefaultState();
+									iblockstate = ACBlocks.getInstance().omothol_stone.getBlock().getDefaultState();
 
 								int k2 = i2 + i1 * 8;
 								int l2 = l1 + k1 * 4;
@@ -136,8 +136,8 @@ public class ChunkGeneratorOmothol implements IChunkGenerator
 			{
 				int k = 1;
 				int l = -1;
-				IBlockState iblockstate = ACBlocks.omothol_stone.getDefaultState();
-				IBlockState iblockstate1 = ACBlocks.omothol_stone.getDefaultState();
+				IBlockState iblockstate = ACBlocks.getInstance().omothol_stone.getBlock().getDefaultState();
+				IBlockState iblockstate1 = ACBlocks.getInstance().omothol_stone.getBlock().getDefaultState();
 
 				for (int i1 = 127; i1 >= 0; --i1)
 				{
@@ -151,7 +151,7 @@ public class ChunkGeneratorOmothol implements IChunkGenerator
 							if (k <= 0)
 							{
 								iblockstate = Blocks.AIR.getDefaultState();
-								iblockstate1 = ACBlocks.omothol_stone.getDefaultState();
+								iblockstate1 = ACBlocks.getInstance().omothol_stone.getBlock().getDefaultState();
 							}
 
 							l = k;

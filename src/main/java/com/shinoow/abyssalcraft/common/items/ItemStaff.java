@@ -69,9 +69,9 @@ public class ItemStaff extends ItemACBasic implements IStaffOfRending{
 		l.add(I18n.format("tooltip.staff.mode.1")+": "+TextFormatting.GOLD+I18n.format(is.getTagCompound().getInteger("Mode") == 1 ? "item.drainstaff.normal.name" : "item.gatewaykey.name"));
 		l.add(I18n.format("tooltip.staff.mode.2", TextFormatting.GOLD+ClientProxy.staff_mode.getDisplayName()+TextFormatting.GRAY));
 		if(is.getTagCompound().getInteger("Mode") == 1)
-			ACItems.staff_of_rending.addInformation(is, player, l, B);
+			ACItems.getInstance().staff_of_rending.addInformation(is, player, l, B);
 		else if(is.getTagCompound().getInteger("Mode") == 0)
-			ACItems.rlyehian_gateway_key.addInformation(is, player, l, B);
+			ACItems.getInstance().rlyehian_gateway_key.addInformation(is, player, l, B);
 	}
 
 	@Override
@@ -106,7 +106,7 @@ public class ItemStaff extends ItemACBasic implements IStaffOfRending{
 			stack.setTagCompound(new NBTTagCompound());
 
 		if(stack.getTagCompound().getInteger("Mode") != 1) return new ActionResult(EnumActionResult.PASS, stack);
-		else return ACItems.staff_of_rending.onItemRightClick(world, player, hand);
+		else return ACItems.getInstance().staff_of_rending.onItemRightClick(world, player, hand);
 	}
 
 	@Override
@@ -118,7 +118,7 @@ public class ItemStaff extends ItemACBasic implements IStaffOfRending{
 			stack.setTagCompound(new NBTTagCompound());
 
 		if(stack.getTagCompound().getInteger("Mode") != 0) return EnumActionResult.PASS;
-		else return ACItems.rlyehian_gateway_key.onItemUse(player, world, pos, hand, side, hitX, hitY, hitZ);
+		else return ACItems.getInstance().rlyehian_gateway_key.onItemUse(player, world, pos, hand, side, hitX, hitY, hitZ);
 	}
 
 	@Override

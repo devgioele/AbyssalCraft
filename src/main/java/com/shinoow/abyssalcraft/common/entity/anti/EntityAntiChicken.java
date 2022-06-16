@@ -143,9 +143,9 @@ public class EntityAntiChicken extends EntityAnimal implements IAntiEntity {
 			dropItem(Items.FEATHER, 1);
 
 		if (isBurning())
-			dropItem(ACItems.anti_chicken, 1);
+			dropItem(ACItems.getInstance().anti_chicken, 1);
 		else
-			dropItem(ACItems.anti_chicken, 1);
+			dropItem(ACItems.getInstance().anti_chicken, 1);
 	}
 
 	@Override

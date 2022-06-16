@@ -84,13 +84,13 @@ public class BlockSingleMobSpawner extends Block {
 	@Override
 	public TileEntity createTileEntity(World world, IBlockState state)
 	{
-		if(state.getBlock() == ACBlocks.chagaroth_spawner)
+		if(state.getBlock() == ACBlocks.getInstance().chagaroth_spawner.getBlock())
 			return new TileEntityChagarothSpawner();
-		else if(state.getBlock() == ACBlocks.dreadguard_spawner)
+		else if(state.getBlock() == ACBlocks.getInstance().dreadguard_spawner.getBlock())
 			return new TileEntityDreadguardSpawner();
-		else if(state.getBlock() == ACBlocks.minion_of_the_gatekeeper_spawner)
+		else if(state.getBlock() == ACBlocks.getInstance().minion_of_the_gatekeeper_spawner.getBlock())
 			return new TileEntityGatekeeperMinionSpawner();
-		else if(state.getBlock() == ACBlocks.jzahar_spawner)
+		else if(state.getBlock() == ACBlocks.getInstance().jzahar_spawner.getBlock())
 			return new TileEntityJzaharSpawner();
 		return null;
 	}

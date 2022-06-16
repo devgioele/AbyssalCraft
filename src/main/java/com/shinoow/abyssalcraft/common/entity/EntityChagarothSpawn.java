@@ -174,7 +174,7 @@ public class EntityChagarothSpawn extends EntityMob implements IDreadEntity {
 	@Override
 	protected Item getDropItem()
 	{
-		return ACItems.dread_fragment;
+		return ACItems.getInstance().dread_fragment;
 	}
 
 	@Override

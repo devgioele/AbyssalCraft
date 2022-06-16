@@ -611,9 +611,9 @@ public class EntityDragonBoss extends EntityMob implements IEntityMultiPart, ICo
 					i -= j;
 					world.spawnEntity(new EntityXPOrb(world, posX, posY, posZ, j));
 					if(deathTicks == 100 || deathTicks == 120 || deathTicks == 140 || deathTicks == 160 || deathTicks == 180){
-						world.spawnEntity(new EntityItem(world, posX + posneg(3), posY + rand.nextInt(3), posZ + posneg(3), new ItemStack(ACItems.chunk_of_coralium)));
-						world.spawnEntity(new EntityItem(world, posX + posneg(3), posY + rand.nextInt(3), posZ + posneg(3), new ItemStack(ACItems.refined_coralium_ingot)));
-						world.spawnEntity(new EntityItem(world, posX + posneg(3), posY + rand.nextInt(3), posZ + posneg(3), new ItemStack(ACItems.coralium_plagued_flesh)));
+						world.spawnEntity(new EntityItem(world, posX + posneg(3), posY + rand.nextInt(3), posZ + posneg(3), new ItemStack(ACItems.getInstance().chunk_of_coralium)));
+						world.spawnEntity(new EntityItem(world, posX + posneg(3), posY + rand.nextInt(3), posZ + posneg(3), new ItemStack(ACItems.getInstance().refined_coralium_ingot)));
+						world.spawnEntity(new EntityItem(world, posX + posneg(3), posY + rand.nextInt(3), posZ + posneg(3), new ItemStack(ACItems.getInstance().coralium_plagued_flesh)));
 					}
 				}
 			}
@@ -635,7 +635,7 @@ public class EntityDragonBoss extends EntityMob implements IEntityMultiPart, ICo
 		}
 		if (deathTicks == 200 && !world.isRemote){
 			setDead();
-			world.spawnEntity(new EntityItem(world, posX, posY, posZ, new ItemStack(ACItems.eye_of_the_abyss)));
+			world.spawnEntity(new EntityItem(world, posX, posY, posZ, new ItemStack(ACItems.getInstance().eye_of_the_abyss)));
 		}
 	}
 

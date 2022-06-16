@@ -393,22 +393,21 @@ public class TileEntityCrystallizer extends TileEntity implements ISidedInventor
 	// TODO: create new fuel types
 	public static int getCrystallizationTime(ItemStack par1ItemStack)
 	{
-		if (par1ItemStack.isEmpty())
-			return 0;
-		else
-		{
+		ACItems items = ACItems.getInstance();
+
+		if (!par1ItemStack.isEmpty()) {
 			int fuelValue = AbyssalCraftAPI.getFuelValue(par1ItemStack, FuelType.CRYSTALLIZER);
 			if(fuelValue >= 0) return fuelValue;
 			Item item = par1ItemStack.getItem();
 
-			if (item == ACItems.dread_fragment) return 100;
-			if (item == ACItems.dreaded_shard_of_abyssalnite) return 1000;
-			if (item == ACItems.dreaded_chunk_of_abyssalnite) return 1600;
+			if (item == items.dread_fragment) return 100;
+			if (item == items.dreaded_shard_of_abyssalnite) return 1000;
+			if (item == items.dreaded_chunk_of_abyssalnite) return 1600;
 			if (item == Items.BLAZE_POWDER) return 1200;
 			if (item == Items.BLAZE_ROD) return 2400;
-			if (item == ACItems.methane) return 10000;
-			return 0;
+			if (item == items.methane) return 10000;
 		}
+		return 0;
 	}
 
 	public static boolean isItemFuel(ItemStack par1ItemStack)

@@ -191,7 +191,7 @@ public class EntityPSDLTracker extends Entity
 				setDead();
 
 				if (shatterOrDrop)
-					world.spawnEntity(new EntityItem(world, posX, posY, posZ, new ItemStack(ACItems.powerstone_tracker)));
+					world.spawnEntity(new EntityItem(world, posX, posY, posZ, new ItemStack(ACItems.getInstance().powerstone_tracker)));
 				else
 					world.playEvent(2003, new BlockPos(this), 0);
 			}

@@ -28,7 +28,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class LayerSacthothHeldItem implements LayerRenderer<EntityLivingBase> {
 	protected final RenderLivingBase<?> livingEntityRenderer;
-	private final ItemStack STACK = new ItemStack(ACItems.sacthoths_soul_harvesting_blade);
+	private final ItemStack STACK = new ItemStack(ACItems.getInstance().sacthoths_soul_harvesting_blade);
 
 	public LayerSacthothHeldItem(RenderLivingBase render)
 	{

@@ -22,7 +22,7 @@ import net.minecraft.world.gen.MapGenRavine;
 public class MapGenRavineAC extends MapGenRavine {
 
 	private boolean isACStone(IBlockState state){
-		return state.getBlock() instanceof BlockACStone && state.getBlock() != ACBlocks.ethaxium;
+		return state.getBlock() instanceof BlockACStone && state.getBlock() != ACBlocks.getInstance().ethaxium.getBlock();
 	}
 
 	@Override

@@ -26,8 +26,8 @@ public class StructureCircularShrineColumns extends StructureDarklandsBase {
 	@Override
 	public boolean generate(World worldIn, Random rand, BlockPos pos) {
 
-		IBlockState chiseled_brick = ACBlocks.chiseled_darkstone_brick.getDefaultState();
-		IBlockState brick_slab = ACBlocks.darkstone_brick_slab.getDefaultState();
+		IBlockState chiseled_brick = ACBlocks.getInstance().chiseled_darkstone_brick.getBlock().getDefaultState();
+		IBlockState brick_slab = ACBlocks.getInstance().darkstone_brick_slab.getBlock().getDefaultState();
 
 		for(int i = -3; i < 4; i++)
 			for(int j = -5; j < 6; j++){
@@ -83,11 +83,11 @@ public class StructureCircularShrineColumns extends StructureDarklandsBase {
 						}
 				}
 				if(j == -2 || j == 2){
-					setBlockAndNotifyAdequately(worldIn, pos.add(i, 1, j), i > -2 && i < 2 ? ACBlocks.monolith_stone.getDefaultState() : getBrick(rand));
-					setBlockAndNotifyAdequately(worldIn, pos.add(j, 1, i), i > -2 && i < 2 ? ACBlocks.monolith_stone.getDefaultState() : getBrick(rand));
+					setBlockAndNotifyAdequately(worldIn, pos.add(i, 1, j), i > -2 && i < 2 ? ACBlocks.getInstance().monolith_stone.getBlock().getDefaultState() : getBrick(rand));
+					setBlockAndNotifyAdequately(worldIn, pos.add(j, 1, i), i > -2 && i < 2 ? ACBlocks.getInstance().monolith_stone.getBlock().getDefaultState() : getBrick(rand));
 				}
 				if(j > -2 && j < 2 && i > -2 && i < 2)
-					setBlockAndNotifyAdequately(worldIn, pos.add(i, 1, j), ACBlocks.shoggoth_ooze.getDefaultState().withProperty(BlockShoggothOoze.LAYERS, 8));
+					setBlockAndNotifyAdequately(worldIn, pos.add(i, 1, j), ACBlocks.getInstance().shoggoth_ooze.getBlock().getDefaultState().withProperty(BlockShoggothOoze.LAYERS, 8));
 			}
 
 		placeStatue(worldIn, rand, pos.up(2));

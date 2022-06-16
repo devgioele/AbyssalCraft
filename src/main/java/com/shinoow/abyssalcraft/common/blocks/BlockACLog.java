@@ -103,7 +103,7 @@ public class BlockACLog extends BlockLog {
 	@SideOnly(Side.CLIENT)
 	public BlockRenderLayer getRenderLayer()
 	{
-		return this == ACBlocks.darklands_oak_wood_2 ? BlockRenderLayer.CUTOUT : super.getRenderLayer();
+		return this == ACBlocks.getInstance().darklands_oak_wood_2.getBlock() ? BlockRenderLayer.CUTOUT : super.getRenderLayer();
 	}
 
 	@Override

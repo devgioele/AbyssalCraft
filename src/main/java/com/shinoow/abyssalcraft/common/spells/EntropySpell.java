@@ -32,8 +32,8 @@ import net.minecraft.world.World;
 public class EntropySpell extends Spell {
 
 	public EntropySpell() {
-		super("entropy", 0, Items.COAL, new ItemStack(ACBlocks.darkstone_cobblestone));
-		setParchment(new ItemStack(ACItems.scroll, 1, 3));
+		super("entropy", 0, Items.COAL, new ItemStack(ACBlocks.getInstance().darkstone_cobblestone.getBlock()));
+		setParchment(new ItemStack(ACItems.getInstance().scroll, 1, 3));
 		setColor(0x171f68);
 	}
 
@@ -47,16 +47,16 @@ public class EntropySpell extends Spell {
 	}
 
 	private IBlockState getDegradation(IBlockState state){
-		if(state.getBlock() == ACBlocks.darkstone)
-			return ACBlocks.darkstone_cobblestone.getDefaultState();
-		else if(state.getBlock() == ACBlocks.abyssal_stone)
-			return ACBlocks.abyssal_cobblestone.getDefaultState();
-		else if(state.getBlock() == ACBlocks.coralium_stone)
-			return ACBlocks.coralium_cobblestone.getDefaultState();
-		else if(state.getBlock() == ACBlocks.dreadstone)
-			return ACBlocks.dreadstone_cobblestone.getDefaultState();
-		else if(state.getBlock() == ACBlocks.abyssalnite_stone)
-			return ACBlocks.abyssalnite_cobblestone.getDefaultState();
+		if(state.getBlock() == ACBlocks.getInstance().darkstone.getBlock())
+			return ACBlocks.getInstance().darkstone_cobblestone.getBlock().getDefaultState();
+		else if(state.getBlock() == ACBlocks.getInstance().abyssal_stone.getBlock())
+			return ACBlocks.getInstance().abyssal_cobblestone.getBlock().getDefaultState();
+		else if(state.getBlock() == ACBlocks.getInstance().coralium_stone.getBlock())
+			return ACBlocks.getInstance().coralium_cobblestone.getBlock().getDefaultState();
+		else if(state.getBlock() == ACBlocks.getInstance().dreadstone.getBlock())
+			return ACBlocks.getInstance().dreadstone_cobblestone.getBlock().getDefaultState();
+		else if(state.getBlock() == ACBlocks.getInstance().abyssalnite_stone.getBlock())
+			return ACBlocks.getInstance().abyssalnite_cobblestone.getBlock().getDefaultState();
 		else if(state.getBlock() == Blocks.STONE)
 			return Blocks.COBBLESTONE.getDefaultState();
 		else if(state.getBlock() instanceof BlockACCobblestone || state.getBlock() == Blocks.COBBLESTONE)

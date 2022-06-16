@@ -37,7 +37,7 @@ public class IMCHelper {
 	 * You can use the IMC message "addCrystal"
 	 *
 	 * Example of how it would look like if I added my Abyssalnite Ingot as a crystal:
-	 * FMLInterModComms.sendMessage(AbyssalCraft.modid, "addCrystal", new ItemStack(ACItems.abyssalnite_ingot));
+	 * FMLInterModComms.sendMessage(AbyssalCraft.modid, "addCrystal", new ItemStack(ACItems.getInstance().abyssalnite_ingot));
 	 */
 
 	//CRYSTALLIZATION //////////////////////////////////////////////////////////////////////////

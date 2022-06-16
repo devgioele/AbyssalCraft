@@ -118,7 +118,7 @@ public class EntityAIShoggothBuildMonolith extends EntityAIBase {
 					shoggoth.getNavigator().tryMoveToXYZ(locationX + (shoggoth.getRNG().nextBoolean() ? 7 : -7), shoggoth.posY, locationZ + (shoggoth.getRNG().nextBoolean() ? 7 : -7), 0.7F);
 			if(!world.isRemote) {
 				BlockPos pos = new BlockPos(MathHelper.floor(locationX), MathHelper.floor(locationY), MathHelper.floor(locationZ));
-				if(world.getBlockState(pos.down()).getBlock() == ACBlocks.shoggoth_ooze)
+				if(world.getBlockState(pos.down()).getBlock() == ACBlocks.getInstance().shoggoth_ooze.getBlock())
 					pos = pos.down();
 				new WorldGenShoggothMonolith().generate(world, shoggoth.getRNG(), pos);
 			}
@@ -158,12 +158,12 @@ public class EntityAIShoggothBuildMonolith extends EntityAIBase {
 			BlockPos blockpos1 = blockpos.add(random.nextInt(20) - 10, random.nextInt(6) - 3, random.nextInt(20) - 10);
 
 			if (world.isAirBlock(blockpos1.up()) && world.isAirBlock(blockpos1.up(1)) && world.getBlockState(blockpos1).getBlock().isReplaceable(world, blockpos1)
-					&& world.getBlockState(blockpos1.down()) != ACBlocks.monolith_stone.getDefaultState()
+					&& world.getBlockState(blockpos1.down()) != ACBlocks.getInstance().monolith_stone.getBlock().getDefaultState()
 					&& !world.isAirBlock(blockpos1.down()) && world.getBlockState(blockpos1.down()).isSideSolid(world, blockpos1.down(), EnumFacing.UP)
-					&& world.getBlockState(blockpos1.down()) != ACBlocks.shoggoth_biomass.getDefaultState()) {
+					&& world.getBlockState(blockpos1.down()) != ACBlocks.getInstance().shoggoth_biomass.getBlock().getDefaultState()) {
 
 				for(BlockPos pos : BlockPos.getAllInBox(blockpos1.north().west().down(), blockpos1.south().east().up()))
-					if(world.getBlockState(pos).getBlock() == ACBlocks.shoggoth_ooze)
+					if(world.getBlockState(pos).getBlock() == ACBlocks.getInstance().shoggoth_ooze.getBlock())
 						return new Vec3d(pos);
 
 				return new Vec3d(blockpos1.getX(), blockpos1.getY(), blockpos1.getZ());

@@ -44,11 +44,11 @@ public class StructureTower extends WorldGenerator {
 			pos = pos.down();
 		if(pos.getY() <= 1) return false;
 
-		if(worldIn.getBlockState(pos).getBlock() != ACBlocks.omothol_stone ||
-				worldIn.getBlockState(pos.east(6)).getBlock() != ACBlocks.omothol_stone ||
-				worldIn.getBlockState(pos.west(6)).getBlock() != ACBlocks.omothol_stone ||
-				worldIn.getBlockState(pos.north(6)).getBlock() != ACBlocks.omothol_stone ||
-				worldIn.getBlockState(pos.south(6)).getBlock()!= ACBlocks.omothol_stone) return false;
+		if(worldIn.getBlockState(pos).getBlock() != ACBlocks.getInstance().omothol_stone.getBlock() ||
+				worldIn.getBlockState(pos.east(6)).getBlock() != ACBlocks.getInstance().omothol_stone.getBlock() ||
+				worldIn.getBlockState(pos.west(6)).getBlock() != ACBlocks.getInstance().omothol_stone.getBlock() ||
+				worldIn.getBlockState(pos.north(6)).getBlock() != ACBlocks.getInstance().omothol_stone.getBlock() ||
+				worldIn.getBlockState(pos.south(6)).getBlock()!= ACBlocks.getInstance().omothol_stone.getBlock()) return false;
 
 		pos = pos.up().north(6).west(6);
 

@@ -60,7 +60,7 @@ public class BlockMaterializer extends BlockContainer {
 	@Override
 	public Item getItemDropped(IBlockState state, Random par1Random, int par3)
 	{
-		return Item.getItemFromBlock(ACBlocks.materializer);
+		return Item.getItemFromBlock(ACBlocks.getInstance().materializer.getBlock());
 	}
 
 	@Override
@@ -175,7 +175,7 @@ public class BlockMaterializer extends BlockContainer {
 	@SideOnly(Side.CLIENT)
 	public ItemStack getItem(World par1World, BlockPos pos, IBlockState state)
 	{
-		return new ItemStack(ACBlocks.materializer);
+		return new ItemStack(ACBlocks.getInstance().materializer.getBlock());
 	}
 
 	@Override

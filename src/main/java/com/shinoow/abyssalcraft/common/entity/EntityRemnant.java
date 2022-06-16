@@ -131,7 +131,7 @@ public class EntityRemnant extends EntityMob implements IMerchant, IOmotholEntit
 						{
 							MerchantRecipe merchantrecipe = (MerchantRecipe)iterator.next();
 
-							if (merchantrecipe.isRecipeDisabled() && merchantrecipe.getItemToSell().getItem() != ACItems.configurator_shard)
+							if (merchantrecipe.isRecipeDisabled() && merchantrecipe.getItemToSell().getItem() != ACItems.getInstance().configurator_shard)
 								merchantrecipe.increaseMaxTradeUses(rand.nextInt(6) + rand.nextInt(6) + 2);
 						}
 					}
@@ -404,6 +404,8 @@ public class EntityRemnant extends EntityMob implements IMerchant, IOmotholEntit
 
 	private void addDefaultEquipmentAndRecipies(int par1)
 	{
+		ACItems items = ACItems.getInstance();
+
 		if (tradingList != null)
 			field_82191_bN = MathHelper.sqrt(tradingList.size()) * 0.2F;
 		else
@@ -430,7 +432,7 @@ public class EntityRemnant extends EntityMob implements IMerchant, IOmotholEntit
 				addCoinTrade(list, Items.ARROW, rand, adjustProbability(0.5F));
 
 				if (rand.nextFloat() < adjustProbability(0.5F))
-					list.add(new MerchantRecipe(new ItemStack(Blocks.GRAVEL, 10), new ItemStack(ACItems.elder_engraved_coin), new ItemStack(Items.FLINT, 4 + rand.nextInt(2), 0)));
+					list.add(new MerchantRecipe(new ItemStack(Blocks.GRAVEL, 10), new ItemStack(items.elder_engraved_coin), new ItemStack(Items.FLINT, 4 + rand.nextInt(2), 0)));
 
 				break;
 			case 1:
@@ -441,20 +443,20 @@ public class EntityRemnant extends EntityMob implements IMerchant, IOmotholEntit
 				addCoinTrade(list, Item.getItemFromBlock(Blocks.GLASS), rand, adjustProbability(0.2F));
 				addCoinTrade(list, Items.COMPASS, rand, adjustProbability(0.2F));
 				addCoinTrade(list, Items.CLOCK, rand, adjustProbability(0.2F));
-				addCoinTrade(list, ACItems.necronomicon, rand, adjustProbability(0.3F));
-				addCoinTrade(list, ACItems.abyssal_wasteland_necronomicon, rand, adjustProbability(0.2F));
-				addCoinTrade(list, ACItems.dreadlands_necronomicon, rand, adjustProbability(0.1F));
+				addCoinTrade(list, items.necronomicon, rand, adjustProbability(0.3F));
+				addCoinTrade(list, items.abyssal_wasteland_necronomicon, rand, adjustProbability(0.2F));
+				addCoinTrade(list, items.dreadlands_necronomicon, rand, adjustProbability(0.1F));
 				if(rand.nextFloat() < adjustProbability(0.1F)) {
 					k = 3 * (rand.nextInt(10) + 1) + 1;
-					list.add(new MerchantRecipe(new ItemStack(Items.BOOK), new ItemStack(ACItems.elder_engraved_coin, k), new ItemStack(ACItems.scroll, 1, 0)));
+					list.add(new MerchantRecipe(new ItemStack(Items.BOOK), new ItemStack(items.elder_engraved_coin, k), new ItemStack(items.scroll, 1, 0)));
 				}
 				if(rand.nextFloat() < adjustProbability(0.1F)) {
 					k = 3 * (rand.nextInt(10) + 1) + 1;
-					list.add(new MerchantRecipe(new ItemStack(ACItems.scroll, 1, 0), new ItemStack(ACItems.elder_engraved_coin, k), new ItemStack(ACItems.scroll, 1, 1)));
+					list.add(new MerchantRecipe(new ItemStack(items.scroll, 1, 0), new ItemStack(items.elder_engraved_coin, k), new ItemStack(items.scroll, 1, 1)));
 				}
 				if(rand.nextFloat() < adjustProbability(0.1F)) {
 					k = 3 * (rand.nextInt(10) + 1) + 1;
-					list.add(new MerchantRecipe(new ItemStack(ACItems.scroll, 1, 1), new ItemStack(ACItems.elder_engraved_coin, k), new ItemStack(ACItems.scroll, 1, 2)));
+					list.add(new MerchantRecipe(new ItemStack(items.scroll, 1, 1), new ItemStack(items.elder_engraved_coin, k), new ItemStack(items.scroll, 1, 2)));
 				}
 
 				if (rand.nextFloat() < adjustProbability(0.07F))
@@ -463,7 +465,7 @@ public class EntityRemnant extends EntityMob implements IMerchant, IOmotholEntit
 					int i1 = MathHelper.getInt(rand, enchantment.getMinLevel(), enchantment.getMaxLevel());
 					ItemStack itemstack = ItemEnchantedBook.getEnchantedItemStack(new EnchantmentData(enchantment, i1));
 					k = 2 + rand.nextInt(5 + i1 * 10) + 3 * i1;
-					list.add(new MerchantRecipe(new ItemStack(Items.BOOK), new ItemStack(ACItems.elder_engraved_coin, k), itemstack));
+					list.add(new MerchantRecipe(new ItemStack(Items.BOOK), new ItemStack(items.elder_engraved_coin, k), itemstack));
 				}
 
 				break;
@@ -473,24 +475,24 @@ public class EntityRemnant extends EntityMob implements IMerchant, IOmotholEntit
 				addCoinTrade(list, Items.REDSTONE, rand, adjustProbability(0.4F));
 				addCoinTrade(list, Item.getItemFromBlock(Blocks.GLOWSTONE), rand, adjustProbability(0.3F));
 				addItemTrade(list, Items.ROTTEN_FLESH, rand, adjustProbability(0.7F));
-				addItemTrade(list, ACItems.coralium_plagued_flesh, rand, adjustProbability(0.7F));
-				addItemTrade(list, ACItems.dread_fragment, rand, adjustProbability(0.7F));
-				addItemTrade(list, ACItems.omothol_flesh, rand, adjustProbability(0.7F));
-				addItemTrade(list, ACItems.rotten_anti_flesh, rand, adjustProbability(0.3F));
-				addCoinTrade(list, ACItems.ritual_charm, rand, adjustProbability(0.4F));
-				addCoinTrade(list, ACItems.elder_engraved_coin, 8, ACItems.cthulhu_charm, 1);
-				addCoinTrade(list, ACItems.elder_engraved_coin, 8, ACItems.hastur_charm, 1);
-				addCoinTrade(list, ACItems.elder_engraved_coin, 8, ACItems.jzahar_charm, 1);
-				addCoinTrade(list, ACItems.elder_engraved_coin, 8, ACItems.azathoth_charm, 1);
-				addCoinTrade(list, ACItems.elder_engraved_coin, 8, ACItems.nyarlathotep_charm, 1);
-				addCoinTrade(list, ACItems.elder_engraved_coin, 8, ACItems.yog_sothoth_charm, 1);
-				addCoinTrade(list, ACItems.elder_engraved_coin, 8, ACItems.shub_niggurath_charm, 1);
-				addCoinTrade(list, ACItems.staff_of_rending, rand, adjustProbability(0.1F));
+				addItemTrade(list, items.coralium_plagued_flesh, rand, adjustProbability(0.7F));
+				addItemTrade(list, items.dread_fragment, rand, adjustProbability(0.7F));
+				addItemTrade(list, items.omothol_flesh, rand, adjustProbability(0.7F));
+				addItemTrade(list, items.rotten_anti_flesh, rand, adjustProbability(0.3F));
+				addCoinTrade(list, items.ritual_charm, rand, adjustProbability(0.4F));
+				addCoinTrade(list, items.elder_engraved_coin, 8, items.cthulhu_charm, 1);
+				addCoinTrade(list, items.elder_engraved_coin, 8, items.hastur_charm, 1);
+				addCoinTrade(list, items.elder_engraved_coin, 8, items.jzahar_charm, 1);
+				addCoinTrade(list, items.elder_engraved_coin, 8, items.azathoth_charm, 1);
+				addCoinTrade(list, items.elder_engraved_coin, 8, items.nyarlathotep_charm, 1);
+				addCoinTrade(list, items.elder_engraved_coin, 8, items.yog_sothoth_charm, 1);
+				addCoinTrade(list, items.elder_engraved_coin, 8, items.shub_niggurath_charm, 1);
+				addCoinTrade(list, items.staff_of_rending, rand, adjustProbability(0.1F));
 				if(rand.nextFloat() < adjustProbability(0.1F))
-					list.add(new MerchantRecipe(new ItemStack(ACItems.scroll, 1, 3), ACItems.liquid_antimatter_bucket_stack, new ItemStack(ACItems.unique_scroll, 1, 0)));
+					list.add(new MerchantRecipe(new ItemStack(items.scroll, 1, 3), items.liquid_antimatter_bucket_stack, new ItemStack(items.unique_scroll, 1, 0)));
 				if(rand.nextFloat() < adjustProbability(0.1F))
-					list.add(new MerchantRecipe(new ItemStack(ACItems.scroll, 1, 3), new ItemStack(ACItems.oblivion_catalyst), new ItemStack(ACItems.unique_scroll, 1, 1)));
-				Item[] aitem = new Item[] {ACItems.ethaxium_sword, ACItems.ethaxium_chestplate, ACItems.ethaxium_axe, ACItems.ethaxium_pickaxe, ACItems.ethaxium_shovel};
+					list.add(new MerchantRecipe(new ItemStack(items.scroll, 1, 3), new ItemStack(items.oblivion_catalyst), new ItemStack(items.unique_scroll, 1, 1)));
+				Item[] aitem = new Item[] {items.ethaxium_sword, items.ethaxium_chestplate, items.ethaxium_axe, items.ethaxium_pickaxe, items.ethaxium_shovel};
 				Item[] aitem1 = aitem;
 				int j = aitem.length;
 				k = 0;
@@ -503,30 +505,30 @@ public class EntityRemnant extends EntityMob implements IMerchant, IOmotholEntit
 					Item item = aitem1[k];
 
 					if (rand.nextFloat() < adjustProbability(0.05F))
-						list.add(new MerchantRecipe(new ItemStack(item, 1, 0), new ItemStack(ACItems.elder_engraved_coin, 2 + rand.nextInt(3), 0), EnchantmentHelper.addRandomEnchantment(rand, new ItemStack(item, 1, 0), 5 + rand.nextInt(15), true)));
+						list.add(new MerchantRecipe(new ItemStack(item, 1, 0), new ItemStack(items.elder_engraved_coin, 2 + rand.nextInt(3), 0), EnchantmentHelper.addRandomEnchantment(rand, new ItemStack(item, 1, 0), 5 + rand.nextInt(15), true)));
 
 					++k;
 				}
 			case 3:
 				addItemTrade(list, Items.COAL, rand, adjustProbability(0.7F));
-				addItemTrade(list, ACItems.abyssalnite_ingot, rand, adjustProbability(0.5F));
-				addItemTrade(list, ACItems.refined_coralium_ingot, rand, adjustProbability(0.5F));
-				addItemTrade(list, ACItems.dreadium_ingot, rand, adjustProbability(0.5F));
-				addItemTrade(list, ACItems.ethaxium_ingot, rand, adjustProbability(0.3F));
-				addCoinTrade(list, ACItems.ethaxium_sword, rand, adjustProbability(0.5F));
-				addCoinTrade(list, ACItems.ethaxium_axe, rand, adjustProbability(0.3F));
-				addCoinTrade(list, ACItems.ethaxium_pickaxe, rand, adjustProbability(0.5F));
-				addCoinTrade(list, ACItems.ethaxium_shovel, rand, adjustProbability(0.2F));
-				addCoinTrade(list, ACItems.ethaxium_hoe, rand, adjustProbability(0.2F));
-				addCoinTrade(list, ACItems.ethaxium_boots, rand, adjustProbability(0.1F));
-				addCoinTrade(list, ACItems.ethaxium_helmet, rand, adjustProbability(0.1F));
-				addCoinTrade(list, ACItems.ethaxium_chestplate, rand, adjustProbability(0.1F));
-				addCoinTrade(list, ACItems.ethaxium_leggings, rand, adjustProbability(0.1F));
-				addCoinTrade(list, ACItems.blank_engraving, rand, adjustProbability(0.2F));
-				addCoinTrade(list, new ItemStack(ACItems.configurator_shard, 1, 0), rand, adjustProbability(0.2F));
-				addCoinTrade(list, new ItemStack(ACItems.configurator_shard, 1, 1), rand, adjustProbability(0.2F));
-				addCoinTrade(list, new ItemStack(ACItems.configurator_shard, 1, 2), rand, adjustProbability(0.2F));
-				addCoinTrade(list, new ItemStack(ACItems.configurator_shard, 1, 3), rand, adjustProbability(0.2F));
+				addItemTrade(list, items.abyssalnite_ingot, rand, adjustProbability(0.5F));
+				addItemTrade(list, items.refined_coralium_ingot, rand, adjustProbability(0.5F));
+				addItemTrade(list, items.dreadium_ingot, rand, adjustProbability(0.5F));
+				addItemTrade(list, items.ethaxium_ingot, rand, adjustProbability(0.3F));
+				addCoinTrade(list, items.ethaxium_sword, rand, adjustProbability(0.5F));
+				addCoinTrade(list, items.ethaxium_axe, rand, adjustProbability(0.3F));
+				addCoinTrade(list, items.ethaxium_pickaxe, rand, adjustProbability(0.5F));
+				addCoinTrade(list, items.ethaxium_shovel, rand, adjustProbability(0.2F));
+				addCoinTrade(list, items.ethaxium_hoe, rand, adjustProbability(0.2F));
+				addCoinTrade(list, items.ethaxium_boots, rand, adjustProbability(0.1F));
+				addCoinTrade(list, items.ethaxium_helmet, rand, adjustProbability(0.1F));
+				addCoinTrade(list, items.ethaxium_chestplate, rand, adjustProbability(0.1F));
+				addCoinTrade(list, items.ethaxium_leggings, rand, adjustProbability(0.1F));
+				addCoinTrade(list, items.blank_engraving, rand, adjustProbability(0.2F));
+				addCoinTrade(list, new ItemStack(items.configurator_shard, 1, 0), rand, adjustProbability(0.2F));
+				addCoinTrade(list, new ItemStack(items.configurator_shard, 1, 1), rand, adjustProbability(0.2F));
+				addCoinTrade(list, new ItemStack(items.configurator_shard, 1, 2), rand, adjustProbability(0.2F));
+				addCoinTrade(list, new ItemStack(items.configurator_shard, 1, 3), rand, adjustProbability(0.2F));
 				break;
 			case 4:
 				addItemTrade(list, Items.COAL, rand, adjustProbability(0.7F));
@@ -541,63 +543,63 @@ public class EntityRemnant extends EntityMob implements IMerchant, IOmotholEntit
 				addCoinTrade(list, Items.CAKE, rand, adjustProbability(0.3F));
 				break;
 			case 5:
-				addCoinTrade(list, ACItems.elder_engraved_coin, 8, ACItems.cthulhu_engraved_coin, 1);
-				addCoinTrade(list, ACItems.elder_engraved_coin, 8, ACItems.hastur_engraved_coin, 1);
-				addCoinTrade(list, ACItems.elder_engraved_coin, 8, ACItems.jzahar_engraved_coin, 1);
-				addCoinTrade(list, ACItems.elder_engraved_coin, 8, ACItems.azathoth_engraved_coin, 1);
-				addCoinTrade(list, ACItems.elder_engraved_coin, 8, ACItems.nyarlathotep_engraved_coin, 1);
-				addCoinTrade(list, ACItems.elder_engraved_coin, 8, ACItems.yog_sothoth_engraved_coin, 1);
-				addCoinTrade(list, ACItems.elder_engraved_coin, 8, ACItems.shub_niggurath_engraved_coin, 1);
-				addCoinTrade(list, ACItems.elder_engraved_coin, 16, ACItems.cthulhu_engraved_coin, 2);
-				addCoinTrade(list, ACItems.elder_engraved_coin, 16, ACItems.hastur_engraved_coin, 2);
-				addCoinTrade(list, ACItems.elder_engraved_coin, 16, ACItems.jzahar_engraved_coin, 2);
-				addCoinTrade(list, ACItems.elder_engraved_coin, 16, ACItems.azathoth_engraved_coin, 2);
-				addCoinTrade(list, ACItems.elder_engraved_coin, 16, ACItems.nyarlathotep_engraved_coin, 2);
-				addCoinTrade(list, ACItems.elder_engraved_coin, 16, ACItems.yog_sothoth_engraved_coin, 2);
-				addCoinTrade(list, ACItems.elder_engraved_coin, 16, ACItems.shub_niggurath_engraved_coin, 2);
-				addCoinTrade(list, ACItems.elder_engraved_coin, 24, ACItems.cthulhu_engraved_coin, 3);
-				addCoinTrade(list, ACItems.elder_engraved_coin, 24, ACItems.hastur_engraved_coin, 3);
-				addCoinTrade(list, ACItems.elder_engraved_coin, 24, ACItems.jzahar_engraved_coin, 3);
-				addCoinTrade(list, ACItems.elder_engraved_coin, 24, ACItems.azathoth_engraved_coin, 3);
-				addCoinTrade(list, ACItems.elder_engraved_coin, 24, ACItems.nyarlathotep_engraved_coin, 3);
-				addCoinTrade(list, ACItems.elder_engraved_coin, 24, ACItems.yog_sothoth_engraved_coin, 3);
-				addCoinTrade(list, ACItems.elder_engraved_coin, 24, ACItems.shub_niggurath_engraved_coin, 3);
+				addCoinTrade(list, items.elder_engraved_coin, 8, items.cthulhu_engraved_coin, 1);
+				addCoinTrade(list, items.elder_engraved_coin, 8, items.hastur_engraved_coin, 1);
+				addCoinTrade(list, items.elder_engraved_coin, 8, items.jzahar_engraved_coin, 1);
+				addCoinTrade(list, items.elder_engraved_coin, 8, items.azathoth_engraved_coin, 1);
+				addCoinTrade(list, items.elder_engraved_coin, 8, items.nyarlathotep_engraved_coin, 1);
+				addCoinTrade(list, items.elder_engraved_coin, 8, items.yog_sothoth_engraved_coin, 1);
+				addCoinTrade(list, items.elder_engraved_coin, 8, items.shub_niggurath_engraved_coin, 1);
+				addCoinTrade(list, items.elder_engraved_coin, 16, items.cthulhu_engraved_coin, 2);
+				addCoinTrade(list, items.elder_engraved_coin, 16, items.hastur_engraved_coin, 2);
+				addCoinTrade(list, items.elder_engraved_coin, 16, items.jzahar_engraved_coin, 2);
+				addCoinTrade(list, items.elder_engraved_coin, 16, items.azathoth_engraved_coin, 2);
+				addCoinTrade(list, items.elder_engraved_coin, 16, items.nyarlathotep_engraved_coin, 2);
+				addCoinTrade(list, items.elder_engraved_coin, 16, items.yog_sothoth_engraved_coin, 2);
+				addCoinTrade(list, items.elder_engraved_coin, 16, items.shub_niggurath_engraved_coin, 2);
+				addCoinTrade(list, items.elder_engraved_coin, 24, items.cthulhu_engraved_coin, 3);
+				addCoinTrade(list, items.elder_engraved_coin, 24, items.hastur_engraved_coin, 3);
+				addCoinTrade(list, items.elder_engraved_coin, 24, items.jzahar_engraved_coin, 3);
+				addCoinTrade(list, items.elder_engraved_coin, 24, items.azathoth_engraved_coin, 3);
+				addCoinTrade(list, items.elder_engraved_coin, 24, items.nyarlathotep_engraved_coin, 3);
+				addCoinTrade(list, items.elder_engraved_coin, 24, items.yog_sothoth_engraved_coin, 3);
+				addCoinTrade(list, items.elder_engraved_coin, 24, items.shub_niggurath_engraved_coin, 3);
 				break;
 
 			case 6:
 				addItemTrade(list, Items.COAL, rand, adjustProbability(0.7F));
-				addItemTrade(list, ACItems.abyssalnite_ingot, rand, adjustProbability(0.5F));
-				addItemTrade(list, ACItems.refined_coralium_ingot, rand, adjustProbability(0.5F));
-				addItemTrade(list, ACItems.dreadium_ingot, rand, adjustProbability(0.5F));
-				addItemTrade(list, ACItems.ethaxium_ingot, rand, adjustProbability(0.3F));
-				addCoinTrade(list, ACItems.ethaxium_sword, rand, adjustProbability(0.5F));
-				addCoinTrade(list, ACItems.ethaxium_axe, rand, adjustProbability(0.3F));
-				addCoinTrade(list, ACItems.ethaxium_pickaxe, rand, adjustProbability(0.5F));
-				addCoinTrade(list, ACItems.ethaxium_shovel, rand, adjustProbability(0.2F));
-				addCoinTrade(list, ACItems.ethaxium_hoe, rand, adjustProbability(0.2F));
-				addCoinTrade(list, ACItems.plated_coralium_boots, rand, adjustProbability(0.2F));
-				addCoinTrade(list, ACItems.dreadium_samurai_boots, rand, adjustProbability(0.2F));
-				addCoinTrade(list, ACItems.plated_coralium_helmet, rand, adjustProbability(0.2F));
-				addCoinTrade(list, ACItems.dreadium_samurai_helmet, rand, adjustProbability(0.2F));
-				addCoinTrade(list, ACItems.plated_coralium_chestplate, rand, adjustProbability(0.2F));
-				addCoinTrade(list, ACItems.dreadium_samurai_chestplate, rand, adjustProbability(0.2F));
-				addCoinTrade(list, ACItems.plated_coralium_leggings, rand, adjustProbability(0.2F));
-				addCoinTrade(list, ACItems.dreadium_samurai_leggings, rand, adjustProbability(0.2F));
-				addCoinTrade(list, ACItems.ethaxium_boots, rand, adjustProbability(0.1F));
-				addCoinTrade(list, ACItems.ethaxium_helmet, rand, adjustProbability(0.1F));
-				addCoinTrade(list, ACItems.ethaxium_chestplate, rand, adjustProbability(0.1F));
-				addCoinTrade(list, ACItems.ethaxium_leggings, rand, adjustProbability(0.1F));
-				addCoinTrade(list, ACItems.cthulhu_engraving, rand, adjustProbability(0.1F));
-				addCoinTrade(list, ACItems.hastur_engraving, rand, adjustProbability(0.1F));
-				addCoinTrade(list, ACItems.jzahar_engraving, rand, adjustProbability(0.1F));
-				addCoinTrade(list, ACItems.azathoth_engraving, rand, adjustProbability(0.1F));
-				addCoinTrade(list, ACItems.nyarlathotep_engraving, rand, adjustProbability(0.1F));
-				addCoinTrade(list, ACItems.yog_sothoth_engraving, rand, adjustProbability(0.1F));
-				addCoinTrade(list, ACItems.shub_niggurath_engraving, rand, adjustProbability(0.1F));
-				addCoinTrade(list, new ItemStack(ACItems.configurator_shard, 1, 0), rand, adjustProbability(0.2F));
-				addCoinTrade(list, new ItemStack(ACItems.configurator_shard, 1, 1), rand, adjustProbability(0.2F));
-				addCoinTrade(list, new ItemStack(ACItems.configurator_shard, 1, 2), rand, adjustProbability(0.2F));
-				addCoinTrade(list, new ItemStack(ACItems.configurator_shard, 1, 3), rand, adjustProbability(0.2F));
+				addItemTrade(list, items.abyssalnite_ingot, rand, adjustProbability(0.5F));
+				addItemTrade(list, items.refined_coralium_ingot, rand, adjustProbability(0.5F));
+				addItemTrade(list, items.dreadium_ingot, rand, adjustProbability(0.5F));
+				addItemTrade(list, items.ethaxium_ingot, rand, adjustProbability(0.3F));
+				addCoinTrade(list, items.ethaxium_sword, rand, adjustProbability(0.5F));
+				addCoinTrade(list, items.ethaxium_axe, rand, adjustProbability(0.3F));
+				addCoinTrade(list, items.ethaxium_pickaxe, rand, adjustProbability(0.5F));
+				addCoinTrade(list, items.ethaxium_shovel, rand, adjustProbability(0.2F));
+				addCoinTrade(list, items.ethaxium_hoe, rand, adjustProbability(0.2F));
+				addCoinTrade(list, items.plated_coralium_boots, rand, adjustProbability(0.2F));
+				addCoinTrade(list, items.dreadium_samurai_boots, rand, adjustProbability(0.2F));
+				addCoinTrade(list, items.plated_coralium_helmet, rand, adjustProbability(0.2F));
+				addCoinTrade(list, items.dreadium_samurai_helmet, rand, adjustProbability(0.2F));
+				addCoinTrade(list, items.plated_coralium_chestplate, rand, adjustProbability(0.2F));
+				addCoinTrade(list, items.dreadium_samurai_chestplate, rand, adjustProbability(0.2F));
+				addCoinTrade(list, items.plated_coralium_leggings, rand, adjustProbability(0.2F));
+				addCoinTrade(list, items.dreadium_samurai_leggings, rand, adjustProbability(0.2F));
+				addCoinTrade(list, items.ethaxium_boots, rand, adjustProbability(0.1F));
+				addCoinTrade(list, items.ethaxium_helmet, rand, adjustProbability(0.1F));
+				addCoinTrade(list, items.ethaxium_chestplate, rand, adjustProbability(0.1F));
+				addCoinTrade(list, items.ethaxium_leggings, rand, adjustProbability(0.1F));
+				addCoinTrade(list, items.cthulhu_engraving, rand, adjustProbability(0.1F));
+				addCoinTrade(list, items.hastur_engraving, rand, adjustProbability(0.1F));
+				addCoinTrade(list, items.jzahar_engraving, rand, adjustProbability(0.1F));
+				addCoinTrade(list, items.azathoth_engraving, rand, adjustProbability(0.1F));
+				addCoinTrade(list, items.nyarlathotep_engraving, rand, adjustProbability(0.1F));
+				addCoinTrade(list, items.yog_sothoth_engraving, rand, adjustProbability(0.1F));
+				addCoinTrade(list, items.shub_niggurath_engraving, rand, adjustProbability(0.1F));
+				addCoinTrade(list, new ItemStack(items.configurator_shard, 1, 0), rand, adjustProbability(0.2F));
+				addCoinTrade(list, new ItemStack(items.configurator_shard, 1, 1), rand, adjustProbability(0.2F));
+				addCoinTrade(list, new ItemStack(items.configurator_shard, 1, 2), rand, adjustProbability(0.2F));
+				addCoinTrade(list, new ItemStack(items.configurator_shard, 1, 3), rand, adjustProbability(0.2F));
 			}
 
 		if (list.isEmpty())
@@ -637,7 +639,7 @@ public class EntityRemnant extends EntityMob implements IMerchant, IOmotholEntit
 			var1.incrementToolUses();
 			var1.incrementToolUses();
 		}
-		if(var1.getItemToSell().getItem() == ACItems.configurator_shard)
+		if(var1.getItemToSell().getItem() == ACItems.getInstance().configurator_shard)
 			var1.incrementToolUses();
 		if(var1.getItemToBuy().getItem() instanceof ItemNecronomicon ||
 				var1.getItemToBuy().getItem() instanceof ItemStaffOfRending)
@@ -694,7 +696,7 @@ public class EntityRemnant extends EntityMob implements IMerchant, IOmotholEntit
 	public static void addItemTrade(MerchantRecipeList list, Item item, Random rand, float probability)
 	{
 		if (rand.nextFloat() < probability)
-			list.add(new MerchantRecipe(getItemStackWithQuantity(item, rand), ACItems.elder_engraved_coin));
+			list.add(new MerchantRecipe(getItemStackWithQuantity(item, rand), ACItems.getInstance().elder_engraved_coin));
 	}
 
 	private static ItemStack getItemStackWithQuantity(Item item, Random rand)
@@ -715,6 +717,8 @@ public class EntityRemnant extends EntityMob implements IMerchant, IOmotholEntit
 
 	public static void addCoinTrade(MerchantRecipeList list, ItemStack stack, Random rand, float probability)
 	{
+		ACItems items = ACItems.getInstance();
+
 		if (rand.nextFloat() < probability)
 		{
 			int i = getRarity(stack.getItem(), rand);
@@ -723,18 +727,18 @@ public class EntityRemnant extends EntityMob implements IMerchant, IOmotholEntit
 
 			if (i < 0)
 			{
-				itemstack = new ItemStack(ACItems.elder_engraved_coin, 1, 0);
+				itemstack = new ItemStack(items.elder_engraved_coin, 1, 0);
 				itemstack1 = stack;
 				itemstack1.setCount(i);
 			}
 			else
 			{
-				itemstack = new ItemStack(ACItems.elder_engraved_coin, i, 0);
+				itemstack = new ItemStack(items.elder_engraved_coin, i, 0);
 				itemstack1 = stack;
 				itemstack1.setCount(1);
 			}
 
-			if(stack.getItem() == ACItems.configurator_shard)
+			if(stack.getItem() == items.configurator_shard)
 				list.add(new MerchantRecipe(itemstack, ItemStack.EMPTY, itemstack1, 0, 1));
 			else
 				list.add(new MerchantRecipe(itemstack, itemstack1));
@@ -804,11 +808,13 @@ public class EntityRemnant extends EntityMob implements IMerchant, IOmotholEntit
 
 	static
 	{
+		ACItems items = ACItems.getInstance();
+
 		itemSellingList.put(Items.COAL, new Tuple(Integer.valueOf(16), Integer.valueOf(24)));
-		itemSellingList.put(ACItems.abyssalnite_ingot, new Tuple(Integer.valueOf(8), Integer.valueOf(10)));
-		itemSellingList.put(ACItems.refined_coralium_ingot, new Tuple(Integer.valueOf(8), Integer.valueOf(10)));
-		itemSellingList.put(ACItems.dreadium_ingot, new Tuple(Integer.valueOf(8), Integer.valueOf(10)));
-		itemSellingList.put(ACItems.ethaxium_ingot, new Tuple(Integer.valueOf(4), Integer.valueOf(6)));
+		itemSellingList.put(items.abyssalnite_ingot, new Tuple(Integer.valueOf(8), Integer.valueOf(10)));
+		itemSellingList.put(items.refined_coralium_ingot, new Tuple(Integer.valueOf(8), Integer.valueOf(10)));
+		itemSellingList.put(items.dreadium_ingot, new Tuple(Integer.valueOf(8), Integer.valueOf(10)));
+		itemSellingList.put(items.ethaxium_ingot, new Tuple(Integer.valueOf(4), Integer.valueOf(6)));
 		itemSellingList.put(Items.PAPER, new Tuple(Integer.valueOf(24), Integer.valueOf(36)));
 		itemSellingList.put(Items.BOOK, new Tuple(Integer.valueOf(11), Integer.valueOf(13)));
 		itemSellingList.put(Items.WRITTEN_BOOK, new Tuple(Integer.valueOf(1), Integer.valueOf(1)));
@@ -824,21 +830,21 @@ public class EntityRemnant extends EntityMob implements IMerchant, IOmotholEntit
 		itemSellingList.put(Items.WHEAT, new Tuple(Integer.valueOf(18), Integer.valueOf(22)));
 		itemSellingList.put(Item.getItemFromBlock(Blocks.WOOL), new Tuple(Integer.valueOf(14), Integer.valueOf(22)));
 		itemSellingList.put(Items.ROTTEN_FLESH, new Tuple(Integer.valueOf(16), Integer.valueOf(28)));
-		itemSellingList.put(ACItems.coralium_plagued_flesh, new Tuple(Integer.valueOf(16), Integer.valueOf(28)));
-		itemSellingList.put(ACItems.dread_fragment, new Tuple(Integer.valueOf(16), Integer.valueOf(28)));
-		itemSellingList.put(ACItems.omothol_flesh, new Tuple(Integer.valueOf(32), Integer.valueOf(60)));
-		itemSellingList.put(ACItems.rotten_anti_flesh, new Tuple(Integer.valueOf(8), Integer.valueOf(14)));
+		itemSellingList.put(items.coralium_plagued_flesh, new Tuple(Integer.valueOf(16), Integer.valueOf(28)));
+		itemSellingList.put(items.dread_fragment, new Tuple(Integer.valueOf(16), Integer.valueOf(28)));
+		itemSellingList.put(items.omothol_flesh, new Tuple(Integer.valueOf(32), Integer.valueOf(60)));
+		itemSellingList.put(items.rotten_anti_flesh, new Tuple(Integer.valueOf(8), Integer.valueOf(14)));
 		coinSellingList.put(Items.FLINT_AND_STEEL, new Tuple(Integer.valueOf(3), Integer.valueOf(4)));
 		coinSellingList.put(Items.SHEARS, new Tuple(Integer.valueOf(3), Integer.valueOf(4)));
-		coinSellingList.put(ACItems.ethaxium_sword, new Tuple(Integer.valueOf(12), Integer.valueOf(14)));
-		coinSellingList.put(ACItems.ethaxium_axe, new Tuple(Integer.valueOf(9), Integer.valueOf(12)));
-		coinSellingList.put(ACItems.ethaxium_pickaxe, new Tuple(Integer.valueOf(10), Integer.valueOf(12)));
-		coinSellingList.put(ACItems.ethaxium_shovel, new Tuple(Integer.valueOf(7), Integer.valueOf(8)));
-		coinSellingList.put(ACItems.ethaxium_hoe, new Tuple(Integer.valueOf(7), Integer.valueOf(8)));
-		coinSellingList.put(ACItems.ethaxium_boots, new Tuple(Integer.valueOf(5), Integer.valueOf(7)));
-		coinSellingList.put(ACItems.ethaxium_helmet, new Tuple(Integer.valueOf(5), Integer.valueOf(7)));
-		coinSellingList.put(ACItems.ethaxium_chestplate, new Tuple(Integer.valueOf(11), Integer.valueOf(15)));
-		coinSellingList.put(ACItems.ethaxium_leggings, new Tuple(Integer.valueOf(9), Integer.valueOf(11)));
+		coinSellingList.put(items.ethaxium_sword, new Tuple(Integer.valueOf(12), Integer.valueOf(14)));
+		coinSellingList.put(items.ethaxium_axe, new Tuple(Integer.valueOf(9), Integer.valueOf(12)));
+		coinSellingList.put(items.ethaxium_pickaxe, new Tuple(Integer.valueOf(10), Integer.valueOf(12)));
+		coinSellingList.put(items.ethaxium_shovel, new Tuple(Integer.valueOf(7), Integer.valueOf(8)));
+		coinSellingList.put(items.ethaxium_hoe, new Tuple(Integer.valueOf(7), Integer.valueOf(8)));
+		coinSellingList.put(items.ethaxium_boots, new Tuple(Integer.valueOf(5), Integer.valueOf(7)));
+		coinSellingList.put(items.ethaxium_helmet, new Tuple(Integer.valueOf(5), Integer.valueOf(7)));
+		coinSellingList.put(items.ethaxium_chestplate, new Tuple(Integer.valueOf(11), Integer.valueOf(15)));
+		coinSellingList.put(items.ethaxium_leggings, new Tuple(Integer.valueOf(9), Integer.valueOf(11)));
 		coinSellingList.put(Items.BREAD, new Tuple(Integer.valueOf(-4), Integer.valueOf(-2)));
 		coinSellingList.put(Items.MELON, new Tuple(Integer.valueOf(-8), Integer.valueOf(-4)));
 		coinSellingList.put(Items.APPLE, new Tuple(Integer.valueOf(-8), Integer.valueOf(-4)));
@@ -849,23 +855,23 @@ public class EntityRemnant extends EntityMob implements IMerchant, IOmotholEntit
 		coinSellingList.put(Items.REDSTONE, new Tuple(Integer.valueOf(-4), Integer.valueOf(-1)));
 		coinSellingList.put(Items.COMPASS, new Tuple(Integer.valueOf(10), Integer.valueOf(12)));
 		coinSellingList.put(Items.CLOCK, new Tuple(Integer.valueOf(10), Integer.valueOf(12)));
-		coinSellingList.put(ACItems.necronomicon, new Tuple(Integer.valueOf(10), Integer.valueOf(12)));
-		coinSellingList.put(ACItems.abyssal_wasteland_necronomicon, new Tuple(Integer.valueOf(10), Integer.valueOf(12)));
-		coinSellingList.put(ACItems.dreadlands_necronomicon, new Tuple(Integer.valueOf(10), Integer.valueOf(12)));
+		coinSellingList.put(items.necronomicon, new Tuple(Integer.valueOf(10), Integer.valueOf(12)));
+		coinSellingList.put(items.abyssal_wasteland_necronomicon, new Tuple(Integer.valueOf(10), Integer.valueOf(12)));
+		coinSellingList.put(items.dreadlands_necronomicon, new Tuple(Integer.valueOf(10), Integer.valueOf(12)));
 		coinSellingList.put(Item.getItemFromBlock(Blocks.GLOWSTONE), new Tuple(Integer.valueOf(-3), Integer.valueOf(-1)));
 		coinSellingList.put(Items.COOKED_CHICKEN, new Tuple(Integer.valueOf(-8), Integer.valueOf(-6)));
 		coinSellingList.put(Items.ENDER_EYE, new Tuple(Integer.valueOf(7), Integer.valueOf(11)));
 		coinSellingList.put(Items.ARROW, new Tuple(Integer.valueOf(-12), Integer.valueOf(-8)));
-		coinSellingList.put(ACItems.plated_coralium_boots, new Tuple(Integer.valueOf(4), Integer.valueOf(6)));
-		coinSellingList.put(ACItems.dreadium_samurai_boots, new Tuple(Integer.valueOf(7), Integer.valueOf(8)));
-		coinSellingList.put(ACItems.plated_coralium_helmet, new Tuple(Integer.valueOf(4), Integer.valueOf(6)));
-		coinSellingList.put(ACItems.dreadium_samurai_helmet, new Tuple(Integer.valueOf(7), Integer.valueOf(8)));
-		coinSellingList.put(ACItems.plated_coralium_chestplate, new Tuple(Integer.valueOf(10), Integer.valueOf(14)));
-		coinSellingList.put(ACItems.dreadium_samurai_chestplate, new Tuple(Integer.valueOf(16), Integer.valueOf(19)));
-		coinSellingList.put(ACItems.plated_coralium_leggings, new Tuple(Integer.valueOf(8), Integer.valueOf(10)));
-		coinSellingList.put(ACItems.dreadium_samurai_leggings, new Tuple(Integer.valueOf(11), Integer.valueOf(14)));
-		coinSellingList.put(ACItems.staff_of_rending, new Tuple(Integer.valueOf(20), Integer.valueOf(25)));
-		coinSellingList.put(ACItems.configurator_shard, new Tuple(Integer.valueOf(64), Integer.valueOf(64)));
+		coinSellingList.put(items.plated_coralium_boots, new Tuple(Integer.valueOf(4), Integer.valueOf(6)));
+		coinSellingList.put(items.dreadium_samurai_boots, new Tuple(Integer.valueOf(7), Integer.valueOf(8)));
+		coinSellingList.put(items.plated_coralium_helmet, new Tuple(Integer.valueOf(4), Integer.valueOf(6)));
+		coinSellingList.put(items.dreadium_samurai_helmet, new Tuple(Integer.valueOf(7), Integer.valueOf(8)));
+		coinSellingList.put(items.plated_coralium_chestplate, new Tuple(Integer.valueOf(10), Integer.valueOf(14)));
+		coinSellingList.put(items.dreadium_samurai_chestplate, new Tuple(Integer.valueOf(16), Integer.valueOf(19)));
+		coinSellingList.put(items.plated_coralium_leggings, new Tuple(Integer.valueOf(8), Integer.valueOf(10)));
+		coinSellingList.put(items.dreadium_samurai_leggings, new Tuple(Integer.valueOf(11), Integer.valueOf(14)));
+		coinSellingList.put(items.staff_of_rending, new Tuple(Integer.valueOf(20), Integer.valueOf(25)));
+		coinSellingList.put(items.configurator_shard, new Tuple(Integer.valueOf(64), Integer.valueOf(64)));
 	}
 
 	public void applyRandomTrade(Random rand){

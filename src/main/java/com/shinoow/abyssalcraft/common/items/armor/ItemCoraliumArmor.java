@@ -37,10 +37,10 @@ public class ItemCoraliumArmor extends ItemACArmor {
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type)
 	{
-		if(stack.getItem() == ACItems.refined_coralium_helmet || stack.getItem() == ACItems.refined_coralium_chestplate || stack.getItem() == ACItems.refined_coralium_boots)
+		if(stack.getItem() == ACItems.getInstance().refined_coralium_helmet || stack.getItem() == ACItems.getInstance().refined_coralium_chestplate || stack.getItem() == ACItems.getInstance().refined_coralium_boots)
 			return "abyssalcraft:textures/armor/coralium_1.png";
 
-		if(stack.getItem() == ACItems.refined_coralium_leggings)
+		if(stack.getItem() == ACItems.getInstance().refined_coralium_leggings)
 			return "abyssalcraft:textures/armor/coralium_2.png";
 		else return null;
 	}
@@ -48,11 +48,11 @@ public class ItemCoraliumArmor extends ItemACArmor {
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemstack) {
 		if(world.isRemote || !ACConfig.armorPotionEffects) return;
-		if (itemstack.getItem() == ACItems.refined_coralium_helmet)
+		if (itemstack.getItem() == ACItems.getInstance().refined_coralium_helmet)
 			player.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 20, 0, false, false));
-		if (itemstack.getItem() == ACItems.refined_coralium_chestplate)
+		if (itemstack.getItem() == ACItems.getInstance().refined_coralium_chestplate)
 			player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 20, 0, false, false));
-		if (itemstack.getItem() == ACItems.refined_coralium_boots)
+		if (itemstack.getItem() == ACItems.getInstance().refined_coralium_boots)
 			player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 20, 0, false, false));
 	}
 }

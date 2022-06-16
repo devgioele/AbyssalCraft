@@ -36,7 +36,7 @@ public class BlockCalcifiedStone extends BlockACBasic {
 	@Override
 	public Item getItemDropped(IBlockState state, Random par2Random, int par3)
 	{
-		return par2Random.nextBoolean() ? ACItems.crystal : ACItems.crystal_shard;
+		return par2Random.nextBoolean() ? ACItems.getInstance().crystal : ACItems.getInstance().crystal_shard;
 	}
 
 	@Override

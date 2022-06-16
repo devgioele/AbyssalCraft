@@ -32,8 +32,8 @@ public class BiomeForestDreadlands extends BiomeDreadlandsBase
 
 	public BiomeForestDreadlands(BiomeProperties par1) {
 		super(par1);
-		topBlock = ACBlocks.dreadlands_grass.getDefaultState();
-		fillerBlock = ACBlocks.dreadlands_dirt.getDefaultState();
+		topBlock = ACBlocks.getInstance().dreadlands_grass.getBlock().getDefaultState();
+		fillerBlock = ACBlocks.getInstance().dreadlands_dirt.getBlock().getDefaultState();
 		WorldGenDreadTrees = new WorldGenDrT(false);
 		decorator.treesPerChunk = 6;
 	}

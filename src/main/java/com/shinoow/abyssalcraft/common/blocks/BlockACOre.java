@@ -36,22 +36,22 @@ public class BlockACOre extends BlockACBasic {
 	@Override
 	public MapColor getMapColor(IBlockState state, IBlockAccess p_180659_2_, BlockPos p_180659_3_)
 	{
-		return this == ACBlocks.abyssal_coralium_ore || this == ACBlocks.pearlescent_coralium_ore || this == ACBlocks.liquified_coralium_ore || this == ACBlocks.abyssal_iron_ore || this == ACBlocks.abyssal_gold_ore || this == ACBlocks.abyssal_diamond_ore
-				|| this == ACBlocks.abyssal_nitre_ore || this == ACBlocks.abyssal_tin_ore || this == ACBlocks.abyssal_copper_ore ? MapColor.GREEN : this == ACBlocks.dreaded_abyssalnite_ore || this == ACBlocks.dreadlands_abyssalnite_ore ? MapColor.RED : super.getMapColor(state, p_180659_2_, p_180659_3_);
+		return this == ACBlocks.getInstance().abyssal_coralium_ore.getBlock() || this == ACBlocks.getInstance().pearlescent_coralium_ore.getBlock() || this == ACBlocks.getInstance().liquified_coralium_ore.getBlock() || this == ACBlocks.getInstance().abyssal_iron_ore.getBlock() || this == ACBlocks.getInstance().abyssal_gold_ore.getBlock() || this == ACBlocks.getInstance().abyssal_diamond_ore.getBlock()
+				|| this == ACBlocks.getInstance().abyssal_nitre_ore.getBlock() || this == ACBlocks.getInstance().abyssal_tin_ore.getBlock() || this == ACBlocks.getInstance().abyssal_copper_ore.getBlock() ? MapColor.GREEN : this == ACBlocks.getInstance().dreaded_abyssalnite_ore.getBlock() || this == ACBlocks.getInstance().dreadlands_abyssalnite_ore.getBlock() ? MapColor.RED : super.getMapColor(state, p_180659_2_, p_180659_3_);
 	}
 
 	@Override
 	public Item getItemDropped(IBlockState state, Random par2Random, int par3)
 	{
-		return this == ACBlocks.coralium_infused_stone ? ACItems.coralium_pearl: this == ACBlocks.coralium_ore ? ACItems.coralium_gem: this == ACBlocks.nitre_ore ? ACItems.nitre: this == ACBlocks.abyssal_nitre_ore ? ACItems.nitre: this == ACBlocks.abyssal_diamond_ore ? Items.DIAMOND:
-			this == ACBlocks.abyssal_coralium_ore ? ACItems.coralium_gem: this == ACBlocks.pearlescent_coralium_ore ? ACItems.coralium_pearl: Item.getItemFromBlock(this);
+		return this == ACBlocks.getInstance().coralium_infused_stone.getBlock() ? ACItems.getInstance().coralium_pearl: this == ACBlocks.getInstance().coralium_ore.getBlock() ? ACItems.getInstance().coralium_gem: this == ACBlocks.getInstance().nitre_ore.getBlock() ? ACItems.getInstance().nitre: this == ACBlocks.getInstance().abyssal_nitre_ore.getBlock() ? ACItems.getInstance().nitre: this == ACBlocks.getInstance().abyssal_diamond_ore.getBlock() ? Items.DIAMOND:
+			this == ACBlocks.getInstance().abyssal_coralium_ore.getBlock() ? ACItems.getInstance().coralium_gem: this == ACBlocks.getInstance().pearlescent_coralium_ore.getBlock() ? ACItems.getInstance().coralium_pearl: Item.getItemFromBlock(this);
 	}
 
 	@Override
 	public int quantityDropped(Random par1Random)
 	{
-		return this == ACBlocks.coralium_ore ? 1 + par1Random.nextInt(3): this == ACBlocks.nitre_ore ? 1 + par1Random.nextInt(3): this == ACBlocks.abyssal_nitre_ore ? 1 + par1Random.nextInt(3):
-			this == ACBlocks.abyssal_coralium_ore ? 1 + par1Random.nextInt(3): this == ACBlocks.pearlescent_coralium_ore ? 1 + par1Random.nextInt(2): 1;
+		return this == ACBlocks.getInstance().coralium_ore.getBlock() ? 1 + par1Random.nextInt(3): this == ACBlocks.getInstance().nitre_ore.getBlock() ? 1 + par1Random.nextInt(3): this == ACBlocks.getInstance().abyssal_nitre_ore.getBlock() ? 1 + par1Random.nextInt(3):
+			this == ACBlocks.getInstance().abyssal_coralium_ore.getBlock() ? 1 + par1Random.nextInt(3): this == ACBlocks.getInstance().pearlescent_coralium_ore.getBlock() ? 1 + par1Random.nextInt(2): 1;
 	}
 
 	@Override
@@ -65,7 +65,7 @@ public class BlockACOre extends BlockACBasic {
 				j = 0;
 
 			return quantityDropped(par2Random) * (j + 1);
-		} else if(this == ACBlocks.coralium_ore || this == ACBlocks.nitre_ore || this == ACBlocks.abyssal_nitre_ore || this == ACBlocks.abyssal_coralium_ore)
+		} else if(this == ACBlocks.getInstance().coralium_ore.getBlock() || this == ACBlocks.getInstance().nitre_ore.getBlock() || this == ACBlocks.getInstance().abyssal_nitre_ore.getBlock() || this == ACBlocks.getInstance().abyssal_coralium_ore.getBlock())
 			return quantityDropped(par2Random);
 		else
 			return quantityDropped(par2Random);
@@ -83,12 +83,12 @@ public class BlockACOre extends BlockACBasic {
 	public int getExpDrop(IBlockState state, IBlockAccess par1BlockAccess, BlockPos par2, int par3)
 	{
 		if (getItemDropped(null, rand, par3) != Item.getItemFromBlock(this))
-			if (this == ACBlocks.coralium_ore || this == ACBlocks.nitre_ore ||
-			this == ACBlocks.abyssal_coralium_ore || this == ACBlocks.abyssal_nitre_ore)
+			if (this == ACBlocks.getInstance().coralium_ore.getBlock() || this == ACBlocks.getInstance().nitre_ore.getBlock() ||
+			this == ACBlocks.getInstance().abyssal_coralium_ore.getBlock() || this == ACBlocks.getInstance().abyssal_nitre_ore.getBlock())
 				return MathHelper.getInt(rand, 0, 2);
-			else if (this == ACBlocks.coralium_infused_stone || this == ACBlocks.pearlescent_coralium_ore)
+			else if (this == ACBlocks.getInstance().coralium_infused_stone.getBlock() || this == ACBlocks.getInstance().pearlescent_coralium_ore.getBlock())
 				return MathHelper.getInt(rand, 2, 5);
-			else if (this == ACBlocks.abyssal_diamond_ore)
+			else if (this == ACBlocks.getInstance().abyssal_diamond_ore.getBlock())
 				return MathHelper.getInt(rand, 3, 7);
 		return 0;
 	}

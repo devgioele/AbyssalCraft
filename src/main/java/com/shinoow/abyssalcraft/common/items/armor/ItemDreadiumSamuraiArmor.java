@@ -45,10 +45,10 @@ public class ItemDreadiumSamuraiArmor extends ItemACArmor {
 
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String layer) {
-		if(stack.getItem() == ACItems.dreadium_samurai_helmet || stack.getItem() == ACItems.dreadium_samurai_chestplate || stack.getItem() == ACItems.dreadium_samurai_boots)
+		if(stack.getItem() == ACItems.getInstance().dreadium_samurai_helmet || stack.getItem() == ACItems.getInstance().dreadium_samurai_chestplate || stack.getItem() == ACItems.getInstance().dreadium_samurai_boots)
 			return "abyssalcraft:textures/armor/dreadiums_1.png";
 
-		if(stack.getItem() == ACItems.dreadium_samurai_leggings)
+		if(stack.getItem() == ACItems.getInstance().dreadium_samurai_leggings)
 			return "abyssalcraft:textures/armor/dreadiums_2.png";
 		else return null;
 	}
@@ -87,19 +87,19 @@ public class ItemDreadiumSamuraiArmor extends ItemACArmor {
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemstack) {
 		if(world.isRemote || !ACConfig.armorPotionEffects) return;
-		if (itemstack.getItem() == ACItems.dreadium_samurai_helmet) {
+		if (itemstack.getItem() == ACItems.getInstance().dreadium_samurai_helmet) {
 			if(world.provider.isSurfaceWorld())
 				player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 260, 0, false, false));
 			if(player.getActivePotionEffect(AbyssalCraftAPI.dread_plague) !=null)
 				player.removePotionEffect(AbyssalCraftAPI.dread_plague);
 		}
-		if (itemstack.getItem() == ACItems.dreadium_samurai_chestplate) {
+		if (itemstack.getItem() == ACItems.getInstance().dreadium_samurai_chestplate) {
 			player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 20, 0, false, false));
 			player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 20, 0, false, false));
 		}
-		if (itemstack.getItem() == ACItems.dreadium_samurai_leggings)
+		if (itemstack.getItem() == ACItems.getInstance().dreadium_samurai_leggings)
 			player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 20, 1, false, false));
-		if (itemstack.getItem() == ACItems.dreadium_samurai_boots)
+		if (itemstack.getItem() == ACItems.getInstance().dreadium_samurai_boots)
 			player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 20, 1, false, false));
 
 	}

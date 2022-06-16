@@ -26,33 +26,33 @@ public abstract class StructureDarklandsBase extends WorldGenerator {
 
 	protected void placeStatue(World world, Random rand, BlockPos pos){
 		if(rand.nextFloat() < 0.3F){
-			setBlockAndNotifyAdequately(world, pos, ACBlocks.monolith_pillar.getDefaultState());
+			setBlockAndNotifyAdequately(world, pos, ACBlocks.getInstance().monolith_pillar.getBlock().getDefaultState());
 			setBlockAndNotifyAdequately(world, pos.up(), getStatue(rand).withProperty(BlockStatue.FACING, EnumFacing.byHorizontalIndex(rand.nextInt(3))));
 		}
 	}
 
 	protected IBlockState getBrick(Random rand){
-		IBlockState brick = ACBlocks.darkstone_brick.getDefaultState();
-		IBlockState cracked_brick = ACBlocks.cracked_darkstone_brick.getDefaultState();
+		IBlockState brick = ACBlocks.getInstance().darkstone_brick.getBlock().getDefaultState();
+		IBlockState cracked_brick = ACBlocks.getInstance().cracked_darkstone_brick.getBlock().getDefaultState();
 		return rand.nextFloat() < 0.2 ? cracked_brick : brick;
 	}
 
 	private IBlockState getStatue(Random rand){
 		switch(rand.nextInt(7)){
 		case 0:
-			return ACBlocks.cthulhu_statue.getDefaultState();
+			return ACBlocks.getInstance().cthulhu_statue.getBlock().getDefaultState();
 		case 1:
-			return ACBlocks.hastur_statue.getDefaultState();
+			return ACBlocks.getInstance().hastur_statue.getBlock().getDefaultState();
 		case 2:
-			return ACBlocks.jzahar_statue.getDefaultState();
+			return ACBlocks.getInstance().jzahar_statue.getBlock().getDefaultState();
 		case 3:
-			return ACBlocks.azathoth_statue.getDefaultState();
+			return ACBlocks.getInstance().azathoth_statue.getBlock().getDefaultState();
 		case 4:
-			return ACBlocks.nyarlathotep_statue.getDefaultState();
+			return ACBlocks.getInstance().nyarlathotep_statue.getBlock().getDefaultState();
 		case 5:
-			return ACBlocks.yog_sothoth_statue.getDefaultState();
+			return ACBlocks.getInstance().yog_sothoth_statue.getBlock().getDefaultState();
 		case 6:
-			return ACBlocks.shub_niggurath_statue.getDefaultState();
+			return ACBlocks.getInstance().shub_niggurath_statue.getBlock().getDefaultState();
 		default:
 			return getStatue(rand);
 		}

@@ -83,7 +83,7 @@ public class GuiNecronomiconMachines extends GuiNecronomicon {
 			buttonList.add(buttonPreviousPage = new ButtonNextPage(3, i + 18, b0 + 154, false, false));
 			buttonList.add(buttonPreviousPageLong = new ButtonNextPage(4, i + 23, b0 + 167, false, true));
 			buttonList.add(buttonHome = new ButtonHome(5, i + 118, b0 + 167));
-			buttonList.add(info = new ButtonCategory(6, i + 14, b0 + 24, this, NecronomiconText.LABEL_INFO, false, ACItems.necronomicon));
+			buttonList.add(info = new ButtonCategory(6, i + 14, b0 + 24, this, NecronomiconText.LABEL_INFO, false, ACItems.getInstance().necronomicon));
 			buttonList.add(transmutator = new ButtonCategory(7, i + 14, b0 + 41, this, "container.abyssalcraft.transmutator", false, getItem(1)));
 			buttonList.add(crystallizer = new ButtonCategory(8, i + 14, b0 + 58, this, "container.abyssalcraft.crystallizer", false, getItem(2)));
 			buttonList.add(materializer = new ButtonCategory(9, i + 14, b0 + 75, this, "container.abyssalcraft.materializer", false, getItem(3)));
@@ -215,26 +215,26 @@ public class GuiNecronomiconMachines extends GuiNecronomicon {
 				GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 				mc.renderEngine.bindTexture(NecronomiconResources.ITEM);
 				drawTexturedModalRect(k, b0, 0, 0, 256, 256);
-				renderItem(k + 60, b0 + 28, new ItemStack(ACBlocks.transmutator_idle.getBlock()), x, y);
+				renderItem(k + 60, b0 + 28, new ItemStack(ACBlocks.getInstance().transmutator_idle.getBlock()), x, y);
 
 				writeText(2, NecronomiconText.MACHINE_INFO_2, 50);
 				GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 				mc.renderEngine.bindTexture(NecronomiconResources.ITEM);
 				drawTexturedModalRect(k + 123, b0, 0, 0, 256, 256);
-				renderItem(k + 183, b0 + 28, new ItemStack(ACBlocks.crystallizer_idle.getBlock()), x, y);
+				renderItem(k + 183, b0 + 28, new ItemStack(ACBlocks.getInstance().crystallizer_idle.getBlock()), x, y);
 
 			} else if(currTurnup == 1){
 				writeText(1, NecronomiconText.MACHINE_INFO_3, 50);
 				GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 				mc.renderEngine.bindTexture(NecronomiconResources.ITEM);
 				drawTexturedModalRect(k, b0, 0, 0, 256, 256);
-				renderItem(k + 60, b0 + 28, new ItemStack(ACBlocks.engraver.getBlock()), x, y);
+				renderItem(k + 60, b0 + 28, new ItemStack(ACBlocks.getInstance().engraver.getBlock()), x, y);
 
 				writeText(2, NecronomiconText.MACHINE_INFO_4, 50);
 				GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 				mc.renderEngine.bindTexture(NecronomiconResources.ITEM);
 				drawTexturedModalRect(k + 123, b0, 0, 0, 256, 256);
-				renderItem(k + 183, b0 + 28, new ItemStack(ACBlocks.materializer.getBlock()), x, y);
+				renderItem(k + 183, b0 + 28, new ItemStack(ACBlocks.getInstance().materializer.getBlock()), x, y);
 			}
 		}
 		if(isTra){

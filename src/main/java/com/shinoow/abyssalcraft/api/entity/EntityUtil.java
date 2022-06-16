@@ -94,9 +94,9 @@ public final class EntityUtil {
 	 * @return True if the Player has a Necronomicon, otherwise false
 	 */
 	public static boolean hasNecronomicon(EntityPlayer player){
-		return player.inventory.hasItemStack(new ItemStack(ACItems.necronomicon)) || player.inventory.hasItemStack(new ItemStack(ACItems.abyssal_wasteland_necronomicon))
-				|| player.inventory.hasItemStack(new ItemStack(ACItems.dreadlands_necronomicon)) || player.inventory.hasItemStack(new ItemStack(ACItems.omothol_necronomicon))
-				|| player.inventory.hasItemStack(new ItemStack(ACItems.abyssalnomicon));
+		return player.inventory.hasItemStack(new ItemStack(ACItems.getInstance().necronomicon)) || player.inventory.hasItemStack(new ItemStack(ACItems.getInstance().abyssal_wasteland_necronomicon))
+				|| player.inventory.hasItemStack(new ItemStack(ACItems.getInstance().dreadlands_necronomicon)) || player.inventory.hasItemStack(new ItemStack(ACItems.getInstance().omothol_necronomicon))
+				|| player.inventory.hasItemStack(new ItemStack(ACItems.getInstance().abyssalnomicon));
 	}
 
 	/**

@@ -87,7 +87,7 @@ public class BlockEngraver extends BlockContainer {
 	@Override
 	public Item getItemDropped(IBlockState state, Random par1Random, int par3)
 	{
-		return Item.getItemFromBlock(ACBlocks.engraver);
+		return Item.getItemFromBlock(ACBlocks.getInstance().engraver.getBlock());
 	}
 
 	@Override
@@ -143,7 +143,7 @@ public class BlockEngraver extends BlockContainer {
 	@SideOnly(Side.CLIENT)
 	public ItemStack getItem(World par1World, BlockPos pos, IBlockState state)
 	{
-		return new ItemStack(ACBlocks.engraver);
+		return new ItemStack(ACBlocks.getInstance().engraver.getBlock());
 	}
 
 	@SuppressWarnings("deprecation")

@@ -47,9 +47,9 @@ public class ItemAntiFood extends ItemFood implements IUnlockableItem {
 	@Override
 	public void onFoodEaten(ItemStack itemStack, World world, EntityPlayer entityPlayer)
 	{
-		if(itemStack.getItem() == ACItems.rotten_anti_flesh)
+		if(itemStack.getItem() == ACItems.getInstance().rotten_anti_flesh)
 			entityPlayer.addPotionEffect(new PotionEffect(MobEffects.SATURATION, 600, 1));
-		else if(itemStack.getItem() == ACItems.anti_spider_eye)
+		else if(itemStack.getItem() == ACItems.getInstance().anti_spider_eye)
 			entityPlayer.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 400, 0));
 		else entityPlayer.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 600, 1));
 	}

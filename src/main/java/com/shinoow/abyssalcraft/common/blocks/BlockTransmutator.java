@@ -59,7 +59,7 @@ public class BlockTransmutator extends BlockContainer {
 	@Override
 	public Item getItemDropped(IBlockState state, Random par1Random, int par3)
 	{
-		return Item.getItemFromBlock(ACBlocks.transmutator_idle);
+		return Item.getItemFromBlock(ACBlocks.getInstance().transmutator_idle.getBlock());
 	}
 
 	@Override
@@ -104,9 +104,9 @@ public class BlockTransmutator extends BlockContainer {
 		keepInventory = true;
 
 		if (par0)
-			par1World.setBlockState(pos, ACBlocks.transmutator_active.getDefaultState().withProperty(FACING, state.getValue(FACING)), 3);
+			par1World.setBlockState(pos, ACBlocks.getInstance().transmutator_active.getBlock().getDefaultState().withProperty(FACING, state.getValue(FACING)), 3);
 		else
-			par1World.setBlockState(pos, ACBlocks.transmutator_idle.getDefaultState().withProperty(FACING, state.getValue(FACING)), 3);
+			par1World.setBlockState(pos, ACBlocks.getInstance().transmutator_idle.getBlock().getDefaultState().withProperty(FACING, state.getValue(FACING)), 3);
 
 		keepInventory = false;
 
@@ -201,7 +201,7 @@ public class BlockTransmutator extends BlockContainer {
 	@SideOnly(Side.CLIENT)
 	public ItemStack getItem(World par1World, BlockPos pos, IBlockState state)
 	{
-		return new ItemStack(ACBlocks.transmutator_idle);
+		return new ItemStack(ACBlocks.getInstance().transmutator_idle.getBlock());
 	}
 
 	@Override

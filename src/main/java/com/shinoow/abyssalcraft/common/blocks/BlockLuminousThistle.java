@@ -31,7 +31,7 @@ public class BlockLuminousThistle extends BlockBush {
 	@Override
 	protected boolean canSustainBush(IBlockState ground)
 	{
-		return ground.getBlock() == ACBlocks.fused_abyssal_sand || ground.getBlock() == ACBlocks.abyssal_sand ||
+		return ground.getBlock() == ACBlocks.getInstance().fused_abyssal_sand.getBlock() || ground.getBlock() == ACBlocks.getInstance().abyssal_sand.getBlock() ||
 				ground.getMaterial() == Material.GRASS || super.canSustainBush(ground);
 	}
 }

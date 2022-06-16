@@ -308,7 +308,7 @@ public class ACExplosion extends Explosion
 							IBlockState block1 = worldObj.getBlockState(pos1.down());
 
 							if (block.getMaterial() == Material.AIR && block1.isFullBlock() && explosionRNG.nextInt(3) == 0)
-								worldObj.setBlockState(pos1, ACBlocks.liquid_antimatter.getDefaultState());
+								worldObj.setBlockState(pos1, ACBlocks.getInstance().liquid_antimatter.getBlock().getDefaultState());
 						}
 					}
 

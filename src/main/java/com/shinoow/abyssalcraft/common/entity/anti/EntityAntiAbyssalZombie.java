@@ -168,7 +168,7 @@ public class EntityAntiAbyssalZombie extends EntityMob implements IAntiEntity {
 	@Override
 	protected Item getDropItem()
 	{
-		return ACItems.anti_plagued_flesh;
+		return ACItems.getInstance().anti_plagued_flesh;
 
 	}
 

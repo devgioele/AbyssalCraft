@@ -45,7 +45,7 @@ public class BlockACFence extends BlockFence {
 	public boolean canEntityDestroy(IBlockState state, IBlockAccess world, BlockPos pos, Entity entity)
 	{
 		if(entity instanceof EntityDragon || entity instanceof EntityWither || entity instanceof EntityWitherSkull)
-			return state.getBlock() != ACBlocks.ethaxium_brick_fence && state.getBlock() != ACBlocks.dark_ethaxium_brick_fence;
+			return state.getBlock() != ACBlocks.getInstance().ethaxium_brick_fence.getBlock() && state.getBlock() != ACBlocks.getInstance().dark_ethaxium_brick_fence.getBlock();
 		return super.canEntityDestroy(state, world, pos, entity);
 	}
 

@@ -27,8 +27,8 @@ public class BiomePurged extends Biome {
 
 	public BiomePurged(BiomeProperties properties) {
 		super(properties);
-		topBlock = ACBlocks.calcified_stone.getDefaultState();
-		fillerBlock = ACBlocks.calcified_stone.getDefaultState();
+		topBlock = ACBlocks.getInstance().calcified_stone.getBlock().getDefaultState();
+		fillerBlock = ACBlocks.getInstance().calcified_stone.getBlock().getDefaultState();
 		decorator.treesPerChunk = -1;
 		decorator.flowersPerChunk= -1;
 		decorator.grassPerChunk = -1;

@@ -95,17 +95,17 @@ public class RitualRecipeWrapper implements IRecipeWrapper {
 	private ItemStack getItem(int par1){
 		switch(par1){
 		case 0:
-			return new ItemStack(ACItems.necronomicon);
+			return new ItemStack(ACItems.getInstance().necronomicon);
 		case 1:
-			return new ItemStack(ACItems.abyssal_wasteland_necronomicon);
+			return new ItemStack(ACItems.getInstance().abyssal_wasteland_necronomicon);
 		case 2:
-			return new ItemStack(ACItems.dreadlands_necronomicon);
+			return new ItemStack(ACItems.getInstance().dreadlands_necronomicon);
 		case 3:
-			return new ItemStack(ACItems.omothol_necronomicon);
+			return new ItemStack(ACItems.getInstance().omothol_necronomicon);
 		case 4:
-			return new ItemStack(ACItems.abyssalnomicon);
+			return new ItemStack(ACItems.getInstance().abyssalnomicon);
 		default:
-			return new ItemStack(ACItems.necronomicon);
+			return new ItemStack(ACItems.getInstance().necronomicon);
 		}
 	}
 
