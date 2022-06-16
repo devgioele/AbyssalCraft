@@ -25,6 +25,7 @@ public class ACBlock {
 	private final String tileName;
 	private final boolean hasModel;
 
+
 	private StateMap stateMap;
 
 	public ACBlock(String tileName, Block block, ItemBlock itemBlock,
@@ -128,13 +129,14 @@ public class ACBlock {
 	}
 
 	public void registerModel() {
-		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0,
-				new ModelResourceLocation(AbyssalCraft.modid + ":" + block.getTranslationKey(),
-						"inventory"));
-		if (stateMap != null) {
-			ModelLoader.setCustomStateMapper(block, stateMap);
+		if (hasModel) {
+			ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0,
+					new ModelResourceLocation(AbyssalCraft.modid + ":" + block.getTranslationKey(),
+							"inventory"));
+			if (stateMap != null) {
+				ModelLoader.setCustomStateMapper(block, stateMap);
+			}
 		}
-
 	}
 
 
