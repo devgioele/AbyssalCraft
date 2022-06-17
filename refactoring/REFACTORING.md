@@ -1,7 +1,7 @@
 # Refactoring 'AbyssalCraft' and the Minecraft Forge API
 
-This is my submission to assignment **EXTRA 3 - Source Code Analysis**.
-An open source project is analyzed and refactored partially (type b of assignment).
+This is my submission to assignment **EXTRA 3 - Source Code Analysis**. An open source project is analyzed and
+refactored partially (type b of assignment).
 
 ## Context
 
@@ -11,11 +11,16 @@ game that exposes an API for mod developers to use.
 
 ## Introduction
 
-Multiple attempts to refactor the Minecraft mod 'AbyssalCraft' failed, for which the Minecraft Forge API is to blame.
-This document reports the analysis of the codebase, explaining which components need to be refactored most urgently and
-how the refactoring could take place starting from the Minecraft Forge API.
+Multiple attempts to refactor [the Minecraft mod 'AbyssalCraft'](https://github.com/devgioele/AbyssalCraft) failed, for
+which the Minecraft Forge API is to blame. This document reports the analysis of the codebase, explaining which
+components need to be refactored most urgently and how the refactoring could take place starting from the Minecraft
+Forge API.
 
 ## Finding weak points
+
+Unfortunately, sonarqube could not be used, because it requires Java 11 or higher, while the codebase and all its 
+gradle build scripts require Java 8. I could not find a way to use a higher version of Java, but still compile the 
+source code as Java 8.
 
 A common 'design smell' for codebases are large files. An appropriate software system architecture scales to the system
 needs, without sacrificing maintainability and extensibility. If a codebase needs large files, it most likely is because
@@ -81,8 +86,6 @@ files with more than 400 LOC only:
 ./common/structures/StructureHouse.java:3111
 ```
 
-
-
 What follows are mitigations to reduce the size of these files, which inevitably leads to a change in architecture.
 
 ## Refactoring
@@ -141,46 +144,49 @@ achieved by pretty simple design patterns like:
 - builder (creational)
 
 The new source code inside `com.shinoow.abyssalcraft.init.InitHandler.preInit`:
+
 ```java
 ACBlocks.getInstance()
-        .registerBlockTiles()
-        .registerBlocks()
-        .registerFireInfo()
-        .registerItemsRenders()
-        .registerModels();
+		.registerBlockTiles()
+		.registerBlocks()
+		.registerFireInfo()
+		.registerItemsRenders()
+		.registerModels();
 
-ACItems.getInstance()
-        .registerItems();
+		ACItems.getInstance()
+		.registerItems();
 ```
 
 How ACBlocks uses reflections to create the list of all blocks:
+
 ```java
-public ACBlock[] getACBlocks() {
-	// Get all fields that are an ACBlock
-	return Arrays.stream(ACBlocks.class.getDeclaredFields())
-        .filter(field -> ACBlock.class.equals(field.getType())).map(field -> {
-			try {
-				return (ACBlock) field.get(null);
-			} catch (IllegalAccessException e) {
-				return null;
-			}
+public ACBlock[]getACBlocks(){
+		// Get all fields that are an ACBlock
+		return Arrays.stream(ACBlocks.class.getDeclaredFields())
+		.filter(field->ACBlock.class.equals(field.getType())).map(field->{
+		try{
+		return(ACBlock)field.get(null);
+		}catch(IllegalAccessException e){
+		return null;
+		}
 		}).toArray(ACBlock[]::new);
-}
+		}
 ```
 
 How ACITems uses reflections to create the list of all items:
+
 ```java
-public Item[] getItems() {
-	// Get all fields that are an Item or an Item subtype
-	return Arrays.stream(ACItems.class.getDeclaredFields())
-        .filter(field -> Item.class.isAssignableFrom(field.getType())).map(field -> {
-			try {
-				return (Item) field.get(null);
-			} catch (IllegalAccessException e) {
-				return null;
-			}
+public Item[]getItems(){
+		// Get all fields that are an Item or an Item subtype
+		return Arrays.stream(ACItems.class.getDeclaredFields())
+		.filter(field->Item.class.isAssignableFrom(field.getType())).map(field->{
+		try{
+		return(Item)field.get(null);
+		}catch(IllegalAccessException e){
+		return null;
+		}
 		}).toArray(Item[]::new);
-}
+		}
 ```
 
 The refactoring of such a large codebase is obviously very time-consuming and likely to introduce bugs. This highlights
