@@ -125,7 +125,7 @@ makes it easier to work with the block throughout the codebase, allowing to shar
 multiple inheritance.
 
 State of the class diagram after
-commit [95ee0f37](https://github.com/devgioele/AbyssalCraft/tree/95ee0f3706e39f16ee65a50e045cf0ae1f0b8f45).
+commit [061d5d93](https://github.com/devgioele/AbyssalCraft/tree/061d5d9332be9e71df477253a2bfef449594c8e0).
 
 ![Latest state of the class diagram](items-blocks-refactored.png)
 
@@ -136,6 +136,49 @@ achieved by pretty simple design patterns like:
 
 - singleton (structural)
 - builder (creational)
+
+The new source code inside `com.shinoow.abyssalcraft.init.InitHandler.preInit`:
+```java
+ACBlocks.getInstance()
+        .registerBlockTiles()
+        .registerBlocks()
+        .registerFireInfo()
+        .registerItemsRenders()
+        .registerModels();
+
+ACItems.getInstance()
+        .registerItems();
+```
+
+How ACBlocks uses reflections to create the list of all blocks:
+```java
+public ACBlock[] getACBlocks() {
+	// Get all fields that are an ACBlock
+	return Arrays.stream(ACBlocks.class.getDeclaredFields())
+        .filter(field -> ACBlock.class.equals(field.getType())).map(field -> {
+			try {
+				return (ACBlock) field.get(null);
+			} catch (IllegalAccessException e) {
+				return null;
+			}
+		}).toArray(ACBlock[]::new);
+}
+```
+
+How ACITems uses reflections to create the list of all items:
+```java
+public Item[] getItems() {
+	// Get all fields that are an Item or an Item subtype
+	return Arrays.stream(ACItems.class.getDeclaredFields())
+        .filter(field -> Item.class.isAssignableFrom(field.getType())).map(field -> {
+			try {
+				return (Item) field.get(null);
+			} catch (IllegalAccessException e) {
+				return null;
+			}
+		}).toArray(Item[]::new);
+}
+```
 
 The refactoring of such a large codebase is obviously very time-consuming and likely to introduce bugs. This highlights
 how important it is for a new project to consider the scalability of the chosen architecture.
