@@ -1,5 +1,8 @@
 # Refactoring 'AbyssalCraft' and the Minecraft Forge API
 
+This is my submission to assignment **EXTRA 3 - Source Code Analysis**.
+An open source project is analyzed and refactored partially (type b of assignment).
+
 ## Context
 
 Minecraft is a popular video game where players discover and build a block-based world. Minecraft Forge is a community
