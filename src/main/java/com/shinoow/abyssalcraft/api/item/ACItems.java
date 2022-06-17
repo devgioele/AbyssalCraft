@@ -552,7 +552,7 @@ public class ACItems {
 	}
 
 	public Item[] getItems() {
-		// Get all static fields that are an Item or an Item subtype
+		// Get all fields that are an Item or an Item subtype
 		return Arrays.stream(ACItems.class.getDeclaredFields())
 				.filter(field -> Item.class.isAssignableFrom(field.getType())).map(field -> {
 					try {

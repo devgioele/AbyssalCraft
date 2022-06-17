@@ -13,7 +13,6 @@ package com.shinoow.abyssalcraft.api.block;
 
 import com.shinoow.abyssalcraft.AbyssalCraft;
 import com.shinoow.abyssalcraft.api.biome.IDarklandsBiome;
-import com.shinoow.abyssalcraft.api.item.ACItems;
 import com.shinoow.abyssalcraft.api.necronomicon.condition.BiomePredicateCondition;
 import com.shinoow.abyssalcraft.api.necronomicon.condition.DimensionCondition;
 import com.shinoow.abyssalcraft.api.necronomicon.condition.EntityCondition;
@@ -24,7 +23,6 @@ import com.shinoow.abyssalcraft.common.world.gen.WorldGenDLT;
 import com.shinoow.abyssalcraft.common.world.gen.WorldGenDrT;
 import com.shinoow.abyssalcraft.lib.ACLib;
 import com.shinoow.abyssalcraft.lib.ACTabs;
-import com.shinoow.abyssalcraft.lib.util.Reflections;
 import net.minecraft.block.*;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
@@ -1149,8 +1147,9 @@ public class ACBlocks {
 	}
 
 	public ACBlock[] getACBlocks() {
-		return Arrays.stream(Reflections.getStaticFields(ACItems.class))
-				.filter(field -> ACBlock.class.isAssignableFrom(field.getType())).map(field -> {
+		// Get all fields that are an ACBlock
+		return Arrays.stream(ACBlocks.class.getDeclaredFields())
+				.filter(field -> ACBlock.class.equals(field.getType())).map(field -> {
 					try {
 						return (ACBlock) field.get(null);
 					} catch (IllegalAccessException e) {
