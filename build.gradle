@@ -36,11 +36,11 @@ apply plugin: 'com.matthewprenger.cursegradle'
 apply plugin: 'com.jfrog.bintray'
 apply plugin: 'maven'
 apply plugin: 'maven-publish'
+apply plugin: 'org.sonarqube'
 
 ext.propFile = file "build.properties"
 
 propFile.withReader {
-
     def prop = new Properties()
     prop.load(it)
     project.ext.props = new ConfigSlurper().parse prop
